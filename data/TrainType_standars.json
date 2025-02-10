@@ -1,0 +1,69 @@
+{
+  "TrainType": [
+    {
+      "Urban": {
+        "Standard Saloon": {
+          "EN14750:2006": "Category B",
+          "EN14750:2025": "Category U"
+        },
+        "Standard Cabin": {
+          "EN14813:2006": "Category B"
+        },
+        "Time between stops": "<3 min",
+        "Designed passengers load": [
+          "All seats occupied",
+          "Excluding tip-up seats and wheelchairs"
+        ],
+        "Stand passengers load": "+2p/m2",
+        "Probability of removing clothes": "Low"
+      },
+      "Suburban": {
+        "Standard Saloon": {
+          "EN14750:2006": "Category A",
+          "EN14750:2025": "Category S"
+        },
+        "Standard Cabin": {
+          "EN14813:2006": "Category A"
+        },
+        "Time between stops": "< 10 min",
+        "Designed passengers load": [
+          "All seats occupied",
+          "Excluding tip-up seats and wheelchairs"
+        ],
+        "Stand passengers load": "+2p/m2",
+        "Probability of removing clothes": "Low"
+      },
+      "Regional": {
+        "Standard Saloon": {
+          "EN14750:2006": "Category A",
+          "EN14750:2025": "Category R"
+        },
+        "Standard Cabin": {
+          "EN14813:2006": "Category A"
+        },
+        "Time between stops": "5-30 min",
+        "Designed passengers load": [
+          "All seats occupied",
+          "Including tip-up seats and wheelchairs"
+        ],
+        "Stand passengers load": "Details for Stand passengers load",
+        "Probability of removing clothes": "Medium"
+      },
+      "Main line": {
+        "Standard Saloon":  {
+          "EN13129:2016": "-"
+        },
+        "Standard Cabin": {
+          "EN14813:2006": "Category A"
+        },
+        "Time between stops": ">30 min",
+        "Designed passengers load": [
+          "All seats occupied",
+          "Including tip-up seats and wheelchairs"
+        ],
+        "Stand passengers load": "Details for Stand passengers load",
+        "Probability of removing clothes": "High"
+      }
+    }
+  ]
+}

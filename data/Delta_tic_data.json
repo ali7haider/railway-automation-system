@@ -1,0 +1,60 @@
+{
+    "Standard": [
+        {   
+            "EN13129:2016": {
+                "\u0394tic": {
+                    "No sleeping coaches": {
+                        "\u0394Tic Max": 2,
+                        "\u0394Tic Min": -2
+                    },
+                    "Sleeping coaches": {
+                        "\u0394Tic Max": 2,
+                        "\u0394Tic Min": -4
+                    },
+                    "No compartments": {
+                        "\u0394Tic Max": 2,
+                        "\u0394Tic Min": -2
+                    }
+                }
+            },
+            "EN14750:2006": {
+                "\u0394tic": {
+                    "No sleeping coaches": {
+                        "\u0394Tic Max": 0,
+                        "\u0394Tic Min": 0
+                    },
+                    "Sleeping coaches": {
+                        "\u0394Tic Max": 0,
+                        "\u0394Tic Min": 0
+                    },
+                    "No compartments": {
+                        "\u0394Tic Max": 0,
+                        "\u0394Tic Min": 0
+                    }
+                }
+            },
+            "EN14750:2025": {
+                "\u0394tic": {
+                    "No sleeping coaches": {
+                        "\u0394Tic Max": 0,
+                        "\u0394Tic Min": 0
+                    },
+                    "Sleeping coaches": {
+                        "\u0394Tic Max": 0,
+                        "\u0394Tic Min": 0
+                    },
+                    "No compartments": {
+                        "\u0394Tic Max": 0,
+                        "\u0394Tic Min": 0
+                    }
+                }
+            },
+            "EN14813:2006": {
+                "Related to exterior temperature": {
+                    "\u0394Tic Max": 4,
+                    "\u0394Tic Min": -2
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,739 @@
+{
+  "countries": [
+    {
+      "name": "Austria",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.2",
+          "Summer Zone": "LS.2"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        }
+      }
+    },
+    {
+      "name": "Belgium",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.2",
+          "Summer Zone": "LS.2"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        }
+      }
+    },
+    {
+      "name": "Bulgaria",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.2",
+          "Summer Zone": "LS.2"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        }
+      }
+    },
+    {
+      "name": "Croatia",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.2",
+          "Summer Zone": "LS.2"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        }
+      }
+    },
+    {
+      "name": "Cyprus",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "I",
+          "Summer Zone": "I"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "I",
+          "Summer Zone": "I"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.1",
+          "Summer Zone": "LS.1"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "I",
+          "Summer Zone": "I"
+        }
+      }
+    },
+    {
+      "name": "Czech Republic",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.2",
+          "Summer Zone": "LS.2"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        }
+      }
+    },
+    {
+      "name": "Denmark",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.2",
+          "Summer Zone": "LS.2"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        }
+      }
+    },
+    {
+      "name": "Estonia",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.3",
+          "Summer Zone": "LS.3"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        }
+      }
+    },
+    {
+      "name": "Finland",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.3",
+          "Summer Zone": "LS.3"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        }
+      }
+    },
+    {
+      "name": "France",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.2",
+          "Summer Zone": "LS.2"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        }
+      }
+    },
+    {
+      "name": "Germany",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.2",
+          "Summer Zone": "LS.2"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        }
+      }
+    },
+    {
+      "name": "Greek",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "I",
+          "Summer Zone": "I"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "I",
+          "Summer Zone": "I"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.1",
+          "Summer Zone": "LS.1"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "I",
+          "Summer Zone": "I"
+        }
+      }
+    },
+    {
+      "name": "Hungary",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.2",
+          "Summer Zone": "LS.2"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        }
+      }
+    },
+    {
+      "name": "Iceland",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.3",
+          "Summer Zone": "LS.3"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        }
+      }
+    },
+    {
+      "name": "Irland",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "I",
+          "Summer Zone": "III"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "I",
+          "Summer Zone": "III"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.1",
+          "Summer Zone": "LS.3"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "I",
+          "Summer Zone": "III"
+        }
+      }
+    },
+    {
+      "name": "Italy",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "II",
+          "Summer Zone": "I"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "I"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.2",
+          "Summer Zone": "LS.1"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "I"
+        }
+      }
+    },
+    {
+      "name": "Latvia",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.3",
+          "Summer Zone": "LS.3"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        }
+      }
+    },
+    {
+      "name": "Lithuania",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.3",
+          "Summer Zone": "LS.3"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        }
+      }
+    },
+    {
+      "name": "Luxembourg",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.2",
+          "Summer Zone": "LS.2"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        }       
+      }
+    },
+    {
+      "name": "Malta",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "I",
+          "Summer Zone": "I"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "I",
+          "Summer Zone": "I"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.1",
+          "Summer Zone": "LS.1"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "I",
+          "Summer Zone": "I"
+        }
+      }
+    },
+    {
+      "name": "Netherlands",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.2",
+          "Summer Zone": "LS.2"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        }
+      }
+    },
+    {
+      "name": "Norway",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.3",
+          "Summer Zone": "LS.3"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        }
+      }
+    },
+    {
+      "name": "Poland",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "III",
+          "Summer Zone": "II"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "III",
+          "Summer Zone": "II"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.3",
+          "Summer Zone": "LS.2"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "III",
+          "Summer Zone": "II"
+        }
+      }
+    },
+    {
+      "name": "Portugal",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "I",
+          "Summer Zone": "I"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "I",
+          "Summer Zone": "I"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.1",
+          "Summer Zone": "LS.1"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "I",
+          "Summer Zone": "I"
+        }
+      }
+    },
+    {
+      "name": "Romania",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.2",
+          "Summer Zone": "LS.2"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        }
+      }
+    },
+    {
+      "name": "Serbia",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.2",
+          "Summer Zone": "LS.2"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        }
+      }
+    },
+    {
+      "name": "Montenegro",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.2",
+          "Summer Zone": "LS.2"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        }
+      }
+    },
+    {
+      "name": "Slovakia",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.2",
+          "Summer Zone": "LS.2"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        }
+      }
+    },
+    {
+      "name": "Slovenia",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.2",
+          "Summer Zone": "LS.2"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        }
+      }
+    },
+    {
+      "name": "Spain",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "I",
+          "Summer Zone": "I"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "I",
+          "Summer Zone": "I"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.1",
+          "Summer Zone": "LS.1"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "I",
+          "Summer Zone": "I"
+        }
+      }
+    },
+    {
+      "name": "Sweden",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.3",
+          "Summer Zone": "LS.3"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "III",
+          "Summer Zone": "III"
+        }
+      }
+    },
+    {
+      "name": "Switzerland",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.2",
+          "Summer Zone": "LS.2"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        }
+      }
+    },
+    {
+      "name": "Turkey",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "I",
+          "Summer Zone": "I"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "I",
+          "Summer Zone": "I"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.1",
+          "Summer Zone": "LS.1"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "I",
+          "Summer Zone": "I"
+        }
+      }
+    },
+    {
+      "name": "United Kingdom",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "I",
+          "Summer Zone": "III"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "I",
+          "Summer Zone": "III"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.1",
+          "Summer Zone": "LS.3"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "I",
+          "Summer Zone": "III"
+        }
+      }
+    },
+    {
+      "name": "North Macedonia",
+      "regulations": {
+        "EN13129:2016": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        },
+        "EN14750:2025": {
+          "Winter Zone": "LW.2",
+          "Summer Zone": "LS.2"
+        },
+        "EN14813:2006": {
+          "Winter Zone": "II",
+          "Summer Zone": "II"
+        }
+      }
+    }
+  ]
+}

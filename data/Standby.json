@@ -1,0 +1,22 @@
+{
+  "Standard": [
+    {   
+      "EN13129:2016": {
+        "Summer": 30,
+        "Winter": 3
+      },
+      "EN14750:2006": {
+        "Summer": null,
+        "Winter": null
+      },
+      "EN14750:2025": {
+        "Summer": 30,
+        "Winter": 3
+      },
+      "EN14813:2006": {
+        "Summer": null,
+        "Winter": null
+      }
+    }
+  ]
+}

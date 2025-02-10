@@ -1,0 +1,113 @@
+{
+    "EN13129:2016": {
+      "Winter": {
+        "Normal_Range": {
+          "I": {"Max": null, "Min": 0},
+          "II": {"Max": null, "Min": -10},
+          "III": {"Max": null, "Min": -20}
+        },
+        "Extended_Range": {
+          "I": {"Max": 0, "Min": -10},
+          "II": {"Max": -10, "Min": -20},
+          "III": {"Max": -20, "Min": -40}
+        }
+      },
+      "Summer": {
+        "Normal_Range": {
+          "I": {"Max": 35, "Min": null},
+          "II": {"Max": 28, "Min": null},
+          "III": {"Max": 22, "Min": null}
+        },
+        "Extended_Range": {
+          "I": {"Max": 40, "Min": 35},
+          "II": {"Max": 35, "Min": 28},
+          "III": {"Max": 28, "Min": 22}
+        }
+      }
+    },
+    "EN14750:2006": {
+      "Winter": {
+        "Normal_Range": {
+          "I": {"Max": null, "Min": null},
+          "II": {"Max": null, "Min": null},
+          "III": {"Max": null, "Min": null}
+        },
+        "Extended_Range": {
+          "I": {"Max": null, "Min": null},
+          "II": {"Max": null, "Min": null},
+          "III": {"Max": null, "Min": null}
+        }
+      },
+      "Summer": {
+        "Normal_Range": {
+          "I": {"Max": null, "Min": null},
+          "II": {"Max": null, "Min": null},
+          "III": {"Max": null, "Min": null}
+        },
+        "Extended_Range": {
+          "I": {"Max": null, "Min": null},
+          "II": {"Max": null, "Min": null},
+          "III": {"Max": null, "Min": null}
+        }
+      }
+    },
+    "EN14750:2025": {
+      "Winter": {
+        "Normal_Range": {
+          "LW.1": {"Max": null, "Min": 5},
+          "LW.2": {"Max": null, "Min": 0},
+          "LW.3": {"Max": null, "Min": -10},
+          "LW.4": {"Max": null, "Min": -15},
+          "LW.5": {"Max": null, "Min": -20}
+        },
+        "Extended_Range": {
+          "LW.1": {"Max": 5, "Min": 0},
+          "LW.2": {"Max": 0, "Min": -10},
+          "LW.3": {"Max": -10, "Min": -20},
+          "LW.4": {"Max": -15, "Min": -30},
+          "LW.5": {"Max": -20, "Min": -40}
+        }
+      },
+      "Summer": {
+        "Normal_Range": {
+          "LS.1": {"Max": 35, "Min": null},
+          "LS.2": {"Max": 28, "Min": null},
+          "LS.3": {"Max": 26, "Min": null},
+          "LS.4": {"Max": 22, "Min": null}
+        },
+        "Extended_Range": {
+          "LS.1": {"Max": 40, "Min": 35},
+          "LS.2": {"Max": 35, "Min": 28},
+          "LS.3": {"Max": 32, "Min": 26},
+          "LS.4": {"Max": 28, "Min": 22}
+        }
+      }
+    },
+    "EN14813:2006": {
+      "Winter": {
+        "Normal_Range": {
+          "I": {"Max": null, "Min": null},
+          "II": {"Max": null, "Min": null},
+          "III": {"Max": null, "Min": null}
+        },
+        "Extended_Range": {
+          "I": {"Max": null, "Min": null},
+          "II": {"Max": null, "Min": null},
+          "III": {"Max": null, "Min": null}
+        }
+      },
+      "Summer": {
+        "Normal_Range": {
+          "I": {"Max": null, "Min": null},
+          "II": {"Max": null, "Min": null},
+          "III": {"Max": null, "Min": null}
+        },
+        "Extended_Range": {
+          "I": {"Max": null, "Min": null},
+          "II": {"Max": null, "Min": null},
+          "III": {"Max": null, "Min": null}
+        }
+      }
+    }
+  }
+  

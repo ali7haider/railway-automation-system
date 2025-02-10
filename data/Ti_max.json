@@ -1,0 +1,62 @@
+{
+    "EN14750:2006": {
+      "Summer zone": {
+        "Category A": {
+          "I": 30,
+          "II": 30,
+          "III": 26
+        },
+        "Category B": {
+          "I": 32,
+          "II": 33,
+          "III": 29
+        }
+      }
+    },
+    "EN14750:2025": {
+      "Summer zone": {
+        "Category R": {
+          "LS.1": 27,
+          "LS.2": 27,
+          "LS.3": 26,
+          "LS.4": 25
+        },
+        "Category S": {
+          "LS.1": 30,
+          "LS.2": 30,
+          "LS.3": 28,
+          "LS.4": 26
+        },
+        "Category U": {
+          "LS.1": 32,
+          "LS.2": 32,
+          "LS.3": 31,
+          "LS.4": 29
+        }
+      }
+    },
+    "EN14813:2006": {
+      "Summer zone": {
+        "Category A": {
+          "I": 27,
+          "II": 26,
+          "III": 22
+        },
+        "Category B": {
+          "I": 30,
+          "II": 28,
+          "III": 24
+        }
+      }
+    },
+    "EN13129:2016": {
+      "Summer zone": {
+        "": {
+          "I": 27,
+          "II": 27,
+          "III": 25
+        }
+      }
+    }
+  }
+  

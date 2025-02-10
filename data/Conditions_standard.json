@@ -1,0 +1,539 @@
+{
+  "EN13129:2016": {
+    "Winter": {
+      "I": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": -10,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": -15,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": null,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          }
+        }
+      },
+      "II": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": -20,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": -25,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": null,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          }
+        }
+      },
+      "III": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": -40,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": -45,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": null,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          }
+        }
+      }
+    },
+    "Summer": {
+      "I": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": 40,
+            "Relative humidity [%]": 40,
+            "Solar load [W/m2]": 800
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": 45,
+            "Relative humidity [%]": 30,
+            "Solar load [W/m2]": 800
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": 50,
+            "Relative humidity [%]": 25,
+            "Solar load [W/m2]": 800
+          }
+        }
+      },
+      "II": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": 35,
+            "Relative humidity [%]": 50,
+            "Solar load [W/m2]": 700
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": 40,
+            "Relative humidity [%]": 40,
+            "Solar load [W/m2]": 700
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": 48,
+            "Relative humidity [%]": 30,
+            "Solar load [W/m2]": 700
+          }
+        }
+      },
+      "III": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": 28,
+            "Relative humidity [%]": 45,
+            "Solar load [W/m2]": 600
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": 33,
+            "Relative humidity [%]": 30,
+            "Solar load [W/m2]": 600
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": 38,
+            "Relative humidity [%]": 25,
+            "Solar load [W/m2]": 600
+          }
+        }
+      }
+    }
+  },
+  "EN14750:2006": {
+    "Winter": {
+      "I": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": -10,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": null,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": -15,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          }
+        }
+      },
+      "II": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": -20,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": null,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": -25,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          }
+        }
+      },
+      "III": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": -40,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": null,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": -45,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          }
+        }
+      }
+    },
+    "Summer": {
+      "I": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": 40,
+            "Relative humidity [%]": 40,
+            "Solar load [W/m2]": 800
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": null,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": 45,
+            "Relative humidity [%]": 40,
+            "Solar load [W/m2]": 800
+          }
+        }
+      },
+      "II": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": 35,
+            "Relative humidity [%]": 50,
+            "Solar load [W/m2]": 700
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": null,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": 48,
+            "Relative humidity [%]": 30,
+            "Solar load [W/m2]": 700
+          }
+        }
+      },
+      "III": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": 28,
+            "Relative humidity [%]": 45,
+            "Solar load [W/m2]": 600
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": null,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": 33,
+            "Relative humidity [%]": 45,
+            "Solar load [W/m2]": 600
+          }
+        }
+      }
+    }
+  },
+  "EN14813:2006": {
+    "Winter": {
+      "I": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": -10,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": null,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": -15,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          }
+        }
+      },
+      "II": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": -20,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": null,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": -25,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          }
+        }
+      },
+      "III": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": -40,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": null,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": -45,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": 0
+          }
+        }
+      }
+    },
+    "Summer": {
+      "I": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": 40,
+            "Relative humidity [%]": 40,
+            "Solar load [W/m2]": 800
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": null,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": 45,
+            "Relative humidity [%]": 40,
+            "Solar load [W/m2]": 800
+          }
+        }
+      },
+      "II": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": 35,
+            "Relative humidity [%]": 50,
+            "Solar load [W/m2]": 700
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": null,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": 48,
+            "Relative humidity [%]": 30,
+            "Solar load [W/m2]": 700
+          }
+        }
+      },
+      "III": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": 28,
+            "Relative humidity [%]": 45,
+            "Solar load [W/m2]": 600
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": null,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": 33,
+            "Relative humidity [%]": 45,
+            "Solar load [W/m2]": 600
+          }
+        }
+      }
+    }
+  },
+  "EN14750:2025": {
+    "Winter": {
+      "LW.1": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": 0,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": -5,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": "N/A",
+            "Relative humidity [%]": "N/A",
+            "Solar load [W/m2]": "N/A"
+          }
+        }
+      },
+      "LW.2": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": -10,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": -15,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": "N/A",
+            "Relative humidity [%]": "N/A",
+            "Solar load [W/m2]": "N/A"
+          }
+        }
+      },
+      "LW.3": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": -20,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": -25,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": "N/A",
+            "Relative humidity [%]": "N/A",
+            "Solar load [W/m2]": "N/A"
+          }
+        }
+      },
+      "LW.4": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": -30,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": -35,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": "N/A",
+            "Relative humidity [%]": "N/A",
+            "Solar load [W/m2]": "N/A"
+          }
+        }
+      },
+      "LW.5": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": -40,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": -45,
+            "Relative humidity [%]": null,
+            "Solar load [W/m2]": null
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": "N/A",
+            "Relative humidity [%]": "N/A",
+            "Solar load [W/m2]": "N/A"
+          }
+        }
+      }
+    },
+    "Summer": {
+      "LS.1": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": 40,
+            "Relative humidity [%]": 40,
+            "Solar load [W/m2]": 800
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": 45,
+            "Relative humidity [%]": 31,
+            "Solar load [W/m2]": 800
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": 50,
+            "Relative humidity [%]": 24,
+            "Solar load [W/m2]": 800
+          }
+        }
+      },
+      "LS.2": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": 35,
+            "Relative humidity [%]": 50,
+            "Solar load [W/m2]": 700
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": 40,
+            "Relative humidity [%]": 38,
+            "Solar load [W/m2]": 700
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": 45,
+            "Relative humidity [%]": 29,
+            "Solar load [W/m2]": 700
+          }
+        }
+      },
+      "LS.3": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": 32,
+            "Relative humidity [%]": 50,
+            "Solar load [W/m2]": 700
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": 37,
+            "Relative humidity [%]": 38,
+            "Solar load [W/m2]": 700
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": 42,
+            "Relative humidity [%]": 29,
+            "Solar load [W/m2]": 700
+          }
+        }
+      },
+      "LS.4": {
+        "Conditions": {
+          "Design conditions": {
+            "Temperature [\u00baC]": 28,
+            "Relative humidity [%]": 45,
+            "Solar load [W/m2]": 600
+          },
+          "Extreme conditions": {
+            "Temperature [\u00baC]": 33,
+            "Relative humidity [%]": 34,
+            "Solar load [W/m2]": 600
+          },
+          "Operational limit": {
+            "Temperature [\u00baC]": 38,
+            "Relative humidity [%]": 26,
+            "Solar load [W/m2]": 600
+          }
+        }
+      }
+    }
+  }
+}

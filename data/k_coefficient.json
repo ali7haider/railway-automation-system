@@ -1,0 +1,153 @@
+{
+  "EN14750:2006": {
+    "Category": {
+      "Category A": {
+        "Deck": {
+          "Single deck coach": {
+            "Winter zone": {
+              "I": { "k coefficient": 2.5 },
+              "II": { "k coefficient": 2.2 },
+              "III": { "k coefficient": 2 }
+            }
+          },
+          "Double deck coach": {
+            "Winter zone": {
+              "I": { "k coefficient": 2.5 },
+              "II": { "k coefficient": 2.2 },
+              "III": { "k coefficient": 2 }
+            }
+          }
+        }
+      },
+      "Category B": {
+        "Deck": {
+          "Single deck coach": {
+            "Winter zone": {
+              "I": { "k coefficient": 3.5 },
+              "II": { "k coefficient": 3 },
+              "III": { "k coefficient": 2.5 }
+            }
+          },
+          "Double deck coach": {
+            "Winter zone": {
+              "I": { "k coefficient": 3.5 },
+              "II": { "k coefficient": 3 },
+              "III": { "k coefficient": 2.5 }
+            }
+          }
+        }
+      }
+    }
+  },
+  "EN14750:2025": {
+    "Category": {
+      "Category R": {
+        "Deck": {
+          "Single deck coach": {
+            "Winter zone": {
+              "LW.1": { "k coefficient": 2.2 },
+              "LW.2": { "k coefficient": 2.2 },
+              "LW.3": { "k coefficient": 1.8 },
+              "LW.4": { "k coefficient": 1.6 },
+              "LW.5": { "k coefficient": 1.6 }
+            }
+          },
+          "Double deck coach": {
+            "Winter zone": {
+              "LW.1": { "k coefficient": 2.5 },
+              "LW.2": { "k coefficient": 2.5 },
+              "LW.3": { "k coefficient": 2.2 },
+              "LW.4": { "k coefficient": 2 },
+              "LW.5": { "k coefficient": 2 }
+            }
+          }
+        }
+      },
+      "Category S": {
+        "Deck": {
+          "Single deck coach": {
+            "Winter zone": {
+              "LW.1": { "k coefficient": 2.5 },
+              "LW.2": { "k coefficient": 2.5 },
+              "LW.3": { "k coefficient": 2.2 },
+              "LW.4": { "k coefficient": 2 },
+              "LW.5": { "k coefficient": 2 }
+            }
+          },
+          "Double deck coach": {
+            "Winter zone": {
+              "LW.1": { "k coefficient": 2.8 },
+              "LW.2": { "k coefficient": 2.8 },
+              "LW.3": { "k coefficient": 2.6 },
+              "LW.4": { "k coefficient": 2.3 },
+              "LW.5": { "k coefficient": 2.3 }
+            }
+          }
+        }
+      },
+      "Category U": {
+        "Deck": {
+          "Single deck coach": {
+            "Winter zone": {
+              "LW.1": { "k coefficient": 3.5 },
+              "LW.2": { "k coefficient": 3.5 },
+              "LW.3": { "k coefficient": 3 },
+              "LW.4": { "k coefficient": 2.5 },
+              "LW.5": { "k coefficient": 2.5 }
+            }
+          },
+          "Double deck coach": {
+            "Winter zone": {
+              "LW.1": { "k coefficient": 3.5 },
+              "LW.2": { "k coefficient": 3.5 },
+              "LW.3": { "k coefficient": 3 },
+              "LW.4": { "k coefficient": 2.5 },
+              "LW.5": { "k coefficient": 2.5 }
+            }
+          }
+        }
+      }
+    }
+  },
+  "EN14813:2006": {
+    "Category": {
+      "Category A": {
+        "Winter zone": {
+          "I": { "k coefficient": 2.3 },
+          "II": { "k coefficient": 1.9 },
+          "III": { "k coefficient": 1.6 }
+        }
+      },
+      "Category B": {
+        "Winter zone": {
+          "I": { "k coefficient": 3.5 },
+          "II": { "k coefficient": 3 },
+          "III": { "k coefficient": 2.5 }
+        }
+      }
+    }
+  },
+  "EN13129:2016": {
+    "Category": {
+      "": {
+        "Deck": {
+          "Single deck coach": {
+            "Winter zone": {
+              "I": { "k coefficient": 2 },
+              "II": { "k coefficient": 1.6 },
+              "III": { "k coefficient": 1.2 }
+            }
+          },
+          "Double deck coach": {
+            "Winter zone": {
+              "I": { "k coefficient": 2.5 },
+              "II": { "k coefficient": 2.2 },
+              "III": { "k coefficient": 2 }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
