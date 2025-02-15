@@ -20,6 +20,8 @@
    <property name="styleSheet">
     <string notr="true">QWidget {
     font-family: Calibri;
+	font: 11pt ;
+
 }
 
 
@@ -29,7 +31,6 @@ QLabel {
 }
 
 QLineEdit {
-    min-height: 30px; /* Adjust as needed */
     border-radius: 5px;
     border: 1px solid gray;
     padding-left: 5px;
@@ -133,6 +134,20 @@ font-weight:bold;</string>
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QLabel" name="label_5">
+            <property name="styleSheet">
+             <string notr="true">font: 10pt &quot;Calibri&quot;;
+</string>
+            </property>
+            <property name="text">
+             <string>Please Login with your User Name and Password</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -150,8 +165,14 @@ font-weight:bold;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>32</height>
+              <height>36</height>
              </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="placeholderText">
+             <string>Enter your Username</string>
             </property>
            </widget>
           </item>
@@ -160,11 +181,14 @@ font-weight:bold;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>32</height>
+              <height>36</height>
              </size>
             </property>
             <property name="echoMode">
              <enum>QLineEdit::Password</enum>
+            </property>
+            <property name="placeholderText">
+             <string>Enter your Password</string>
             </property>
            </widget>
           </item>
