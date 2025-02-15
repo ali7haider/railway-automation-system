@@ -74,7 +74,7 @@ Left Menu */
 	background-repeat: no-repeat;
 }
 #titleLeftApp { font: 63 12pt &quot;Segoe UI Semibold&quot;; }
-#titleLeftDescription { font: 8pt &quot;Segoe UI&quot;; color: rgb(189, 147, 249); }
+#titleLeftDescription { font: 8pt &quot;Segoe UI&quot;; color: #345CBF; }
 
 /* MENUS */
 #topMenu .QPushButton {	
@@ -90,7 +90,7 @@ Left Menu */
 	background-color: rgb(40, 44, 52);
 }
 #topMenu .QPushButton:pressed {	
-	background-color: rgb(189, 147, 249);
+	background-color: #345CBF;
 	color: rgb(255, 255, 255);
 }
 #bottomMenu .QPushButton {	
@@ -106,7 +106,7 @@ Left Menu */
 	background-color: rgb(40, 44, 52);
 }
 #bottomMenu .QPushButton:pressed {	
-	background-color: rgb(189, 147, 249);
+	background-color: #345CBF;
 	color: rgb(255, 255, 255);
 }
 #leftMenuFrame{
@@ -128,11 +128,11 @@ Left Menu */
 	background-color: rgb(40, 44, 52);
 }
 #toggleButton:pressed {
-	background-color: rgb(189, 147, 249);
+	background-color: #345CBF;
 }
 
 /* Title Menu */
-#titleRightInfo { padding-left: 10px; }
+#lblNameUser { padding-left: 10px; }
 
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -141,7 +141,7 @@ Extra Tab */
 	background-color: rgb(44, 49, 58);
 }
 #extraTopBg{	
-	background-color: rgb(189, 147, 249)
+	background-color: #345CBF
 }
 
 /* Icon */
@@ -178,7 +178,7 @@ background-position: left center;
 	background-color: rgb(40, 44, 52);
 }
 #extraTopMenu .QPushButton:pressed {	
-	background-color: rgb(189, 147, 249);
+	background-color: #345CBF;
 	color: rgb(255, 255, 255);
 }
 
@@ -198,7 +198,7 @@ Content App */
 
 /* Theme Settings */
 #extraRightBox { background-color: rgb(44, 49, 58); }
-#themeSettingsTopDetail { background-color: rgb(189, 147, 249); }
+#themeSettingsTopDetail { background-color: #345CBF; }
 
 /* Bottom Bar */
 #bottomBar { background-color: rgb(44, 49, 58); }
@@ -219,7 +219,7 @@ Content App */
 	background-color: rgb(40, 44, 52);
 }
 #contentSettings .QPushButton:pressed {	
-	background-color: rgb(189, 147, 249);
+	background-color: #345CBF;
 	color: rgb(255, 255, 255);
 }
 
@@ -244,7 +244,7 @@ QTableWidget::item:selected {
 	color: #FFF;
 }
 QHeaderView::section {
-	background-color: rgb(189, 147, 249);
+	background-color: #345CBF;
 	max-width: 30px;
 	border: 1px solid #555;
 	border-style: none;
@@ -252,7 +252,7 @@ QHeaderView::section {
     border-right: 1px solid #555;
 }
 QTableWidget::horizontalHeader {	
-	background-color: rgb(189, 147, 249);
+	background-color: #345CBF;
 }
 QTableWidget QTableCornerButton::section {
     border: none;
@@ -262,7 +262,7 @@ QTableWidget QTableCornerButton::section {
 }
 QHeaderView::section:horizontal {
     border: none;
-	background-color: rgb(189, 147, 249) ;
+	background-color: #345CBF ;
 	padding: 3px;
 }
 QHeaderView::section:vertical {
@@ -355,7 +355,7 @@ QScrollBar:horizontal {
 	border-radius: 0px;
 }
 QScrollBar::handle:horizontal {
-    background: rgb(189, 147, 249);
+    background: #345CBF;
     min-width: 25px;
 	border-radius: 4px
 }
@@ -393,7 +393,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
 	border-radius: 0px;
  }
  QScrollBar::handle:vertical {	
-	background: rgb(189, 147, 249);
+	background: #345CBF;
     min-height: 25px;
 	border-radius: 4px
  }
@@ -502,7 +502,7 @@ QSlider::groove:horizontal:hover {
 	background-color: rgb(55, 62, 76);
 }
 QSlider::handle:horizontal {
-    background-color: rgb(189, 147, 249);
+    background-color: #345CBF;
     border: none;
     height: 10px;
     width: 10px;
@@ -526,7 +526,7 @@ QSlider::groove:vertical:hover {
 	background-color: rgb(55, 62, 76);
 }
 QSlider::handle:vertical {
-    background-color: rgb(189, 147, 249);
+    background-color: #345CBF;
 	border: none;
     height: 10px;
     width: 10px;
@@ -553,7 +553,7 @@ QCommandLinkButton:hover {
 	background-color: rgb(44, 49, 60);
 }
 QCommandLinkButton:pressed {	
-	color: rgb(189, 147, 249);
+	color: #345CBF;
 	background-color: rgb(52, 58, 71);
 }
 
@@ -721,7 +721,7 @@ Button */
               </font>
              </property>
              <property name="text">
-              <string>MegaTool</string>
+              <string>LO</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -848,7 +848,7 @@ Button */
                  <number>0</number>
                 </property>
                 <item>
-                 <widget class="QPushButton" name="menu_button_offset_grabber">
+                 <widget class="QPushButton" name="btnProjects">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -880,12 +880,12 @@ Button */
                    <string notr="true">background-image: url(:/icons/images/icons/icons8-graph-20.png);</string>
                   </property>
                   <property name="text">
-                   <string>Offset Grapper</string>
+                   <string>Project</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="menu_button_menu_compiler">
+                 <widget class="QPushButton" name="btnCriteria">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -917,12 +917,12 @@ Button */
                    <string notr="true">background-image: url(:/icons/images/icons/icons8-menu-settings-20.png);</string>
                   </property>
                   <property name="text">
-                   <string>Menu Compiler</string>
+                   <string>Criteria</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="menu_button_pairip_pass">
+                 <widget class="QPushButton" name="btnSensorList">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -954,12 +954,12 @@ Button */
                    <string notr="true">background-image: url(:/icons/images/icons/icons8-apk-20.png);</string>
                   </property>
                   <property name="text">
-                   <string>Pairip Pass</string>
+                   <string>Sensor List</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="menu_button_game_update">
+                 <widget class="QPushButton" name="btnTestList">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -991,12 +991,12 @@ Button */
                    <string notr="true">background-image: url(:/icons/images/icons/icons8-update-20.png);</string>
                   </property>
                   <property name="text">
-                   <string>Update Check</string>
+                   <string>Test List</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="menu_button_offset_leech">
+                 <widget class="QPushButton" name="btnPlanning">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -1028,12 +1028,12 @@ Button */
                    <string notr="true">background-image: url(:/icons/images/icons/icons8-adjustment-20.png);</string>
                   </property>
                   <property name="text">
-                   <string>Offset Leech</string>
+                   <string>Planning</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="menu_button_multi_tool">
+                 <widget class="QPushButton" name="btnReport">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -1065,12 +1065,12 @@ Button */
                    <string notr="true">background-image: url(:/icons/images/icons/icons8-tool-20.png);</string>
                   </property>
                   <property name="text">
-                   <string>MultiTool</string>
+                   <string>Reports</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="btn_exit">
+                 <widget class="QPushButton" name="btnReportCampaign">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -1102,18 +1102,18 @@ Button */
                    <string notr="true">background-image: url(:/icons/images/icons/cil-x.png);</string>
                   </property>
                   <property name="text">
-                   <string>Exit</string>
+                   <string>Report Campaign</string>
                   </property>
                  </widget>
                 </item>
                </layout>
-               <zorder>menu_button_offset_grabber</zorder>
-               <zorder>menu_button_menu_compiler</zorder>
-               <zorder>menu_button_game_update</zorder>
-               <zorder>btn_exit</zorder>
-               <zorder>menu_button_offset_leech</zorder>
-               <zorder>menu_button_multi_tool</zorder>
-               <zorder>menu_button_pairip_pass</zorder>
+               <zorder>btnProjects</zorder>
+               <zorder>btnCriteria</zorder>
+               <zorder>btnTestList</zorder>
+               <zorder>btnReportCampaign</zorder>
+               <zorder>btnPlanning</zorder>
+               <zorder>btnReport</zorder>
+               <zorder>btnSensorList</zorder>
               </widget>
              </item>
              <item alignment="Qt::AlignBottom">
@@ -1140,6 +1140,43 @@ Button */
                 <property name="bottomMargin">
                  <number>0</number>
                 </property>
+                <item>
+                 <widget class="QPushButton" name="btnInfo">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>45</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Calibri</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <italic>false</italic>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LeftToRight</enum>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-image: url(:/icons/images/icons/cil-options.png);</string>
+                  </property>
+                  <property name="text">
+                   <string>Settings</string>
+                  </property>
+                 </widget>
+                </item>
                 <item>
                  <widget class="QPushButton" name="toggleLeftBox">
                   <property name="sizePolicy">
@@ -1664,7 +1701,7 @@ p, li { white-space: pre-wrap; }
                  <number>0</number>
                 </property>
                 <item>
-                 <widget class="QLabel" name="titleRightInfo">
+                 <widget class="QLabel" name="lblNameUser">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                     <horstretch>0</horstretch>
@@ -1687,7 +1724,7 @@ p, li { white-space: pre-wrap; }
                    </font>
                   </property>
                   <property name="text">
-                   <string>Mega Tool Mod</string>
+                   <string>User Name</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1747,12 +1784,53 @@ p, li { white-space: pre-wrap; }
                   <property name="toolTip">
                    <string>Settings</string>
                   </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
                   <property name="text">
                    <string/>
                   </property>
                   <property name="icon">
                    <iconset resource="resources.qrc">
-                    <normaloff>:/icons/images/icons/icon_settings.png</normaloff>:/icons/images/icons/icon_settings.png</iconset>
+                    <normaloff>:/icons/images/icons/cil-save.png</normaloff>:/icons/images/icons/cil-save.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>20</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="settingsTopBtn_2">
+                  <property name="minimumSize">
+                   <size>
+                    <width>28</width>
+                    <height>28</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>28</width>
+                    <height>28</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="toolTip">
+                   <string>Settings</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/icons/images/icons/cil-save.png</normaloff>:/icons/images/icons/cil-save.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -4778,7 +4856,7 @@ p, li { white-space: pre-wrap; }
                    </font>
                   </property>
                   <property name="text">
-                   <string>By: Offset Grabber Tool By Ejder @simseksimsek01</string>
+                   <string>By: Ali Haider for Alberto</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>

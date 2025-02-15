@@ -31,29 +31,30 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.toggleButton.clicked.connect(lambda: UIFunctions.toggleMenu(self, True))
             UIFunctions.uiDefinitions(self)
 
-            self.menu_button_offset_grabber.setStyleSheet(UIFunctions.selectMenu(self.menu_button_offset_grabber.styleSheet()))
+            self.btnProjects.setStyleSheet(UIFunctions.selectMenu(self.btnProjects.styleSheet()))
 
             self.stacked_widget = self.findChild(QStackedWidget, "stackedWidget")  # Match the object name in Qt Designer
         #     # Initialize individual pages
             self.init_pages()
 
             self.menu_buttons = [
-            self.menu_button_offset_grabber,  # Replace with your actual button objects
-            self.menu_button_menu_compiler,
-            self.menu_button_game_update,
-            self.menu_button_multi_tool,
-            self.menu_button_offset_grabber,
-            self.menu_button_pairip_pass,
-            self.menu_button_offset_leech
+            self.btnProjects,  # Replace with your actual button objects
+            self.btnCriteria,
+            self.btnTestList,
+            self.btnReport,
+            self.btnProjects,
+            self.btnSensorList,
+            self.btnPlanning,
+            self.btnReportCampaign
         ]
 
             # Assign menu button clicks
-            self.menu_button_offset_grabber.clicked.connect(self.show_config_system)
-            self.menu_button_menu_compiler.clicked.connect(self.show_menu_compiler)
-            self.menu_button_game_update.clicked.connect(self.show_game_update_menu)
-            self.menu_button_multi_tool.clicked.connect(self.show_multi_tool_menu)
-            self.menu_button_pairip_pass.clicked.connect(self.show_pairip_pass_menu)
-            self.menu_button_offset_leech.clicked.connect(self.show_offset_leech_menu)
+            self.btnProjects.clicked.connect(self.show_config_system)
+            self.btnCriteria.clicked.connect(self.show_menu_compiler)
+            self.btnTestList.clicked.connect(self.show_game_update_menu)
+            self.btnReport.clicked.connect(self.show_multi_tool_menu)
+            self.btnSensorList.clicked.connect(self.show_pairip_pass_menu)
+            self.btnPlanning.clicked.connect(self.show_offset_leech_menu)
         except Exception as e:
             self.show_message_box("Error", f"Error loading UI: {str(e)}")
     def show_message_box(self, title, message):
@@ -70,23 +71,23 @@ class MasterScreen(QtWidgets.QMainWindow):
 
 
     def show_config_system(self):
-        self.handleMenuClick(self.menu_button_offset_grabber, 0)
+        self.handleMenuClick(self.btnProjects, 0)
 
     def show_menu_compiler(self):
-        self.handleMenuClick(self.menu_button_menu_compiler,2)
+        self.handleMenuClick(self.btnCriteria,2)
     def show_game_update_menu(self):
-        self.handleMenuClick(self.menu_button_game_update,3)
+        self.handleMenuClick(self.btnTestList,3)
     def show_pairip_pass_menu(self):
         """Show the Pair IP Pass page."""
-        self.handleMenuClick(self.menu_button_pairip_pass, 4)
+        self.handleMenuClick(self.btnSensorList, 4)
 
     def show_offset_leech_menu(self):
         """Show the Offset Leech page."""
         # self.current_page = self.offset_leech
-        self.handleMenuClick(self.menu_button_offset_leech, 5)
+        self.handleMenuClick(self.btnPlanning, 5)
     def show_multi_tool_menu(self):
         """Show the Multi-Tool page."""
-        self.handleMenuClick(self.menu_button_multi_tool, 6)    
+        self.handleMenuClick(self.btnReport, 6)    
     def handleMenuClick(self, button, page_index):
         """
         Handles menu button clicks to update styles and switch pages.
