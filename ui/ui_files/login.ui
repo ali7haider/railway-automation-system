@@ -83,7 +83,7 @@ background-color:#1159A8;
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -121,7 +121,7 @@ background-color:#1159A8;
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">
               <item>
-               <widget class="QLabel" name="label">
+               <widget class="QLabel" name="lblLogo">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
@@ -180,7 +180,7 @@ font-weight:bold;</string>
              </property>
              <layout class="QGridLayout" name="gridLayout">
               <item row="2" column="1">
-               <widget class="QLineEdit" name="lineEdit">
+               <widget class="QLineEdit" name="txtUsername">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
@@ -196,7 +196,7 @@ font-weight:bold;</string>
                </widget>
               </item>
               <item row="4" column="1">
-               <widget class="QLineEdit" name="lineEdit_2">
+               <widget class="QLineEdit" name="txtPassword">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
@@ -234,7 +234,7 @@ font-weight:bold;</string>
                </widget>
               </item>
               <item row="6" column="1">
-               <widget class="QPushButton" name="pushButton">
+               <widget class="QPushButton" name="btnLogin">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
@@ -307,7 +307,7 @@ font-weight:bold;</string>
             <number>20</number>
            </property>
            <item>
-            <widget class="QPushButton" name="pushButton_2">
+            <widget class="QPushButton" name="btnNewProject">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -320,7 +320,7 @@ font-weight:bold;</string>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_3">
+            <widget class="QPushButton" name="btnLoadProject">
              <property name="minimumSize">
               <size>
                <width>0</width>
