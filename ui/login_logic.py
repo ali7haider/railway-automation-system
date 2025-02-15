@@ -1,12 +1,16 @@
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 import sys
+from database.db_handler import Database  # Import database handler
 
 class LoginWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         try:
             uic.loadUi("ui/ui_files/login.ui", self)  # Load UI file dynamically
+
+            self.db = Database()  # Singleton database instance
+
             self.btnLogin.clicked.connect(self.handle_login)  # Connect button
         except Exception as e:
             self.show_error("Error loading UI", str(e))

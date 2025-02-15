@@ -195,6 +195,17 @@ font-weight:bold;</string>
                 </property>
                </widget>
               </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="label_3">
+                <property name="styleSheet">
+                 <string notr="true">font: 11pt &quot;Calibri&quot;;
+</string>
+                </property>
+                <property name="text">
+                 <string>User Name:</string>
+                </property>
+               </widget>
+              </item>
               <item row="4" column="1">
                <widget class="QLineEdit" name="txtPassword">
                 <property name="minimumSize">
@@ -208,17 +219,6 @@ font-weight:bold;</string>
                 </property>
                 <property name="placeholderText">
                  <string>Enter your Password</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QLabel" name="label_3">
-                <property name="styleSheet">
-                 <string notr="true">font: 11pt &quot;Calibri&quot;;
-</string>
-                </property>
-                <property name="text">
-                 <string>User Name:</string>
                 </property>
                </widget>
               </item>
@@ -250,20 +250,17 @@ font-weight:bold;</string>
                </widget>
               </item>
               <item row="5" column="1">
-               <spacer name="verticalSpacer">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
+               <widget class="QLabel" name="lblMessage">
+                <property name="styleSheet">
+                 <string notr="true">color:red;</string>
                 </property>
-                <property name="sizeType">
-                 <enum>QSizePolicy::Fixed</enum>
+                <property name="text">
+                 <string/>
                 </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>20</height>
-                 </size>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
-               </spacer>
+               </widget>
               </item>
              </layout>
             </widget>
