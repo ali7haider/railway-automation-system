@@ -15,7 +15,7 @@ def show_critical_error(message):
 if __name__ == "__main__":
     try:
         app = QApplication(sys.argv)
-        app.setWindowIcon(QIcon(":/resources/resources/icons/Small-logo.ico"))
+        app.setWindowIcon(QIcon(":/images/images/images/Small-logo.ico"))
 
         db = Database()  # Ensures database initializes with schema
 

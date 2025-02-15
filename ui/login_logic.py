@@ -28,7 +28,9 @@ class LoginWindow(QtWidgets.QMainWindow):
             if self.db.authenticate_user(username, password):
                 self.clear_message()  # Remove error message on success
                 self.lblMessage.setText("Login Successful! Redirecting...")
-                # TODO: Navigate to the main application window after login
+
+                # Switch to the main application page (Assuming stackedWidget exists)
+                self.stackedWidget.setCurrentIndex(1)  # Change to page index 1
             else:
                 self.show_label_error("*Invalid username or password.")
 

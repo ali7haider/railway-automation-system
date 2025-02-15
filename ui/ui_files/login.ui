@@ -135,7 +135,7 @@ background-color:#1159A8;
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">image: url(:/resources/resources/icons/Small-logo.ico);</string>
+                 <string notr="true">image: url(:/images/images/images/Small-logo.ico);</string>
                 </property>
                 <property name="text">
                  <string/>
