@@ -72,13 +72,16 @@ class Database:
         input_hashed = hashlib.pbkdf2_hmac('sha256', input_password.encode(), salt, 100000).hex()
         return stored_hashed == input_hashed
 
-    def insert_user(self, username, password):
-        """Insert a new user into the database with a hashed password."""
+    def insert_user(self, username, password, name):
+        """Insert a new user into the database with a hashed password and a dummy name."""
         if self.user_exists(username):
             return False  # User already exists
 
         hashed_password = self.hash_password(password)
-        return self.execute_query("INSERT INTO users (username, password) VALUES (?, ?)", (username, hashed_password))
+        return self.execute_query(
+            "INSERT INTO users (username, password, name) VALUES (?, ?, ?)",
+            (username, hashed_password, name)
+        )
 
     def user_exists(self, username):
         """Check if a user exists in the database."""
@@ -92,19 +95,19 @@ class Database:
         return False  # Invalid credentials
 
     def seed_users(self):
-        """Seed the database with up to 5 predefined users."""
+        """Seed the database with up to 5 predefined users, including dummy names."""
         predefined_users = [
-            ("admin1", "password123"),
-            ("admin2", "securePass"),
-            ("user1", "userPass1"),
-            ("user2", "userPass2"),
-            ("user3", "userPass3")
+            ("admin1", "password123", "Admin One"),
+            ("admin2", "securePass", "Admin Two"),
+            ("user1", "userPass1", "User One"),
+            ("user2", "userPass2", "User Two"),
+            ("user3", "userPass3", "User Three")
         ]
 
-        for username, password in predefined_users:
+        for username, password, name in predefined_users:
             if not self.user_exists(username):
-                self.insert_user(username, password)
-                print(f"Predefined user '{username}' added.")
+                self.insert_user(username, password, name)
+                print(f"Predefined user '{username}' added with dummy name '{name}'.")
 
     ### --- PROJECT MANAGEMENT --- ###
 

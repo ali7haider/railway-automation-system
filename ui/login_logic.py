@@ -1,6 +1,5 @@
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
-import sys
 from database.db_handler import Database  # Import database handler
 
 class LoginWindow(QtWidgets.QMainWindow):
@@ -11,27 +10,42 @@ class LoginWindow(QtWidgets.QMainWindow):
 
             self.db = Database()  # Singleton database instance
 
-            self.btnLogin.clicked.connect(self.handle_login)  # Connect button
+            self.lblMessage.setText("")  # Clear any previous messages
+            self.btnLogin.clicked.connect(self.handle_login)  # Connect login button
         except Exception as e:
-            self.show_error("Error loading UI", str(e))
+            self.show_message_box("Error", f"Error loading UI: {str(e)}")
 
     def handle_login(self):
+        """Handles login process by validating user credentials."""
         try:
-            username = self.txtUsername.text()
-            password = self.txtPassword.text()
+            username = self.txtUsername.text().strip()
+            password = self.txtPassword.text().strip()
 
             if not username or not password:
-                raise ValueError("Username and password cannot be empty.")
+                self.show_message_box("Login Error", "Username and password cannot be empty.")
+                return
 
-            # Here, you can add actual login validation logic
-            print(f"Logging in with {username}:{password}")
+            if self.db.authenticate_user(username, password):
+                self.clear_message()  # Remove error message on success
+                self.lblMessage.setText("Login Successful! Redirecting...")
+                # TODO: Navigate to the main application window after login
+            else:
+                self.show_label_error("*Invalid username or password.")
 
-        except ValueError as ve:
-            self.show_error("Login Error", str(ve))
         except Exception as e:
-            self.show_error("Unexpected Error", str(e))
+            self.show_message_box("Unexpected Error", str(e))
 
-    def show_error(self, title, message):
+    def show_label_error(self, message):
+        """Displays an error message in lblMessage (only for incorrect login)."""
+        self.lblMessage.setStyleSheet("color: red;")  # Set text color to red
+        self.lblMessage.setText(message)
+
+    def clear_message(self):
+        """Clears the lblMessage text."""
+        self.lblMessage.setText("")
+
+    def show_message_box(self, title, message):
+        """Displays a QMessageBox for general errors."""
         msg_box = QMessageBox()
         msg_box.setIcon(QMessageBox.Critical)
         msg_box.setWindowTitle(title)
