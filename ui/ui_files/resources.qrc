@@ -4,6 +4,9 @@
   </qresource>
   <qresource prefix="icons">
     <file>images/icons/icons8-tool-20.png</file>
+    <file>images/icons/cil-saveas.png</file>
+    <file>images/icons/icons8-arrow-down-20.png</file>
+    <file>images/icons/icons8-save-20.png</file>
     <file>images/icons/cil-3d.png</file>
     <file>images/icons/icons8-adjustment-20.png</file>
     <file>images/icons/icons8-apk-20.png</file>
