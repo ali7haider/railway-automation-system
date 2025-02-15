@@ -97,7 +97,7 @@ class Database:
     def seed_users(self):
         """Seed the database with up to 5 predefined users, including dummy names."""
         predefined_users = [
-            ("admin1", "password123", "Admin One"),
+            ("a", "a", "Admin One"),
             ("admin2", "securePass", "Admin Two"),
             ("user1", "userPass1", "User One"),
             ("user2", "userPass2", "User Two"),

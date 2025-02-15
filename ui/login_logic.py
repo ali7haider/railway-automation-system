@@ -1,6 +1,7 @@
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from database.db_handler import Database  # Import database handler
+from ui.main_screen_logic import MasterScreen  # Import main screen logic
 
 class LoginWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -12,6 +13,7 @@ class LoginWindow(QtWidgets.QMainWindow):
 
             self.lblMessage.setText("")  # Clear any previous messages
             self.btnLogin.clicked.connect(self.handle_login)  # Connect login button
+            self.btnNewProject.clicked.connect(self.open_main_screen)  # Connect new project button
         except Exception as e:
             self.show_message_box("Error", f"Error loading UI: {str(e)}")
 
@@ -36,6 +38,15 @@ class LoginWindow(QtWidgets.QMainWindow):
 
         except Exception as e:
             self.show_message_box("Unexpected Error", str(e))
+
+    def open_main_screen(self):
+        """Opens the main application screen when btnNewProject is clicked."""
+        try:
+            self.main_screen = MasterScreen()  # Create instance of MainScreen
+            self.main_screen.show()  # Show the main screen window
+            self.close()  # Close login window
+        except Exception as e:
+            self.show_message_box("Error", f"Error opening main screen: {str(e)}")
 
     def show_label_error(self, message):
         """Displays an error message in lblMessage (only for incorrect login)."""
