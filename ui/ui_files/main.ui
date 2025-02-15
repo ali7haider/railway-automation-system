@@ -2004,6 +2004,9 @@ p, li { white-space: pre-wrap; }
 
 background-color: rgb(255, 255, 255);
 }
+#frameInterioConditions,#frameExteriorConditionsCabin,#frameExteriorConditionsSaloon {
+background-color: #F1FAFF;
+}
 QLabel{
 	font:  10pt &quot;Calibri&quot;;
 color:black;
@@ -2213,18 +2216,88 @@ font-weight:bold;</string>
                                 <property name="geometry">
                                  <rect>
                                   <x>0</x>
-                                  <y>-84</y>
+                                  <y>0</y>
                                   <width>958</width>
-                                  <height>1119</height>
+                                  <height>1121</height>
                                  </rect>
                                 </property>
                                 <layout class="QVBoxLayout" name="verticalLayout_22">
                                  <item>
                                   <widget class="QFrame" name="frame_5">
                                    <property name="styleSheet">
-                                    <string notr="true">#frameInterioConditions,#frameExteriorConditionsCabin,#frameExteriorConditionsSaloon {
+                                    <string notr="true">#frameProjectInfo,#frameInteriorConditions,#frameExteriorConditionsCabin,#frameExteriorConditionsSaloon {
 background-color: #F1FAFF;
-}</string>
+}
+QLabel{
+	font:  10pt &quot;Calibri&quot;;
+color:black;
+}
+
+QLineEdit {
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding-left: 5px;
+    selection-color: #fff;
+    selection-background-color: #1159A8;
+    font-family: Calibri;
+background-color:white;
+color:black
+
+}
+
+QLineEdit:hover {
+    border: 2px solid gray;
+}
+
+QLineEdit:focus {
+    border: 2px solid gray;
+    background-color: #FAFAFC;
+}
+QComboBox{
+background-color:white;
+	border-radius: 5px;
+	border: 1px solid gray;
+	padding: 5px;
+	padding-left: 10px;
+}
+QComboBox:hover{
+	border: 1px solid gray;
+}
+QComboBox::drop-down {
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 25px; 
+	border-left-width: 3px;
+	border-left-color: rgba(39, 44, 54, 150);
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;	
+	background-image: url(:/icons/images/icons/icons8-arrow-down-20.png);
+	background-position: center;
+	background-repeat: no-reperat;
+ }
+QComboBox QAbstractItemView {
+	color: rgb(255, 121, 198);	
+	background-color: rgb(33, 37, 43);
+	padding: 10px;
+	selection-background-color: rgb(39, 44, 54);
+}
+
+QPushButton
+{
+background-color:#345CBF;
+color:white;
+border-radius:3px;
+font: 12pt &quot;Calibri&quot;;
+font-weight:bold;
+
+}
+QPushButton:hover
+{
+background-color:#1159A8;
+}
+
+</string>
                                    </property>
                                    <property name="frameShape">
                                     <enum>QFrame::StyledPanel</enum>
@@ -2233,12 +2306,25 @@ background-color: #F1FAFF;
                                     <enum>QFrame::Raised</enum>
                                    </property>
                                    <layout class="QVBoxLayout" name="verticalLayout_24">
+                                    <property name="spacing">
+                                     <number>15</number>
+                                    </property>
+                                    <property name="leftMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="topMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="rightMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="bottomMargin">
+                                     <number>0</number>
+                                    </property>
                                     <item>
                                      <widget class="QFrame" name="frameProjectInfo">
                                       <property name="styleSheet">
-                                       <string notr="true">#frameProjectInfo {
-background-color: #F1FAFF;
-}</string>
+                                       <string notr="true"/>
                                       </property>
                                       <property name="frameShape">
                                        <enum>QFrame::StyledPanel</enum>
@@ -2387,7 +2473,7 @@ background-color: #F1FAFF;
                                            <widget class="QLineEdit" name="lineEdit_4">
                                             <property name="minimumSize">
                                              <size>
-                                              <width>0</width>
+                                              <width>200</width>
                                               <height>30</height>
                                              </size>
                                             </property>
@@ -2653,7 +2739,7 @@ font-weight:bold;</string>
                                      </widget>
                                     </item>
                                     <item>
-                                     <widget class="QFrame" name="frameInterioConditions">
+                                     <widget class="QFrame" name="frameInteriorConditions">
                                       <property name="minimumSize">
                                        <size>
                                         <width>0</width>
