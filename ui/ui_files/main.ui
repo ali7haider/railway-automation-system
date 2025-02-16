@@ -2188,7 +2188,7 @@ font-weight:bold;</string>
                                 <property name="geometry">
                                  <rect>
                                   <x>0</x>
-                                  <y>-559</y>
+                                  <y>-149</y>
                                   <width>948</width>
                                   <height>1973</height>
                                  </rect>
@@ -2337,6 +2337,94 @@ background-color:#1159A8;
                                           <enum>QFrame::Raised</enum>
                                          </property>
                                          <layout class="QGridLayout" name="gridLayout_3">
+                                          <item row="14" column="5">
+                                           <widget class="QFrame" name="frame_6">
+                                            <property name="frameShape">
+                                             <enum>QFrame::StyledPanel</enum>
+                                            </property>
+                                            <property name="frameShadow">
+                                             <enum>QFrame::Raised</enum>
+                                            </property>
+                                            <layout class="QHBoxLayout" name="horizontalLayout_8">
+                                             <property name="spacing">
+                                              <number>0</number>
+                                             </property>
+                                             <property name="leftMargin">
+                                              <number>0</number>
+                                             </property>
+                                             <property name="topMargin">
+                                              <number>0</number>
+                                             </property>
+                                             <property name="rightMargin">
+                                              <number>0</number>
+                                             </property>
+                                             <property name="bottomMargin">
+                                              <number>0</number>
+                                             </property>
+                                             <item>
+                                              <widget class="QLabel" name="lblStandardSaloon">
+                                               <property name="text">
+                                                <string>TextLabel</string>
+                                               </property>
+                                              </widget>
+                                             </item>
+                                             <item>
+                                              <widget class="QComboBox" name="cmbxStandardSaloon">
+                                               <property name="maximumSize">
+                                                <size>
+                                                 <width>16777215</width>
+                                                 <height>30</height>
+                                                </size>
+                                               </property>
+                                              </widget>
+                                             </item>
+                                            </layout>
+                                           </widget>
+                                          </item>
+                                          <item row="16" column="5">
+                                           <widget class="QFrame" name="frame_7">
+                                            <property name="frameShape">
+                                             <enum>QFrame::StyledPanel</enum>
+                                            </property>
+                                            <property name="frameShadow">
+                                             <enum>QFrame::Raised</enum>
+                                            </property>
+                                            <layout class="QHBoxLayout" name="horizontalLayout_10">
+                                             <property name="spacing">
+                                              <number>0</number>
+                                             </property>
+                                             <property name="leftMargin">
+                                              <number>0</number>
+                                             </property>
+                                             <property name="topMargin">
+                                              <number>0</number>
+                                             </property>
+                                             <property name="rightMargin">
+                                              <number>0</number>
+                                             </property>
+                                             <property name="bottomMargin">
+                                              <number>0</number>
+                                             </property>
+                                             <item>
+                                              <widget class="QLabel" name="lblStandardCabin">
+                                               <property name="text">
+                                                <string>TextLabel</string>
+                                               </property>
+                                              </widget>
+                                             </item>
+                                             <item>
+                                              <widget class="QComboBox" name="cmbxStandardCabin">
+                                               <property name="maximumSize">
+                                                <size>
+                                                 <width>16777215</width>
+                                                 <height>30</height>
+                                                </size>
+                                               </property>
+                                              </widget>
+                                             </item>
+                                            </layout>
+                                           </widget>
+                                          </item>
                                           <item row="6" column="1">
                                            <widget class="QLabel" name="label_7">
                                             <property name="text">
@@ -2374,6 +2462,16 @@ background-color:#1159A8;
                                             </item>
                                            </widget>
                                           </item>
+                                          <item row="4" column="5">
+                                           <widget class="QLineEdit" name="txtCoachBuilderProject">
+                                            <property name="minimumSize">
+                                             <size>
+                                              <width>0</width>
+                                              <height>30</height>
+                                             </size>
+                                            </property>
+                                           </widget>
+                                          </item>
                                           <item row="8" column="1">
                                            <widget class="QLabel" name="label_14">
                                             <property name="text">
@@ -2385,16 +2483,6 @@ background-color:#1159A8;
                                            <widget class="QLabel" name="label_8">
                                             <property name="text">
                                              <string>Type of Train</string>
-                                            </property>
-                                           </widget>
-                                          </item>
-                                          <item row="4" column="5">
-                                           <widget class="QLineEdit" name="txtCoachBuilderProject">
-                                            <property name="minimumSize">
-                                             <size>
-                                              <width>0</width>
-                                              <height>30</height>
-                                             </size>
                                             </property>
                                            </widget>
                                           </item>
@@ -2448,13 +2536,6 @@ background-color:#1159A8;
                                             </property>
                                            </widget>
                                           </item>
-                                          <item row="12" column="1">
-                                           <widget class="QLabel" name="label_10">
-                                            <property name="text">
-                                             <string>Single deck/double deck</string>
-                                            </property>
-                                           </widget>
-                                          </item>
                                           <item row="5" column="5">
                                            <widget class="QLineEdit" name="txtCustomerOperatorProject">
                                             <property name="minimumSize">
@@ -2465,20 +2546,17 @@ background-color:#1159A8;
                                             </property>
                                            </widget>
                                           </item>
+                                          <item row="12" column="1">
+                                           <widget class="QLabel" name="label_10">
+                                            <property name="text">
+                                             <string>Single deck/double deck</string>
+                                            </property>
+                                           </widget>
+                                          </item>
                                           <item row="4" column="1">
                                            <widget class="QLabel" name="label_6">
                                             <property name="text">
                                              <string>Coachbuilder</string>
-                                            </property>
-                                           </widget>
-                                          </item>
-                                          <item row="3" column="5">
-                                           <widget class="QLineEdit" name="txtNameProject">
-                                            <property name="minimumSize">
-                                             <size>
-                                              <width>240</width>
-                                              <height>30</height>
-                                             </size>
                                             </property>
                                            </widget>
                                           </item>
@@ -2489,34 +2567,11 @@ background-color:#1159A8;
                                             </property>
                                            </widget>
                                           </item>
-                                          <item row="3" column="1">
-                                           <widget class="QLabel" name="label_5">
-                                            <property name="text">
-                                             <string>Name</string>
-                                            </property>
-                                           </widget>
-                                          </item>
-                                          <item row="7" column="5">
-                                           <widget class="QComboBox" name="cmbxTypeOfTrainProject">
-                                            <property name="maximumSize">
-                                             <size>
-                                              <width>16777215</width>
-                                              <height>30</height>
-                                             </size>
-                                            </property>
-                                           </widget>
-                                          </item>
-                                          <item row="6" column="5">
-                                           <widget class="QComboBox" name="cmbxOperationCountryProject">
+                                          <item row="3" column="5">
+                                           <widget class="QLineEdit" name="txtNameProject">
                                             <property name="minimumSize">
                                              <size>
-                                              <width>0</width>
-                                              <height>30</height>
-                                             </size>
-                                            </property>
-                                            <property name="maximumSize">
-                                             <size>
-                                              <width>16777215</width>
+                                              <width>240</width>
                                               <height>30</height>
                                              </size>
                                             </property>
@@ -2547,6 +2602,39 @@ background-color:#1159A8;
                                             </item>
                                            </widget>
                                           </item>
+                                          <item row="7" column="5">
+                                           <widget class="QComboBox" name="cmbxTypeOfTrainProject">
+                                            <property name="maximumSize">
+                                             <size>
+                                              <width>16777215</width>
+                                              <height>30</height>
+                                             </size>
+                                            </property>
+                                           </widget>
+                                          </item>
+                                          <item row="3" column="1">
+                                           <widget class="QLabel" name="label_5">
+                                            <property name="text">
+                                             <string>Name</string>
+                                            </property>
+                                           </widget>
+                                          </item>
+                                          <item row="6" column="5">
+                                           <widget class="QComboBox" name="cmbxOperationCountryProject">
+                                            <property name="minimumSize">
+                                             <size>
+                                              <width>0</width>
+                                              <height>30</height>
+                                             </size>
+                                            </property>
+                                            <property name="maximumSize">
+                                             <size>
+                                              <width>16777215</width>
+                                              <height>30</height>
+                                             </size>
+                                            </property>
+                                           </widget>
+                                          </item>
                                           <item row="12" column="5">
                                            <widget class="QComboBox" name="cmbxSigleDeckDoubleDeck">
                                             <property name="maximumSize">
@@ -2572,27 +2660,20 @@ background-color:#1159A8;
                                             </item>
                                            </widget>
                                           </item>
+                                          <item row="18" column="1">
+                                           <widget class="QLabel" name="label_21">
+                                            <property name="styleSheet">
+                                             <string notr="true">font: 8.5pt &quot;Calibri&quot;;</string>
+                                            </property>
+                                            <property name="text">
+                                             <string>Heat Transfer Coeficent Saloon Standstill (k)</string>
+                                            </property>
+                                           </widget>
+                                          </item>
                                           <item row="14" column="1">
                                            <widget class="QLabel" name="label_17">
                                             <property name="text">
                                              <string>Standard Saloon</string>
-                                            </property>
-                                           </widget>
-                                          </item>
-                                          <item row="18" column="1">
-                                           <widget class="QLabel" name="label_21">
-                                            <property name="styleSheet">
-                                             <string notr="true">font: 9pt &quot;Calibri&quot;;</string>
-                                            </property>
-                                            <property name="text">
-                                             <string>Heat Transfer Coeficent Standstill (k)</string>
-                                            </property>
-                                           </widget>
-                                          </item>
-                                          <item row="15" column="1">
-                                           <widget class="QLabel" name="label_18">
-                                            <property name="text">
-                                             <string>Category Saloon</string>
                                             </property>
                                            </widget>
                                           </item>
@@ -2607,6 +2688,13 @@ background-color:#1159A8;
                                            <widget class="QLabel" name="label_20">
                                             <property name="text">
                                              <string>Category Cabin</string>
+                                            </property>
+                                           </widget>
+                                          </item>
+                                          <item row="15" column="1">
+                                           <widget class="QLabel" name="label_18">
+                                            <property name="text">
+                                             <string>Category Saloon</string>
                                             </property>
                                            </widget>
                                           </item>
@@ -2633,6 +2721,13 @@ background-color:#1159A8;
                                             </property>
                                            </widget>
                                           </item>
+                                          <item row="18" column="6">
+                                           <widget class="QLabel" name="label_24">
+                                            <property name="text">
+                                             <string>W/K-m2</string>
+                                            </property>
+                                           </widget>
+                                          </item>
                                           <item row="11" column="6">
                                            <widget class="QLabel" name="label_23">
                                             <property name="text">
@@ -2640,8 +2735,46 @@ background-color:#1159A8;
                                             </property>
                                            </widget>
                                           </item>
-                                          <item row="18" column="6">
-                                           <widget class="QLabel" name="label_24">
+                                          <item row="15" column="5">
+                                           <widget class="QLabel" name="lblCategorySaloon">
+                                            <property name="text">
+                                             <string/>
+                                            </property>
+                                           </widget>
+                                          </item>
+                                          <item row="17" column="5">
+                                           <widget class="QLabel" name="lblCategoryCabin">
+                                            <property name="text">
+                                             <string/>
+                                            </property>
+                                           </widget>
+                                          </item>
+                                          <item row="18" column="5">
+                                           <widget class="QLabel" name="lblHeatTransferSaloon">
+                                            <property name="text">
+                                             <string/>
+                                            </property>
+                                           </widget>
+                                          </item>
+                                          <item row="19" column="1">
+                                           <widget class="QLabel" name="label_39">
+                                            <property name="styleSheet">
+                                             <string notr="true">font: 8.5pt &quot;Calibri&quot;;</string>
+                                            </property>
+                                            <property name="text">
+                                             <string>Heat Transfer Coeficent Cabin Standstill (k)</string>
+                                            </property>
+                                           </widget>
+                                          </item>
+                                          <item row="19" column="5">
+                                           <widget class="QLabel" name="lblHeatTransferCabin">
+                                            <property name="text">
+                                             <string>TextLabel</string>
+                                            </property>
+                                           </widget>
+                                          </item>
+                                          <item row="19" column="6">
+                                           <widget class="QLabel" name="label_43">
                                             <property name="text">
                                              <string>W/K-m2</string>
                                             </property>
@@ -3799,7 +3932,7 @@ font-weight:bold;</string>
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>344</width>
+                                 <width>222</width>
                                  <height>222</height>
                                 </rect>
                                </property>
@@ -5129,7 +5262,7 @@ p, li { white-space: pre-wrap; }
                    </font>
                   </property>
                   <property name="text">
-                   <string>By: Ali Haider for Alberto</string>
+                   <string>By: Ali Haider for Antonio</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>

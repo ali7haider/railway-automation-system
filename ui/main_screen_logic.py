@@ -117,8 +117,85 @@ class MasterScreen(QtWidgets.QMainWindow):
             # **Connect Event**
             self.txtNCoachesPerTrainProject.textChanged.connect(self.update_coach_inputs)
 
+
+            self.cmbxTypeOfTrainProject = self.findChild(QComboBox, "cmbxTypeOfTrainProject")
+            self.lblStandardSaloon = self.findChild(QLabel, "lblStandardSaloon")
+            self.cmbxStandardSaloon = self.findChild(QComboBox, "cmbxStandardSaloon")
+            self.lblStandardCabin = self.findChild(QLabel, "lblStandardCabin")
+            self.cmbxStandardCabin = self.findChild(QComboBox, "cmbxStandardCabin")
+
+            # Initially hide them
+            self.lblStandardSaloon.hide()
+            self.cmbxStandardSaloon.hide()
+            self.lblStandardCabin.hide()
+            self.cmbxStandardCabin.hide()
+
+            # Connect combo box change event
+            self.cmbxTypeOfTrainProject.currentTextChanged.connect(self.update_standard_fields)
+
         except Exception as e:
             self.show_message_box("Error", f"Error loading UI: {str(e)}")
+
+    def update_standard_fields(self):
+        """Updates Standard Saloon and Standard Cabin based on selected train type."""
+        selected_train_type = self.cmbxTypeOfTrainProject.currentText()
+
+        if not selected_train_type or selected_train_type == "--- Select Train Type ---":
+            self.lblStandardSaloon.hide()
+            self.cmbxStandardSaloon.hide()
+            self.lblStandardCabin.hide()
+            self.cmbxStandardCabin.hide()
+            return
+
+        try:
+            standard_saloon, standard_cabin = ProjectManager.get_train_standards(selected_train_type)
+
+            # **Update Standard Saloon**
+            self.update_field(standard_saloon, self.lblStandardSaloon, self.cmbxStandardSaloon, self.lblCategorySaloon)
+
+            # **Update Standard Cabin**
+            self.update_field(standard_cabin, self.lblStandardCabin, self.cmbxStandardCabin, self.lblCategoryCabin)
+
+        except Exception as e:
+            QMessageBox.critical(None, "Error", f"Failed to load train data: {str(e)}")
+
+
+    def update_field(self, data_dict, label, combo_box, category_label):
+        """Updates label & combo box visibility based on dictionary keys.
+        - Shows keys (e.g., EN14750:2006) in combo box if multiple options exist.
+        - Displays category directly if only one option exists.
+        """
+        keys = list(data_dict.keys())  # Get only the keys (e.g., EN14750:2006)
+
+        if len(keys) > 1:
+            combo_box.clear()
+            combo_box.addItems(keys)
+            combo_box.show()
+            label.hide()
+            category_label.setText(data_dict[keys[0]])  # Show the category directly
+            category_label.show()
+
+            # Connect event to update category label when an item is selected
+            combo_box.currentTextChanged.connect(lambda: self.update_category_label(data_dict, combo_box, category_label))
+
+        elif len(keys) == 1:
+            label.setText(keys[0])  # Show key directly in label
+            label.show()
+            combo_box.hide()
+            category_label.setText(data_dict[keys[0]])  # Show the category directly
+            category_label.show()
+
+        else:
+            label.hide()
+            combo_box.hide()
+            category_label.hide()
+
+
+    def update_category_label(self, data_dict, combo_box, category_label):
+        """Updates the category label when an item is selected in the combo box."""
+        selected_key = combo_box.currentText()
+        category_label.setText(data_dict.get(selected_key, ""))
+        category_label.show()
 
     def update_coach_inputs(self):
         """Dynamically updates the number of input boxes in frameCoaches based on txtNCoachesPerTrainProject."""

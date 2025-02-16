@@ -85,6 +85,24 @@ class ProjectManager:
                 comboBox.addItem(train_type)  # Add each train type
 
     @staticmethod
+    def get_train_standards(train_type):
+        """Fetches Standard Saloon & Standard Cabin info for a given train type."""
+        try:
+            with open("data/TrainType_standars.json", "r") as file:
+                train_data = json.load(file)
+
+            train_types = train_data.get("TrainType", [{}])[0]
+            train_info = train_types.get(train_type, {})
+
+            standard_saloon = train_info.get("Standard Saloon", {})
+            standard_cabin = train_info.get("Standard Cabin", {})
+
+            return standard_saloon, standard_cabin
+
+        except Exception as e:
+            print(f"Error loading train data: {e}")
+            return {}, {}
+    @staticmethod
     def show_message_box(title: str, message: str):
         """Displays a QMessageBox for errors."""
         msg_box = QMessageBox()
