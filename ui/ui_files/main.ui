@@ -2188,7 +2188,7 @@ font-weight:bold;</string>
                                 <property name="geometry">
                                  <rect>
                                   <x>0</x>
-                                  <y>-37</y>
+                                  <y>-630</y>
                                   <width>958</width>
                                   <height>1973</height>
                                  </rect>
@@ -2876,14 +2876,14 @@ font-weight:bold;</string>
                                         </widget>
                                        </item>
                                        <item row="5" column="1">
-                                        <widget class="QLabel" name="label_39">
+                                        <widget class="QLabel" name="lblRegulationCurveSaloon">
                                          <property name="text">
                                           <string>Standard</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="6" column="1">
-                                        <widget class="QLabel" name="label_40">
+                                        <widget class="QLabel" name="lblRegulationCurveCabin">
                                          <property name="text">
                                           <string>Standard</string>
                                          </property>
@@ -2897,7 +2897,7 @@ font-weight:bold;</string>
                                         </widget>
                                        </item>
                                        <item row="4" column="2">
-                                        <widget class="QPushButton" name="pushButton_2">
+                                        <widget class="QPushButton" name="btnCustomInteriorConditions">
                                          <property name="minimumSize">
                                           <size>
                                            <width>0</width>
@@ -2927,70 +2927,70 @@ background-color:#1159A8;
                                         </widget>
                                        </item>
                                        <item row="7" column="1">
-                                        <widget class="QLabel" name="label_42">
+                                        <widget class="QLabel" name="lblMaxSaloonInterior">
                                          <property name="text">
-                                          <string>TextLabel</string>
+                                          <string/>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="8" column="1">
-                                        <widget class="QLabel" name="label_43">
+                                        <widget class="QLabel" name="lblMinSaloonInterior">
                                          <property name="text">
                                           <string>TextLabel</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="9" column="1">
-                                        <widget class="QLabel" name="label_44">
+                                        <widget class="QLabel" name="lblTicMaxCabinInterior">
                                          <property name="text">
                                           <string>TextLabel</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="10" column="1">
-                                        <widget class="QLabel" name="label_45">
+                                        <widget class="QLabel" name="lblTicMinSaloonInterior">
                                          <property name="text">
                                           <string>TextLabel</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="11" column="1">
-                                        <widget class="QLabel" name="label_46">
+                                        <widget class="QLabel" name="lblMaxMeanInteriorTempSaloon">
                                          <property name="text">
                                           <string>TextLabel</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="12" column="1">
-                                        <widget class="QLabel" name="label_47">
+                                        <widget class="QLabel" name="lblMaxMeanInteriorTempCabin">
                                          <property name="text">
                                           <string>TextLabel</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="13" column="1">
-                                        <widget class="QLabel" name="label_48">
+                                        <widget class="QLabel" name="lblStandByOperatorSaloonMin_2">
                                          <property name="text">
                                           <string>TextLabel</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="14" column="1">
-                                        <widget class="QLabel" name="label_49">
+                                        <widget class="QLabel" name="lblStandByOperatorSaloonMin">
                                          <property name="text">
                                           <string>TextLabel</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="15" column="1">
-                                        <widget class="QLabel" name="label_50">
+                                        <widget class="QLabel" name="lblStandByOperatorCabinMax">
                                          <property name="text">
                                           <string>TextLabel</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="16" column="1">
-                                        <widget class="QLabel" name="label_51">
+                                        <widget class="QLabel" name="lblStandByOperatorCabinMin">
                                          <property name="text">
                                           <string>TextLabel</string>
                                          </property>
