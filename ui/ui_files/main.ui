@@ -2188,7 +2188,7 @@ font-weight:bold;</string>
                                 <property name="geometry">
                                  <rect>
                                   <x>0</x>
-                                  <y>-421</y>
+                                  <y>-653</y>
                                   <width>948</width>
                                   <height>1973</height>
                                  </rect>
@@ -3102,7 +3102,7 @@ background-color:#1159A8;
                                         </widget>
                                        </item>
                                        <item row="13" column="1">
-                                        <widget class="QLabel" name="lblStandByOperatorSaloonMin_2">
+                                        <widget class="QLabel" name="lblStandByOperatorSaloonMax">
                                          <property name="text">
                                           <string/>
                                          </property>

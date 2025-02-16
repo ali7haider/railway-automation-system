@@ -136,6 +136,7 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.cmbxStandardSaloon.currentTextChanged.connect(self.update_max_mean_interior_temp)
             self.cmbxStandardCabin.currentTextChanged.connect(self.update_max_mean_interior_temp)
             self.cmbxOperationCountryProject.currentTextChanged.connect(self.update_max_mean_interior_temp)
+            self.cmbxTypeOfTrainProject.currentTextChanged.connect(self.update_standby_operator_temp)
 
         except Exception as e:
             self.show_message_box("Error", f"Error loading UI: {str(e)}")
@@ -174,6 +175,40 @@ class MasterScreen(QtWidgets.QMainWindow):
 
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to load train data: {str(e)}")
+
+    def update_standby_operator_temp(self):
+        """Fetch and update Standby Operator Temperature for Saloon and Cabin with validation."""
+        try:
+            # Define invalid values
+            invalid_values = {"", "--- Select ---", "--- Select Train Type ---", "--- Select Country ---", "--- Select deck ---"}
+
+            # Step 1: Get Standard Saloon & Standard Cabin
+            selected_train_type = self.cmbxTypeOfTrainProject.currentText().strip()
+            standard_saloon, standard_cabin = self.get_standard_saloon_and_cabin(
+                selected_train_type, self.cmbxStandardSaloon, self.lblStandardSaloon,
+                self.cmbxStandardCabin, self.lblStandardCabin
+            )
+
+            # Step 2: Validation: Ensure valid selections
+            if standard_saloon in invalid_values or standard_cabin in invalid_values:
+                self.lblStandByOperatorSaloonMax.setText("NA")
+                self.lblStandByOperatorSaloonMin.setText("NA")
+                self.lblStandByOperatorCabinMax.setText("NA")
+                self.lblStandByOperatorCabinMin.setText("NA")
+                return  # Exit function if validation fails
+
+            # Step 3: Fetch Standby Operator Temperature from ProjectManager
+            summer_saloon, winter_saloon = ProjectManager.get_standby_operator_temp(standard_saloon)
+            summer_cabin, winter_cabin = ProjectManager.get_standby_operator_temp(standard_cabin)
+
+            # Step 4: Update UI Labels
+            self.lblStandByOperatorSaloonMax.setText(str(summer_saloon) if summer_saloon is not None else "NA")
+            self.lblStandByOperatorSaloonMin.setText(str(winter_saloon) if winter_saloon is not None else "NA")
+            self.lblStandByOperatorCabinMax.setText(str(summer_cabin) if summer_cabin is not None else "NA")
+            self.lblStandByOperatorCabinMin.setText(str(winter_cabin) if winter_cabin is not None else "NA")
+
+        except Exception as e:
+            QMessageBox.critical(None, "Error", f"Failed to update Standby Operator Temperature: {str(e)}")
 
     def get_standard_saloon_and_cabin(self,selected_train_type, cmbx_saloon, lbl_saloon, cmbx_cabin, lbl_cabin):
         standard_saloon_2, standard_cabin_2 = ProjectManager.get_train_standards(selected_train_type)

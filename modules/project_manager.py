@@ -244,6 +244,23 @@ class ProjectManager:
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to fetch Tic coefficients: {str(e)}")
             return "N/A", "N/A"
+    @staticmethod
+    def get_standby_operator_temp(standard):
+        """Fetch standby operator temperature values for the given standard."""
+        try:
+            # Load JSON data
+            with open("data/Standby.json", "r", encoding="utf-8") as file:
+                standby_data = json.load(file)
+
+            # Check if the standard exists in the data
+            for entry in standby_data.get("Standard", []):
+                if standard in entry:
+                    return entry[standard].get("Summer", "NA"), entry[standard].get("Winter", "NA")
+
+        except Exception as e:
+            print(f"Error loading standby operator temperature data: {e}")
+
+        return "NA", "NA"  # Default return if data is missing or standard not found
 
     
     @staticmethod
