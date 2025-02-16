@@ -124,6 +124,62 @@ class ProjectManager:
     # winter_zone = get_winter_zone("Austria", "EN14750:2006")
     # print(winter_zone)  # Output: "II"
 
+    @staticmethod
+    def get_summer_zone(country, train_standard):
+        """
+        Retrieves the Summer Zone for the selected country and train standard.
+        
+        Args:
+            country (str): Selected country name.
+            train_standard (str): The train standard (e.g., EN14750:2006).
+        
+        Returns:
+            str: The Summer Zone for the given country and train standard.
+        """
+        try:
+            with open("data/Countries_zones.json", "r", encoding="utf-8") as file:
+                country_data = json.load(file)
+
+            for entry in country_data.get("countries", []):
+                if entry.get("name") == country:
+                    return entry.get("regulations", {}).get(train_standard, {}).get("Summer Zone", "")
+
+        except Exception as e:
+            print(f"Error loading summer zone data: {e}")
+        
+        return ""  # Return empty string if not found
+
+    @staticmethod
+    def get_max_mean_interior_temp(train_standard, summer_zone, category, subcategory):
+        """
+        Retrieves the maximum mean interior temperature for the given train standard, summer zone, category, and subcategory.
+
+        Args:
+            train_standard (str): The train standard (e.g., EN14750:2006).
+            summer_zone (str): The summer zone (e.g., "Summer zone").
+            category (str): The category (e.g., "Category A").
+            subcategory (str): The subcategory (e.g., "I", "II", "III" or "LS.1", "LS.2").
+
+        Returns:
+            int or None: The max mean interior temperature value if found, else None.
+        """
+        print(train_standard, summer_zone, category, subcategory)
+        try:
+            with open("data/Ti_max.json", "r", encoding="utf-8") as file:
+                temp_data = json.load(file)
+
+            return (
+                temp_data
+                .get(train_standard, {})
+                .get(summer_zone, {})
+                .get(category, {})
+                .get(subcategory, None)  # Fetch temperature value
+            )
+
+        except Exception as e:
+            print(f"Error loading max mean interior temperature data: {e}")
+        
+        return None  # Return None if not found
 
     @staticmethod
     def get_k_coefficient(standard, category, deck, winter_zone):

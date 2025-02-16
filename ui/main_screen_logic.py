@@ -133,6 +133,9 @@ class MasterScreen(QtWidgets.QMainWindow):
 
             # Connect combo box change event
             self.cmbxTypeOfTrainProject.currentTextChanged.connect(self.update_standard_fields)
+            self.cmbxStandardSaloon.currentTextChanged.connect(self.update_max_mean_interior_temp)
+            self.cmbxStandardCabin.currentTextChanged.connect(self.update_max_mean_interior_temp)
+            self.cmbxOperationCountryProject.currentTextChanged.connect(self.update_max_mean_interior_temp)
 
         except Exception as e:
             self.show_message_box("Error", f"Error loading UI: {str(e)}")
@@ -164,7 +167,10 @@ class MasterScreen(QtWidgets.QMainWindow):
 
             self.cmbxStandardSaloon.currentTextChanged.connect(self.update_tic_coefficients)
             self.cmbxStandardCabin.currentTextChanged.connect(self.update_tic_coefficients)
+            self.cmbxOperationCountryProject.currentTextChanged.connect(self.update_tic_coefficients)
             self.cmbxCompartmentProject.currentTextChanged.connect(self.update_tic_coefficients)
+            
+            
 
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to load train data: {str(e)}")
@@ -274,7 +280,52 @@ class MasterScreen(QtWidgets.QMainWindow):
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to update Heat Transfer Coefficients: {str(e)}")
 
-        
+    def update_max_mean_interior_temp(self):
+        """Fetch and update Max Mean Interior Temperature for Saloon and Cabin."""
+        try:
+            # Step 1: Get Standard Saloon & Standard Cabin
+            selected_train_type = self.cmbxTypeOfTrainProject.currentText().strip()
+            standard_saloon, standard_cabin = self.get_standard_saloon_and_cabin(
+                selected_train_type, self.cmbxStandardSaloon, self.lblStandardSaloon,
+                self.cmbxStandardCabin, self.lblStandardCabin
+            )
+
+            # Step 2: Get Summer Zone
+            invalid_values = {"", "--- Select ---", "--- Select Train Type ---", "--- Select Country ---", "--- Select deck ---"}
+
+            selected_country = self.cmbxOperationCountryProject.currentText().strip()
+            if (
+                selected_country in invalid_values or standard_saloon in invalid_values or standard_cabin in invalid_values
+            ):
+                # Reset labels if validation fails
+                self.lblMaxMeanInteriorTempSaloon.setText("")
+                self.lblMaxMeanInteriorTempCabin.setText("")
+                return  # Exit the function without proceeding further
+            summer_zone_saloon = ProjectManager.get_summer_zone(selected_country, standard_saloon)
+            summer_zone_cabin = ProjectManager.get_summer_zone(selected_country, standard_cabin)
+
+            # Step 3: Get Category
+            category_saloon = self.lblCategorySaloon.text().strip()
+            category_cabin = self.lblCategoryCabin.text().strip()
+
+            # Step 4: Fetch Max Mean Interior Temperature from JSON
+            temp_saloon = ProjectManager.get_max_mean_interior_temp(standard_saloon, "Summer zone", category_saloon,summer_zone_saloon)
+            temp_cabin = ProjectManager.get_max_mean_interior_temp(standard_cabin, "Summer zone", category_cabin,summer_zone_cabin)
+
+            # Step 5: Update Labels
+            if temp_saloon:
+                self.lblMaxMeanInteriorTempSaloon.setText(str(temp_saloon))
+            else:
+                self.lblMaxMeanInteriorTempSaloon.setText("NA")
+
+            if temp_cabin:
+                self.lblMaxMeanInteriorTempCabin.setText(str(temp_cabin))
+            else:
+                self.lblMaxMeanInteriorTempCabin.setText("NA")
+
+        except Exception as e:
+            QMessageBox.critical(None, "Error", f"Failed to update Max Mean Interior Temperature: {str(e)}")
+    
     def update_field(self, data_dict, label, combo_box, category_label):
         """Updates label & combo box visibility based on dictionary keys.
         - Shows keys (e.g., EN14750:2006) in combo box if multiple options exist.
