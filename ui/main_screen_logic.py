@@ -101,6 +101,8 @@ class MasterScreen(QtWidgets.QMainWindow):
             # Set layout for the frame if not already set
             if not self.frameCoaches.layout():
                 self.layoutCoaches = QVBoxLayout(self.frameCoaches)
+                self.layoutCoaches.setContentsMargins(0, 0, 0, 0)  # Remove all margins
+
                 self.layoutCoaches.setAlignment(Qt.AlignmentFlag.AlignTop)
             else:
                 self.layoutCoaches = self.frameCoaches.layout()
@@ -130,16 +132,21 @@ class MasterScreen(QtWidgets.QMainWindow):
                 widget["label"].setParent(None)
                 widget["input"].setParent(None)
 
-            # **Set layout with zero margins if not set already**
+            # **Check if layoutCoaches exists, otherwise create it**
             if not hasattr(self, 'layoutCoaches'):
                 self.layoutCoaches = QVBoxLayout(self.frameCoaches)
-                self.layoutCoaches.setContentsMargins(0, 0, 0, 0)  # Remove margins
-                self.layoutCoaches.setSpacing(0)  # Remove spacing
-                self.layoutCoaches.setAlignment(Qt.AlignmentFlag.AlignTop)  # Align to top
+                self.layoutCoaches.setContentsMargins(0, 0, 0, 0)  # Remove all margins
+                self.layoutCoaches.setSpacing(2)  # Minimal spacing
+                self.layoutCoaches.setAlignment(Qt.AlignmentFlag.AlignTop)  # Align top
+
+            # **Ensure frameCoaches has no internal margins**
+            self.frameCoaches.setContentsMargins(0, 0, 0, 0)
+
             # **Add new inputs**
             for i in range(num_coaches):
                 layout = QHBoxLayout()  # Horizontal layout for label + input
-                layout.setContentsMargins(0, 0, 0, 0)  # Remove margins
+                layout.setContentsMargins(0, 0, 0, 0)  # Remove left/right margins
+                layout.setSpacing(5)  # Small spacing between label and input
 
                 label = QLabel(f"Coach {i+1} Name:", self.frameCoaches)
                 input_box = QLineEdit(self.frameCoaches)
@@ -150,10 +157,11 @@ class MasterScreen(QtWidgets.QMainWindow):
 
                 self.layoutCoaches.addLayout(layout)  # Add row to main layout
 
-                self.coach_widgets.append({"label": label, "input": input_box})  # Store for future cleanup
+                self.coach_widgets.append({"label": label, "input": input_box})  # Store for cleanup
 
         except ValueError:
             pass  # Ignore invalid input
+
     def restrict_range(self, line_edit, min_val, max_val):
         """Prevents entering values out of range while typing."""
         try:

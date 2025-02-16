@@ -2190,7 +2190,7 @@ font-weight:bold;</string>
                                   <x>0</x>
                                   <y>-37</y>
                                   <width>958</width>
-                                  <height>1957</height>
+                                  <height>1973</height>
                                  </rect>
                                 </property>
                                 <layout class="QVBoxLayout" name="verticalLayout_22">
@@ -2297,6 +2297,12 @@ background-color:#1159A8;
                                     </property>
                                     <item>
                                      <widget class="QFrame" name="frameProjectInfo">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>620</height>
+                                       </size>
+                                      </property>
                                       <property name="styleSheet">
                                        <string notr="true"/>
                                       </property>
