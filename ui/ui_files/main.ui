@@ -2188,7 +2188,7 @@ font-weight:bold;</string>
                                 <property name="geometry">
                                  <rect>
                                   <x>0</x>
-                                  <y>-149</y>
+                                  <y>-421</y>
                                   <width>948</width>
                                   <height>1973</height>
                                  </rect>
@@ -2769,7 +2769,7 @@ background-color:#1159A8;
                                           <item row="19" column="5">
                                            <widget class="QLabel" name="lblHeatTransferCabin">
                                             <property name="text">
-                                             <string>TextLabel</string>
+                                             <string/>
                                             </property>
                                            </widget>
                                           </item>

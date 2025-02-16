@@ -23,7 +23,7 @@ import os
 from PyQt5 import uic
 from PyQt5 import QtWidgets, uic
 from modules.project_manager import ProjectManager  # Import ProjectManager
-from PyQt5.QtGui import QIntValidator
+from PyQt5.QtGui import QIntValidator, QMouseEvent
 
 
 GLOBAL_STATE = False
@@ -303,7 +303,22 @@ class MasterScreen(QtWidgets.QMainWindow):
         for button in buttons:
             button.setCursor(Qt.PointingHandCursor)
 
+    def resizeEvent(self, event):
+        # Update Size Grips
+        from modules.ui_functions import UIFunctions
+        UIFunctions.resize_grips(self)
 
+    # MOUSE CLICK EVENTS
+    # ///////////////////////////////////////////////////////////////
+    def mousePressEvent(self, event):
+        # SET DRAG POS WINDOW
+        self.dragPos = event.globalPos()
+
+        # PRINT MOUSE EVENTS
+        if event.buttons() == Qt.LeftButton:
+            print('Mouse click: LEFT CLICK')
+        if event.buttons() == Qt.RightButton:
+            print('Mouse click: RIGHT CLICK')
     
 
 
