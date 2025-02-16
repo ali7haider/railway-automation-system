@@ -155,11 +155,73 @@ class MasterScreen(QtWidgets.QMainWindow):
 
             # **Update Standard Cabin**
             self.update_field(standard_cabin, self.lblStandardCabin, self.cmbxStandardCabin, self.lblCategoryCabin)
-
+            # Connect additional field updates
+            self.cmbxOperationCountryProject.currentTextChanged.connect(self.update_k_coefficient)
+            self.cmbxSigleDeckDoubleDeck.currentTextChanged.connect(self.update_k_coefficient)
+            self.cmbxStandardSaloon.currentTextChanged.connect(self.update_k_coefficient)
+            self.cmbxStandardCabin.currentTextChanged.connect(self.update_k_coefficient)
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to load train data: {str(e)}")
 
+    def update_k_coefficient(self):
+        """Fetch and update heat transfer coefficient based on selected values."""
+        try:
+            # Step 1: Get Standard Saloon & Standard Cabin
+            standard_saloon = self.cmbxStandardSaloon.currentText().strip()
+            selected_train_type=self.cmbxTypeOfTrainProject.currentText().strip()
+            standard_saloon_2, standard_cabin_2 = ProjectManager.get_train_standards(selected_train_type)
+            keys = list(standard_cabin_2.keys())  # Get only the keys (e.g., EN14750:2006)
 
+            if len(keys) > 1:
+                standard_cabin = self.cmbxStandardCabin.currentText().strip()
+            else:
+                standard_cabin = self.lblStandardCabin.text().strip()
+
+
+            # Step 2: Get Category
+            category_saloon = self.lblCategorySaloon.text().strip()
+            category_cabin = self.lblCategoryCabin.text().strip()
+            # Step 3:    Get Deck Type
+            deck_type = self.cmbxSigleDeckDoubleDeck.currentText().strip()
+            # Step 4: Get Operation Country & Winter Zone
+            selected_country = self.cmbxOperationCountryProject.currentText().strip()
+            # List of default/invalid options to check
+            invalid_values = {"", "--- Select ---", "--- Select Train Type ---","--- Select Country ---","--- Select deck ---"}
+            # Validation: Ensure all required inputs are selected
+            if (
+                standard_saloon in invalid_values or
+                standard_cabin in invalid_values or
+                category_saloon in invalid_values or
+                category_cabin in invalid_values or
+                deck_type in invalid_values or
+                selected_country in invalid_values
+            ):
+                # Reset labels if validation fails
+                self.lblHeatTransferSaloon.setText("NA1")
+                self.lblHeatTransferCabin.setText("NA2")
+                return  # Exit the function without proceeding further
+
+            # Step 5: Get Winter Zone
+            winter_zone = ProjectManager.get_winter_zone(selected_country, standard_saloon)
+            winter_zone_2 = ProjectManager.get_winter_zone(selected_country, standard_cabin)
+
+            if not winter_zone:
+                self.lblHeatTransferSaloon.setText("")
+                self.lblHeatTransferCabin.setText("")
+                return
+            print(winter_zone, winter_zone_2,standard_cabin, category_cabin, deck_type)
+            # Step 6: Fetch k coefficient from K_coefficient.json
+            k_saloon = ProjectManager.get_k_coefficient(standard_saloon, category_saloon, deck_type, winter_zone)
+            k_cabin = ProjectManager.get_k_coefficient(standard_cabin, category_cabin, deck_type, winter_zone_2)
+
+            # Step 7: Update Labels
+            self.lblHeatTransferSaloon.setText(f"{k_saloon}" if k_saloon else "NA")
+            self.lblHeatTransferCabin.setText(f"{k_cabin}" if k_cabin else "NA")
+
+        except Exception as e:
+            QMessageBox.critical(None, "Error", f"Failed to update Heat Transfer Coefficients: {str(e)}")
+
+        
     def update_field(self, data_dict, label, combo_box, category_label):
         """Updates label & combo box visibility based on dictionary keys.
         - Shows keys (e.g., EN14750:2006) in combo box if multiple options exist.

@@ -112,17 +112,39 @@
   "EN14813:2006": {
     "Category": {
       "Category A": {
-        "Winter zone": {
-          "I": { "k coefficient": 2.3 },
-          "II": { "k coefficient": 1.9 },
-          "III": { "k coefficient": 1.6 }
+        "Deck": {
+          "Single deck coach": {
+            "Winter zone": {
+               "I": { "k coefficient": 2.3 },
+              "II": { "k coefficient": 1.9 },
+              "III": { "k coefficient": 1.6 }
+            }
+          },
+          "Double deck coach": {
+            "Winter zone": {
+              "I": { "k coefficient": 2.3 },
+              "II": { "k coefficient": 1.9 },
+              "III": { "k coefficient": 1.6 }
+            }
+          }
         }
       },
       "Category B": {
-        "Winter zone": {
-          "I": { "k coefficient": 3.5 },
+        "Deck": {
+          "Single deck coach": {
+            "Winter zone": {
+         "I": { "k coefficient": 3.5 },
           "II": { "k coefficient": 3 },
           "III": { "k coefficient": 2.5 }
+            }
+          },
+          "Double deck coach": {
+            "Winter zone": {
+         "I": { "k coefficient": 3.5 },
+          "II": { "k coefficient": 3 },
+          "III": { "k coefficient": 2.5 }
+            }
+          }
         }
       }
     }

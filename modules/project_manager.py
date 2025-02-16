@@ -102,6 +102,52 @@ class ProjectManager:
         except Exception as e:
             print(f"Error loading train data: {e}")
             return {}, {}
+    
+    @staticmethod
+
+    def get_winter_zone(country, train_standard):
+        """Retrieves the Winter Zone for the selected country and train standard."""
+        try:
+            with open("data/Countries_zones.json", "r", encoding="utf-8") as file:
+                country_data = json.load(file)
+
+            for entry in country_data.get("countries", []):
+                if entry.get("name") == country:
+                    return entry.get("regulations", {}).get(train_standard, {}).get("Winter Zone", "")
+
+        except Exception as e:
+            print(f"Error loading winter zone data: {e}")
+        
+        return ""  # Return empty string if not found
+
+    # Example usage:
+    # winter_zone = get_winter_zone("Austria", "EN14750:2006")
+    # print(winter_zone)  # Output: "II"
+
+
+    @staticmethod
+    def get_k_coefficient(standard, category, deck, winter_zone):
+        """Fetches the k coefficient based on train standard, category, deck type, and winter zone."""
+        try:
+            with open("data/K_coefficient.json", "r") as file:
+                k_data = json.load(file)
+
+            # Navigate the JSON structure
+            category_data = k_data.get(standard, {}).get("Category", {}).get(category, {})
+            deck_data = category_data.get("Deck", {}).get(deck, {})
+            winter_data = deck_data.get("Winter zone", {}).get(winter_zone, {})
+
+            return winter_data.get("k coefficient", "N/A")
+
+        except Exception as e:
+            print(f"Error loading k coefficient data: {e}")
+
+        return "N/A"
+
+    
+    
+    
+    
     @staticmethod
     def show_message_box(title: str, message: str):
         """Displays a QMessageBox for errors."""
