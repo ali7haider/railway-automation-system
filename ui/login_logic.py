@@ -14,8 +14,17 @@ class LoginWindow(QtWidgets.QMainWindow):
             self.lblMessage.setText("")  # Clear any previous messages
             self.btnLogin.clicked.connect(self.handle_login)  # Connect login button
             self.btnNewProject.clicked.connect(self.open_main_screen)  # Connect new project button
+
+            # **Trigger login when pressing Enter in username/password fields**
+            self.txtUsername.returnPressed.connect(self.move_to_password)
+            self.txtPassword.returnPressed.connect(self.handle_login)
+
         except Exception as e:
             self.show_message_box("Error", f"Error loading UI: {str(e)}")
+
+    def move_to_password(self):
+        """Moves cursor focus to password field when Enter is pressed in username field."""
+        self.txtPassword.setFocus()
 
     def handle_login(self):
         """Handles login process by validating user credentials."""
