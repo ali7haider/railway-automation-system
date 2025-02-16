@@ -7,9 +7,10 @@ from PyQt5.QtWidgets import (
     QMessageBox,
     QMainWindow,
     QStackedWidget,
-    QComboBox
+    QComboBox,
+    QLineEdit
 )
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QEvent
 from PyQt5.QtWidgets import QApplication, QPushButton, QMessageBox, QMainWindow
 import os
 import sys
@@ -17,6 +18,7 @@ import os
 from PyQt5 import uic
 from PyQt5 import QtWidgets, uic
 from modules.project_manager import ProjectManager  # Import ProjectManager
+from PyQt5.QtGui import QIntValidator
 
 
 GLOBAL_STATE = False
@@ -70,8 +72,35 @@ class MasterScreen(QtWidgets.QMainWindow):
 
             # Load JSON data into combo boxes
             ProjectManager.load_multiple_json(combo_mapping)
+
+             # **📌 Add Input Validations**
+            self.txtNCoachesPerTrainProject = self.findChild(QLineEdit, "txtNCoachesPerTrainProject")
+            self.txtMaximumSpeedProject = self.findChild(QLineEdit, "txtMaximumSpeedProject")
+
+            # Set validators (Only integers within range)
+            self.txtNCoachesPerTrainProject.setValidator(QIntValidator(0, 12, self))
+            self.txtMaximumSpeedProject.setValidator(QIntValidator(0, 400, self))
+            # **Strictly Limit Input Length**
+            self.txtNCoachesPerTrainProject.setMaxLength(2)  # Max 2 digits (e.g., 0-12)
+            self.txtMaximumSpeedProject.setMaxLength(3)  # Max 3 digits (e.g., 0-400)
+
+            # **Real-Time Filtering**
+            self.txtNCoachesPerTrainProject.textChanged.connect(lambda: self.restrict_range(self.txtNCoachesPerTrainProject, 0, 12))
+            self.txtMaximumSpeedProject.textChanged.connect(lambda: self.restrict_range(self.txtMaximumSpeedProject, 0, 400))
+
         except Exception as e:
             self.show_message_box("Error", f"Error loading UI: {str(e)}")
+
+    def restrict_range(self, line_edit, min_val, max_val):
+        """Prevents entering values out of range while typing."""
+        try:
+            text = line_edit.text()
+            if text:
+                value = int(text)
+                if value < min_val or value > max_val:
+                    line_edit.setText(str(max_val))  # Auto-fix to max if exceeded
+        except ValueError:
+            line_edit.setText(str(min_val))  # Auto-fix if n
     def show_message_box(self, title, message):
         """Displays a QMessageBox for general errors."""
         msg_box = QMessageBox()

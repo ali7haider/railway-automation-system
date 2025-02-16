@@ -2199,6 +2199,8 @@ font-weight:bold;</string>
                                    <property name="styleSheet">
                                     <string notr="true">#frameProjectInfo,#frameInteriorConditions,#frameExteriorConditionsCabin,#frameExteriorConditionsSaloon {
 background-color: #F1FAFF;
+border:1px solid gray;
+border-radius:8px;
 }
 QLabel{
 	font:  10pt &quot;Calibri&quot;;
@@ -2249,10 +2251,10 @@ QComboBox::drop-down {
 	background-repeat: no-reperat;
  }
 QComboBox QAbstractItemView {
-	color: rgb(255, 121, 198);	
-	background-color: rgb(33, 37, 43);
+	color: black;	
+	background-color: #fff;
 	padding: 10px;
-	selection-background-color: rgb(39, 44, 54);
+	selection-background-color:#345CBF;
 }
 
 QPushButton
@@ -2346,6 +2348,11 @@ background-color:#1159A8;
                                             </property>
                                             <item>
                                              <property name="text">
+                                              <string>--- Select Compartment ---</string>
+                                             </property>
+                                            </item>
+                                            <item>
+                                             <property name="text">
                                               <string>No compartments</string>
                                              </property>
                                             </item>
@@ -2393,7 +2400,7 @@ background-color:#1159A8;
                                            </widget>
                                           </item>
                                           <item row="11" column="5">
-                                           <widget class="QLineEdit" name="lineEdit_2">
+                                           <widget class="QLineEdit" name="txtMaximumSpeedProject">
                                             <property name="minimumSize">
                                              <size>
                                               <width>0</width>
@@ -2519,6 +2526,11 @@ background-color:#1159A8;
                                             </property>
                                             <item>
                                              <property name="text">
+                                              <string>--- Select Type of HVAC ---</string>
+                                             </property>
+                                            </item>
+                                            <item>
+                                             <property name="text">
                                               <string>HVAC</string>
                                              </property>
                                             </item>
@@ -2537,6 +2549,21 @@ background-color:#1159A8;
                                               <height>30</height>
                                              </size>
                                             </property>
+                                            <item>
+                                             <property name="text">
+                                              <string>--- Select deck ---</string>
+                                             </property>
+                                            </item>
+                                            <item>
+                                             <property name="text">
+                                              <string>Single deck coach</string>
+                                             </property>
+                                            </item>
+                                            <item>
+                                             <property name="text">
+                                              <string>Double deck coach</string>
+                                             </property>
+                                            </item>
                                            </widget>
                                           </item>
                                           <item row="14" column="1">
