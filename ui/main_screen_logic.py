@@ -8,7 +8,12 @@ from PyQt5.QtWidgets import (
     QMainWindow,
     QStackedWidget,
     QComboBox,
-    QLineEdit
+    QLineEdit,
+    QFrame,
+    QVBoxLayout,
+    QHBoxLayout,
+    QLabel,
+    
 )
 from PyQt5.QtCore import Qt, QEvent
 from PyQt5.QtWidgets import QApplication, QPushButton, QMessageBox, QMainWindow
@@ -74,23 +79,81 @@ class MasterScreen(QtWidgets.QMainWindow):
             ProjectManager.load_multiple_json(combo_mapping)
 
              # **📌 Add Input Validations**
-            self.txtNCoachesPerTrainProject = self.findChild(QLineEdit, "txtNCoachesPerTrainProject")
             self.txtMaximumSpeedProject = self.findChild(QLineEdit, "txtMaximumSpeedProject")
+            self.txtMaximumSpeedProject.setValidator(QIntValidator(0, 400, self))
+            self.txtMaximumSpeedProject.setMaxLength(3)  # Max 3 digits (e.g., 0-400)
+            self.txtMaximumSpeedProject.textChanged.connect(lambda: self.restrict_range(self.txtMaximumSpeedProject, 0, 400))
+            self.txtNCoachesPerTrainProject = self.findChild(QLineEdit, "txtNCoachesPerTrainProject")
 
             # Set validators (Only integers within range)
             self.txtNCoachesPerTrainProject.setValidator(QIntValidator(0, 12, self))
-            self.txtMaximumSpeedProject.setValidator(QIntValidator(0, 400, self))
             # **Strictly Limit Input Length**
             self.txtNCoachesPerTrainProject.setMaxLength(2)  # Max 2 digits (e.g., 0-12)
-            self.txtMaximumSpeedProject.setMaxLength(3)  # Max 3 digits (e.g., 0-400)
 
             # **Real-Time Filtering**
             self.txtNCoachesPerTrainProject.textChanged.connect(lambda: self.restrict_range(self.txtNCoachesPerTrainProject, 0, 12))
-            self.txtMaximumSpeedProject.textChanged.connect(lambda: self.restrict_range(self.txtMaximumSpeedProject, 0, 400))
+            # Find UI Elements
+            self.frameCoaches = self.findChild(QFrame, "frameCoaches")
+
+            if not self.frameCoaches:
+                raise Exception("frameCoaches not found in UI!")  # Debugging issue
+
+            # Set layout for the frame if not already set
+            if not self.frameCoaches.layout():
+                self.layoutCoaches = QVBoxLayout(self.frameCoaches)
+                self.layoutCoaches.setAlignment(Qt.AlignmentFlag.AlignTop)
+            else:
+                self.layoutCoaches = self.frameCoaches.layout()
+
+            # Store dynamically created widgets
+            self.coach_widgets = []
+
+            # **Set Input Validators**
+            self.txtNCoachesPerTrainProject.setValidator(QIntValidator(0, 12, self))
+            self.txtNCoachesPerTrainProject.setMaxLength(2)  # Max 2 digits (0-12)
+
+            # **Connect Event**
+            self.txtNCoachesPerTrainProject.textChanged.connect(self.update_coach_inputs)
 
         except Exception as e:
             self.show_message_box("Error", f"Error loading UI: {str(e)}")
 
+    def update_coach_inputs(self):
+        """Dynamically updates the number of input boxes in frameCoaches based on txtNCoachesPerTrainProject."""
+        try:
+            num_coaches = int(self.txtNCoachesPerTrainProject.text()) if self.txtNCoachesPerTrainProject.text() else 0
+            num_coaches = min(max(num_coaches, 0), 12)  # Ensure range 0-12
+
+            # **Remove old inputs safely**
+            while self.coach_widgets:
+                widget = self.coach_widgets.pop()
+                widget["label"].setParent(None)
+                widget["input"].setParent(None)
+
+            # **Set layout with zero margins if not set already**
+            if not hasattr(self, 'layoutCoaches'):
+                self.layoutCoaches = QVBoxLayout(self.frameCoaches)
+                self.layoutCoaches.setContentsMargins(0, 0, 0, 0)  # Remove margins
+                self.layoutCoaches.setSpacing(0)  # Remove spacing
+                self.layoutCoaches.setAlignment(Qt.AlignmentFlag.AlignTop)  # Align to top
+            # **Add new inputs**
+            for i in range(num_coaches):
+                layout = QHBoxLayout()  # Horizontal layout for label + input
+                layout.setContentsMargins(0, 0, 0, 0)  # Remove margins
+
+                label = QLabel(f"Coach {i+1} Name:", self.frameCoaches)
+                input_box = QLineEdit(self.frameCoaches)
+                input_box.setPlaceholderText(f"Enter Coach {i+1} Name")
+
+                layout.addWidget(label)
+                layout.addWidget(input_box)
+
+                self.layoutCoaches.addLayout(layout)  # Add row to main layout
+
+                self.coach_widgets.append({"label": label, "input": input_box})  # Store for future cleanup
+
+        except ValueError:
+            pass  # Ignore invalid input
     def restrict_range(self, line_edit, min_val, max_val):
         """Prevents entering values out of range while typing."""
         try:

@@ -2188,7 +2188,7 @@ font-weight:bold;</string>
                                 <property name="geometry">
                                  <rect>
                                   <x>0</x>
-                                  <y>0</y>
+                                  <y>-37</y>
                                   <width>958</width>
                                   <height>1957</height>
                                  </rect>
@@ -2737,6 +2737,11 @@ background-color:#1159A8;
                                           </item>
                                           <item>
                                            <widget class="QFrame" name="frameCoaches">
+                                            <property name="styleSheet">
+                                             <string notr="true">QLineEdit {
+min-height:30px;
+}</string>
+                                            </property>
                                             <property name="frameShape">
                                              <enum>QFrame::StyledPanel</enum>
                                             </property>
