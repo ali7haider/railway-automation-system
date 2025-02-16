@@ -144,9 +144,51 @@ class ProjectManager:
 
         return "N/A"
 
-    
-    
-    
+
+    @staticmethod
+    def get_tic_coefficients(standard: str, compartment: str):
+        """
+        Fetches ΔTic Max and ΔTic Min values from Tic_coefficient.json.
+        
+        :param standard: The selected standard (e.g., "EN13129:2016").
+        :param category: The selected compartment (e.g., "No sleeping coaches").
+        :return: Tuple (ΔTic Max, ΔTic Min) or ("N/A", "N/A") if not found.
+        """
+        try:
+            # Load JSON file
+            with open("data/Delta_tic_data.json", "r", encoding="utf-8") as file:
+                tic_data = json.load(file)
+
+            # Validate JSON structure
+            if "Standard" not in tic_data:
+                raise KeyError("Invalid JSON format: 'Standard' key missing.")
+
+            # Default values
+            tic_max = "N/A"
+            tic_min = "N/A"
+
+            # Search for matching standard and category
+            for entry in tic_data["Standard"]:
+                if standard in entry:
+                    if "Δtic" in entry[standard] and compartment in entry[standard]["Δtic"]:
+                        tic_max = entry[standard]["Δtic"][compartment].get("ΔTic Max", "N/A")
+                        tic_min = entry[standard]["Δtic"][compartment].get("ΔTic Min", "N/A")
+                        break  # Exit loop after finding first match
+
+            return tic_max, tic_min
+
+        except FileNotFoundError:
+            QMessageBox.critical(None, "Error", "Tic_coefficient.json file not found.")
+            return "N/A", "N/A"
+
+        except json.JSONDecodeError:
+            QMessageBox.critical(None, "Error", "Error decoding Tic_coefficient.json. Invalid JSON format.")
+            return "N/A", "N/A"
+
+        except Exception as e:
+            QMessageBox.critical(None, "Error", f"Failed to fetch Tic coefficients: {str(e)}")
+            return "N/A", "N/A"
+
     
     @staticmethod
     def show_message_box(title: str, message: str):

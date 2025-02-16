@@ -92,6 +92,7 @@ class MasterScreen(QtWidgets.QMainWindow):
 
             # **Real-Time Filtering**
             self.txtNCoachesPerTrainProject.textChanged.connect(lambda: self.restrict_range(self.txtNCoachesPerTrainProject, 0, 12))
+
             # Find UI Elements
             self.frameCoaches = self.findChild(QFrame, "frameCoaches")
 
@@ -160,22 +161,74 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.cmbxSigleDeckDoubleDeck.currentTextChanged.connect(self.update_k_coefficient)
             self.cmbxStandardSaloon.currentTextChanged.connect(self.update_k_coefficient)
             self.cmbxStandardCabin.currentTextChanged.connect(self.update_k_coefficient)
+
+            self.cmbxStandardSaloon.currentTextChanged.connect(self.update_tic_coefficients)
+            self.cmbxStandardCabin.currentTextChanged.connect(self.update_tic_coefficients)
+            self.cmbxCompartmentProject.currentTextChanged.connect(self.update_tic_coefficients)
+
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to load train data: {str(e)}")
 
+    def get_standard_saloon_and_cabin(self,selected_train_type, cmbx_saloon, lbl_saloon, cmbx_cabin, lbl_cabin):
+        standard_saloon_2, standard_cabin_2 = ProjectManager.get_train_standards(selected_train_type)
+
+        # Get only the keys (e.g., EN14750:2006)
+        saloon_keys = list(standard_saloon_2.keys())  
+        cabin_keys = list(standard_cabin_2.keys())  
+
+        # Determine standard_saloon
+        standard_saloon = cmbx_saloon.currentText().strip() if len(saloon_keys) > 1 else lbl_saloon.text().strip()
+
+        # Determine standard_cabin
+        standard_cabin = cmbx_cabin.currentText().strip() if len(cabin_keys) > 1 else lbl_cabin.text().strip()
+
+        return standard_saloon, standard_cabin
+    def update_tic_coefficients(self):
+        """Fetch and update Tic coefficient based on selected values."""
+        try:
+            # Step 1: Get Standard Saloon & Category
+            selected_train_type = self.cmbxTypeOfTrainProject.currentText().strip()
+            standard_saloon, standard_cabin = self.get_standard_saloon_and_cabin(
+                selected_train_type, self.cmbxStandardSaloon, self.lblStandardSaloon,
+                self.cmbxStandardCabin, self.lblStandardCabin
+            )
+            compartment = self.cmbxCompartmentProject.currentText().strip()
+
+
+            # List of invalid selections
+            invalid_values = {"", "--- Select ---", "--- Select Train Type ---", "--- Select Category ---","--- Select Compartment ---"}
+
+            # Validation: Ensure inputs are selected
+            if standard_saloon in invalid_values or standard_cabin in invalid_values or compartment in invalid_values:
+                self.lblMaxSaloonInterior.setText("")
+                self.lblMinSaloonInterior.setText("")
+                self.lblTicMaxCabinInterior.setText("")
+                self.lblTicMinSaloonInterior.setText("")
+                return  # Exit function
+
+            # Step 2: Get Tic coefficients using ProjectManager
+            tic_max_saloon, tic_min_saloon = ProjectManager.get_tic_coefficients(standard_saloon, compartment)
+            tic_max_cabin, tic_max_cabin = ProjectManager.get_tic_coefficients(standard_cabin, compartment)
+
+            # Step 3: Update Labels
+            self.lblMaxSaloonInterior.setText(f"{tic_max_saloon}")
+            self.lblMinSaloonInterior.setText(f"{tic_min_saloon}")
+            self.lblTicMaxCabinInterior.setText(f"{tic_max_cabin}")
+            self.lblTicMinSaloonInterior.setText(f"{tic_max_cabin}")
+
+        except Exception as e:
+            QMessageBox.critical(None, "Error", f"Failed to update Tic Coefficients: {str(e)}")
+
+    
     def update_k_coefficient(self):
         """Fetch and update heat transfer coefficient based on selected values."""
         try:
             # Step 1: Get Standard Saloon & Standard Cabin
-            standard_saloon = self.cmbxStandardSaloon.currentText().strip()
-            selected_train_type=self.cmbxTypeOfTrainProject.currentText().strip()
-            standard_saloon_2, standard_cabin_2 = ProjectManager.get_train_standards(selected_train_type)
-            keys = list(standard_cabin_2.keys())  # Get only the keys (e.g., EN14750:2006)
-
-            if len(keys) > 1:
-                standard_cabin = self.cmbxStandardCabin.currentText().strip()
-            else:
-                standard_cabin = self.lblStandardCabin.text().strip()
+            selected_train_type = self.cmbxTypeOfTrainProject.currentText().strip()
+            standard_saloon, standard_cabin = self.get_standard_saloon_and_cabin(
+                selected_train_type, self.cmbxStandardSaloon, self.lblStandardSaloon,
+                self.cmbxStandardCabin, self.lblStandardCabin
+            )
 
 
             # Step 2: Get Category
@@ -197,8 +250,8 @@ class MasterScreen(QtWidgets.QMainWindow):
                 selected_country in invalid_values
             ):
                 # Reset labels if validation fails
-                self.lblHeatTransferSaloon.setText("NA1")
-                self.lblHeatTransferCabin.setText("NA2")
+                self.lblHeatTransferSaloon.setText("NA")
+                self.lblHeatTransferCabin.setText("NA")
                 return  # Exit the function without proceeding further
 
             # Step 5: Get Winter Zone
