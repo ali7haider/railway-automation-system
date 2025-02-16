@@ -6,7 +6,8 @@ from PyQt5.QtWidgets import (
     QPushButton,
     QMessageBox,
     QMainWindow,
-    QStackedWidget
+    QStackedWidget,
+    QComboBox
 )
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QPushButton, QMessageBox, QMainWindow
@@ -15,6 +16,7 @@ import sys
 import os
 from PyQt5 import uic
 from PyQt5 import QtWidgets, uic
+from modules.project_manager import ProjectManager  # Import ProjectManager
 
 
 GLOBAL_STATE = False
@@ -55,6 +57,19 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.btnReport.clicked.connect(self.show_multi_tool_menu)
             self.btnSensorList.clicked.connect(self.show_pairip_pass_menu)
             self.btnPlanning.clicked.connect(self.show_offset_leech_menu)
+
+
+            # Define combo box - JSON file mapping
+            self.cmbxOperationCountryProject = self.findChild(QComboBox, "cmbxOperationCountryProject")
+            self.cmbxTypeOfTrainProject = self.findChild(QComboBox, "cmbxTypeOfTrainProject")
+
+            combo_mapping = {
+                self.cmbxOperationCountryProject: "data/Countries_zones.json",
+                self.cmbxTypeOfTrainProject: "data/TrainType_standars.json",
+            }
+
+            # Load JSON data into combo boxes
+            ProjectManager.load_multiple_json(combo_mapping)
         except Exception as e:
             self.show_message_box("Error", f"Error loading UI: {str(e)}")
     def show_message_box(self, title, message):

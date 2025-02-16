@@ -460,36 +460,7 @@ QRadioButton::indicator:checked {
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////
 ComboBox */
-QComboBox{
-	background-color: rgb(27, 29, 35);
-	border-radius: 5px;
-	border: 2px solid rgb(33, 37, 43);
-	padding: 5px;
-	padding-left: 10px;
-}
-QComboBox:hover{
-	border: 2px solid rgb(64, 71, 88);
-}
-QComboBox::drop-down {
-	subcontrol-origin: padding;
-	subcontrol-position: top right;
-	width: 25px; 
-	border-left-width: 3px;
-	border-left-color: rgba(39, 44, 54, 150);
-	border-left-style: solid;
-	border-top-right-radius: 3px;
-	border-bottom-right-radius: 3px;	
-	background-image: url(:/icons/images/icons/icons8-arrow-down-20.png);
 
-	background-position: center;
-	background-repeat: no-reperat;
- }
-QComboBox QAbstractItemView {
-	color: rgb(255, 121, 198);	
-	background-color: rgb(33, 37, 43);
-	padding: 10px;
-	selection-background-color: rgb(39, 44, 54);
-}
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////
 Sliders */
@@ -2037,6 +2008,7 @@ QComboBox{
 	border: 1px solid gray;
 	padding: 5px;
 	padding-left: 10px;
+color:black;
 }
 QComboBox:hover{
 	border: 1px solid gray;
@@ -2055,10 +2027,10 @@ QComboBox::drop-down {
 	background-repeat: no-reperat;
  }
 QComboBox QAbstractItemView {
-	color: rgb(255, 121, 198);	
-	background-color: rgb(33, 37, 43);
+	color:  red;	
+	background-color:#fff;
 	padding: 10px;
-	selection-background-color: rgb(39, 44, 54);
+	selection-background-color: #fff;
 }
 
 QPushButton
@@ -2216,7 +2188,7 @@ font-weight:bold;</string>
                                 <property name="geometry">
                                  <rect>
                                   <x>0</x>
-                                  <y>-1386</y>
+                                  <y>0</y>
                                   <width>958</width>
                                   <height>1957</height>
                                  </rect>
@@ -2365,13 +2337,28 @@ background-color:#1159A8;
                                            </widget>
                                           </item>
                                           <item row="9" column="5">
-                                           <widget class="QComboBox" name="comboBox_4">
+                                           <widget class="QComboBox" name="cmbxCompartmentProject">
                                             <property name="maximumSize">
                                              <size>
                                               <width>16777215</width>
                                               <height>30</height>
                                              </size>
                                             </property>
+                                            <item>
+                                             <property name="text">
+                                              <string>No compartments</string>
+                                             </property>
+                                            </item>
+                                            <item>
+                                             <property name="text">
+                                              <string>Sleeping coaches</string>
+                                             </property>
+                                            </item>
+                                            <item>
+                                             <property name="text">
+                                              <string>No sleeping coaches</string>
+                                             </property>
+                                            </item>
                                            </widget>
                                           </item>
                                           <item row="8" column="1">
@@ -2389,7 +2376,7 @@ background-color:#1159A8;
                                            </widget>
                                           </item>
                                           <item row="4" column="5">
-                                           <widget class="QLineEdit" name="lineEdit_6">
+                                           <widget class="QLineEdit" name="txtCoachBuilderProject">
                                             <property name="minimumSize">
                                              <size>
                                               <width>0</width>
@@ -2419,10 +2406,13 @@ background-color:#1159A8;
                                               <height>30</height>
                                              </size>
                                             </property>
+                                            <property name="inputMethodHints">
+                                             <set>Qt::ImhDigitsOnly</set>
+                                            </property>
                                            </widget>
                                           </item>
                                           <item row="8" column="5">
-                                           <widget class="QLineEdit" name="lineEdit_3">
+                                           <widget class="QLineEdit" name="txtNCoachesPerTrainProject">
                                             <property name="minimumSize">
                                              <size>
                                               <width>0</width>
@@ -2453,7 +2443,7 @@ background-color:#1159A8;
                                            </widget>
                                           </item>
                                           <item row="5" column="5">
-                                           <widget class="QLineEdit" name="lineEdit_5">
+                                           <widget class="QLineEdit" name="txtCustomerOperatorProject">
                                             <property name="minimumSize">
                                              <size>
                                               <width>0</width>
@@ -2470,10 +2460,10 @@ background-color:#1159A8;
                                            </widget>
                                           </item>
                                           <item row="3" column="5">
-                                           <widget class="QLineEdit" name="lineEdit_4">
+                                           <widget class="QLineEdit" name="txtNameProject">
                                             <property name="minimumSize">
                                              <size>
-                                              <width>200</width>
+                                              <width>240</width>
                                               <height>30</height>
                                              </size>
                                             </property>
@@ -2494,7 +2484,7 @@ background-color:#1159A8;
                                            </widget>
                                           </item>
                                           <item row="7" column="5">
-                                           <widget class="QComboBox" name="comboBox_2">
+                                           <widget class="QComboBox" name="cmbxTypeOfTrainProject">
                                             <property name="maximumSize">
                                              <size>
                                               <width>16777215</width>
@@ -2504,7 +2494,7 @@ background-color:#1159A8;
                                            </widget>
                                           </item>
                                           <item row="6" column="5">
-                                           <widget class="QComboBox" name="comboBox_3">
+                                           <widget class="QComboBox" name="cmbxOperationCountryProject">
                                             <property name="minimumSize">
                                              <size>
                                               <width>0</width>
@@ -2520,17 +2510,27 @@ background-color:#1159A8;
                                            </widget>
                                           </item>
                                           <item row="10" column="5">
-                                           <widget class="QComboBox" name="comboBox_5">
+                                           <widget class="QComboBox" name="cmbxTypesOfHVACProject">
                                             <property name="maximumSize">
                                              <size>
                                               <width>16777215</width>
                                               <height>30</height>
                                              </size>
                                             </property>
+                                            <item>
+                                             <property name="text">
+                                              <string>HVAC</string>
+                                             </property>
+                                            </item>
+                                            <item>
+                                             <property name="text">
+                                              <string>HV</string>
+                                             </property>
+                                            </item>
                                            </widget>
                                           </item>
                                           <item row="12" column="5">
-                                           <widget class="QComboBox" name="comboBox_6">
+                                           <widget class="QComboBox" name="cmbxSigleDeckDoubleDeck">
                                             <property name="maximumSize">
                                              <size>
                                               <width>16777215</width>
@@ -2672,7 +2672,7 @@ background-color:#1159A8;
                                               <number>0</number>
                                              </property>
                                              <item row="0" column="2">
-                                              <widget class="QLineEdit" name="lineEdit_7">
+                                              <widget class="QLineEdit" name="txtCabin1NameProject">
                                                <property name="minimumSize">
                                                 <size>
                                                  <width>0</width>
@@ -2689,7 +2689,7 @@ background-color:#1159A8;
                                               </widget>
                                              </item>
                                              <item row="2" column="2">
-                                              <widget class="QLineEdit" name="lineEdit_8">
+                                              <widget class="QLineEdit" name="txtCabin2NameProject">
                                                <property name="minimumSize">
                                                 <size>
                                                  <width>0</width>
