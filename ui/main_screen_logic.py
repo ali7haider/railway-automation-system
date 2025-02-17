@@ -138,6 +138,12 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.cmbxOperationCountryProject.currentTextChanged.connect(self.update_max_mean_interior_temp)
             self.cmbxTypeOfTrainProject.currentTextChanged.connect(self.update_standby_operator_temp)
 
+            self.cmbxOperationCountryProject.currentTextChanged.connect(self.update_temperature_conditions)
+            self.cmbxTypeOfTrainProject.currentTextChanged.connect(self.update_temperature_conditions)
+            self.cmbxStandardSaloon.currentTextChanged.connect(self.update_temperature_conditions)
+            self.cmbxStandardCabin.currentTextChanged.connect(self.update_temperature_conditions)
+
+
         except Exception as e:
             self.show_message_box("Error", f"Error loading UI: {str(e)}")
 
@@ -209,6 +215,74 @@ class MasterScreen(QtWidgets.QMainWindow):
 
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to update Standby Operator Temperature: {str(e)}")
+
+    def update_temperature_conditions(self):
+        """Fetch and update temperature conditions for Saloon and Cabin."""
+        try:
+            # Define invalid values
+            invalid_values = {"", "--- Select ---", "--- Select Train Type ---", "--- Select Country ---", "--- Select deck ---"}
+
+            # Get Train Type and Standards
+            selected_train_type = self.cmbxTypeOfTrainProject.currentText().strip()
+            standard_saloon, standard_cabin = self.get_standard_saloon_and_cabin(
+                selected_train_type, self.cmbxStandardSaloon, self.lblStandardSaloon,
+                self.cmbxStandardCabin, self.lblStandardCabin
+            )
+
+            # Get Winter & Summer Zones
+            selected_country = self.cmbxOperationCountryProject.currentText().strip()
+            winter_zone_saloon = ProjectManager.get_winter_zone(selected_country, standard_saloon)
+            winter_zone_cabin = ProjectManager.get_winter_zone(selected_country, standard_cabin)
+            summer_zone_saloon = ProjectManager.get_summer_zone(selected_country, standard_saloon)
+            summer_zone_cabin = ProjectManager.get_summer_zone(selected_country, standard_cabin)
+
+            # Validation Check
+            if any(value in invalid_values for value in [standard_saloon, standard_cabin, selected_country]):
+                labels = [
+                    self.lblWinterZoneSaloon, self.lblWinterOperationalSaloon, self.lblWinterNormalSaloon,
+                    self.lblWinterExtremeSaloon, self.lblWinterExtendedSaloon, self.lblWinterDesignSaloon,
+                    self.lblSummerZoneSaloon, self.lblSummerOperationalSaloon, self.lblSummerNormalSaloon,
+                    self.lblSummerExtremeSaloon, self.lblSummerExtendedSaloon, self.lblSummerDesignSaloon,
+                    self.lblWinterZoneCabin, self.lblWinterOperationalCabin, self.lblWinterNormalCabin,
+                    self.lblWinterExtremeCabin, self.lblWinterExtendedCabin, self.lblWinterDesignCabin,
+                    self.lblSummerZoneCabin, self.lblSummerOperationalCabin, self.lblSummerNormalCabin,
+                    self.lblSummerExtremeCabin, self.lblSummerExtendedCabin, self.lblSummerDesignCabin
+                ]
+                for label in labels:
+                    label.setText("NA")
+                return  # Exit function if validation fails
+
+            # Fetch Winter & Summer Temperature Conditions
+            winter_saloon = ProjectManager.get_temperature_conditions(standard_saloon, "Winter", winter_zone_saloon)
+            winter_cabin = ProjectManager.get_temperature_conditions(standard_cabin, "Winter", winter_zone_cabin)
+            summer_saloon = ProjectManager.get_temperature_conditions(standard_saloon, "Summer", summer_zone_saloon)
+            summer_cabin = ProjectManager.get_temperature_conditions(standard_cabin, "Summer", summer_zone_cabin)
+
+            # Update Winter Labels (Saloon & Cabin)
+            self.lblWinterZoneSaloon.setText(winter_zone_saloon)
+            self.lblWinterOperationalSaloon.setText(str(winter_saloon["Operational"]))
+            self.lblWinterDesignSaloon.setText(str(winter_saloon["Design"]))
+            self.lblWinterExtremeSaloon.setText(str(winter_saloon["Extreme"]))
+
+            self.lblWinterZoneCabin.setText(winter_zone_cabin)
+            self.lblWinterOperationalCabin.setText(str(winter_cabin["Operational"]))
+            self.lblWinterDesignCabin.setText(str(winter_cabin["Design"]))
+            self.lblWinterExtremeCabin.setText(str(winter_cabin["Extreme"]))
+
+            # Update Summer Labels (Saloon & Cabin)
+            self.lblSummerZoneSaloon.setText(summer_zone_saloon)
+            self.lblSummerOperationalSaloon.setText(str(summer_saloon["Operational"]))
+            self.lblSummerDesignSaloon.setText(str(summer_saloon["Design"]))
+            self.lblSummerExtremeSaloon.setText(str(summer_saloon["Extreme"]))
+
+            self.lblSummerZoneCabin.setText(summer_zone_cabin)
+            self.lblSummerOperationalCabin.setText(str(summer_cabin["Operational"]))
+            self.lblSummerDesignCabin.setText(str(summer_cabin["Design"]))
+            self.lblSummerExtremeCabin.setText(str(summer_cabin["Extreme"]))
+
+        except Exception as e:
+            QMessageBox.critical(None, "Error", f"Failed to update temperature conditions: {str(e)}")
+
 
     def get_standard_saloon_and_cabin(self,selected_train_type, cmbx_saloon, lbl_saloon, cmbx_cabin, lbl_cabin):
         standard_saloon_2, standard_cabin_2 = ProjectManager.get_train_standards(selected_train_type)

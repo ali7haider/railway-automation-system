@@ -262,6 +262,28 @@ class ProjectManager:
 
         return "NA", "NA"  # Default return if data is missing or standard not found
 
+    @staticmethod
+    def get_temperature_conditions(standard, season, zone):
+        """Fetch temperature conditions for the given standard, season, and zone."""
+        try:
+            # Load JSON data
+            with open("data/Conditions_standard.json", "r", encoding="utf-8") as file:
+                temp_data = json.load(file)
+
+            # Navigate JSON structure
+            season_data = temp_data.get(standard, {}).get(season, {}).get(zone, {}).get("Conditions", {})
+
+            return {
+                "Design": season_data.get("Design conditions", {}).get("Temperature [ºC]", "NA"),
+                "Extreme": season_data.get("Extreme conditions", {}).get("Temperature [ºC]", "NA"),
+                "Operational": season_data.get("Operational limit", {}).get("Temperature [ºC]", "NA"),
+            }
+
+        except Exception as e:
+            print(f"Error loading temperature conditions: {e}")
+
+        return {"Design": "NA", "Extreme": "NA", "Operational": "NA"}
+
     
     @staticmethod
     def show_message_box(title: str, message: str):

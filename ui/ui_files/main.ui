@@ -8,7 +8,7 @@
     <x>0</x>
     <y>0</y>
     <width>1034</width>
-    <height>720</height>
+    <height>835</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -2188,7 +2188,7 @@ font-weight:bold;</string>
                                 <property name="geometry">
                                  <rect>
                                   <x>0</x>
-                                  <y>-653</y>
+                                  <y>-807</y>
                                   <width>948</width>
                                   <height>1973</height>
                                  </rect>
@@ -3246,16 +3246,16 @@ font-weight:bold;</string>
                                         </widget>
                                        </item>
                                        <item row="5" column="1">
-                                        <widget class="QLabel" name="label_65">
+                                        <widget class="QLabel" name="lblWinterZoneSaloon">
                                          <property name="text">
-                                          <string>Standard</string>
+                                          <string>NA</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="6" column="1">
-                                        <widget class="QLabel" name="label_66">
+                                        <widget class="QLabel" name="lblSummerZoneSaloon">
                                          <property name="text">
-                                          <string>Standard</string>
+                                          <string>NA</string>
                                          </property>
                                         </widget>
                                        </item>
@@ -3297,72 +3297,72 @@ background-color:#1159A8;
                                         </widget>
                                        </item>
                                        <item row="7" column="1">
-                                        <widget class="QLabel" name="label_68">
+                                        <widget class="QLabel" name="lblWinterNormalSaloon">
                                          <property name="text">
-                                          <string>TextLabel</string>
+                                          <string>NA</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="8" column="1">
-                                        <widget class="QLabel" name="label_69">
+                                        <widget class="QLabel" name="lblSummerNormalSaloon">
                                          <property name="text">
-                                          <string>TextLabel</string>
+                                          <string>NA</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="9" column="1">
-                                        <widget class="QLabel" name="label_70">
+                                        <widget class="QLabel" name="lblWinterExtendedSaloon">
                                          <property name="text">
-                                          <string>TextLabel</string>
+                                          <string>NA</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="10" column="1">
-                                        <widget class="QLabel" name="label_71">
+                                        <widget class="QLabel" name="lblSummerExtendedSaloon">
                                          <property name="text">
-                                          <string>TextLabel</string>
+                                          <string>NA</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="11" column="1">
-                                        <widget class="QLabel" name="label_72">
+                                        <widget class="QLabel" name="lblWinterDesignSaloon">
                                          <property name="text">
-                                          <string>TextLabel</string>
+                                          <string>NA</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="12" column="1">
-                                        <widget class="QLabel" name="label_73">
+                                        <widget class="QLabel" name="lblSummerDesignSaloon">
                                          <property name="text">
-                                          <string>TextLabel</string>
+                                          <string>NA</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="13" column="1">
-                                        <widget class="QLabel" name="label_74">
+                                        <widget class="QLabel" name="lblWinterExtremeSaloon">
                                          <property name="text">
-                                          <string>TextLabel</string>
+                                          <string>NA</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="14" column="1">
-                                        <widget class="QLabel" name="label_75">
+                                        <widget class="QLabel" name="lblSummerExtremeSaloon">
                                          <property name="text">
-                                          <string>TextLabel</string>
+                                          <string>NA</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="15" column="1">
-                                        <widget class="QLabel" name="label_76">
+                                        <widget class="QLabel" name="lblWinterOperationalSaloon">
                                          <property name="text">
-                                          <string>TextLabel</string>
+                                          <string>NA</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="16" column="1">
-                                        <widget class="QLabel" name="label_77">
+                                        <widget class="QLabel" name="lblSummerOperationalSaloon">
                                          <property name="text">
-                                          <string>TextLabel</string>
+                                          <string>NA</string>
                                          </property>
                                         </widget>
                                        </item>
@@ -3482,20 +3482,6 @@ font-weight:bold;</string>
                                          </property>
                                         </widget>
                                        </item>
-                                       <item row="5" column="1">
-                                        <widget class="QLabel" name="label_90">
-                                         <property name="text">
-                                          <string>Standard</string>
-                                         </property>
-                                        </widget>
-                                       </item>
-                                       <item row="6" column="1">
-                                        <widget class="QLabel" name="label_91">
-                                         <property name="text">
-                                          <string>Standard</string>
-                                         </property>
-                                        </widget>
-                                       </item>
                                        <item row="5" column="2">
                                         <widget class="QLabel" name="label_92">
                                          <property name="text">
@@ -3533,76 +3519,6 @@ background-color:#1159A8;
                                          </property>
                                         </widget>
                                        </item>
-                                       <item row="7" column="1">
-                                        <widget class="QLabel" name="label_93">
-                                         <property name="text">
-                                          <string>TextLabel</string>
-                                         </property>
-                                        </widget>
-                                       </item>
-                                       <item row="8" column="1">
-                                        <widget class="QLabel" name="label_94">
-                                         <property name="text">
-                                          <string>TextLabel</string>
-                                         </property>
-                                        </widget>
-                                       </item>
-                                       <item row="9" column="1">
-                                        <widget class="QLabel" name="label_95">
-                                         <property name="text">
-                                          <string>TextLabel</string>
-                                         </property>
-                                        </widget>
-                                       </item>
-                                       <item row="10" column="1">
-                                        <widget class="QLabel" name="label_96">
-                                         <property name="text">
-                                          <string>TextLabel</string>
-                                         </property>
-                                        </widget>
-                                       </item>
-                                       <item row="11" column="1">
-                                        <widget class="QLabel" name="label_97">
-                                         <property name="text">
-                                          <string>TextLabel</string>
-                                         </property>
-                                        </widget>
-                                       </item>
-                                       <item row="12" column="1">
-                                        <widget class="QLabel" name="label_98">
-                                         <property name="text">
-                                          <string>TextLabel</string>
-                                         </property>
-                                        </widget>
-                                       </item>
-                                       <item row="13" column="1">
-                                        <widget class="QLabel" name="label_99">
-                                         <property name="text">
-                                          <string>TextLabel</string>
-                                         </property>
-                                        </widget>
-                                       </item>
-                                       <item row="14" column="1">
-                                        <widget class="QLabel" name="label_100">
-                                         <property name="text">
-                                          <string>TextLabel</string>
-                                         </property>
-                                        </widget>
-                                       </item>
-                                       <item row="15" column="1">
-                                        <widget class="QLabel" name="label_101">
-                                         <property name="text">
-                                          <string>TextLabel</string>
-                                         </property>
-                                        </widget>
-                                       </item>
-                                       <item row="16" column="1">
-                                        <widget class="QLabel" name="label_102">
-                                         <property name="text">
-                                          <string>TextLabel</string>
-                                         </property>
-                                        </widget>
-                                       </item>
                                        <item row="0" column="0" rowspan="2" colspan="3">
                                         <widget class="QLabel" name="label_103">
                                          <property name="styleSheet">
@@ -3614,6 +3530,90 @@ font-weight:bold;</string>
                                          </property>
                                          <property name="alignment">
                                           <set>Qt::AlignCenter</set>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item row="5" column="1">
+                                        <widget class="QLabel" name="lblWinterZoneCabin">
+                                         <property name="text">
+                                          <string>NA</string>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item row="6" column="1">
+                                        <widget class="QLabel" name="lblSummerZoneCabin">
+                                         <property name="text">
+                                          <string>NA</string>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item row="7" column="1">
+                                        <widget class="QLabel" name="lblWinterNormalCabin">
+                                         <property name="text">
+                                          <string>NA</string>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item row="8" column="1">
+                                        <widget class="QLabel" name="lblSummerNormalCabin">
+                                         <property name="text">
+                                          <string>NA</string>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item row="9" column="1">
+                                        <widget class="QLabel" name="lblWinterExtendedCabin">
+                                         <property name="text">
+                                          <string>NA</string>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item row="10" column="1">
+                                        <widget class="QLabel" name="lblSummerExtendedCabin">
+                                         <property name="text">
+                                          <string>NA</string>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item row="11" column="1">
+                                        <widget class="QLabel" name="lblWinterDesignCabin">
+                                         <property name="text">
+                                          <string>NA</string>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item row="12" column="1">
+                                        <widget class="QLabel" name="lblSummerDesignCabin">
+                                         <property name="text">
+                                          <string>NA</string>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item row="13" column="1">
+                                        <widget class="QLabel" name="lblWinterExtremeCabin">
+                                         <property name="text">
+                                          <string>NA</string>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item row="14" column="1">
+                                        <widget class="QLabel" name="lblSummerExtremeCabin">
+                                         <property name="text">
+                                          <string>NA</string>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item row="15" column="1">
+                                        <widget class="QLabel" name="lblWinterOperationalCabin">
+                                         <property name="text">
+                                          <string>NA</string>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item row="16" column="1">
+                                        <widget class="QLabel" name="lblSummerOperationalCabin">
+                                         <property name="text">
+                                          <string>NA</string>
                                          </property>
                                         </widget>
                                        </item>
