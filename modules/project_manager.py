@@ -255,7 +255,7 @@ class ProjectManager:
             # Check if the standard exists in the data
             for entry in standby_data.get("Standard", []):
                 if standard in entry:
-                    return entry[standard].get("Summer", "NA"), entry[standard].get("Winter", "NA")
+                    return entry[standard].get("Summer", "None°C"), entry[standard].get("Winter", "None°C")
 
         except Exception as e:
             print(f"Error loading standby operator temperature data: {e}")

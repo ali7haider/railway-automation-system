@@ -219,12 +219,11 @@ class MasterScreen(QtWidgets.QMainWindow):
             # Step 3: Fetch Standby Operator Temperature from ProjectManager
             summer_saloon, winter_saloon = ProjectManager.get_standby_operator_temp(standard_saloon)
             summer_cabin, winter_cabin = ProjectManager.get_standby_operator_temp(standard_cabin)
-
             # Step 4: Update UI Labels
-            self.lblStandByOperatorSaloonMax.setText(str(summer_saloon) if summer_saloon is not None else "None")
-            self.lblStandByOperatorSaloonMin.setText(str(winter_saloon) if winter_saloon is not None else "None")
-            self.lblStandByOperatorCabinMax.setText(str(summer_cabin) if summer_cabin is not None else "None")
-            self.lblStandByOperatorCabinMin.setText(str(winter_cabin) if winter_cabin is not None else "None")
+            self.lblStandByOperatorSaloonMax.setText(str(summer_saloon) if summer_saloon is not None else "None°C")
+            self.lblStandByOperatorSaloonMin.setText(str(winter_saloon) if winter_saloon is not None else "None°C")
+            self.lblStandByOperatorCabinMax.setText(str(summer_cabin) if summer_cabin is not None else "None°C")
+            self.lblStandByOperatorCabinMin.setText(str(winter_cabin) if winter_cabin is not None else "None°C")
 
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to update Standby Operator Temperature: {str(e)}")
