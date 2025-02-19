@@ -2188,7 +2188,7 @@ font-weight:bold;</string>
                                 <property name="geometry">
                                  <rect>
                                   <x>0</x>
-                                  <y>-807</y>
+                                  <y>-266</y>
                                   <width>948</width>
                                   <height>1973</height>
                                  </rect>
@@ -2934,7 +2934,7 @@ font-weight:bold;</string>
                                        <item row="10" column="0">
                                         <widget class="QLabel" name="label_28">
                                          <property name="text">
-                                          <string>ΔTic Min Saloon</string>
+                                          <string>ΔTic Min Cabin</string>
                                          </property>
                                         </widget>
                                        </item>

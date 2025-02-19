@@ -221,10 +221,10 @@ class MasterScreen(QtWidgets.QMainWindow):
             summer_cabin, winter_cabin = ProjectManager.get_standby_operator_temp(standard_cabin)
 
             # Step 4: Update UI Labels
-            self.lblStandByOperatorSaloonMax.setText(str(summer_saloon) if summer_saloon is not None else "NA")
-            self.lblStandByOperatorSaloonMin.setText(str(winter_saloon) if winter_saloon is not None else "NA")
-            self.lblStandByOperatorCabinMax.setText(str(summer_cabin) if summer_cabin is not None else "NA")
-            self.lblStandByOperatorCabinMin.setText(str(winter_cabin) if winter_cabin is not None else "NA")
+            self.lblStandByOperatorSaloonMax.setText(str(summer_saloon) if summer_saloon is not None else "None")
+            self.lblStandByOperatorSaloonMin.setText(str(winter_saloon) if winter_saloon is not None else "None")
+            self.lblStandByOperatorCabinMax.setText(str(summer_cabin) if summer_cabin is not None else "None")
+            self.lblStandByOperatorCabinMin.setText(str(winter_cabin) if winter_cabin is not None else "None")
 
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to update Standby Operator Temperature: {str(e)}")
@@ -271,8 +271,6 @@ class MasterScreen(QtWidgets.QMainWindow):
             summer_saloon = ProjectManager.get_temperature_conditions(standard_saloon, "Summer", summer_zone_saloon)
             summer_cabin = ProjectManager.get_temperature_conditions(standard_cabin, "Summer", summer_zone_cabin)
 
-            print(winter_saloon)
-            print(summer_saloon)
             # Update Winter Labels (Saloon & Cabin)
             self.lblWinterZoneSaloon.setText(winter_zone_saloon)
             self.lblWinterOperationalSaloon.setText(str(winter_saloon["Operational"]))
@@ -295,24 +293,75 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.lblSummerDesignCabin.setText(str(summer_cabin["Design"]))
             self.lblSummerExtremeCabin.setText(str(summer_cabin["Extreme"]))
 
+
+                        # Fetch Winter & Summer Temperature Conditions for Saloon and Cabin
+            winter_saloon = ProjectManager.get_zone_temperature(standard_saloon, "Winter", "Normal_Range", winter_zone_saloon)
+            winter_cabin = ProjectManager.get_zone_temperature(standard_cabin, "Winter", "Normal_Range", winter_zone_cabin)
+            summer_saloon = ProjectManager.get_zone_temperature(standard_saloon, "Summer", "Normal_Range", summer_zone_saloon)
+            summer_cabin = ProjectManager.get_zone_temperature(standard_cabin, "Summer", "Normal_Range", summer_zone_cabin)
+
+            # Fetch Extended Range Temperatures
+            winter_extended_saloon = ProjectManager.get_zone_temperature(standard_saloon, "Winter", "Extended_Range", winter_zone_saloon)
+            winter_extended_cabin = ProjectManager.get_zone_temperature(standard_cabin, "Winter", "Extended_Range", winter_zone_cabin)
+            summer_extended_saloon = ProjectManager.get_zone_temperature(standard_saloon, "Summer", "Extended_Range", summer_zone_saloon)
+            summer_extended_cabin = ProjectManager.get_zone_temperature(standard_cabin, "Summer", "Extended_Range", summer_zone_cabin)
+            print(winter_saloon, winter_cabin, summer_saloon, summer_cabin, winter_extended_saloon, winter_extended_cabin, summer_extended_saloon, summer_extended_cabin)       
+            # Update Labels - Winter Normal
+            self.set_label_text(self.lblWinterNormalSaloon, winter_saloon["Min"], winter_saloon["Max"])
+            self.set_label_text(self.lblWinterNormalCabin, winter_cabin["Min"], winter_cabin["Max"])
+
+            # Update Labels - Winter Extended
+            self.set_label_text(self.lblWinterExtendedSaloon, winter_extended_saloon["Min"], winter_extended_saloon["Max"])
+            self.set_label_text(self.lblWinterExtendedCabin, winter_extended_cabin["Min"], winter_extended_cabin["Max"])
+
+            # Update Labels - Winter Design (Max of Extended Range)
+            self.set_label_text(self.lblWinterDesignSaloon, None, winter_extended_saloon["Max"])
+            self.set_label_text(self.lblWinterDesignCabin, None, winter_extended_cabin["Max"])
+
+            # Update Labels - Summer Normal
+            self.set_label_text(self.lblSummerNormalSaloon, summer_saloon["Min"], summer_saloon["Max"])
+            self.set_label_text(self.lblSummerNormalCabin, summer_cabin["Min"], summer_cabin["Max"])
+
+            # Update Labels - Summer Extended
+            self.set_label_text(self.lblSummerExtendedSaloon, summer_extended_saloon["Min"], summer_extended_saloon["Max"])
+            self.set_label_text(self.lblSummerExtendedCabin, summer_extended_cabin["Min"], summer_extended_cabin["Max"])
+
+            # Update Labels - Summer Design (Min of Extended Range)
+            self.set_label_text(self.lblSummerDesignSaloon, summer_extended_saloon["Min"], None)
+            self.set_label_text(self.lblSummerDesignCabin, summer_extended_cabin["Min"], None)
+
+
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to update temperature conditions: {str(e)}")
 
 
-    def get_standard_saloon_and_cabin(self,selected_train_type, cmbx_saloon, lbl_saloon, cmbx_cabin, lbl_cabin):
-        standard_saloon_2, standard_cabin_2 = ProjectManager.get_train_standards(selected_train_type)
+    def set_label_text(self,label, min_val, max_val):
+        """
+        Set the label text based on available Min/Max values.
+        """
+        if min_val is not None and max_val is not None:
+            label.setText(f"{min_val} to {max_val}")
+        elif min_val is not None:
+            label.setText(f"{min_val}")
+        elif max_val is not None:
+            label.setText(f"{max_val}")
+        else:
+            label.setText("None")
+    def get_standard_saloon_and_cabin(self, selected_train_type, cmbx_saloon, lbl_saloon, cmbx_cabin, lbl_cabin):
+        """
+        Determines the standard saloon and cabin based on UI visibility.
+        If the combo box is visible, get the selected item; otherwise, use the label text.
+        """
+        # Get train standards (not needed for selecting saloon/cabin anymore)
+        
 
-        # Get only the keys (e.g., EN14750:2006)
-        saloon_keys = list(standard_saloon_2.keys())  
-        cabin_keys = list(standard_cabin_2.keys())  
 
-        # Determine standard_saloon
-        standard_saloon = cmbx_saloon.currentText().strip() if len(saloon_keys) > 1 else lbl_saloon.text().strip()
-
-        # Determine standard_cabin
-        standard_cabin = cmbx_cabin.currentText().strip() if len(cabin_keys) > 1 else lbl_cabin.text().strip()
+        # Check visibility of combo box; if visible, get text from combo box, else from label
+        standard_saloon = cmbx_saloon.currentText().strip() if cmbx_saloon.isVisible() else lbl_saloon.text().strip()
+        standard_cabin = cmbx_cabin.currentText().strip() if cmbx_cabin.isVisible() else lbl_cabin.text().strip()
 
         return standard_saloon, standard_cabin
+
     def update_tic_coefficients(self):
         """Fetch and update Tic coefficient based on selected values."""
         try:

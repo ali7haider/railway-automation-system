@@ -283,6 +283,28 @@ class ProjectManager:
             print(f"Error loading temperature conditions: {e}")
 
         return {"Design": "NA", "Extreme": "NA", "Operational": "NA"}
+    @staticmethod
+    def get_zone_temperature(standard, season, range_type, zone):
+        """
+        Retrieve temperature values from Zone_ranges.json.
+        
+        :param standard: Standard type (e.g., "EN13129:2016")
+        :param season: "Winter" or "Summer"
+        :param range_type: "Normal_Range" or "Extended_Range"
+        :param zone: Zone level ("I", "II", "III")
+        :return: Dictionary with Min/Max temperature or "NA" if not found
+        """
+        try:
+            # Load the JSON file
+            with open("data/Zone_ranges.json", "r") as file:
+                data = json.load(file)
+            print(standard, season, range_type, zone)
+            # Extract temperature data
+            return data.get(standard, {}).get(season, {}).get(range_type, {}).get(zone, {"Min": "NA", "Max": "NA"})
+
+        except Exception as e:
+            print(f"Error reading Zone_ranges.json: {e}")
+            return {"Min": "None", "Max": "None"}
 
     
     @staticmethod
