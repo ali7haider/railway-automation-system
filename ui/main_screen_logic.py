@@ -28,14 +28,27 @@ from PyQt5.QtGui import QIntValidator, QMouseEvent
 
 GLOBAL_STATE = False
 class MasterScreen(QtWidgets.QMainWindow):
-    def __init__(self):
+    def __init__(self,user_data=None):
         super().__init__()
         try:
             uic.loadUi("ui/ui_files/main.ui", self)  # Load UI file dynamically
             from modules.ui_functions import UIFunctions
             self.ui=self
             self.set_buttons_cursor()
-            
+            # Store user details
+            # Default user details if no user is provided
+            # Ensure user_data is a dictionary, otherwise set default user
+            if not isinstance(user_data, dict):
+                user_data = {"id": 0, "username": "guest", "name": "Guest User"}
+
+            # Store user details safely
+            self.user_id = user_data.get("id", 0)
+            self.username = user_data.get("username", "guest")
+            self.name = user_data.get("name", "Guest User")
+
+            # Display user details in the UI
+            self.lblNameUser.setText(f"Welcome, {self.name} ({self.username})!")
+                
 
             self.toggleButton.clicked.connect(lambda: UIFunctions.toggleMenu(self, True))
             UIFunctions.uiDefinitions(self)
@@ -258,6 +271,8 @@ class MasterScreen(QtWidgets.QMainWindow):
             summer_saloon = ProjectManager.get_temperature_conditions(standard_saloon, "Summer", summer_zone_saloon)
             summer_cabin = ProjectManager.get_temperature_conditions(standard_cabin, "Summer", summer_zone_cabin)
 
+            print(winter_saloon)
+            print(summer_saloon)
             # Update Winter Labels (Saloon & Cabin)
             self.lblWinterZoneSaloon.setText(winter_zone_saloon)
             self.lblWinterOperationalSaloon.setText(str(winter_saloon["Operational"]))

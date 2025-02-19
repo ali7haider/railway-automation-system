@@ -88,11 +88,13 @@ class Database:
         return self.fetch_one("SELECT id FROM users WHERE username = ?", (username,)) is not None
 
     def authenticate_user(self, username, password):
-        """Authenticate user login by verifying hashed password."""
-        user = self.fetch_one("SELECT password FROM users WHERE username = ?", (username,))
-        if user and self.verify_password(user[0], password):
-            return True  # Valid credentials
-        return False  # Invalid credentials
+        """Authenticate user and return user details if valid."""
+        user = self.fetch_one("SELECT id, username, name, password FROM users WHERE username = ?", (username,))
+        
+        if user and self.verify_password(user[3], password):  # Verify hashed password
+            return {"id": user[0], "username": user[1], "name": user[2]}  # Return user details
+
+        return None  # Return None if authentication fails
 
     def seed_users(self):
         """Seed the database with up to 5 predefined users, including dummy names."""

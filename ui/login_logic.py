@@ -36,26 +36,29 @@ class LoginWindow(QtWidgets.QMainWindow):
                 self.show_message_box("Login Error", "Username and password cannot be empty.")
                 return
 
-            if self.db.authenticate_user(username, password):
-                self.clear_message()  # Remove error message on success
+            user_data = self.db.authenticate_user(username, password)  # Get user details
+
+            if user_data:  # If authentication is successful
+                self.clear_message()
                 self.lblMessage.setText("Login Successful! Redirecting...")
 
-                # Switch to the main application page (Assuming stackedWidget exists)
-                self.stackedWidget.setCurrentIndex(1)  # Change to page index 1
+                # Pass the user data (ID, username, name) to the main screen
+                self.open_main_screen(user_data)  
             else:
                 self.show_label_error("*Invalid username or password.")
 
         except Exception as e:
             self.show_message_box("Unexpected Error", str(e))
 
-    def open_main_screen(self):
-        """Opens the main application screen when btnNewProject is clicked."""
+    def open_main_screen(self, user_data):
+        """Opens the main application screen and passes user details."""
         try:
-            self.main_screen = MasterScreen()  # Create instance of MainScreen
-            self.main_screen.show()  # Show the main screen window
+            self.main_screen = MasterScreen(user_data)  # Pass user details to MasterScreen
+            self.main_screen.show()
             self.close()  # Close login window
         except Exception as e:
             self.show_message_box("Error", f"Error opening main screen: {str(e)}")
+
 
     def show_label_error(self, message):
         """Displays an error message in lblMessage (only for incorrect login)."""

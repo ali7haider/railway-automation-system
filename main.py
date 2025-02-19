@@ -10,7 +10,7 @@ def show_critical_error(message):
     msg_box.setIcon(QMessageBox.Critical)
     msg_box.setWindowTitle("Critical Error")
     msg_box.setText(message)
-    msg_box.exec_()
+    msg_box.exec_() 
 
 if __name__ == "__main__":
     try:
