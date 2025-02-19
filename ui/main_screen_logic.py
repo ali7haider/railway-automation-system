@@ -148,13 +148,28 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.cmbxTypeOfTrainProject.currentTextChanged.connect(self.update_standard_fields)
             self.cmbxStandardSaloon.currentTextChanged.connect(self.update_max_mean_interior_temp)
             self.cmbxStandardCabin.currentTextChanged.connect(self.update_max_mean_interior_temp)
-            self.cmbxOperationCountryProject.currentTextChanged.connect(self.update_max_mean_interior_temp)
+
             self.cmbxTypeOfTrainProject.currentTextChanged.connect(self.update_standby_operator_temp)
 
             self.cmbxOperationCountryProject.currentTextChanged.connect(self.update_temperature_conditions)
             self.cmbxTypeOfTrainProject.currentTextChanged.connect(self.update_temperature_conditions)
             self.cmbxStandardSaloon.currentTextChanged.connect(self.update_temperature_conditions)
             self.cmbxStandardCabin.currentTextChanged.connect(self.update_temperature_conditions)
+
+
+            self.cmbxOperationCountryProject.currentTextChanged.connect(self.update_k_coefficient)
+            self.cmbxSigleDeckDoubleDeck.currentTextChanged.connect(self.update_k_coefficient)
+            self.cmbxStandardSaloon.currentTextChanged.connect(self.update_k_coefficient)
+            self.cmbxStandardCabin.currentTextChanged.connect(self.update_k_coefficient)
+
+            self.cmbxStandardSaloon.currentTextChanged.connect(self.update_tic_coefficients)
+            self.cmbxStandardCabin.currentTextChanged.connect(self.update_tic_coefficients)
+            self.cmbxOperationCountryProject.currentTextChanged.connect(self.update_tic_coefficients)
+            self.cmbxCompartmentProject.currentTextChanged.connect(self.update_tic_coefficients)
+
+            
+            self.cmbxOperationCountryProject.currentTextChanged.connect(self.update_max_mean_interior_temp)
+            self.cmbxTypeOfTrainProject.currentTextChanged.connect(self.update_max_mean_interior_temp)
 
 
         except Exception as e:
@@ -180,15 +195,6 @@ class MasterScreen(QtWidgets.QMainWindow):
             # **Update Standard Cabin**
             self.update_field(standard_cabin, self.lblStandardCabin, self.cmbxStandardCabin, self.lblCategoryCabin)
             # Connect additional field updates
-            self.cmbxOperationCountryProject.currentTextChanged.connect(self.update_k_coefficient)
-            self.cmbxSigleDeckDoubleDeck.currentTextChanged.connect(self.update_k_coefficient)
-            self.cmbxStandardSaloon.currentTextChanged.connect(self.update_k_coefficient)
-            self.cmbxStandardCabin.currentTextChanged.connect(self.update_k_coefficient)
-
-            self.cmbxStandardSaloon.currentTextChanged.connect(self.update_tic_coefficients)
-            self.cmbxStandardCabin.currentTextChanged.connect(self.update_tic_coefficients)
-            self.cmbxOperationCountryProject.currentTextChanged.connect(self.update_tic_coefficients)
-            self.cmbxCompartmentProject.currentTextChanged.connect(self.update_tic_coefficients)
             
             
 
@@ -398,10 +404,10 @@ class MasterScreen(QtWidgets.QMainWindow):
 
             # Validation: Ensure inputs are selected
             if standard_saloon in invalid_values or standard_cabin in invalid_values or compartment in invalid_values:
-                self.lblMaxSaloonInterior.setText("")
-                self.lblMinSaloonInterior.setText("")
-                self.lblTicMaxCabinInterior.setText("")
-                self.lblTicMinSaloonInterior.setText("")
+                self.lblMaxSaloonInterior.setText("°C")
+                self.lblMinSaloonInterior.setText("°C")
+                self.lblTicMaxCabinInterior.setText("°C")
+                self.lblTicMinSaloonInterior.setText("°C")
                 return  # Exit function
 
             # Step 2: Get Tic coefficients using ProjectManager
@@ -409,10 +415,10 @@ class MasterScreen(QtWidgets.QMainWindow):
             tic_max_cabin, tic_max_cabin = ProjectManager.get_tic_coefficients(standard_cabin, compartment)
 
             # Step 3: Update Labels
-            self.lblMaxSaloonInterior.setText(f"{tic_max_saloon}")
-            self.lblMinSaloonInterior.setText(f"{tic_min_saloon}")
-            self.lblTicMaxCabinInterior.setText(f"{tic_max_cabin}")
-            self.lblTicMinSaloonInterior.setText(f"{tic_max_cabin}")
+            self.lblMaxSaloonInterior.setText(f"{tic_max_saloon}°C")
+            self.lblMinSaloonInterior.setText(f"{tic_min_saloon}°C")
+            self.lblTicMaxCabinInterior.setText(f"{tic_max_cabin}°C")
+            self.lblTicMinSaloonInterior.setText(f"{tic_max_cabin}°C")
 
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to update Tic Coefficients: {str(e)}")
@@ -490,12 +496,12 @@ class MasterScreen(QtWidgets.QMainWindow):
                 selected_country in invalid_values or standard_saloon in invalid_values or standard_cabin in invalid_values
             ):
                 # Reset labels if validation fails
-                self.lblMaxMeanInteriorTempSaloon.setText("")
-                self.lblMaxMeanInteriorTempCabin.setText("")
+                self.lblMaxMeanInteriorTempSaloon.setText("°C")
+                self.lblMaxMeanInteriorTempCabin.setText("°C")
                 return  # Exit the function without proceeding further
             summer_zone_saloon = ProjectManager.get_summer_zone(selected_country, standard_saloon)
             summer_zone_cabin = ProjectManager.get_summer_zone(selected_country, standard_cabin)
-
+            
             # Step 3: Get Category
             category_saloon = self.lblCategorySaloon.text().strip()
             category_cabin = self.lblCategoryCabin.text().strip()
@@ -508,12 +514,12 @@ class MasterScreen(QtWidgets.QMainWindow):
             if temp_saloon:
                 self.lblMaxMeanInteriorTempSaloon.setText(str(temp_saloon))
             else:
-                self.lblMaxMeanInteriorTempSaloon.setText("NA")
+                self.lblMaxMeanInteriorTempSaloon.setText("°C")
 
             if temp_cabin:
                 self.lblMaxMeanInteriorTempCabin.setText(str(temp_cabin))
             else:
-                self.lblMaxMeanInteriorTempCabin.setText("NA")
+                self.lblMaxMeanInteriorTempCabin.setText("°C")
 
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to update Max Mean Interior Temperature: {str(e)}")

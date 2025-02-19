@@ -163,7 +163,6 @@ class ProjectManager:
         Returns:
             int or None: The max mean interior temperature value if found, else None.
         """
-        print(train_standard, summer_zone, category, subcategory)
         try:
             with open("data/Ti_max.json", "r", encoding="utf-8") as file:
                 temp_data = json.load(file)
@@ -220,15 +219,15 @@ class ProjectManager:
                 raise KeyError("Invalid JSON format: 'Standard' key missing.")
 
             # Default values
-            tic_max = "N/A"
-            tic_min = "N/A"
+            tic_max = "None"
+            tic_min = "None"
 
             # Search for matching standard and category
             for entry in tic_data["Standard"]:
                 if standard in entry:
                     if "Δtic" in entry[standard] and compartment in entry[standard]["Δtic"]:
-                        tic_max = entry[standard]["Δtic"][compartment].get("ΔTic Max", "N/A")
-                        tic_min = entry[standard]["Δtic"][compartment].get("ΔTic Min", "N/A")
+                        tic_max = entry[standard]["Δtic"][compartment].get("ΔTic Max", "None")
+                        tic_min = entry[standard]["Δtic"][compartment].get("ΔTic Min", "None")
                         break  # Exit loop after finding first match
 
             return tic_max, tic_min
@@ -275,12 +274,16 @@ class ProjectManager:
 
             # Extract and format values
             def format_conditions(condition_data):
-                degree_symbol = chr(176)  # Correct way to get '°'
+                degree_symbol = "°"  # Correct degree symbol
+                temp_key = "Temperature [\u00baC]"  # Use exact key from JSON
+                humidity_key = "Relative humidity [%]"
+                solar_load_key = "Solar load [W/m2]"
+
                 return {
-                    "Temperature": f"{condition_data.get('Temperature [°C]', 'None')}{degree_symbol}C",
-                    "Humidity": f"{condition_data.get('Relative humidity [%]', 'None')}%",
-                    "Solar Load": f"{condition_data.get('Solar load [W/m2]', 'None')} W/m2"
-                }
+                    "Temperature": f"{condition_data.get(temp_key, 'None')}{degree_symbol}C",
+                    "Humidity": f"{condition_data.get(humidity_key, 'None')}%",
+                    "Solar Load": f"{condition_data.get(solar_load_key, 'None')} W/m2"
+            }
 
             return {
                 "Design": format_conditions(season_data.get("Design conditions", {})),
