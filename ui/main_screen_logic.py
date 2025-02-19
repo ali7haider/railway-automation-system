@@ -273,25 +273,26 @@ class MasterScreen(QtWidgets.QMainWindow):
 
             # Update Winter Labels (Saloon & Cabin)
             self.lblWinterZoneSaloon.setText(winter_zone_saloon)
-            self.lblWinterOperationalSaloon.setText(str(winter_saloon["Operational"]))
-            self.lblWinterDesignSaloon.setText(str(winter_saloon["Design"]))
-            self.lblWinterExtremeSaloon.setText(str(winter_saloon["Extreme"]))
+            self.lblWinterOperationalSaloon.setText(self.format_label_text(winter_saloon["Operational"]))
+            self.lblWinterDesignSaloon.setText(self.format_label_text(winter_saloon["Design"]))
+            self.lblWinterExtremeSaloon.setText(self.format_label_text(winter_saloon["Extreme"]))
+
 
             self.lblWinterZoneCabin.setText(winter_zone_cabin)
-            self.lblWinterOperationalCabin.setText(str(winter_cabin["Operational"]))
-            self.lblWinterDesignCabin.setText(str(winter_cabin["Design"]))
-            self.lblWinterExtremeCabin.setText(str(winter_cabin["Extreme"]))
+            self.lblWinterOperationalCabin.setText(self.format_label_text(winter_cabin["Operational"]))
+            self.lblWinterDesignCabin.setText(self.format_label_text(winter_cabin["Design"]))
+            self.lblWinterExtremeCabin.setText(self.format_label_text(winter_cabin["Extreme"]))
 
             # Update Summer Labels (Saloon & Cabin)
             self.lblSummerZoneSaloon.setText(summer_zone_saloon)
-            self.lblSummerOperationalSaloon.setText(str(summer_saloon["Operational"]))
-            self.lblSummerDesignSaloon.setText(str(summer_saloon["Design"]))
-            self.lblSummerExtremeSaloon.setText(str(summer_saloon["Extreme"]))
+            self.lblSummerOperationalSaloon.setText(self.format_label_text(summer_saloon["Operational"]))
+            self.lblSummerDesignSaloon.setText(self.format_label_text(summer_saloon["Design"]))
+            self.lblSummerExtremeSaloon.setText(self.format_label_text(summer_saloon["Extreme"]))
 
             self.lblSummerZoneCabin.setText(summer_zone_cabin)
-            self.lblSummerOperationalCabin.setText(str(summer_cabin["Operational"]))
-            self.lblSummerDesignCabin.setText(str(summer_cabin["Design"]))
-            self.lblSummerExtremeCabin.setText(str(summer_cabin["Extreme"]))
+            self.lblSummerOperationalCabin.setText(self.format_label_text(summer_cabin["Operational"]))
+            self.lblSummerDesignCabin.setText(self.format_label_text(summer_cabin["Design"]))
+            self.lblSummerExtremeCabin.setText(self.format_label_text(summer_cabin["Extreme"]))
 
 
                         # Fetch Winter & Summer Temperature Conditions for Saloon and Cabin
@@ -305,36 +306,55 @@ class MasterScreen(QtWidgets.QMainWindow):
             winter_extended_cabin = ProjectManager.get_zone_temperature(standard_cabin, "Winter", "Extended_Range", winter_zone_cabin)
             summer_extended_saloon = ProjectManager.get_zone_temperature(standard_saloon, "Summer", "Extended_Range", summer_zone_saloon)
             summer_extended_cabin = ProjectManager.get_zone_temperature(standard_cabin, "Summer", "Extended_Range", summer_zone_cabin)
-            print(winter_saloon, winter_cabin, summer_saloon, summer_cabin, winter_extended_saloon, winter_extended_cabin, summer_extended_saloon, summer_extended_cabin)       
             # Update Labels - Winter Normal
-            self.set_label_text(self.lblWinterNormalSaloon, winter_saloon["Min"], winter_saloon["Max"])
-            self.set_label_text(self.lblWinterNormalCabin, winter_cabin["Min"], winter_cabin["Max"])
+            self.set_label_textNormalWinter(self.lblWinterNormalSaloon, winter_saloon["Min"])
+            self.set_label_textNormalWinter(self.lblWinterNormalCabin, winter_cabin["Min"])
 
             # Update Labels - Winter Extended
-            self.set_label_text(self.lblWinterExtendedSaloon, winter_extended_saloon["Min"], winter_extended_saloon["Max"])
-            self.set_label_text(self.lblWinterExtendedCabin, winter_extended_cabin["Min"], winter_extended_cabin["Max"])
-
-            # Update Labels - Winter Design (Max of Extended Range)
-            self.set_label_text(self.lblWinterDesignSaloon, None, winter_extended_saloon["Max"])
-            self.set_label_text(self.lblWinterDesignCabin, None, winter_extended_cabin["Max"])
+            # Update Labels - Winter Extended
+            self.set_label_text_range(self.lblWinterExtendedSaloon, winter_extended_saloon["Min"], winter_extended_saloon["Max"])
+            self.set_label_text_range(self.lblWinterExtendedCabin, winter_extended_cabin["Min"], winter_extended_cabin["Max"])
+            
+            self.set_label_text_range(self.lblSummerExtendedSaloon, summer_extended_saloon["Min"], summer_extended_saloon["Max"])
+            self.set_label_text_range(self.lblSummerExtendedCabin, summer_extended_cabin["Min"], summer_extended_cabin["Max"])
 
             # Update Labels - Summer Normal
-            self.set_label_text(self.lblSummerNormalSaloon, summer_saloon["Min"], summer_saloon["Max"])
-            self.set_label_text(self.lblSummerNormalCabin, summer_cabin["Min"], summer_cabin["Max"])
-
-            # Update Labels - Summer Extended
-            self.set_label_text(self.lblSummerExtendedSaloon, summer_extended_saloon["Min"], summer_extended_saloon["Max"])
-            self.set_label_text(self.lblSummerExtendedCabin, summer_extended_cabin["Min"], summer_extended_cabin["Max"])
-
-            # Update Labels - Summer Design (Min of Extended Range)
-            self.set_label_text(self.lblSummerDesignSaloon, summer_extended_saloon["Min"], None)
-            self.set_label_text(self.lblSummerDesignCabin, summer_extended_cabin["Min"], None)
-
-
+            self.set_label_textNormalSummer(self.lblSummerNormalSaloon,summer_saloon["Max"])
+            self.set_label_textNormalSummer(self.lblSummerNormalCabin,summer_cabin["Max"])
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to update temperature conditions: {str(e)}")
 
 
+    def format_label_text(self,condition):
+        """Formats the condition dictionary into a readable text for labels."""
+        return f'{condition["Temperature"]}, {condition["Humidity"]}, {condition["Solar Load"]}'
+
+    def set_label_text_range(self, label, min_temp, max_temp):
+        """
+        Sets the label text in the format: Max°C ≤ Text ≥ Min°C
+        Handles None values gracefully.
+        """
+        min_str = f"{min_temp}°C" if min_temp is not None else "None°C"
+        max_str = f"{max_temp}°C" if max_temp is not None else "None°C"
+        
+        label.setText(f"{max_str} ≤ Text ≥ {min_str}")
+
+    
+    
+    def set_label_textNormalWinter(self,label, val):
+        """
+        Set the label text based on available Min/Max values.
+        """
+        min_str = f"Text ≥ {val}°C" if val is not None else "Text ≥ None°C"
+        label.setText(f"{min_str}")
+    
+    def set_label_textNormalSummer(self,label, val):
+        """
+        Set the label text based on available Min/Max values.
+        """
+        max_str = f"{val}°C ≤ Text" if val is not None else "None°C ≤ Text"
+        label.setText(f"{max_str}")
+        
     def set_label_text(self,label, min_val, max_val):
         """
         Set the label text based on available Min/Max values.

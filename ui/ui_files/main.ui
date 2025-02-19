@@ -2188,7 +2188,7 @@ font-weight:bold;</string>
                                 <property name="geometry">
                                  <rect>
                                   <x>0</x>
-                                  <y>-266</y>
+                                  <y>-587</y>
                                   <width>948</width>
                                   <height>1973</height>
                                  </rect>
@@ -3062,70 +3062,70 @@ background-color:#1159A8;
                                        <item row="7" column="1">
                                         <widget class="QLabel" name="lblMaxSaloonInterior">
                                          <property name="text">
-                                          <string/>
+                                          <string>°C</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="8" column="1">
                                         <widget class="QLabel" name="lblMinSaloonInterior">
                                          <property name="text">
-                                          <string/>
+                                          <string>°C</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="9" column="1">
                                         <widget class="QLabel" name="lblTicMaxCabinInterior">
                                          <property name="text">
-                                          <string/>
+                                          <string>°C</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="10" column="1">
                                         <widget class="QLabel" name="lblTicMinSaloonInterior">
                                          <property name="text">
-                                          <string/>
+                                          <string>°C</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="11" column="1">
                                         <widget class="QLabel" name="lblMaxMeanInteriorTempSaloon">
                                          <property name="text">
-                                          <string/>
+                                          <string>°C</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="12" column="1">
                                         <widget class="QLabel" name="lblMaxMeanInteriorTempCabin">
                                          <property name="text">
-                                          <string/>
+                                          <string>°C</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="13" column="1">
                                         <widget class="QLabel" name="lblStandByOperatorSaloonMax">
                                          <property name="text">
-                                          <string/>
+                                          <string>°C</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="14" column="1">
                                         <widget class="QLabel" name="lblStandByOperatorSaloonMin">
                                          <property name="text">
-                                          <string/>
+                                          <string>°C</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="15" column="1">
                                         <widget class="QLabel" name="lblStandByOperatorCabinMax">
                                          <property name="text">
-                                          <string/>
+                                          <string>°C</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="16" column="1">
                                         <widget class="QLabel" name="lblStandByOperatorCabinMin">
                                          <property name="text">
-                                          <string/>
+                                          <string>°C</string>
                                          </property>
                                         </widget>
                                        </item>
@@ -3299,70 +3299,70 @@ background-color:#1159A8;
                                        <item row="7" column="1">
                                         <widget class="QLabel" name="lblWinterNormalSaloon">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>Text ≥ °C</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="8" column="1">
                                         <widget class="QLabel" name="lblSummerNormalSaloon">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>Text ≤ °C</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="9" column="1">
                                         <widget class="QLabel" name="lblWinterExtendedSaloon">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>°C ≤ Text  ≥ °C</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="10" column="1">
                                         <widget class="QLabel" name="lblSummerExtendedSaloon">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>°C ≤ Text  ≥ °C</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="11" column="1">
                                         <widget class="QLabel" name="lblWinterDesignSaloon">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>°C, % , W/m2</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="12" column="1">
                                         <widget class="QLabel" name="lblSummerDesignSaloon">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>°C, % , W/m2</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="13" column="1">
                                         <widget class="QLabel" name="lblWinterExtremeSaloon">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>°C, % , W/m2</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="14" column="1">
                                         <widget class="QLabel" name="lblSummerExtremeSaloon">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>°C, % , W/m2</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="15" column="1">
                                         <widget class="QLabel" name="lblWinterOperationalSaloon">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>°C, % , W/m2</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="16" column="1">
                                         <widget class="QLabel" name="lblSummerOperationalSaloon">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>°C, % , W/m2</string>
                                          </property>
                                         </widget>
                                        </item>
@@ -3550,70 +3550,70 @@ font-weight:bold;</string>
                                        <item row="7" column="1">
                                         <widget class="QLabel" name="lblWinterNormalCabin">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>Text ≥ °C</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="8" column="1">
                                         <widget class="QLabel" name="lblSummerNormalCabin">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>Text ≤ °C</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="9" column="1">
                                         <widget class="QLabel" name="lblWinterExtendedCabin">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>°C ≤ Text  ≥ °C</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="10" column="1">
                                         <widget class="QLabel" name="lblSummerExtendedCabin">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>°C ≤ Text  ≥ °C</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="11" column="1">
                                         <widget class="QLabel" name="lblWinterDesignCabin">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>°C, % , W/m2</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="12" column="1">
                                         <widget class="QLabel" name="lblSummerDesignCabin">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>°C, % , W/m2</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="13" column="1">
                                         <widget class="QLabel" name="lblWinterExtremeCabin">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>°C, % , W/m2</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="14" column="1">
                                         <widget class="QLabel" name="lblSummerExtremeCabin">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>°C, % , W/m2</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="15" column="1">
                                         <widget class="QLabel" name="lblWinterOperationalCabin">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>°C, % , W/m2</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="16" column="1">
                                         <widget class="QLabel" name="lblSummerOperationalCabin">
                                          <property name="text">
-                                          <string>NA</string>
+                                          <string>°C, % , W/m2</string>
                                          </property>
                                         </widget>
                                        </item>

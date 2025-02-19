@@ -273,16 +273,30 @@ class ProjectManager:
             # Navigate JSON structure
             season_data = temp_data.get(standard, {}).get(season, {}).get(zone, {}).get("Conditions", {})
 
+            # Extract and format values
+            def format_conditions(condition_data):
+                degree_symbol = chr(176)  # Correct way to get '°'
+                return {
+                    "Temperature": f"{condition_data.get('Temperature [°C]', 'None')}{degree_symbol}C",
+                    "Humidity": f"{condition_data.get('Relative humidity [%]', 'None')}%",
+                    "Solar Load": f"{condition_data.get('Solar load [W/m2]', 'None')} W/m2"
+                }
+
             return {
-                "Design": season_data.get("Design conditions", {}).get("Temperature [ºC]", "NA"),
-                "Extreme": season_data.get("Extreme conditions", {}).get("Temperature [ºC]", "NA"),
-                "Operational": season_data.get("Operational limit", {}).get("Temperature [ºC]", "NA"),
+                "Design": format_conditions(season_data.get("Design conditions", {})),
+                "Extreme": format_conditions(season_data.get("Extreme conditions", {})),
+                "Operational": format_conditions(season_data.get("Operational limit", {})),
             }
 
         except Exception as e:
             print(f"Error loading temperature conditions: {e}")
 
-        return {"Design": "NA", "Extreme": "NA", "Operational": "NA"}
+        return {
+            "Design": {"Temperature": "None°C", "Humidity": "None%", "Solar Load": "None W/m2"},
+            "Extreme": {"Temperature": "None°C", "Humidity": "None%", "Solar Load": "None W/m2"},
+            "Operational": {"Temperature": "None°C", "Humidity": "None%", "Solar Load": "None W/m2"},
+        }
+
     @staticmethod
     def get_zone_temperature(standard, season, range_type, zone):
         """
@@ -298,7 +312,6 @@ class ProjectManager:
             # Load the JSON file
             with open("data/Zone_ranges.json", "r") as file:
                 data = json.load(file)
-            print(standard, season, range_type, zone)
             # Extract temperature data
             return data.get(standard, {}).get(season, {}).get(range_type, {}).get(zone, {"Min": "NA", "Max": "NA"})
 
