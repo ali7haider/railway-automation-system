@@ -150,6 +150,8 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.cmbxStandardCabin.currentTextChanged.connect(self.update_max_mean_interior_temp)
 
             self.cmbxTypeOfTrainProject.currentTextChanged.connect(self.update_standby_operator_temp)
+            self.cmbxStandardSaloon.currentTextChanged.connect(self.update_standby_operator_temp)
+            self.cmbxStandardCabin.currentTextChanged.connect(self.update_standby_operator_temp)
 
             self.cmbxOperationCountryProject.currentTextChanged.connect(self.update_temperature_conditions)
             self.cmbxTypeOfTrainProject.currentTextChanged.connect(self.update_temperature_conditions)

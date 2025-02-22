@@ -38,7 +38,12 @@
 	color: rgb(221, 221, 221);
 	font: 10pt &quot;Calibri&quot;;
 }
-
+#topLogo {
+	background-color: rgb(33, 37, 43);
+	image: url(:/images/images/images/Small-logo.ico);
+	background-position: centered;
+	background-repeat: no-repeat;
+}
 /* /////////////////////////////////////////////////////////////////////////////////////////////////
 Tooltip */
 QToolTip {
@@ -2188,7 +2193,7 @@ font-weight:bold;</string>
                                 <property name="geometry">
                                  <rect>
                                   <x>0</x>
-                                  <y>-587</y>
+                                  <y>0</y>
                                   <width>948</width>
                                   <height>1973</height>
                                  </rect>

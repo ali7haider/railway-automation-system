@@ -186,6 +186,8 @@ class ProjectManager:
         try:
             with open("data/K_coefficient.json", "r") as file:
                 k_data = json.load(file)
+            if category == "-":
+                category = ""
 
             # Navigate the JSON structure
             category_data = k_data.get(standard, {}).get("Category", {}).get(category, {})
