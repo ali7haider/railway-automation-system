@@ -14,34 +14,7 @@
    <string>Edit User</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">#frame {	
-
-}
-
-
-QLineEdit {
-background-color:white;
-border:none;
-border-bottom:2px solid rgba(46, 82, 101, 200);
-color:black;
-padding-bottom:5px;
-padding-left:3px;
-}
-QLabel{
-font: 12pt &quot;Bahnschrift SemiCondensed&quot;;
-
-}
-
-#btnEdit {
-	background-color: #48ACAC;
-	border-radius:50px;
-	color:white;
-font: 14pt &quot;Bahnschrift SemiCondensed&quot;;
-
-}
-#btnEdit:hover{
-background-color: #2F958D;
-}</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -61,6 +34,133 @@ background-color: #2F958D;
    </property>
    <item>
     <widget class="QFrame" name="frame">
+     <property name="styleSheet">
+      <string notr="true">QScrollBar:horizontal {
+    background: #FFF;
+    height: 8px;
+    margin: 0px 16px 0 16px;
+    border: none;
+}
+QScrollBar:vertical {
+    background: #FFF;
+    width: 8px;
+    margin: 16px 0 16px 0;
+    border: none;
+}
+QScrollBar::handle:horizontal {
+    background: #3333;
+    min-width: 20px;
+    border-radius: 4px;
+}
+QScrollBar::handle:vertical {
+    background: #3333;
+    min-height: 20px;
+    border-radius: 4px;
+}
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal,
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    background: none;
+}
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal,
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+#frame {	
+
+}
+
+
+QLineEdit {
+background-color:white;
+border:none;
+border-bottom:2px solid rgba(46, 82, 101, 200);
+color:black;
+padding-bottom:5px;
+padding-left:3px;
+}
+QLabel{
+font: 12pt &quot;Bahnschrift SemiCondensed&quot;;
+
+}
+
+QScrollBar:horizontal {
+    border: none;
+    background: rgb(52, 59, 72);
+    height: 8px;
+    margin: 0px 21px 0 21px;
+	border-radius: 0px;
+}
+QScrollBar::handle:horizontal {
+    background: #345CBF;
+    min-width: 25px;
+	border-radius: 4px
+}
+QScrollBar::add-line:horizontal {
+    border: none;
+    background: rgb(55, 63, 77);
+    width: 20px;
+	border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:horizontal {
+    border: none;
+    background: rgb(55, 63, 77);
+    width: 20px;
+	border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
+{
+     background: none;
+}
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+{
+     background: none;
+}
+ QScrollBar:vertical {
+	border: none;
+    background: rgb(52, 59, 72);
+    width: 8px;
+    margin: 21px 0 21px 0;
+	border-radius: 0px;
+ }
+ QScrollBar::handle:vertical {	
+	background: #345CBF;
+    min-height: 25px;
+	border-radius: 4px
+ }
+ QScrollBar::add-line:vertical {
+     border: none;
+    background: rgb(55, 63, 77);
+     height: 20px;
+	border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::sub-line:vertical {
+	border: none;
+    background: rgb(55, 63, 77);
+     height: 20px;
+	border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+     background: none;
+ }
+
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+     background: none;
+ }
+</string>
+     </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -93,8 +193,8 @@ background-color: #2F958D;
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>905</width>
-           <height>717</height>
+           <width>897</width>
+           <height>740</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -169,18 +269,11 @@ color:#fff;</string>
              <enum>QFrame::Raised</enum>
             </property>
             <layout class="QGridLayout" name="gridLayout">
-             <item row="0" column="3">
-              <widget class="QLabel" name="lblSaloonStandard">
-               <property name="text">
-                <string>TextLabel</string>
-               </property>
-              </widget>
-             </item>
              <item row="5" column="5">
               <widget class="QLineEdit" name="lineEdit_10"/>
              </item>
              <item row="4" column="4">
-              <widget class="QLabel" name="lblSaloonStandard_5">
+              <widget class="QLabel" name="labelSaloonStandard_5">
                <property name="text">
                 <string>Custom max</string>
                </property>
@@ -230,7 +323,7 @@ color:#fff;</string>
               </widget>
              </item>
              <item row="1" column="5">
-              <widget class="QLabel" name="lblSaloonStandard_11">
+              <widget class="QLabel" name="labelSaloonStandard_11">
                <property name="text">
                 <string>Custom min</string>
                </property>
@@ -240,7 +333,7 @@ color:#fff;</string>
               </widget>
              </item>
              <item row="2" column="0">
-              <widget class="QLabel" name="lblSaloonStandard_3">
+              <widget class="QLabel" name="labelSaloonStandard_3">
                <property name="text">
                 <string>ΔTic Saloon</string>
                </property>
@@ -275,7 +368,7 @@ color:#fff;</string>
               <widget class="QLineEdit" name="lineEdit_3"/>
              </item>
              <item row="4" column="2">
-              <widget class="QLabel" name="lblSaloonStandard_2">
+              <widget class="QLabel" name="labelSaloonStandard_2">
                <property name="text">
                 <string>Δtic Max</string>
                </property>
@@ -285,7 +378,7 @@ color:#fff;</string>
               </widget>
              </item>
              <item row="4" column="3">
-              <widget class="QLabel" name="lblSaloonStandard_4">
+              <widget class="QLabel" name="labelSaloonStandard_4">
                <property name="text">
                 <string>Δtic Min</string>
                </property>
@@ -313,8 +406,15 @@ color:#fff;</string>
                </property>
               </spacer>
              </item>
-             <item row="3" column="3">
-              <widget class="QLabel" name="label_2">
+             <item row="0" column="2">
+              <widget class="QLabel" name="lblSaloonStandard">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="QLabel" name="lblCabinStandard">
                <property name="text">
                 <string>TextLabel</string>
                </property>
@@ -331,42 +431,350 @@ color:#fff;</string>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
-            <widget class="QLineEdit" name="lineEdit_9">
-             <property name="geometry">
-              <rect>
-               <x>520</x>
-               <y>120</y>
-               <width>109</width>
-               <height>25</height>
-              </rect>
-             </property>
-            </widget>
-            <widget class="QLabel" name="lblSaloonStandard_10">
-             <property name="geometry">
-              <rect>
-               <x>340</x>
-               <y>180</y>
-               <width>190</width>
-               <height>113</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>TextLabel</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-             </property>
-            </widget>
+            <layout class="QGridLayout" name="gridLayout_2">
+             <item row="2" column="1">
+              <widget class="QLabel" name="lblCabinStandard_2">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="4">
+              <widget class="QLabel" name="label_10">
+               <property name="text">
+                <string>°C</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="lineEdit_2"/>
+             </item>
+             <item row="3" column="1">
+              <widget class="QLineEdit" name="lineEdit_9"/>
+             </item>
+             <item row="1" column="3">
+              <widget class="QLineEdit" name="lineEdit_11"/>
+             </item>
+             <item row="3" column="3">
+              <widget class="QLineEdit" name="lineEdit_12"/>
+             </item>
+             <item row="1" column="2">
+              <widget class="QLabel" name="label_5">
+               <property name="text">
+                <string>°C</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_4">
+               <property name="text">
+                <string>Maximum mean interior temperature</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_3">
+               <property name="text">
+                <string>Maximum mean interior temperature</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="QLabel" name="label_6">
+               <property name="text">
+                <string>°C</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="4">
+              <widget class="QLabel" name="label_9">
+               <property name="text">
+                <string>°C</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLabel" name="lblSaloonStandard_2">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
           <item>
-           <widget class="QFrame" name="frame_5">
+           <widget class="QFrame" name="frame_7">
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
+            <layout class="QVBoxLayout" name="verticalLayout_6">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QFrame" name="frame_8">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_3">
+                <item row="5" column="5">
+                 <widget class="QLineEdit" name="lineEdit_13"/>
+                </item>
+                <item row="4" column="4">
+                 <widget class="QLabel" name="labelSaloonStandard_6">
+                  <property name="text">
+                   <string>Custom max</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QLabel" name="lblSaloonStandard_10">
+                  <property name="text">
+                   <string>Δtic Max</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="5">
+                 <widget class="QLabel" name="lblSaloonStandard_11">
+                  <property name="text">
+                   <string>Custom min</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="4">
+                 <widget class="QLabel" name="lblSaloonStandard_12">
+                  <property name="text">
+                   <string>Custom max</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="3">
+                 <widget class="QLabel" name="lblSaloonStandard_13">
+                  <property name="text">
+                   <string>Δtic Min</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="5">
+                 <widget class="QLabel" name="labelSaloonStandard_12">
+                  <property name="text">
+                   <string>Custom min</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="labelSaloonStandard_7">
+                  <property name="text">
+                   <string>Maximun Saloon</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="0">
+                 <widget class="QLabel" name="labelTicStandard_2">
+                  <property name="text">
+                   <string>Minimun Cabin</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="2">
+                 <widget class="QLineEdit" name="lineEdit_14"/>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QLineEdit" name="lineEdit_15"/>
+                </item>
+                <item row="2" column="3">
+                 <widget class="QLineEdit" name="lineEdit_16"/>
+                </item>
+                <item row="5" column="3">
+                 <widget class="QLineEdit" name="lineEdit_17"/>
+                </item>
+                <item row="5" column="4">
+                 <widget class="QLineEdit" name="lineEdit_18"/>
+                </item>
+                <item row="4" column="2">
+                 <widget class="QLabel" name="labelSaloonStandard_8">
+                  <property name="text">
+                   <string>Δtic Max</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="3">
+                 <widget class="QLabel" name="labelSaloonStandard_9">
+                  <property name="text">
+                   <string>Δtic Min</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="4">
+                 <widget class="QLineEdit" name="lineEdit_19"/>
+                </item>
+                <item row="2" column="5">
+                 <widget class="QLineEdit" name="lineEdit_20"/>
+                </item>
+                <item row="2" column="1">
+                 <spacer name="horizontalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_2">
+                  <property name="styleSheet">
+                   <string notr="true">border-radius:2px;
+padding:2px;
+border:2px solid black;
+</string>
+                  </property>
+                  <property name="text">
+                   <string>Stand-by operation</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QLabel" name="lblSaloonStandard_3">
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="2">
+                 <widget class="QLabel" name="lblCabinStandard_3">
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_5">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_7">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border-radius:2px;
+padding:5px;
+border:2px solid black;
+</string>
+               </property>
+               <property name="text">
+                <string>Maximum mean interior temperature</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_6">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_4">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_8">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QComboBox" name="comboBox"/>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>
