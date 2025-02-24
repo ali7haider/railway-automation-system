@@ -1625,7 +1625,7 @@ border:1px solid rgba(46, 82, 101, 200);
                <number>0</number>
               </property>
               <item row="0" column="1">
-               <widget class="QComboBox" name="comboBox_4">
+               <widget class="QComboBox" name="cmbxCabinCustomNorm">
                 <property name="minimumSize">
                  <size>
                   <width>150</width>
@@ -1726,49 +1726,20 @@ border:1px solid rgba(46, 82, 101, 200);
                     <property name="spacing">
                      <number>0</number>
                     </property>
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="label_79">
-                      <property name="text">
-                       <string>Tin</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="7">
-                     <widget class="QLineEdit" name="lineEdit_171"/>
-                    </item>
-                    <item row="0" column="3" colspan="2">
-                     <widget class="QLineEdit" name="lineEdit_172"/>
-                    </item>
-                    <item row="0" column="0" colspan="2">
-                     <widget class="QLabel" name="label_80">
-                      <property name="text">
-                       <string>Text</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="9">
-                     <widget class="QLineEdit" name="lineEdit_173"/>
-                    </item>
-                    <item row="2" column="10">
-                     <widget class="QLineEdit" name="lineEdit_174"/>
-                    </item>
                     <item row="2" column="3" colspan="2">
-                     <widget class="QLineEdit" name="lineEdit_175"/>
-                    </item>
-                    <item row="0" column="9">
-                     <widget class="QLineEdit" name="lineEdit_176"/>
-                    </item>
-                    <item row="0" column="10">
-                     <widget class="QLineEdit" name="lineEdit_177"/>
+                     <widget class="QLineEdit" name="txtNormCabinCurve5"/>
                     </item>
                     <item row="0" column="5">
-                     <widget class="QLineEdit" name="lineEdit_178"/>
+                     <widget class="QLineEdit" name="txtNormCabinCurve2"/>
+                    </item>
+                    <item row="0" column="9">
+                     <widget class="QLineEdit" name="txtNormCabinCurve4"/>
                     </item>
                     <item row="0" column="7">
-                     <widget class="QLineEdit" name="lineEdit_179"/>
+                     <widget class="QLineEdit" name="txtNormCabinCurve3"/>
                     </item>
                     <item row="2" column="5">
-                     <widget class="QLineEdit" name="lineEdit_180"/>
+                     <widget class="QLineEdit" name="txtNormCabinCurve6"/>
                     </item>
                     <item row="0" column="2">
                      <spacer name="horizontalSpacer_18">
@@ -1785,6 +1756,29 @@ border:1px solid rgba(46, 82, 101, 200);
                        </size>
                       </property>
                      </spacer>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_79">
+                      <property name="text">
+                       <string>Tin</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="7">
+                     <widget class="QLineEdit" name="txtNormCabinCurve7"/>
+                    </item>
+                    <item row="0" column="3" colspan="2">
+                     <widget class="QLineEdit" name="txtNormCabinCurve1"/>
+                    </item>
+                    <item row="0" column="0" colspan="2">
+                     <widget class="QLabel" name="label_80">
+                      <property name="text">
+                       <string>Text</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="9">
+                     <widget class="QLineEdit" name="txtNormCabinCurve8"/>
                     </item>
                    </layout>
                   </widget>
@@ -1819,47 +1813,16 @@ border:1px solid rgba(46, 82, 101, 200);
                     <property name="spacing">
                      <number>0</number>
                     </property>
-                    <item row="2" column="5">
-                     <widget class="QLineEdit" name="lineEdit_181"/>
-                    </item>
-                    <item row="2" column="9">
-                     <widget class="QLineEdit" name="lineEdit_182"/>
-                    </item>
-                    <item row="2" column="7">
-                     <widget class="QLineEdit" name="lineEdit_183"/>
-                    </item>
-                    <item row="0" column="3" colspan="2">
-                     <widget class="QLineEdit" name="lineEdit_184"/>
-                    </item>
-                    <item row="0" column="5">
-                     <widget class="QLineEdit" name="lineEdit_185"/>
-                    </item>
-                    <item row="2" column="3" colspan="2">
-                     <widget class="QLineEdit" name="lineEdit_186"/>
-                    </item>
                     <item row="0" column="7">
-                     <widget class="QLineEdit" name="lineEdit_187"/>
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit3"/>
                     </item>
-                    <item row="2" column="10">
-                     <widget class="QLineEdit" name="lineEdit_188"/>
+                    <item row="0" column="9">
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit4"/>
                     </item>
                     <item row="0" column="0" colspan="2">
                      <widget class="QLabel" name="label_81">
                       <property name="text">
                        <string>Text</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="10">
-                     <widget class="QLineEdit" name="lineEdit_189"/>
-                    </item>
-                    <item row="0" column="9">
-                     <widget class="QLineEdit" name="lineEdit_190"/>
-                    </item>
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="label_92">
-                      <property name="text">
-                       <string>Tin</string>
                       </property>
                      </widget>
                     </item>
@@ -1879,13 +1842,38 @@ border:1px solid rgba(46, 82, 101, 200);
                       </property>
                      </spacer>
                     </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_92">
+                      <property name="text">
+                       <string>Tin</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="3" colspan="2">
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit1"/>
+                    </item>
+                    <item row="0" column="5">
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit2"/>
+                    </item>
+                    <item row="2" column="3" colspan="2">
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit5"/>
+                    </item>
+                    <item row="2" column="7">
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit7"/>
+                    </item>
+                    <item row="2" column="9">
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit8"/>
+                    </item>
+                    <item row="2" column="5">
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit6"/>
+                    </item>
                    </layout>
                   </widget>
                  </item>
                  <item row="0" column="0">
                   <widget class="QLabel" name="lblCabinStandard_4">
                    <property name="text">
-                    <string>Custom</string>
+                    <string>Norm</string>
                    </property>
                   </widget>
                  </item>
@@ -1947,13 +1935,13 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="2" column="5">
-                     <widget class="QLineEdit" name="lineEdit_191"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit7"/>
                     </item>
                     <item row="2" column="7">
-                     <widget class="QLineEdit" name="lineEdit_192"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit8"/>
                     </item>
                     <item row="0" column="3" colspan="2">
-                     <widget class="QLineEdit" name="lineEdit_193"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit1"/>
                     </item>
                     <item row="0" column="0" colspan="2">
                      <widget class="QLabel" name="label_110">
@@ -1963,25 +1951,25 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="2" column="9">
-                     <widget class="QLineEdit" name="lineEdit_194"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit9"/>
                     </item>
                     <item row="2" column="10">
-                     <widget class="QLineEdit" name="lineEdit_195"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit10"/>
                     </item>
                     <item row="2" column="3" colspan="2">
-                     <widget class="QLineEdit" name="lineEdit_196"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit6"/>
                     </item>
                     <item row="0" column="5">
-                     <widget class="QLineEdit" name="lineEdit_197"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit2"/>
                     </item>
                     <item row="0" column="7">
-                     <widget class="QLineEdit" name="lineEdit_198"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit3"/>
                     </item>
                     <item row="0" column="9">
-                     <widget class="QLineEdit" name="lineEdit_199"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit4"/>
                     </item>
                     <item row="0" column="10">
-                     <widget class="QLineEdit" name="lineEdit_200"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit5"/>
                     </item>
                     <item row="0" column="2">
                      <spacer name="horizontalSpacer_20">
@@ -2044,7 +2032,7 @@ border:1px solid rgba(46, 82, 101, 200);
             </widget>
            </item>
            <item>
-            <widget class="QFrame" name="frame_41">
+            <widget class="QFrame" name="frame_54">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -2063,7 +2051,7 @@ border:1px solid rgba(46, 82, 101, 200);
              <property name="frameShadow">
               <enum>QFrame::Raised</enum>
              </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_16">
+             <layout class="QHBoxLayout" name="horizontalLayout_18">
               <property name="leftMargin">
                <number>0</number>
               </property>
@@ -2077,16 +2065,16 @@ border:1px solid rgba(46, 82, 101, 200);
                <number>0</number>
               </property>
               <item>
-               <widget class="QFrame" name="frame_45">
+               <widget class="QFrame" name="frame_55">
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QGridLayout" name="gridLayout_40">
+                <layout class="QGridLayout" name="gridLayout_48">
                  <item row="6" column="0">
-                  <widget class="QFrame" name="frame_46">
+                  <widget class="QFrame" name="frame_56">
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
@@ -2099,7 +2087,7 @@ border:1px solid rgba(46, 82, 101, 200);
                    <property name="frameShadow">
                     <enum>QFrame::Raised</enum>
                    </property>
-                   <layout class="QGridLayout" name="gridLayout_41">
+                   <layout class="QGridLayout" name="gridLayout_49">
                     <property name="leftMargin">
                      <number>0</number>
                     </property>
@@ -2115,52 +2103,23 @@ border:1px solid rgba(46, 82, 101, 200);
                     <property name="spacing">
                      <number>0</number>
                     </property>
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="label_85">
-                      <property name="text">
-                       <string>Tin</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="7">
-                     <widget class="QLineEdit" name="lineEdit_231"/>
-                    </item>
-                    <item row="0" column="3" colspan="2">
-                     <widget class="QLineEdit" name="lineEdit_232"/>
-                    </item>
-                    <item row="0" column="0" colspan="2">
-                     <widget class="QLabel" name="label_86">
-                      <property name="text">
-                       <string>Text</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="9">
-                     <widget class="QLineEdit" name="lineEdit_233"/>
-                    </item>
-                    <item row="2" column="10">
-                     <widget class="QLineEdit" name="lineEdit_234"/>
-                    </item>
                     <item row="2" column="3" colspan="2">
-                     <widget class="QLineEdit" name="lineEdit_235"/>
-                    </item>
-                    <item row="0" column="9">
-                     <widget class="QLineEdit" name="lineEdit_236"/>
-                    </item>
-                    <item row="0" column="10">
-                     <widget class="QLineEdit" name="lineEdit_237"/>
+                     <widget class="QLineEdit" name="txtCustomCabinCurve5"/>
                     </item>
                     <item row="0" column="5">
-                     <widget class="QLineEdit" name="lineEdit_238"/>
+                     <widget class="QLineEdit" name="txtCustomCabinCurve2"/>
+                    </item>
+                    <item row="0" column="9">
+                     <widget class="QLineEdit" name="txtCustomCabinCurve4"/>
                     </item>
                     <item row="0" column="7">
-                     <widget class="QLineEdit" name="lineEdit_239"/>
+                     <widget class="QLineEdit" name="txtCustomCabinCurve3"/>
                     </item>
                     <item row="2" column="5">
-                     <widget class="QLineEdit" name="lineEdit_240"/>
+                     <widget class="QLineEdit" name="txtCustomCabinCurve6"/>
                     </item>
                     <item row="0" column="2">
-                     <spacer name="horizontalSpacer_24">
+                     <spacer name="horizontalSpacer_30">
                       <property name="orientation">
                        <enum>Qt::Horizontal</enum>
                       </property>
@@ -2174,12 +2133,35 @@ border:1px solid rgba(46, 82, 101, 200);
                        </size>
                       </property>
                      </spacer>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_133">
+                      <property name="text">
+                       <string>Tin</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="7">
+                     <widget class="QLineEdit" name="txtCustomCabinCurve7"/>
+                    </item>
+                    <item row="0" column="3" colspan="2">
+                     <widget class="QLineEdit" name="txtCustomCabinCurve1"/>
+                    </item>
+                    <item row="0" column="0" colspan="2">
+                     <widget class="QLabel" name="label_134">
+                      <property name="text">
+                       <string>Text</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="9">
+                     <widget class="QLineEdit" name="txtCustomCabinCurve8"/>
                     </item>
                    </layout>
                   </widget>
                  </item>
                  <item row="4" column="0">
-                  <widget class="QFrame" name="frame_47">
+                  <widget class="QFrame" name="frame_57">
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
@@ -2192,7 +2174,7 @@ border:1px solid rgba(46, 82, 101, 200);
                    <property name="frameShadow">
                     <enum>QFrame::Raised</enum>
                    </property>
-                   <layout class="QGridLayout" name="gridLayout_42">
+                   <layout class="QGridLayout" name="gridLayout_50">
                     <property name="leftMargin">
                      <number>0</number>
                     </property>
@@ -2208,52 +2190,21 @@ border:1px solid rgba(46, 82, 101, 200);
                     <property name="spacing">
                      <number>0</number>
                     </property>
-                    <item row="2" column="5">
-                     <widget class="QLineEdit" name="lineEdit_241"/>
-                    </item>
-                    <item row="2" column="9">
-                     <widget class="QLineEdit" name="lineEdit_242"/>
-                    </item>
-                    <item row="2" column="7">
-                     <widget class="QLineEdit" name="lineEdit_243"/>
-                    </item>
-                    <item row="0" column="3" colspan="2">
-                     <widget class="QLineEdit" name="lineEdit_244"/>
-                    </item>
-                    <item row="0" column="5">
-                     <widget class="QLineEdit" name="lineEdit_245"/>
-                    </item>
-                    <item row="2" column="3" colspan="2">
-                     <widget class="QLineEdit" name="lineEdit_246"/>
-                    </item>
                     <item row="0" column="7">
-                     <widget class="QLineEdit" name="lineEdit_247"/>
+                     <widget class="QLineEdit" name="txtCustomCabinLowerLimit3"/>
                     </item>
-                    <item row="2" column="10">
-                     <widget class="QLineEdit" name="lineEdit_248"/>
+                    <item row="0" column="9">
+                     <widget class="QLineEdit" name="txtCustomCabinLowerLimit4"/>
                     </item>
                     <item row="0" column="0" colspan="2">
-                     <widget class="QLabel" name="label_87">
+                     <widget class="QLabel" name="label_135">
                       <property name="text">
                        <string>Text</string>
                       </property>
                      </widget>
                     </item>
-                    <item row="0" column="10">
-                     <widget class="QLineEdit" name="lineEdit_249"/>
-                    </item>
-                    <item row="0" column="9">
-                     <widget class="QLineEdit" name="lineEdit_250"/>
-                    </item>
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="label_118">
-                      <property name="text">
-                       <string>Tin</string>
-                      </property>
-                     </widget>
-                    </item>
                     <item row="0" column="2">
-                     <spacer name="horizontalSpacer_25">
+                     <spacer name="horizontalSpacer_31">
                       <property name="orientation">
                        <enum>Qt::Horizontal</enum>
                       </property>
@@ -2268,18 +2219,43 @@ border:1px solid rgba(46, 82, 101, 200);
                       </property>
                      </spacer>
                     </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_136">
+                      <property name="text">
+                       <string>Tin</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="3" colspan="2">
+                     <widget class="QLineEdit" name="txtCustomCabinLowerLimit1"/>
+                    </item>
+                    <item row="0" column="5">
+                     <widget class="QLineEdit" name="txtCustomCabinLowerLimit2"/>
+                    </item>
+                    <item row="2" column="3" colspan="2">
+                     <widget class="QLineEdit" name="txtCustomCabinLowerLimit5"/>
+                    </item>
+                    <item row="2" column="7">
+                     <widget class="QLineEdit" name="txtCustomCabinLowerLimit7"/>
+                    </item>
+                    <item row="2" column="9">
+                     <widget class="QLineEdit" name="txtCustomCabinLowerLimit8"/>
+                    </item>
+                    <item row="2" column="5">
+                     <widget class="QLineEdit" name="txtCustomCabinLowerLimit6"/>
+                    </item>
                    </layout>
                   </widget>
                  </item>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="lblCabinStandard_10">
+                  <widget class="QLabel" name="lblCabinStandard_6">
                    <property name="text">
                     <string>Custom</string>
                    </property>
                   </widget>
                  </item>
                  <item row="1" column="0">
-                  <widget class="QLabel" name="label_119">
+                  <widget class="QLabel" name="label_137">
                    <property name="styleSheet">
                     <string notr="true">padding-left:80px;</string>
                    </property>
@@ -2289,7 +2265,7 @@ border:1px solid rgba(46, 82, 101, 200);
                   </widget>
                  </item>
                  <item row="3" column="0">
-                  <widget class="QLabel" name="label_120">
+                  <widget class="QLabel" name="label_138">
                    <property name="styleSheet">
                     <string notr="true">padding-left:80px;</string>
                    </property>
@@ -2299,7 +2275,7 @@ border:1px solid rgba(46, 82, 101, 200);
                   </widget>
                  </item>
                  <item row="2" column="0">
-                  <widget class="QFrame" name="frame_48">
+                  <widget class="QFrame" name="frame_58">
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
@@ -2312,7 +2288,7 @@ border:1px solid rgba(46, 82, 101, 200);
                    <property name="frameShadow">
                     <enum>QFrame::Raised</enum>
                    </property>
-                   <layout class="QGridLayout" name="gridLayout_43">
+                   <layout class="QGridLayout" name="gridLayout_51">
                     <property name="leftMargin">
                      <number>0</number>
                     </property>
@@ -2329,51 +2305,51 @@ border:1px solid rgba(46, 82, 101, 200);
                      <number>0</number>
                     </property>
                     <item row="2" column="0">
-                     <widget class="QLabel" name="label_121">
+                     <widget class="QLabel" name="label_139">
                       <property name="text">
                        <string>Tin</string>
                       </property>
                      </widget>
                     </item>
                     <item row="2" column="5">
-                     <widget class="QLineEdit" name="lineEdit_251"/>
+                     <widget class="QLineEdit" name="txtCustomCabinUpperLimit7"/>
                     </item>
                     <item row="2" column="7">
-                     <widget class="QLineEdit" name="lineEdit_252"/>
+                     <widget class="QLineEdit" name="txtCustomCabinUpperLimit8"/>
                     </item>
                     <item row="0" column="3" colspan="2">
-                     <widget class="QLineEdit" name="lineEdit_253"/>
+                     <widget class="QLineEdit" name="txtCustomCabinUpperLimit1"/>
                     </item>
                     <item row="0" column="0" colspan="2">
-                     <widget class="QLabel" name="label_122">
+                     <widget class="QLabel" name="label_140">
                       <property name="text">
                        <string>Text</string>
                       </property>
                      </widget>
                     </item>
                     <item row="2" column="9">
-                     <widget class="QLineEdit" name="lineEdit_254"/>
+                     <widget class="QLineEdit" name="txtCustomCabinUpperLimit9"/>
                     </item>
                     <item row="2" column="10">
-                     <widget class="QLineEdit" name="lineEdit_255"/>
+                     <widget class="QLineEdit" name="txtCustomCabinUpperLimit10"/>
                     </item>
                     <item row="2" column="3" colspan="2">
-                     <widget class="QLineEdit" name="lineEdit_256"/>
+                     <widget class="QLineEdit" name="txtCustomCabinUpperLimit6"/>
                     </item>
                     <item row="0" column="5">
-                     <widget class="QLineEdit" name="lineEdit_257"/>
+                     <widget class="QLineEdit" name="txtCustomCabinUpperLimit2"/>
                     </item>
                     <item row="0" column="7">
-                     <widget class="QLineEdit" name="lineEdit_258"/>
+                     <widget class="QLineEdit" name="txtCustomCabinUpperLimit3"/>
                     </item>
                     <item row="0" column="9">
-                     <widget class="QLineEdit" name="lineEdit_259"/>
+                     <widget class="QLineEdit" name="txtCustomCabinUpperLimit4"/>
                     </item>
                     <item row="0" column="10">
-                     <widget class="QLineEdit" name="lineEdit_260"/>
+                     <widget class="QLineEdit" name="txtCustomCabinUpperLimit5"/>
                     </item>
                     <item row="0" column="2">
-                     <spacer name="horizontalSpacer_26">
+                     <spacer name="horizontalSpacer_32">
                       <property name="orientation">
                        <enum>Qt::Horizontal</enum>
                       </property>
@@ -2392,7 +2368,7 @@ border:1px solid rgba(46, 82, 101, 200);
                   </widget>
                  </item>
                  <item row="5" column="0">
-                  <widget class="QLabel" name="label_123">
+                  <widget class="QLabel" name="label_141">
                    <property name="styleSheet">
                     <string notr="true">padding-left:80px;</string>
                    </property>
@@ -2405,7 +2381,7 @@ border:1px solid rgba(46, 82, 101, 200);
                </widget>
               </item>
               <item>
-               <widget class="QFrame" name="frame_49">
+               <widget class="QFrame" name="frame_59">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
@@ -2418,7 +2394,7 @@ border:1px solid rgba(46, 82, 101, 200);
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_10">
+                <layout class="QVBoxLayout" name="verticalLayout_12">
                  <item>
                   <widget class="QLabel" name="lblCabinGraphCustom">
                    <property name="text">
