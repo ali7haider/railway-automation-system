@@ -14,6 +14,10 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="widget">
+   <property name="styleSheet">
+    <string notr="true">background-color: #F1FAFF;
+</string>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <property name="leftMargin">
      <number>0</number>
@@ -831,6 +835,7 @@ border:2px solid black;
                  <string notr="true">border-radius:2px;
 padding:5px;
 border:2px solid black;
+background-color: #fff;
 </string>
                 </property>
                 <property name="text">
