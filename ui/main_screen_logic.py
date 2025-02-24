@@ -189,6 +189,13 @@ class MasterScreen(QtWidgets.QMainWindow):
                 selected_train_type, self.cmbxStandardSaloon, self.lblStandardSaloon,
                 self.cmbxStandardCabin, self.lblStandardCabin
             )
+            if not standard_saloon or not standard_cabin:
+                QtWidgets.QMessageBox.warning(
+                    self, 
+                    "Selection Required", 
+                    "Please select both Standard Saloon and Standard Cabin before proceeding."
+                )
+                return  # Stop function execution
             default_values = {
             "standard_saloon":standard_saloon,
             "standard_cabin":standard_cabin,

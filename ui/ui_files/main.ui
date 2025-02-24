@@ -2193,7 +2193,7 @@ font-weight:bold;</string>
                                 <property name="geometry">
                                  <rect>
                                   <x>0</x>
-                                  <y>0</y>
+                                  <y>-275</y>
                                   <width>948</width>
                                   <height>1973</height>
                                  </rect>
@@ -2369,7 +2369,7 @@ background-color:#1159A8;
                                              <item>
                                               <widget class="QLabel" name="lblStandardSaloon">
                                                <property name="text">
-                                                <string>TextLabel</string>
+                                                <string/>
                                                </property>
                                               </widget>
                                              </item>
@@ -2413,7 +2413,7 @@ background-color:#1159A8;
                                              <item>
                                               <widget class="QLabel" name="lblStandardCabin">
                                                <property name="text">
-                                                <string>TextLabel</string>
+                                                <string/>
                                                </property>
                                               </widget>
                                              </item>
