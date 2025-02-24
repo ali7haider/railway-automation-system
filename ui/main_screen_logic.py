@@ -184,8 +184,31 @@ class MasterScreen(QtWidgets.QMainWindow):
     def open_custom_interior_conditions(self):
         """Opens the Custom Interior Conditions screen."""
         try:
-            self.custom_interior_window = CustomInteriorConditionsScreen()
-            self.custom_interior_window.show()  # Show as a separate window
+            selected_train_type = self.cmbxTypeOfTrainProject.currentText().strip()
+            standard_saloon, standard_cabin = self.get_standard_saloon_and_cabin(
+                selected_train_type, self.cmbxStandardSaloon, self.lblStandardSaloon,
+                self.cmbxStandardCabin, self.lblStandardCabin
+            )
+            default_values = {
+            "standard_saloon":standard_saloon,
+            "standard_cabin":standard_cabin,
+            "TicMaxSaloon": self.lblMaxSaloonInterior.text(),  # Example
+            "TicMinSaloon": self.lblMinSaloonInterior.text(),
+            "TicMaxCabin": self.lblTicMaxCabinInterior.text(),
+            "TicMinCabin": self.lblTicMinSaloonInterior.text(),
+            "MaxMeanTempSaloon": self.lblMaxMeanInteriorTempSaloon.text(),
+            "MaxMeanTempCabin": self.lblMaxMeanInteriorTempCabin.text(),
+            "StandByOperatorSaloonMax": self.lblStandByOperatorSaloonMax.text(),
+            "StandByOperatorSaloonMin": self.lblStandByOperatorSaloonMin.text(),
+            "StandByOperatorCabinMax": self.lblStandByOperatorCabinMax.text(),
+            "StandByOperatorCabinMin": self.lblStandByOperatorCabinMin.text(),
+
+
+        }
+
+            # Open Custom Interior Conditions screen with the default values
+            self.custom_interior_window = CustomInteriorConditionsScreen(default_values)
+            self.custom_interior_window.show()
         except Exception as e:
             QtWidgets.QMessageBox.critical(self, "Error", f"Error opening Custom Interior Conditions screen: {str(e)}")
 

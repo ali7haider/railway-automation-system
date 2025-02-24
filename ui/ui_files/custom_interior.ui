@@ -224,7 +224,7 @@ QComboBox QAbstractItemView {
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>0</y>
+            <y>-652</y>
             <width>984</width>
             <height>2091</height>
            </rect>
@@ -1059,7 +1059,7 @@ border:1px solid rgba(46, 82, 101, 200);
                  <item row="0" column="0">
                   <widget class="QLabel" name="lblSaloonStandard_4">
                    <property name="text">
-                    <string>twxt</string>
+                    <string>Norm</string>
                    </property>
                   </widget>
                  </item>
@@ -1508,7 +1508,7 @@ border:1px solid rgba(46, 82, 101, 200);
                  <item row="0" column="0">
                   <widget class="QLabel" name="lblSaloonStandard_14">
                    <property name="text">
-                    <string>twxt</string>
+                    <string>Custom</string>
                    </property>
                   </widget>
                  </item>
