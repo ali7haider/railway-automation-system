@@ -74,6 +74,12 @@ color:black;
 padding-bottom:5px;
 padding-left:3px;
 }
+/* Read-Only QLineEdit */
+QLineEdit:read-only {
+    background-color: #D8D8D8; /* Light gray */
+    color: black;
+    border-bottom: 2px solid rgba(100, 100, 100, 150); /* Softer border */
+}
 QLabel{
 font: 12pt &quot;Bahnschrift SemiCondensed&quot;;
 
@@ -218,7 +224,7 @@ QComboBox QAbstractItemView {
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-1409</y>
+            <y>0</y>
             <width>984</width>
             <height>2091</height>
            </rect>
@@ -382,16 +388,32 @@ color:#fff;</string>
                </widget>
               </item>
               <item row="5" column="2">
-               <widget class="QLineEdit" name="txtNormTicMaxCabin"/>
+               <widget class="QLineEdit" name="txtNormTicMaxCabin">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QLineEdit" name="txtNormTicMaxSaloon"/>
+               <widget class="QLineEdit" name="txtNormTicMaxSaloon">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
               </item>
               <item row="2" column="3">
-               <widget class="QLineEdit" name="txtNormTicMinSaloon"/>
+               <widget class="QLineEdit" name="txtNormTicMinSaloon">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
               </item>
               <item row="5" column="3">
-               <widget class="QLineEdit" name="txtNormTicMinCabin"/>
+               <widget class="QLineEdit" name="txtNormTicMinCabin">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
               </item>
               <item row="5" column="4">
                <widget class="QLineEdit" name="txtCustomTicMaxCabin"/>
@@ -476,10 +498,18 @@ color:#fff;</string>
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QLineEdit" name="txtNormMaxMeanInteriorSaloon"/>
+               <widget class="QLineEdit" name="txtNormMaxMeanInteriorSaloon">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
               </item>
               <item row="3" column="1">
-               <widget class="QLineEdit" name="txtNormMaxMeanInteriorCabin"/>
+               <widget class="QLineEdit" name="txtNormMaxMeanInteriorCabin">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
               </item>
               <item row="1" column="3">
                <widget class="QLineEdit" name="txtCustomMaxMeanInteriorSaloon"/>
@@ -632,16 +662,32 @@ border:2px solid black;
                   <widget class="QLineEdit" name="txtCustomMaxCabin"/>
                  </item>
                  <item row="5" column="3">
-                  <widget class="QLineEdit" name="txtNormMinCabin"/>
+                  <widget class="QLineEdit" name="txtNormMinCabin">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
                  </item>
                  <item row="5" column="2">
-                  <widget class="QLineEdit" name="txtNormMaxCabin"/>
+                  <widget class="QLineEdit" name="txtNormMaxCabin">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
                  </item>
                  <item row="2" column="3">
-                  <widget class="QLineEdit" name="txtNormMinSaloon"/>
+                  <widget class="QLineEdit" name="txtNormMinSaloon">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
                  </item>
                  <item row="2" column="2">
-                  <widget class="QLineEdit" name="txtNormMaxSaloon"/>
+                  <widget class="QLineEdit" name="txtNormMaxSaloon">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
                  </item>
                  <item row="4" column="4">
                   <widget class="QLabel" name="labelSaloonStandard_6">
@@ -922,25 +968,53 @@ border:1px solid rgba(46, 82, 101, 200);
                      <number>0</number>
                     </property>
                     <item row="2" column="5">
-                     <widget class="QLineEdit" name="txtNormLowerLimit6"/>
+                     <widget class="QLineEdit" name="txtNormLowerLimit6">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="2" column="9">
-                     <widget class="QLineEdit" name="txtNormLowerLimit8"/>
+                     <widget class="QLineEdit" name="txtNormLowerLimit8">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="2" column="7">
-                     <widget class="QLineEdit" name="txtNormLowerLimit7"/>
+                     <widget class="QLineEdit" name="txtNormLowerLimit7">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtNormLowerLimit1"/>
+                     <widget class="QLineEdit" name="txtNormLowerLimit1">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="5">
-                     <widget class="QLineEdit" name="txtNormLowerLimit2"/>
+                     <widget class="QLineEdit" name="txtNormLowerLimit2">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="2" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtNormLowerLimit5"/>
+                     <widget class="QLineEdit" name="txtNormLowerLimit5">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="7">
-                     <widget class="QLineEdit" name="txtNormLowerLimit3"/>
+                     <widget class="QLineEdit" name="txtNormLowerLimit3">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="0" colspan="2">
                      <widget class="QLabel" name="label_45">
@@ -950,7 +1024,11 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="0" column="9">
-                     <widget class="QLineEdit" name="txtNormLowerLimit4"/>
+                     <widget class="QLineEdit" name="txtNormLowerLimit4">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="2" column="0">
                      <widget class="QLabel" name="label_44">
@@ -1053,13 +1131,25 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="2" column="5">
-                     <widget class="QLineEdit" name="txtNormUpperLimit7"/>
+                     <widget class="QLineEdit" name="txtNormUpperLimit7">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="2" column="7">
-                     <widget class="QLineEdit" name="txtNormUpperLimit8"/>
+                     <widget class="QLineEdit" name="txtNormUpperLimit8">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtNormUpperLimit1"/>
+                     <widget class="QLineEdit" name="txtNormUpperLimit1">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="0" colspan="2">
                      <widget class="QLabel" name="label_42">
@@ -1069,25 +1159,53 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="2" column="9">
-                     <widget class="QLineEdit" name="txtNormUpperLimit9"/>
+                     <widget class="QLineEdit" name="txtNormUpperLimit9">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="2" column="10">
-                     <widget class="QLineEdit" name="txtNormUpperLimit10"/>
+                     <widget class="QLineEdit" name="txtNormUpperLimit10">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="2" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtNormUpperLimit6"/>
+                     <widget class="QLineEdit" name="txtNormUpperLimit6">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="5">
-                     <widget class="QLineEdit" name="txtNormUpperLimit2"/>
+                     <widget class="QLineEdit" name="txtNormUpperLimit2">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="7">
-                     <widget class="QLineEdit" name="txtNormUpperLimit3"/>
+                     <widget class="QLineEdit" name="txtNormUpperLimit3">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="9">
-                     <widget class="QLineEdit" name="txtNormUpperLimit4"/>
+                     <widget class="QLineEdit" name="txtNormUpperLimit4">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="10">
-                     <widget class="QLineEdit" name="txtNormUpperLimit5"/>
+                     <widget class="QLineEdit" name="txtNormUpperLimit5">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="2">
                      <spacer name="horizontalSpacer_3">
@@ -1162,10 +1280,18 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="2" column="7">
-                     <widget class="QLineEdit" name="txtNormCurve7"/>
+                     <widget class="QLineEdit" name="txtNormCurve7">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtNormCurve1"/>
+                     <widget class="QLineEdit" name="txtNormCurve1">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="0" colspan="2">
                      <widget class="QLabel" name="label_47">
@@ -1175,22 +1301,46 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="2" column="9">
-                     <widget class="QLineEdit" name="txtNormCurve8"/>
+                     <widget class="QLineEdit" name="txtNormCurve8">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="2" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtNormCurve5"/>
+                     <widget class="QLineEdit" name="txtNormCurve5">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="9">
-                     <widget class="QLineEdit" name="txtNormCurve4"/>
+                     <widget class="QLineEdit" name="txtNormCurve4">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="5">
-                     <widget class="QLineEdit" name="txtNormCurve2"/>
+                     <widget class="QLineEdit" name="txtNormCurve2">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="7">
-                     <widget class="QLineEdit" name="txtNormCurve3"/>
+                     <widget class="QLineEdit" name="txtNormCurve3">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="2" column="5">
-                     <widget class="QLineEdit" name="txtNormCurve6"/>
+                     <widget class="QLineEdit" name="txtNormCurve6">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </widget>
@@ -1727,19 +1877,39 @@ border:1px solid rgba(46, 82, 101, 200);
                      <number>0</number>
                     </property>
                     <item row="2" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtNormCabinCurve5"/>
+                     <widget class="QLineEdit" name="txtNormCabinCurve5">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="5">
-                     <widget class="QLineEdit" name="txtNormCabinCurve2"/>
+                     <widget class="QLineEdit" name="txtNormCabinCurve2">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="9">
-                     <widget class="QLineEdit" name="txtNormCabinCurve4"/>
+                     <widget class="QLineEdit" name="txtNormCabinCurve4">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="7">
-                     <widget class="QLineEdit" name="txtNormCabinCurve3"/>
+                     <widget class="QLineEdit" name="txtNormCabinCurve3">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="2" column="5">
-                     <widget class="QLineEdit" name="txtNormCabinCurve6"/>
+                     <widget class="QLineEdit" name="txtNormCabinCurve6">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="2">
                      <spacer name="horizontalSpacer_18">
@@ -1765,10 +1935,18 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="2" column="7">
-                     <widget class="QLineEdit" name="txtNormCabinCurve7"/>
+                     <widget class="QLineEdit" name="txtNormCabinCurve7">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtNormCabinCurve1"/>
+                     <widget class="QLineEdit" name="txtNormCabinCurve1">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="0" colspan="2">
                      <widget class="QLabel" name="label_80">
@@ -1778,7 +1956,11 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="2" column="9">
-                     <widget class="QLineEdit" name="txtNormCabinCurve8"/>
+                     <widget class="QLineEdit" name="txtNormCabinCurve8">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </widget>
@@ -1814,10 +1996,18 @@ border:1px solid rgba(46, 82, 101, 200);
                      <number>0</number>
                     </property>
                     <item row="0" column="7">
-                     <widget class="QLineEdit" name="txtNormCabinLowerLimit3"/>
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit3">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="9">
-                     <widget class="QLineEdit" name="txtNormCabinLowerLimit4"/>
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit4">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="0" colspan="2">
                      <widget class="QLabel" name="label_81">
@@ -1850,22 +2040,46 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="0" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtNormCabinLowerLimit1"/>
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit1">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="5">
-                     <widget class="QLineEdit" name="txtNormCabinLowerLimit2"/>
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit2">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="2" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtNormCabinLowerLimit5"/>
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit5">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="2" column="7">
-                     <widget class="QLineEdit" name="txtNormCabinLowerLimit7"/>
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit7">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="2" column="9">
-                     <widget class="QLineEdit" name="txtNormCabinLowerLimit8"/>
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit8">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="2" column="5">
-                     <widget class="QLineEdit" name="txtNormCabinLowerLimit6"/>
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit6">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </widget>
@@ -1935,13 +2149,25 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="2" column="5">
-                     <widget class="QLineEdit" name="txtNormCabinUpperLimit7"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit7">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="2" column="7">
-                     <widget class="QLineEdit" name="txtNormCabinUpperLimit8"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit8">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtNormCabinUpperLimit1"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit1">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="0" colspan="2">
                      <widget class="QLabel" name="label_110">
@@ -1951,25 +2177,53 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="2" column="9">
-                     <widget class="QLineEdit" name="txtNormCabinUpperLimit9"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit9">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="2" column="10">
-                     <widget class="QLineEdit" name="txtNormCabinUpperLimit10"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit10">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="2" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtNormCabinUpperLimit6"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit6">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="5">
-                     <widget class="QLineEdit" name="txtNormCabinUpperLimit2"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit2">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="7">
-                     <widget class="QLineEdit" name="txtNormCabinUpperLimit3"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit3">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="9">
-                     <widget class="QLineEdit" name="txtNormCabinUpperLimit4"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit4">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="10">
-                     <widget class="QLineEdit" name="txtNormCabinUpperLimit5"/>
+                     <widget class="QLineEdit" name="txtNormCabinUpperLimit5">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="2">
                      <spacer name="horizontalSpacer_20">

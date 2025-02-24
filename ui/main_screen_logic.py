@@ -25,6 +25,8 @@ from PyQt5 import QtWidgets, uic
 from modules.project_manager import ProjectManager  # Import ProjectManager
 from PyQt5.QtGui import QIntValidator, QMouseEvent
 
+from ui.custom_interior_conditions_logic import CustomInteriorConditionsScreen
+
 
 GLOBAL_STATE = False
 class MasterScreen(QtWidgets.QMainWindow):
@@ -174,8 +176,18 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.cmbxTypeOfTrainProject.currentTextChanged.connect(self.update_max_mean_interior_temp)
 
 
+            self.btnCustomInteriorConditions.clicked.connect(self.open_custom_interior_conditions)
+
         except Exception as e:
             self.show_message_box("Error", f"Error loading UI: {str(e)}")
+
+    def open_custom_interior_conditions(self):
+        """Opens the Custom Interior Conditions screen."""
+        try:
+            self.custom_interior_window = CustomInteriorConditionsScreen()
+            self.custom_interior_window.show()  # Show as a separate window
+        except Exception as e:
+            QtWidgets.QMessageBox.critical(self, "Error", f"Error opening Custom Interior Conditions screen: {str(e)}")
 
     def update_standard_fields(self):
         """Updates Standard Saloon and Standard Cabin based on selected train type."""
