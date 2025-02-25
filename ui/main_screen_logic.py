@@ -25,6 +25,8 @@ from PyQt5 import QtWidgets, uic
 from modules.project_manager import ProjectManager  # Import ProjectManager
 from PyQt5.QtGui import QIntValidator, QMouseEvent
 
+from ui.custom_exterior_cabin_logic import CustomExteriorConditionsCabinScreen
+from ui.custom_exterior_saloon_logic import CustomExteriorConditionsSaloonScreen
 from ui.custom_interior_conditions_logic import CustomInteriorConditionsScreen
 
 
@@ -175,11 +177,94 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.cmbxOperationCountryProject.currentTextChanged.connect(self.update_max_mean_interior_temp)
             self.cmbxTypeOfTrainProject.currentTextChanged.connect(self.update_max_mean_interior_temp)
 
-
             self.btnCustomInteriorConditions.clicked.connect(self.open_custom_interior_conditions)
+
+            self.btnCustomExteriorSaloon.clicked.connect(self.open_custom_exterior_conditions_saloon)
+            self.btnCustomExteriorCabin.clicked.connect(self.open_custom_exterior_conditions_cabin)
 
         except Exception as e:
             self.show_message_box("Error", f"Error loading UI: {str(e)}")
+    def open_custom_exterior_conditions_cabin(self):
+        """Opens the Custom Interior Conditions screen."""
+        try:
+            selected_train_type = self.cmbxTypeOfTrainProject.currentText().strip()
+            standard_saloon, standard_cabin = self.get_standard_saloon_and_cabin(
+                selected_train_type, self.cmbxStandardSaloon, self.lblStandardSaloon,
+                self.cmbxStandardCabin, self.lblStandardCabin
+            )
+            
+            if not standard_saloon or not standard_cabin:
+                QtWidgets.QMessageBox.warning(
+                    self, 
+                    "Selection Required", 
+                    "Please select both Standard Saloon and Standard Cabin before proceeding."
+                )
+                return  # Stop function execution
+            # Fetch all values for saloon and cabin
+            category_saloon = self.lblCategorySaloon.text().strip()
+            category_cabin = self.lblCategoryCabin.text().strip()
+            default_values = {
+            "standard":standard_cabin,
+            "WinterZone": self.lblWinterZoneSaloon.text(),  # Example
+            "SummerZone": self.lblSummerZoneSaloon.text(),
+            "WinterNormal": self.lblWinterNormalSaloon.text(),
+            "SummerNormal": self.lblSummerNormalSaloon.text(),
+            "WinterExtended": self.lblWinterExtendedSaloon.text(),
+            "SummerExtended": self.lblSummerExtendedSaloon.text(),
+            "WinterDesign": self.lblWinterDesignSaloon.text(),
+            "SummerDesign": self.lblSummerDesignSaloon.text(),
+            "WinterExtreme": self.lblWinterExtremeSaloon.text(),
+            "SummerExtreme": self.lblSummerExtremeSaloon.text(),
+            "WinterOperational": self.lblWinterOperationalSaloon.text(),
+            "SummerOperational": self.lblSummerOperationalSaloon.text(),
+
+        }
+            # Open Custom Interior Conditions screen with the default values
+            self.custom_interior_window = CustomExteriorConditionsCabinScreen(default_values)
+            self.custom_interior_window.show()
+        except Exception as e:
+            QtWidgets.QMessageBox.critical(self, "Error", f"Error opening Custom Interior Conditions screen: {str(e)}")
+
+    def open_custom_exterior_conditions_saloon(self):
+        """Opens the Custom Interior Conditions screen."""
+        try:
+            selected_train_type = self.cmbxTypeOfTrainProject.currentText().strip()
+            standard_saloon, standard_cabin = self.get_standard_saloon_and_cabin(
+                selected_train_type, self.cmbxStandardSaloon, self.lblStandardSaloon,
+                self.cmbxStandardCabin, self.lblStandardCabin
+            )
+            
+            if not standard_saloon or not standard_cabin:
+                QtWidgets.QMessageBox.warning(
+                    self, 
+                    "Selection Required", 
+                    "Please select both Standard Saloon and Standard Cabin before proceeding."
+                )
+                return  # Stop function execution
+            # Fetch all values for saloon and cabin
+            category_saloon = self.lblCategorySaloon.text().strip()
+            category_cabin = self.lblCategoryCabin.text().strip()
+            default_values = {
+            "standard":standard_saloon,
+            "WinterZone": self.lblWinterZoneSaloon.text(),  # Example
+            "SummerZone": self.lblSummerZoneSaloon.text(),
+            "WinterNormal": self.lblWinterNormalSaloon.text(),
+            "SummerNormal": self.lblSummerNormalSaloon.text(),
+            "WinterExtended": self.lblWinterExtendedSaloon.text(),
+            "SummerExtended": self.lblSummerExtendedSaloon.text(),
+            "WinterDesign": self.lblWinterDesignSaloon.text(),
+            "SummerDesign": self.lblSummerDesignSaloon.text(),
+            "WinterExtreme": self.lblWinterExtremeSaloon.text(),
+            "SummerExtreme": self.lblSummerExtremeSaloon.text(),
+            "WinterOperational": self.lblWinterOperationalSaloon.text(),
+            "SummerOperational": self.lblSummerOperationalSaloon.text(),
+
+        }
+            # Open Custom Interior Conditions screen with the default values
+            self.custom_interior_window = CustomExteriorConditionsSaloonScreen(default_values)
+            self.custom_interior_window.show()
+        except Exception as e:
+            QtWidgets.QMessageBox.critical(self, "Error", f"Error opening Custom Interior Conditions screen: {str(e)}")
 
     def open_custom_interior_conditions(self):
         """Opens the Custom Interior Conditions screen."""
@@ -202,7 +287,6 @@ class MasterScreen(QtWidgets.QMainWindow):
             category_cabin = self.lblCategoryCabin.text().strip()
             saloon_curve_values = ProjectManager.get_curve_values(standard_saloon, category_saloon)
             cabin_curve_values = ProjectManager.get_curve_values(standard_cabin, category_cabin)
-            print(saloon_curve_values,cabin_curve_values)
             default_values = {
             "standard_saloon":standard_saloon,
             "standard_cabin":standard_cabin,

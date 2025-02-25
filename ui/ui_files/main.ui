@@ -2193,7 +2193,7 @@ font-weight:bold;</string>
                                 <property name="geometry">
                                  <rect>
                                   <x>0</x>
-                                  <y>-275</y>
+                                  <y>-1104</y>
                                   <width>948</width>
                                   <height>1973</height>
                                  </rect>
@@ -3272,7 +3272,7 @@ font-weight:bold;</string>
                                         </widget>
                                        </item>
                                        <item row="4" column="2">
-                                        <widget class="QPushButton" name="pushButton_3">
+                                        <widget class="QPushButton" name="btnCustomExteriorSaloon">
                                          <property name="minimumSize">
                                           <size>
                                            <width>0</width>
@@ -3495,7 +3495,7 @@ font-weight:bold;</string>
                                         </widget>
                                        </item>
                                        <item row="4" column="2">
-                                        <widget class="QPushButton" name="pushButton_4">
+                                        <widget class="QPushButton" name="btnCustomExteriorCabin">
                                          <property name="minimumSize">
                                           <size>
                                            <width>0</width>

@@ -131,23 +131,24 @@
         "G": null
       }
     },
+    
     "EN14813:2006": {
       "Text Curve Limit": {
-        "A": -40,
-        "B": 20,
-        "C": 50,
-        "D": 50,
-        "E": 50,
-        "F": 50,
+        "A": {"Category R": -40, "Category S": -40, "Category U": -40},
+        "B": {"Category R": 20, "Category S": 20, "Category U": 20},
+        "C": {"Category R": 50, "Category S": 50, "Category U": 50},
+        "D": {"Category R": 50, "Category S": 50, "Category U": 50},
+        "E": {"Category R": 50, "Category S": 50, "Category U": 50},
+        "F": {"Category R": 50, "Category S": 50, "Category U": 50},
         "G": null
       },
       "Tin Curve Limit": {
-        "A": 20,
-        "B": 20,
-        "C": 32,
-        "D": 32,
-        "E": 32,
-        "F": 32,
+        "A": {"Category R": 20, "Category S": 20, "Category U": 20},
+        "B": {"Category R": 20, "Category S": 20, "Category U": 20},
+        "C": {"Category R": 32, "Category S": 32, "Category U": 32},
+        "D": {"Category R": 32, "Category S": 32, "Category U": 32},
+        "E": {"Category R": 32, "Category S": 32, "Category U": 32},
+        "F": {"Category R": 32, "Category S": 32, "Category U": 32},
         "G": null
       }
     }
