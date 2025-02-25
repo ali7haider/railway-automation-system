@@ -324,7 +324,41 @@ class ProjectManager:
             print(f"Error reading Zone_ranges.json: {e}")
             return {"Min": "None", "Max": "None"}
 
-    
+    @staticmethod
+    def get_curve_values(standard, category):
+        """
+        Fetch all curve values (Text/Tin Upper Limit, Lower Limit, Curve Limit) for a given standard and category.
+
+        :param standard: The selected standard (e.g., "EN13129:2016", "EN14750:2006")
+        :param category: The selected category (e.g., "Category A", "Category B")
+        :return: A dictionary containing values for the given category, or None if not found.
+        """
+        try:
+            with open("data/Curve.json", "r", encoding="utf-8") as file:
+                data = json.load(file)
+
+            if standard not in data:
+                print(f"Standard '{standard}' not found in curve.json")
+                return None  # No data available for the given standard
+
+            standard_data = data[standard]  # Extract standard-specific data
+            category_values = {}
+
+            # Iterate over all limits and extract only values for the given category
+            for limit_type, limit_data in standard_data.items():
+                category_values[limit_type] = {}
+
+                for subcategory, values in limit_data.items():
+                    if isinstance(values, dict) and category in values:
+                        category_values[limit_type][subcategory] = values[category]
+                    else:
+                        category_values[limit_type][subcategory] = None  # No data available
+
+            return category_values  # Return filtered values
+        except Exception as e:
+            print(f"Error reading curve.json: {e}")
+            return None
+
     @staticmethod
     def show_message_box(title: str, message: str):
         """Displays a QMessageBox for errors."""

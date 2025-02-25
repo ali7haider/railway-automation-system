@@ -74,7 +74,7 @@ QLineEdit {
 background-color:white;
 border:none;
 border-bottom:2px solid rgba(46, 82, 101, 200);
-color:black;
+color:#F97D02;
 padding-bottom:5px;
 padding-left:3px;
 }
@@ -228,7 +228,7 @@ QComboBox QAbstractItemView {
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-652</y>
+            <y>-170</y>
             <width>984</width>
             <height>2091</height>
            </rect>
