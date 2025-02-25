@@ -1,0 +1,1140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1156</width>
+    <height>666</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="widget">
+   <property name="styleSheet">
+    <string notr="true">background-color: #F1FAFF;
+</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="styleSheet">
+       <string notr="true">QScrollBar:horizontal {
+    background: #FFF;
+    height: 8px;
+    margin: 0px 16px 0 16px;
+    border: none;
+}
+QScrollBar:vertical {
+    background: #FFF;
+    width: 8px;
+    margin: 16px 0 16px 0;
+    border: none;
+}
+QScrollBar::handle:horizontal {
+    background: #3333;
+    min-width: 20px;
+    border-radius: 4px;
+}
+QScrollBar::handle:vertical {
+    background: #3333;
+    min-height: 20px;
+    border-radius: 4px;
+}
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal,
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    background: none;
+}
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal,
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+#frame {	
+
+}
+
+
+QLineEdit {
+background-color:white;
+border:none;
+border-bottom:2px solid rgba(46, 82, 101, 200);
+color:#F97D02;
+padding-bottom:5px;
+padding-left:3px;
+}
+/* Read-Only QLineEdit */
+QLineEdit:read-only {
+    background-color: #D8D8D8; /* Light gray */
+    color: black;
+    border-bottom: 2px solid rgba(100, 100, 100, 150); /* Softer border */
+}
+QLabel{
+font: 12pt &quot;Bahnschrift SemiCondensed&quot;;
+
+}
+
+QScrollBar:horizontal {
+    border: none;
+    background: rgb(52, 59, 72);
+    height: 8px;
+    margin: 0px 21px 0 21px;
+	border-radius: 0px;
+}
+QScrollBar::handle:horizontal {
+    background: #345CBF;
+    min-width: 25px;
+	border-radius: 4px
+}
+QScrollBar::add-line:horizontal {
+    border: none;
+    background: rgb(55, 63, 77);
+    width: 20px;
+	border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:horizontal {
+    border: none;
+    background: rgb(55, 63, 77);
+    width: 20px;
+	border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
+{
+     background: none;
+}
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+{
+     background: none;
+}
+ QScrollBar:vertical {
+	border: none;
+    background: rgb(52, 59, 72);
+    width: 8px;
+    margin: 21px 0 21px 0;
+	border-radius: 0px;
+ }
+ QScrollBar::handle:vertical {	
+	background: #345CBF;
+    min-height: 25px;
+	border-radius: 4px
+ }
+ QScrollBar::add-line:vertical {
+     border: none;
+    background: rgb(55, 63, 77);
+     height: 20px;
+	border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::sub-line:vertical {
+	border: none;
+    background: rgb(55, 63, 77);
+     height: 20px;
+	border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+     background: none;
+ }
+
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+     background: none;
+ }
+
+QComboBox{
+background-color:white;
+	border-radius: 5px;
+	border: 1px solid gray;
+	padding: 5px;
+	padding-left: 10px;
+color:#F97D02;
+font-weight:bold;
+}
+QComboBox:hover{
+	border: 1px solid gray;
+}
+QComboBox::drop-down {
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 25px; 
+	border-left-width: 3px;
+	border-left-color: rgba(39, 44, 54, 150);
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;	
+	background-image: url(:/icons/images/icons/icons8-arrow-down-20.png);
+	background-position: center;
+	background-repeat: no-reperat;
+ }
+QComboBox QAbstractItemView {
+	color: black;	
+	background-color: #fff;
+	padding: 10px;
+	selection-background-color:#345CBF;
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QScrollArea" name="scrollArea">
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>1152</width>
+            <height>662</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <property name="spacing">
+            <number>15</number>
+           </property>
+           <item>
+            <widget class="QFrame" name="zoneFrame">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>100</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
+border:1px solid rgba(46, 82, 101, 200);
+}
+</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QFrame" name="frame_10">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_5">
+                 <item row="2" column="1">
+                  <spacer name="horizontalSpacer">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Fixed</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item row="2" column="2">
+                  <widget class="QFrame" name="frame_51">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>45</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_46">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <item row="0" column="0" colspan="2">
+                     <widget class="QLineEdit" name="txtCustomWinterZone">
+                      <property name="maximumSize">
+                       <size>
+                        <width>250</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="0" colspan="2">
+                     <widget class="QLineEdit" name="txtCustomSummerZone">
+                      <property name="maximumSize">
+                       <size>
+                        <width>250</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QFrame" name="frame_12">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>45</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_11">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <item row="0" column="2" colspan="2">
+                     <widget class="QLineEdit" name="txtNormWinterZone">
+                      <property name="minimumSize">
+                       <size>
+                        <width>250</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_40">
+                      <property name="text">
+                       <string>Summer Zone</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="2" colspan="2">
+                     <widget class="QLineEdit" name="txtNormSummerZone">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="0" colspan="2">
+                     <widget class="QLabel" name="label_42">
+                      <property name="text">
+                       <string>Winter Zone</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="1" column="2">
+                  <widget class="QLabel" name="label_2">
+                   <property name="text">
+                    <string>Custom</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="lblStandard">
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QFrame" name="frame_21">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>200</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
+border:1px solid rgba(46, 82, 101, 200);
+}
+</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_17">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QFrame" name="frame_22">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_44">
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="lblStandard_2">
+                   <property name="styleSheet">
+                    <string notr="true">padding-left:80px;</string>
+                   </property>
+                   <property name="text">
+                    <string>upper limit</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QLabel" name="label_7">
+                   <property name="text">
+                    <string>Custom</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0" colspan="2">
+                  <widget class="QFrame" name="frame_50">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>140</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_45">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <item row="3" column="0">
+                     <widget class="QLabel" name="label_132">
+                      <property name="text">
+                       <string>Summer Normal range</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="4" column="0">
+                     <widget class="QLabel" name="label_131">
+                      <property name="text">
+                       <string>Winter Extended range</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="3">
+                     <widget class="QLabel" name="label_3">
+                      <property name="text">
+                       <string> Max [ºC]</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="6">
+                     <widget class="QLabel" name="label_5">
+                      <property name="text">
+                       <string> Max [ºC]</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="4">
+                     <widget class="QLabel" name="label_4">
+                      <property name="text">
+                       <string>Min [ºC]</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="label">
+                      <property name="text">
+                       <string>Area</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="8">
+                     <widget class="QLabel" name="label_6">
+                      <property name="text">
+                       <string> Min [ºC]</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="5" column="6">
+                     <widget class="QLineEdit" name="txtCustomSummerExtendedMin"/>
+                    </item>
+                    <item row="5" column="8">
+                     <widget class="QLineEdit" name="txtCustomLowerLimit7"/>
+                    </item>
+                    <item row="2" column="0" colspan="2">
+                     <widget class="QLabel" name="label_124">
+                      <property name="text">
+                       <string>Winter Normal range</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="5" column="0">
+                     <widget class="QLabel" name="label_125">
+                      <property name="text">
+                       <string>Summer Extended range</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="2">
+                     <spacer name="horizontalSpacer_27">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Fixed</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item row="4" column="8">
+                     <widget class="QLineEdit" name="txtCustomWinterExtendedMin"/>
+                    </item>
+                    <item row="2" column="4">
+                     <widget class="QLineEdit" name="txtNormWinterNormalMin">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="6">
+                     <widget class="QLineEdit" name="txtCustomWinterNormalMax"/>
+                    </item>
+                    <item row="3" column="3">
+                     <widget class="QLineEdit" name="txtNormSummerNormalMax">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="4" column="6">
+                     <widget class="QLineEdit" name="txtCustomWinterExtendedMax"/>
+                    </item>
+                    <item row="4" column="3">
+                     <widget class="QLineEdit" name="txtNormWinterExtendedMax">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="4" column="4">
+                     <widget class="QLineEdit" name="txtNormWinterExtendedMin">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="4">
+                     <widget class="QLineEdit" name="txtNormSummerNormalMin">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="6">
+                     <widget class="QLineEdit" name="txtCustomSummerNormalMax"/>
+                    </item>
+                    <item row="3" column="8">
+                     <widget class="QLineEdit" name="txtCustomSummerNormalMin"/>
+                    </item>
+                    <item row="5" column="4">
+                     <widget class="QLineEdit" name="txtNormSummerExtendedMin">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="5" column="3">
+                     <widget class="QLineEdit" name="txtNormSummerExtendedMax">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="3">
+                     <widget class="QLineEdit" name="txtNormWinterNormalMax">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="8">
+                     <widget class="QLineEdit" name="txtCustomWinterNormalMin"/>
+                    </item>
+                    <item row="1" column="0">
+                     <spacer name="verticalSpacer">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Fixed</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QFrame" name="frame_25">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>250</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
+border:1px solid rgba(46, 82, 101, 200);
+}
+</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_47">
+              <item row="0" column="0">
+               <widget class="QLabel" name="lblStandard_3">
+                <property name="styleSheet">
+                 <string notr="true">padding-left:80px;</string>
+                </property>
+                <property name="text">
+                 <string>upper limit</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLabel" name="label_75">
+                <property name="text">
+                 <string>Custom</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0" colspan="2">
+               <widget class="QFrame" name="frame_52">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>220</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_48">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item row="0" column="3">
+                  <widget class="QLabel" name="label_76">
+                   <property name="text">
+                    <string>Temperature [ºC]</string>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="5">
+                  <widget class="QLabel" name="label_8">
+                   <property name="text">
+                    <string>Solar load [W/m2]</string>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="8">
+                  <widget class="QLabel" name="label_93">
+                   <property name="text">
+                    <string> Solar load [W/m2]</string>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="7">
+                  <widget class="QLabel" name="label_9">
+                   <property name="text">
+                    <string>Relative humidity [%]</string>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="4">
+                  <widget class="QLabel" name="label_90">
+                   <property name="text">
+                    <string>Relative humidity [%]</string>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="6">
+                  <widget class="QLabel" name="label_77">
+                   <property name="text">
+                    <string>Temperature [ºC]</string>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="6" column="0">
+                  <widget class="QLabel" name="label_128">
+                   <property name="text">
+                    <string>Winter Operational limit</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="3">
+                  <spacer name="verticalSpacer_2">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Fixed</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>7</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item row="6" column="3">
+                  <widget class="QLineEdit" name="txtNormWinterOperationalTemp">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="6" column="4">
+                  <widget class="QLineEdit" name="txtNormWinterOperationalHumi">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="6" column="6">
+                  <widget class="QLineEdit" name="txtCustomWinterOperationalTemp"/>
+                 </item>
+                 <item row="6" column="5">
+                  <widget class="QLineEdit" name="txtNormWinterOperationalSolar">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="6" column="7">
+                  <widget class="QLineEdit" name="txtCustomWinterOperationalHumi"/>
+                 </item>
+                 <item row="7" column="4">
+                  <widget class="QLineEdit" name="txtNormSummerOperationalHumi">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="7" column="3">
+                  <widget class="QLineEdit" name="txtNormSummerOperationalTemp">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="7" column="0">
+                  <widget class="QLabel" name="label_129">
+                   <property name="text">
+                    <string>Summer Operational limit</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="6" column="8">
+                  <widget class="QLineEdit" name="txtCustomWinterOperationalSolar"/>
+                 </item>
+                 <item row="7" column="7">
+                  <widget class="QLineEdit" name="txtCustomSummerOperationalHumi"/>
+                 </item>
+                 <item row="7" column="6">
+                  <widget class="QLineEdit" name="txtCustomSummerOperationalTemp"/>
+                 </item>
+                 <item row="7" column="5">
+                  <widget class="QLineEdit" name="txtNormSummerOperationalSolar">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="7" column="8">
+                  <widget class="QLineEdit" name="txtCustomSummerOperationalSolar"/>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QLabel" name="label_133">
+                   <property name="text">
+                    <string>Summer Design conditions</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="0">
+                  <widget class="QLabel" name="label_134">
+                   <property name="text">
+                    <string>Winter Extreme conditions</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="6">
+                  <widget class="QLineEdit" name="txtCustomSummerExtremeTemp"/>
+                 </item>
+                 <item row="2" column="0" colspan="2">
+                  <widget class="QLabel" name="label_126">
+                   <property name="text">
+                    <string>Winter Design conditions</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="0">
+                  <widget class="QLabel" name="label_127">
+                   <property name="text">
+                    <string>Summer Extreme conditions</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="2">
+                  <spacer name="horizontalSpacer_28">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Fixed</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>10</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item row="5" column="8">
+                  <widget class="QLineEdit" name="txtCustomSummerExtremeSolar"/>
+                 </item>
+                 <item row="4" column="8">
+                  <widget class="QLineEdit" name="txtCustomWinterExtremeSolar"/>
+                 </item>
+                 <item row="3" column="3">
+                  <widget class="QLineEdit" name="txtNormSummerDesignTemp">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="4">
+                  <widget class="QLineEdit" name="txtNormWinterDesignHumi">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="6">
+                  <widget class="QLineEdit" name="txtCustomWinterDesignTemp"/>
+                 </item>
+                 <item row="4" column="4">
+                  <widget class="QLineEdit" name="txtNormWinterExtremeHumi">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="4">
+                  <widget class="QLineEdit" name="txtNormSummerDesignHumi">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="3">
+                  <widget class="QLineEdit" name="txtNormWinterExtremeTemp">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="6">
+                  <widget class="QLineEdit" name="txtCustomWinterExtremeTemp"/>
+                 </item>
+                 <item row="3" column="8">
+                  <widget class="QLineEdit" name="txtCustomSummerDesignSolar"/>
+                 </item>
+                 <item row="5" column="4">
+                  <widget class="QLineEdit" name="txtNormSummerExtremeHumi">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="3">
+                  <widget class="QLineEdit" name="txtNormSummerExtremeTemp">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="6">
+                  <widget class="QLineEdit" name="txtCustomSummerDesignTemp"/>
+                 </item>
+                 <item row="2" column="3">
+                  <widget class="QLineEdit" name="txtNormWinterDesignTemp">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="8">
+                  <widget class="QLineEdit" name="txtCustomWinterDesignSolar"/>
+                 </item>
+                 <item row="3" column="5">
+                  <widget class="QLineEdit" name="txtNormSummerDesignSolar">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="5">
+                  <widget class="QLineEdit" name="txtNormWinterDesignSolar">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="5">
+                  <widget class="QLineEdit" name="txtNormSummerExtremeSolar">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="5">
+                  <widget class="QLineEdit" name="txtNormWinterExtremeSolar">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="7">
+                  <widget class="QLineEdit" name="txtCustomSummerDesignHumi"/>
+                 </item>
+                 <item row="4" column="7">
+                  <widget class="QLineEdit" name="txtCustomWinterExtremeHumi"/>
+                 </item>
+                 <item row="2" column="7">
+                  <widget class="QLineEdit" name="txtCustomWinterDesignHumi"/>
+                 </item>
+                 <item row="5" column="7">
+                  <widget class="QLineEdit" name="txtCustomSummerExtremeHumi"/>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
