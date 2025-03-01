@@ -261,9 +261,42 @@ class MasterScreen(QtWidgets.QMainWindow):
         }
             # Open Custom Interior Conditions screen with the default values
             self.custom_interior_window = CustomExteriorConditionsSaloonScreen(default_values)
+
+            
             self.custom_interior_window.show()
         except Exception as e:
             QtWidgets.QMessageBox.critical(self, "Error", f"Error opening Custom Interior Conditions screen: {str(e)}")
+
+    def apply_custom_values(self, custom_values):
+        """
+        Updates labels with custom values and highlights them if changed.
+        :param custom_values: Dictionary containing custom values.
+        """
+        try:
+            print("Received custom values:", custom_values)  # Debugging
+            # Define label mappings
+            label_mappings = {
+                "TicMaxSaloon": self.lblMaxSaloonInterior,
+                "TicMinSaloon": self.lblMinSaloonInterior,
+                "TicMaxCabin": self.lblTicMaxCabinInterior,
+                "TicMinCabin": self.lblTicMinSaloonInterior,
+                "MaxMeanTempSaloon": self.lblMaxMeanInteriorTempSaloon,
+                "MaxMeanTempCabin": self.lblMaxMeanInteriorTempCabin,
+                "StandByOperatorSaloonMax": self.lblStandByOperatorSaloonMax,
+                "StandByOperatorSaloonMin": self.lblStandByOperatorSaloonMin,
+                "StandByOperatorCabinMax": self.lblStandByOperatorCabinMax,
+                "StandByOperatorCabinMin": self.lblStandByOperatorCabinMin,
+            }
+
+            # Loop through each label and update values
+            for key, label in label_mappings.items():
+                custom_value = custom_values.get(key, "").strip()
+
+                if custom_value:  # If custom value exists
+                    label.setText(custom_value)
+                    label.setStyleSheet("background-color: #F97D02;padding-left:5px;")  # Highlight in yellow
+        except Exception as e:
+            QtWidgets.QMessageBox.critical(self, "Error", f"Error applying custom values: {str(e)}")
 
     def open_custom_interior_conditions(self):
         """Opens the Custom Interior Conditions screen."""
@@ -307,6 +340,11 @@ class MasterScreen(QtWidgets.QMainWindow):
 
             # Open Custom Interior Conditions screen with the default values
             self.custom_interior_window = CustomInteriorConditionsScreen(default_values)
+            if hasattr(self.custom_interior_window, "custom_values_updated"):
+                self.custom_interior_window.custom_values_updated.connect(self.apply_custom_values)
+            else:
+                print("custom_values_updated signal not found!")
+
             self.custom_interior_window.show()
         except Exception as e:
             QtWidgets.QMessageBox.critical(self, "Error", f"Error opening Custom Interior Conditions screen: {str(e)}")

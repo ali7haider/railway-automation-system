@@ -3,11 +3,15 @@ import matplotlib.pyplot as plt
 import os
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt
+from PyQt5.QtCore import pyqtSignal
 
 class CustomInteriorConditionsScreen(QtWidgets.QMainWindow):
+    custom_values_updated = pyqtSignal(dict)  # Signal to send custom values
+
     def __init__(self, default_values=None):
         super().__init__()
         try:
+            self.default_values = default_values
             uic.loadUi("ui/ui_files/custom_interior.ui", self)  # Load custom UI
             self.setWindowTitle("Custom Interior Conditions")  # Set window title
 
@@ -46,6 +50,8 @@ class CustomInteriorConditionsScreen(QtWidgets.QMainWindow):
 
 
                 self.setup_custom_value_listeners()  # Connect custom input fields to update graph
+                self.btnSave.clicked.connect(self.save_custom_values)
+
         except Exception as e:
             QtWidgets.QMessageBox.critical(self, "Error", f"Error loading Custom Interior Conditions UI: {str(e)}")
     def display_curve_values(self, curve_values, label_prefix,standard,graphLabel):
@@ -120,7 +126,6 @@ class CustomInteriorConditionsScreen(QtWidgets.QMainWindow):
 
             Text_low = get_values("Text Lower Limit")
             Tin_low = get_values("Tin Lower Limit")
-            print(Text_upper, Tin_upper, Text, Tin, Text_low, Tin_low)
 
             # Ensure all values are valid before plotting
             if all(val is not None for val in Text_upper + Tin_upper + Text + Tin + Text_low + Tin_low):
@@ -270,7 +275,6 @@ class CustomInteriorConditionsScreen(QtWidgets.QMainWindow):
             Text_low = get_values("Text Lower Limit")
             Tin_low = get_values("Tin Lower Limit")
 
-            print(Text_upper, Tin_upper, Text, Tin, Text_low, Tin_low)
             # Ensure all values are valid before plotting
             if all(val is not None for val in Text_upper + Tin_upper + Text + Tin + Text_low + Tin_low):
                 # Create the plot
@@ -304,3 +308,27 @@ class CustomInteriorConditionsScreen(QtWidgets.QMainWindow):
 
         except Exception as e:
             print(f"Error generating custom graph: {e}")
+    def save_custom_values(self):
+        try:
+            custom_values = {
+                "TicMaxSaloon": self.txtCustomTicMaxSaloon.text().strip(),
+                "TicMinSaloon": self.txtCustomTicMinSaloon.text().strip(),
+                "TicMaxCabin": self.txtCustomTicMaxCabin.text().strip(),
+                "TicMinCabin": self.txtCustomTicMinCabin.text().strip(),
+                "MaxMeanTempSaloon": self.txtCustomMaxMeanInteriorSaloon.text().strip(),
+                "MaxMeanTempCabin": self.txtCustomMaxMeanInteriorCabin.text().strip(),
+                "StandByOperatorSaloonMax": self.txtCustomMaxSaloon.text().strip(),
+                "StandByOperatorSaloonMin": self.txtCustomMinSaloon.text().strip(),
+                "StandByOperatorCabinMax": self.txtCustomMaxCabin.text().strip(),
+                "StandByOperatorCabinMin": self.txtCustomMinCabin.text().strip(),
+            }
+            
+            if self.custom_values_updated:
+                self.custom_values_updated.emit(custom_values)
+            else:
+                print("Signal not found!")
+
+            self.close()  # Ensure window closes after saving
+
+        except Exception as e:
+            QtWidgets.QMessageBox.critical(self, "Error", f"Error saving custom values: {str(e)}")
