@@ -178,7 +178,6 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.cmbxTypeOfTrainProject.currentTextChanged.connect(self.update_max_mean_interior_temp)
 
             self.btnCustomInteriorConditions.clicked.connect(self.open_custom_interior_conditions)
-
             self.btnCustomExteriorSaloon.clicked.connect(self.open_custom_exterior_conditions_saloon)
             self.btnCustomExteriorCabin.clicked.connect(self.open_custom_exterior_conditions_cabin)
 
@@ -290,6 +289,8 @@ class MasterScreen(QtWidgets.QMainWindow):
             default_values = {
             "standard_saloon":standard_saloon,
             "standard_cabin":standard_cabin,
+            "saloon_curve": saloon_curve_values,
+            "cabin_curve": cabin_curve_values,
             "TicMaxSaloon": self.lblMaxSaloonInterior.text(),  # Example
             "TicMinSaloon": self.lblMinSaloonInterior.text(),
             "TicMaxCabin": self.lblTicMaxCabinInterior.text(),

@@ -228,7 +228,7 @@ QComboBox QAbstractItemView {
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-170</y>
+            <y>-1409</y>
             <width>984</width>
             <height>2091</height>
            </rect>
@@ -973,21 +973,21 @@ border:1px solid rgba(46, 82, 101, 200);
                      <number>0</number>
                     </property>
                     <item row="2" column="5">
-                     <widget class="QLineEdit" name="txtNormLowerLimit6">
+                     <widget class="QLineEdit" name="txtNormLowerLimit7">
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
                      </widget>
                     </item>
                     <item row="2" column="9">
-                     <widget class="QLineEdit" name="txtNormLowerLimit8">
+                     <widget class="QLineEdit" name="txtNormLowerLimit9">
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
                      </widget>
                     </item>
                     <item row="2" column="7">
-                     <widget class="QLineEdit" name="txtNormLowerLimit7">
+                     <widget class="QLineEdit" name="txtNormLowerLimit8">
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
@@ -1008,7 +1008,7 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="2" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtNormLowerLimit5">
+                     <widget class="QLineEdit" name="txtNormLowerLimit6">
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
@@ -1057,6 +1057,20 @@ border:1px solid rgba(46, 82, 101, 200);
                        </size>
                       </property>
                      </spacer>
+                    </item>
+                    <item row="0" column="10">
+                     <widget class="QLineEdit" name="txtNormLowerLimit5">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="10">
+                     <widget class="QLineEdit" name="txtNormLowerLimit10">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </widget>
@@ -1285,7 +1299,7 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="2" column="7">
-                     <widget class="QLineEdit" name="txtNormCurve7">
+                     <widget class="QLineEdit" name="txtNormCurve8">
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
@@ -1306,14 +1320,14 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="2" column="9">
-                     <widget class="QLineEdit" name="txtNormCurve8">
+                     <widget class="QLineEdit" name="txtNormCurve9">
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
                      </widget>
                     </item>
                     <item row="2" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtNormCurve5">
+                     <widget class="QLineEdit" name="txtNormCurve6">
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
@@ -1341,7 +1355,21 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="2" column="5">
-                     <widget class="QLineEdit" name="txtNormCurve6">
+                     <widget class="QLineEdit" name="txtNormCurve7">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="10">
+                     <widget class="QLineEdit" name="txtNormCurve5">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="10">
+                     <widget class="QLineEdit" name="txtNormCurve10">
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
@@ -1357,7 +1385,7 @@ border:1px solid rgba(46, 82, 101, 200);
                <widget class="QFrame" name="frame_11">
                 <property name="minimumSize">
                  <size>
-                  <width>300</width>
+                  <width>350</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -1372,6 +1400,9 @@ border:1px solid rgba(46, 82, 101, 200);
                   <widget class="QLabel" name="lblSaloonGraphNorm">
                    <property name="text">
                     <string>TextLabel</string>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
@@ -1453,27 +1484,6 @@ border:1px solid rgba(46, 82, 101, 200);
                     <property name="spacing">
                      <number>0</number>
                     </property>
-                    <item row="2" column="5">
-                     <widget class="QLineEdit" name="txtCustomLowerLimit6"/>
-                    </item>
-                    <item row="2" column="9">
-                     <widget class="QLineEdit" name="txtCustomLowerLimit8"/>
-                    </item>
-                    <item row="2" column="7">
-                     <widget class="QLineEdit" name="txtCustomLowerLimit7"/>
-                    </item>
-                    <item row="0" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtCustomLowerLimit1"/>
-                    </item>
-                    <item row="0" column="5">
-                     <widget class="QLineEdit" name="txtCustomLowerLimit2"/>
-                    </item>
-                    <item row="2" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtCustomLowerLimit5"/>
-                    </item>
-                    <item row="0" column="7">
-                     <widget class="QLineEdit" name="txtCustomLowerLimit3"/>
-                    </item>
                     <item row="0" column="0" colspan="2">
                      <widget class="QLabel" name="label_124">
                       <property name="text">
@@ -1483,13 +1493,6 @@ border:1px solid rgba(46, 82, 101, 200);
                     </item>
                     <item row="0" column="9">
                      <widget class="QLineEdit" name="txtCustomLowerLimit4"/>
-                    </item>
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="label_125">
-                      <property name="text">
-                       <string>Tin</string>
-                      </property>
-                     </widget>
                     </item>
                     <item row="0" column="2">
                      <spacer name="horizontalSpacer_27">
@@ -1506,6 +1509,40 @@ border:1px solid rgba(46, 82, 101, 200);
                        </size>
                       </property>
                      </spacer>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_125">
+                      <property name="text">
+                       <string>Tin</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="7">
+                     <widget class="QLineEdit" name="txtCustomLowerLimit8"/>
+                    </item>
+                    <item row="0" column="3" colspan="2">
+                     <widget class="QLineEdit" name="txtCustomLowerLimit1"/>
+                    </item>
+                    <item row="0" column="5">
+                     <widget class="QLineEdit" name="txtCustomLowerLimit2"/>
+                    </item>
+                    <item row="2" column="3" colspan="2">
+                     <widget class="QLineEdit" name="txtCustomLowerLimit6"/>
+                    </item>
+                    <item row="0" column="7">
+                     <widget class="QLineEdit" name="txtCustomLowerLimit3"/>
+                    </item>
+                    <item row="2" column="9">
+                     <widget class="QLineEdit" name="txtCustomLowerLimit9"/>
+                    </item>
+                    <item row="2" column="5">
+                     <widget class="QLineEdit" name="txtCustomLowerLimit7"/>
+                    </item>
+                    <item row="0" column="10">
+                     <widget class="QLineEdit" name="txtCustomLowerLimit5"/>
+                    </item>
+                    <item row="2" column="10">
+                     <widget class="QLineEdit" name="txtCustomLowerLimit10"/>
                     </item>
                    </layout>
                   </widget>
@@ -1670,6 +1707,44 @@ border:1px solid rgba(46, 82, 101, 200);
                     <property name="spacing">
                      <number>0</number>
                     </property>
+                    <item row="2" column="7">
+                     <widget class="QLineEdit" name="txtCustomCurve8"/>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_131">
+                      <property name="text">
+                       <string>Tin</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="9">
+                     <widget class="QLineEdit" name="txtCustomCurve9"/>
+                    </item>
+                    <item row="0" column="3" colspan="2">
+                     <widget class="QLineEdit" name="txtCustomCurve1"/>
+                    </item>
+                    <item row="0" column="0" colspan="2">
+                     <widget class="QLabel" name="label_132">
+                      <property name="text">
+                       <string>Text</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="5">
+                     <widget class="QLineEdit" name="txtCustomCurve2"/>
+                    </item>
+                    <item row="0" column="9">
+                     <widget class="QLineEdit" name="txtCustomCurve4"/>
+                    </item>
+                    <item row="2" column="3" colspan="2">
+                     <widget class="QLineEdit" name="txtCustomCurve6"/>
+                    </item>
+                    <item row="0" column="7">
+                     <widget class="QLineEdit" name="txtCustomCurve3"/>
+                    </item>
+                    <item row="2" column="5">
+                     <widget class="QLineEdit" name="txtCustomCurve7"/>
+                    </item>
                     <item row="0" column="2">
                      <spacer name="horizontalSpacer_29">
                       <property name="orientation">
@@ -1686,43 +1761,11 @@ border:1px solid rgba(46, 82, 101, 200);
                       </property>
                      </spacer>
                     </item>
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="label_131">
-                      <property name="text">
-                       <string>Tin</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="7">
-                     <widget class="QLineEdit" name="txtCustomCurve7"/>
-                    </item>
-                    <item row="0" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtCustomCurve1"/>
-                    </item>
-                    <item row="0" column="0" colspan="2">
-                     <widget class="QLabel" name="label_132">
-                      <property name="text">
-                       <string>Text</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="9">
-                     <widget class="QLineEdit" name="txtCustomCurve8"/>
-                    </item>
-                    <item row="2" column="3" colspan="2">
+                    <item row="0" column="10">
                      <widget class="QLineEdit" name="txtCustomCurve5"/>
                     </item>
-                    <item row="0" column="9">
-                     <widget class="QLineEdit" name="txtCustomCurve4"/>
-                    </item>
-                    <item row="0" column="5">
-                     <widget class="QLineEdit" name="txtCustomCurve2"/>
-                    </item>
-                    <item row="0" column="7">
-                     <widget class="QLineEdit" name="txtCustomCurve3"/>
-                    </item>
-                    <item row="2" column="5">
-                     <widget class="QLineEdit" name="txtCustomCurve6"/>
+                    <item row="2" column="10">
+                     <widget class="QLineEdit" name="txtCustomCurve10"/>
                     </item>
                    </layout>
                   </widget>
@@ -1734,7 +1777,7 @@ border:1px solid rgba(46, 82, 101, 200);
                <widget class="QFrame" name="frame_53">
                 <property name="minimumSize">
                  <size>
-                  <width>300</width>
+                  <width>350</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -1882,7 +1925,7 @@ border:1px solid rgba(46, 82, 101, 200);
                      <number>0</number>
                     </property>
                     <item row="2" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtNormCabinCurve5">
+                     <widget class="QLineEdit" name="txtNormCabinCurve6">
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
@@ -1910,7 +1953,7 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="2" column="5">
-                     <widget class="QLineEdit" name="txtNormCabinCurve6">
+                     <widget class="QLineEdit" name="txtNormCabinCurve7">
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
@@ -1940,7 +1983,7 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="2" column="7">
-                     <widget class="QLineEdit" name="txtNormCabinCurve7">
+                     <widget class="QLineEdit" name="txtNormCabinCurve8">
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
@@ -1961,159 +2004,27 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="2" column="9">
-                     <widget class="QLineEdit" name="txtNormCabinCurve8">
+                     <widget class="QLineEdit" name="txtNormCabinCurve9">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="10">
+                     <widget class="QLineEdit" name="txtNormCabinCurve5">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="10">
+                     <widget class="QLineEdit" name="txtNormCabinCurve10">
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
                      </widget>
                     </item>
                    </layout>
-                  </widget>
-                 </item>
-                 <item row="4" column="0">
-                  <widget class="QFrame" name="frame_38">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>45</height>
-                    </size>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_34">
-                    <property name="leftMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <item row="0" column="7">
-                     <widget class="QLineEdit" name="txtNormCabinLowerLimit3">
-                      <property name="readOnly">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="9">
-                     <widget class="QLineEdit" name="txtNormCabinLowerLimit4">
-                      <property name="readOnly">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="0" colspan="2">
-                     <widget class="QLabel" name="label_81">
-                      <property name="text">
-                       <string>Text</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="2">
-                     <spacer name="horizontalSpacer_19">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeType">
-                       <enum>QSizePolicy::Fixed</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>40</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="label_92">
-                      <property name="text">
-                       <string>Tin</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtNormCabinLowerLimit1">
-                      <property name="readOnly">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="5">
-                     <widget class="QLineEdit" name="txtNormCabinLowerLimit2">
-                      <property name="readOnly">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtNormCabinLowerLimit5">
-                      <property name="readOnly">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="7">
-                     <widget class="QLineEdit" name="txtNormCabinLowerLimit7">
-                      <property name="readOnly">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="9">
-                     <widget class="QLineEdit" name="txtNormCabinLowerLimit8">
-                      <property name="readOnly">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="5">
-                     <widget class="QLineEdit" name="txtNormCabinLowerLimit6">
-                      <property name="readOnly">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="lblCabinStandard_4">
-                   <property name="text">
-                    <string>Norm</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QLabel" name="label_103">
-                   <property name="styleSheet">
-                    <string notr="true">padding-left:80px;</string>
-                   </property>
-                   <property name="text">
-                    <string>upper limit</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="3" column="0">
-                  <widget class="QLabel" name="label_108">
-                   <property name="styleSheet">
-                    <string notr="true">padding-left:80px;</string>
-                   </property>
-                   <property name="text">
-                    <string>lower limit</string>
-                   </property>
                   </widget>
                  </item>
                  <item row="2" column="0">
@@ -2249,6 +2160,166 @@ border:1px solid rgba(46, 82, 101, 200);
                    </layout>
                   </widget>
                  </item>
+                 <item row="4" column="0">
+                  <widget class="QFrame" name="frame_38">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>45</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_34">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <item row="0" column="7">
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit3">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="9">
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit4">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="0" colspan="2">
+                     <widget class="QLabel" name="label_81">
+                      <property name="text">
+                       <string>Text</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="2">
+                     <spacer name="horizontalSpacer_19">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Fixed</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_92">
+                      <property name="text">
+                       <string>Tin</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="3" colspan="2">
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit1">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="5">
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit2">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="3" colspan="2">
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit6">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="7">
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit8">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="9">
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit9">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="5">
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit7">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="10">
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit5">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="10">
+                     <widget class="QLineEdit" name="txtNormCabinLowerLimit10">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QLabel" name="label_108">
+                   <property name="styleSheet">
+                    <string notr="true">padding-left:80px;</string>
+                   </property>
+                   <property name="text">
+                    <string>lower limit</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="label_103">
+                   <property name="styleSheet">
+                    <string notr="true">padding-left:80px;</string>
+                   </property>
+                   <property name="text">
+                    <string>upper limit</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="lblCabinStandard_4">
+                   <property name="text">
+                    <string>Norm</string>
+                   </property>
+                  </widget>
+                 </item>
                  <item row="5" column="0">
                   <widget class="QLabel" name="label_111">
                    <property name="styleSheet">
@@ -2266,7 +2337,7 @@ border:1px solid rgba(46, 82, 101, 200);
                <widget class="QFrame" name="frame_40">
                 <property name="minimumSize">
                  <size>
-                  <width>300</width>
+                  <width>350</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -2281,6 +2352,9 @@ border:1px solid rgba(46, 82, 101, 200);
                   <widget class="QLabel" name="lblCabinGraphNorm">
                    <property name="text">
                     <string>TextLabel</string>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
@@ -2362,20 +2436,24 @@ border:1px solid rgba(46, 82, 101, 200);
                     <property name="spacing">
                      <number>0</number>
                     </property>
-                    <item row="2" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtCustomCabinCurve5"/>
-                    </item>
                     <item row="0" column="5">
                      <widget class="QLineEdit" name="txtCustomCabinCurve2"/>
+                    </item>
+                    <item row="2" column="3" colspan="2">
+                     <widget class="QLineEdit" name="txtCustomCabinCurve6"/>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label_133">
+                      <property name="text">
+                       <string>Tin</string>
+                      </property>
+                     </widget>
                     </item>
                     <item row="0" column="9">
                      <widget class="QLineEdit" name="txtCustomCabinCurve4"/>
                     </item>
-                    <item row="0" column="7">
-                     <widget class="QLineEdit" name="txtCustomCabinCurve3"/>
-                    </item>
                     <item row="2" column="5">
-                     <widget class="QLineEdit" name="txtCustomCabinCurve6"/>
+                     <widget class="QLineEdit" name="txtCustomCabinCurve7"/>
                     </item>
                     <item row="0" column="2">
                      <spacer name="horizontalSpacer_30">
@@ -2393,18 +2471,8 @@ border:1px solid rgba(46, 82, 101, 200);
                       </property>
                      </spacer>
                     </item>
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="label_133">
-                      <property name="text">
-                       <string>Tin</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="7">
-                     <widget class="QLineEdit" name="txtCustomCabinCurve7"/>
-                    </item>
-                    <item row="0" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtCustomCabinCurve1"/>
+                    <item row="0" column="7">
+                     <widget class="QLineEdit" name="txtCustomCabinCurve3"/>
                     </item>
                     <item row="0" column="0" colspan="2">
                      <widget class="QLabel" name="label_134">
@@ -2413,8 +2481,20 @@ border:1px solid rgba(46, 82, 101, 200);
                       </property>
                      </widget>
                     </item>
-                    <item row="2" column="9">
+                    <item row="2" column="7">
                      <widget class="QLineEdit" name="txtCustomCabinCurve8"/>
+                    </item>
+                    <item row="0" column="3" colspan="2">
+                     <widget class="QLineEdit" name="txtCustomCabinCurve1"/>
+                    </item>
+                    <item row="2" column="9">
+                     <widget class="QLineEdit" name="txtCustomCabinCurve9"/>
+                    </item>
+                    <item row="0" column="10">
+                     <widget class="QLineEdit" name="txtCustomCabinCurve5"/>
+                    </item>
+                    <item row="2" column="10">
+                     <widget class="QLineEdit" name="txtCustomCabinCurve10"/>
                     </item>
                    </layout>
                   </widget>
@@ -2449,18 +2529,11 @@ border:1px solid rgba(46, 82, 101, 200);
                     <property name="spacing">
                      <number>0</number>
                     </property>
-                    <item row="0" column="7">
-                     <widget class="QLineEdit" name="txtCustomCabinLowerLimit3"/>
-                    </item>
                     <item row="0" column="9">
                      <widget class="QLineEdit" name="txtCustomCabinLowerLimit4"/>
                     </item>
-                    <item row="0" column="0" colspan="2">
-                     <widget class="QLabel" name="label_135">
-                      <property name="text">
-                       <string>Text</string>
-                      </property>
-                     </widget>
+                    <item row="0" column="7">
+                     <widget class="QLineEdit" name="txtCustomCabinLowerLimit3"/>
                     </item>
                     <item row="0" column="2">
                      <spacer name="horizontalSpacer_31">
@@ -2485,6 +2558,13 @@ border:1px solid rgba(46, 82, 101, 200);
                       </property>
                      </widget>
                     </item>
+                    <item row="0" column="0" colspan="2">
+                     <widget class="QLabel" name="label_135">
+                      <property name="text">
+                       <string>Text</string>
+                      </property>
+                     </widget>
+                    </item>
                     <item row="0" column="3" colspan="2">
                      <widget class="QLineEdit" name="txtCustomCabinLowerLimit1"/>
                     </item>
@@ -2492,16 +2572,22 @@ border:1px solid rgba(46, 82, 101, 200);
                      <widget class="QLineEdit" name="txtCustomCabinLowerLimit2"/>
                     </item>
                     <item row="2" column="3" colspan="2">
-                     <widget class="QLineEdit" name="txtCustomCabinLowerLimit5"/>
-                    </item>
-                    <item row="2" column="7">
-                     <widget class="QLineEdit" name="txtCustomCabinLowerLimit7"/>
+                     <widget class="QLineEdit" name="txtCustomCabinLowerLimit6"/>
                     </item>
                     <item row="2" column="9">
+                     <widget class="QLineEdit" name="txtCustomCabinLowerLimit9"/>
+                    </item>
+                    <item row="2" column="7">
                      <widget class="QLineEdit" name="txtCustomCabinLowerLimit8"/>
                     </item>
                     <item row="2" column="5">
-                     <widget class="QLineEdit" name="txtCustomCabinLowerLimit6"/>
+                     <widget class="QLineEdit" name="txtCustomCabinLowerLimit7"/>
+                    </item>
+                    <item row="0" column="10">
+                     <widget class="QLineEdit" name="txtCustomCabinLowerLimit5"/>
+                    </item>
+                    <item row="2" column="10">
+                     <widget class="QLineEdit" name="txtCustomCabinLowerLimit10"/>
                     </item>
                    </layout>
                   </widget>
@@ -2643,7 +2729,7 @@ border:1px solid rgba(46, 82, 101, 200);
                <widget class="QFrame" name="frame_59">
                 <property name="minimumSize">
                  <size>
-                  <width>300</width>
+                  <width>350</width>
                   <height>0</height>
                  </size>
                 </property>
