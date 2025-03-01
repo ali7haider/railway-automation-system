@@ -386,6 +386,8 @@ class MasterScreen(QtWidgets.QMainWindow):
         """Fetch and update Standby Operator Temperature for Saloon and Cabin with validation."""
         try:
             # Define invalid values
+            if not hasattr(self, "locked_custom_fields"):
+                self.locked_custom_fields = set()
             invalid_values = {"", "--- Select ---", "--- Select Train Type ---", "--- Select Country ---", "--- Select deck ---"}
 
             # Step 1: Get Standard Saloon & Standard Cabin
@@ -397,20 +399,28 @@ class MasterScreen(QtWidgets.QMainWindow):
 
             # Step 2: Validation: Ensure valid selections
             if standard_saloon in invalid_values or standard_cabin in invalid_values:
-                self.lblStandByOperatorSaloonMax.setText("NA")
-                self.lblStandByOperatorSaloonMin.setText("NA")
-                self.lblStandByOperatorCabinMax.setText("NA")
-                self.lblStandByOperatorCabinMin.setText("NA")
+                if "StandByOperatorSaloonMax" not in self.locked_custom_fields:
+                    self.lblStandByOperatorSaloonMax.setText("NA")
+                if "StandByOperatorSaloonMin" not in self.locked_custom_fields:
+                    self.lblStandByOperatorSaloonMin.setText("NA")
+                if "StandByOperatorCabinMax" not in self.locked_custom_fields:
+                    self.lblStandByOperatorCabinMax.setText("NA")
+                if "StandByOperatorCabinMin" not in self.locked_custom_fields:
+                    self.lblStandByOperatorCabinMin.setText("NA")
                 return  # Exit function if validation fails
 
             # Step 3: Fetch Standby Operator Temperature from ProjectManager
             summer_saloon, winter_saloon = ProjectManager.get_standby_operator_temp(standard_saloon)
             summer_cabin, winter_cabin = ProjectManager.get_standby_operator_temp(standard_cabin)
             # Step 4: Update UI Labels
-            self.lblStandByOperatorSaloonMax.setText(str(summer_saloon) if summer_saloon is not None else "None°C")
-            self.lblStandByOperatorSaloonMin.setText(str(winter_saloon) if winter_saloon is not None else "None°C")
-            self.lblStandByOperatorCabinMax.setText(str(summer_cabin) if summer_cabin is not None else "None°C")
-            self.lblStandByOperatorCabinMin.setText(str(winter_cabin) if winter_cabin is not None else "None°C")
+            if "StandByOperatorSaloonMax" not in self.locked_custom_fields:
+                self.lblStandByOperatorSaloonMax.setText(str(summer_saloon) if summer_saloon is not None else "None°C")
+            if "StandByOperatorSaloonMin" not in self.locked_custom_fields:
+                self.lblStandByOperatorSaloonMin.setText(str(winter_saloon) if winter_saloon is not None else "None°C")
+            if "StandByOperatorCabinMax" not in self.locked_custom_fields:
+                self.lblStandByOperatorCabinMax.setText(str(summer_cabin) if summer_cabin is not None else "None°C")
+            if "StandByOperatorCabinMin" not in self.locked_custom_fields:
+                self.lblStandByOperatorCabinMin.setText(str(winter_cabin) if winter_cabin is not None else "None°C")
 
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to update Standby Operator Temperature: {str(e)}")
@@ -569,8 +579,12 @@ class MasterScreen(QtWidgets.QMainWindow):
         return standard_saloon, standard_cabin
 
     def update_tic_coefficients(self):
-        """Fetch and update Tic coefficient based on selected values."""
+        """Fetch and update Tic coefficient based on selected values, but keep locked custom values unchanged."""
         try:
+            # Initialize locked fields if not already defined
+            if not hasattr(self, "locked_custom_fields"):
+                self.locked_custom_fields = set()
+
             # Step 1: Get Standard Saloon & Category
             selected_train_type = self.cmbxTypeOfTrainProject.currentText().strip()
             standard_saloon, standard_cabin = self.get_standard_saloon_and_cabin(
@@ -579,32 +593,40 @@ class MasterScreen(QtWidgets.QMainWindow):
             )
             compartment = self.cmbxCompartmentProject.currentText().strip()
 
-
             # List of invalid selections
-            invalid_values = {"", "--- Select ---", "--- Select Train Type ---", "--- Select Category ---","--- Select Compartment ---"}
+            invalid_values = {"", "--- Select ---", "--- Select Train Type ---", "--- Select Category ---", "--- Select Compartment ---"}
 
             # Validation: Ensure inputs are selected
             if standard_saloon in invalid_values or standard_cabin in invalid_values or compartment in invalid_values:
-                self.lblMaxSaloonInterior.setText("°C")
-                self.lblMinSaloonInterior.setText("°C")
-                self.lblTicMaxCabinInterior.setText("°C")
-                self.lblTicMinSaloonInterior.setText("°C")
+                # Reset only if fields are not locked
+                if "TicMaxSaloon" not in self.locked_custom_fields:
+                    self.lblMaxSaloonInterior.setText("°C")
+                if "TicMinSaloon" not in self.locked_custom_fields:
+                    self.lblMinSaloonInterior.setText("°C")
+                if "TicMaxCabin" not in self.locked_custom_fields:
+                    self.lblTicMaxCabinInterior.setText("°C")
+                if "TicMinCabin" not in self.locked_custom_fields:
+                    self.lblTicMinSaloonInterior.setText("°C")
                 return  # Exit function
 
             # Step 2: Get Tic coefficients using ProjectManager
             tic_max_saloon, tic_min_saloon = ProjectManager.get_tic_coefficients(standard_saloon, compartment)
-            tic_max_cabin, tic_max_cabin = ProjectManager.get_tic_coefficients(standard_cabin, compartment)
+            tic_max_cabin, tic_min_cabin = ProjectManager.get_tic_coefficients(standard_cabin, compartment)
 
-            # Step 3: Update Labels
-            self.lblMaxSaloonInterior.setText(f"{tic_max_saloon}°C")
-            self.lblMinSaloonInterior.setText(f"{tic_min_saloon}°C")
-            self.lblTicMaxCabinInterior.setText(f"{tic_max_cabin}°C")
-            self.lblTicMinSaloonInterior.setText(f"{tic_max_cabin}°C")
+            # Step 3: Update Labels, but only if they are NOT locked
+            if "TicMaxSaloon" not in self.locked_custom_fields:
+                self.lblMaxSaloonInterior.setText(f"{tic_max_saloon}°C")
+            if "TicMinSaloon" not in self.locked_custom_fields:
+                self.lblMinSaloonInterior.setText(f"{tic_min_saloon}°C")
+            if "TicMaxCabin" not in self.locked_custom_fields:
+                self.lblTicMaxCabinInterior.setText(f"{tic_max_cabin}°C")
+            if "TicMinCabin" not in self.locked_custom_fields:
+                self.lblTicMinSaloonInterior.setText(f"{tic_min_cabin}°C")
 
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to update Tic Coefficients: {str(e)}")
 
-    
+        
     def update_k_coefficient(self):
         """Fetch and update heat transfer coefficient based on selected values."""
         try:
@@ -677,8 +699,11 @@ class MasterScreen(QtWidgets.QMainWindow):
                 selected_country in invalid_values or standard_saloon in invalid_values or standard_cabin in invalid_values
             ):
                 # Reset labels if validation fails
-                self.lblMaxMeanInteriorTempSaloon.setText("°C")
-                self.lblMaxMeanInteriorTempCabin.setText("°C")
+                if "MaxMeanTempSaloon" not in self.locked_custom_fields:
+                    self.lblMaxMeanInteriorTempSaloon.setText("°C")
+                if "MaxMeanTempCabin" not in self.locked_custom_fields:
+ 
+                    self.lblMaxMeanInteriorTempCabin.setText("°C")
                 return  # Exit the function without proceeding further
             summer_zone_saloon = ProjectManager.get_summer_zone(selected_country, standard_saloon)
             summer_zone_cabin = ProjectManager.get_summer_zone(selected_country, standard_cabin)
@@ -693,12 +718,15 @@ class MasterScreen(QtWidgets.QMainWindow):
 
             # Step 5: Update Labels
             if temp_saloon:
-                self.lblMaxMeanInteriorTempSaloon.setText(f'{temp_saloon}°C')
+                if "MaxMeanTempSaloon" not in self.locked_custom_fields:
+
+                    self.lblMaxMeanInteriorTempSaloon.setText(f'{temp_saloon}°C')
             else:
                 self.lblMaxMeanInteriorTempSaloon.setText("°C")
 
             if temp_cabin:
-                self.lblMaxMeanInteriorTempCabin.setText(f'{temp_cabin}°C')
+                if "MaxMeanTempCabin" not in self.locked_custom_fields:
+                    self.lblMaxMeanInteriorTempCabin.setText(f'{temp_cabin}°C')
             else:
                 self.lblMaxMeanInteriorTempCabin.setText("°C")
 
