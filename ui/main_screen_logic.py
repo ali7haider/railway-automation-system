@@ -270,10 +270,14 @@ class MasterScreen(QtWidgets.QMainWindow):
     def apply_custom_values(self, custom_values):
         """
         Updates labels with custom values and highlights them if changed.
+        Locks fields with custom values to prevent further updates.
         :param custom_values: Dictionary containing custom values.
         """
         try:
-            print("Received custom values:", custom_values)  # Debugging
+            # Initialize locked fields if not already defined
+            if not hasattr(self, "locked_custom_fields"):
+                self.locked_custom_fields = set()
+
             # Define label mappings
             label_mappings = {
                 "TicMaxSaloon": self.lblMaxSaloonInterior,
@@ -293,8 +297,11 @@ class MasterScreen(QtWidgets.QMainWindow):
                 custom_value = custom_values.get(key, "").strip()
 
                 if custom_value:  # If custom value exists
-                    label.setText(custom_value)
-                    label.setStyleSheet("background-color: #F97D02;padding-left:5px;")  # Highlight in yellow
+                    label.setText(f"{custom_value}°C")
+                    label.setStyleSheet("background-color: #F97D02; padding-left:5px;")  # Highlight in orange
+                    self.locked_custom_fields.add(key)  # Lock this field
+                    print(f"Locked field: {key} with value: {custom_value}")  # Debugging
+
         except Exception as e:
             QtWidgets.QMessageBox.critical(self, "Error", f"Error applying custom values: {str(e)}")
 
@@ -686,12 +693,12 @@ class MasterScreen(QtWidgets.QMainWindow):
 
             # Step 5: Update Labels
             if temp_saloon:
-                self.lblMaxMeanInteriorTempSaloon.setText(str(temp_saloon))
+                self.lblMaxMeanInteriorTempSaloon.setText(f'{temp_saloon}°C')
             else:
                 self.lblMaxMeanInteriorTempSaloon.setText("°C")
 
             if temp_cabin:
-                self.lblMaxMeanInteriorTempCabin.setText(str(temp_cabin))
+                self.lblMaxMeanInteriorTempCabin.setText(f'{temp_cabin}°C')
             else:
                 self.lblMaxMeanInteriorTempCabin.setText("°C")
 
