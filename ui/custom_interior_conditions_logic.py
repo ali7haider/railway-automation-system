@@ -44,6 +44,8 @@ class CustomInteriorConditionsScreen(QtWidgets.QMainWindow):
                 self.display_curve_values(saloon_curve, "saloon",default_values.get("standard_saloon", ""),self.lblSaloonGraphNorm)
                 self.display_curve_values(cabin_curve, "cabin",default_values.get("standard_cabin", ""),self.lblCabinGraphNorm)
 
+
+                self.setup_custom_value_listeners()  # Connect custom input fields to update graph
         except Exception as e:
             QtWidgets.QMessageBox.critical(self, "Error", f"Error loading Custom Interior Conditions UI: {str(e)}")
     def display_curve_values(self, curve_values, label_prefix,standard,graphLabel):
@@ -118,6 +120,7 @@ class CustomInteriorConditionsScreen(QtWidgets.QMainWindow):
 
             Text_low = get_values("Text Lower Limit")
             Tin_low = get_values("Tin Lower Limit")
+            print(Text_upper, Tin_upper, Text, Tin, Text_low, Tin_low)
 
             # Ensure all values are valid before plotting
             if all(val is not None for val in Text_upper + Tin_upper + Text + Tin + Text_low + Tin_low):
@@ -133,20 +136,6 @@ class CustomInteriorConditionsScreen(QtWidgets.QMainWindow):
                 plt.title(standard)
                 plt.legend()
                 plt.grid(True)
-
-                # Save the plot as an image
-                # image_path = "curve_plot.png"
-                # plt.savefig(image_path, dpi=100, bbox_inches="tight")  # Save with good resolution
-                # plt.close()  # Close the plot to free memory
-
-                # # Load the image into QLabel
-                # pixmap = QPixmap(image_path)
-                # if not pixmap.isNull():
-                #     label_widget.setPixmap(pixmap.scaled(label_widget.width(), label_widget.height(), Qt.KeepAspectRatio))
-
-                # # Delete the image after loading into QLabel
-                # os.remove(image_path)
-
                 temp_filename = "curve_plot.png"
                 plt.savefig(temp_filename)
 
@@ -163,3 +152,155 @@ class CustomInteriorConditionsScreen(QtWidgets.QMainWindow):
 
         except Exception as e:
             print(f"Error generating graph: {e}")
+    def setup_custom_value_listeners(self):
+        """
+        Connects textChanged signals of custom input fields to update the graph dynamically.
+        """
+        try:
+            # List of text input fields to monitor
+            custom_inputs = []
+            
+            for i in range(1, 11):
+                custom_inputs.append(f"txtCustomUpperLimit{i}")
+                custom_inputs.append(f"txtCustomLowerLimit{i}")
+                custom_inputs.append(f"txtCustomCurve{i}")
+
+            for i in range(1, 11):  # Cabin custom fields
+                custom_inputs.append(f"txtCustomCabinUpperLimit{i}")
+                custom_inputs.append(f"txtCustomCabinLowerLimit{i}")
+                custom_inputs.append(f"txtCustomCabinCurve{i}")
+
+            # Connect each field to the update function
+            for field in custom_inputs:
+                input_widget = getattr(self, field, None)
+                if input_widget:
+                    input_widget.textChanged.connect(self.update_custom_graphs)
+
+        except Exception as e:
+            print(f"Error setting up custom input listeners: {e}")
+    def get_custom_curve_values(self, is_cabin=False):
+        """
+        Reads the custom curve values from the UI input fields.
+        :param is_cabin: If True, fetch values for Cabin; otherwise, fetch values for Saloon.
+        Returns a dictionary formatted like curve_values.
+        """
+        try:
+            prefix = "txtCustomCabin" if is_cabin else "txtCustom"
+
+            def fetch_values(label, start, end, default=0):
+                """
+                Fetch values from UI input fields based on label and range.
+                :param label: "UpperLimit", "LowerLimit", "Curve"
+                :param start: Start index (e.g., 1 for Text, 6 for Tin)
+                :param end: End index (e.g., 5 for Text, 10 for Tin)
+                :param default: Default value for missing/non-numeric entries.
+                :return: List of fetched values.
+                """
+                values = []
+                for i in range(start, end + 1):  # Range from start to end
+                    field_name = f"{prefix}{label}{i}"
+                    widget = getattr(self, field_name, None)
+                    if widget:
+                        text_value = widget.text().strip()  # Remove spaces
+                        try:
+                            value = float(text_value) if text_value else default  # Use default if empty
+                        except ValueError:
+                            value = default  # Handle non-numeric values
+                        values.append(value)
+                    else:
+                        values.append(default)  # If the widget doesn't exist, use default
+                return values
+
+            return {
+                "Text Upper Limit": dict(zip("ABCDE", fetch_values("UpperLimit", 1, 5))),  # Text: 1-5
+                "Tin Upper Limit": dict(zip("ABCDE", fetch_values("UpperLimit", 6, 10))),  # Tin: 6-10
+
+                "Text Lower Limit": dict(zip("ABCDE", fetch_values("LowerLimit", 1, 5))),  # Text: 1-5
+                "Tin Lower Limit": dict(zip("ABCDE", fetch_values("LowerLimit", 6, 10))),  # Tin: 6-10
+
+                "Text Curve Limit": dict(zip("ABCDE", fetch_values("Curve", 1, 5))),  # Text: 1-5
+                "Tin Curve Limit": dict(zip("ABCDE", fetch_values("Curve", 6, 10))),  # Tin: 6-10
+            }
+
+        except Exception as e:
+            print(f"Error fetching custom curve values: {e}")
+            return {}
+
+
+
+
+    def update_custom_graphs(self):
+        """
+        Fetches updated values from custom input fields and re-plots the graph in QLabel.
+        """
+        try:
+            # Fetch values for both Saloon and Cabin
+            custom_saloon_values = self.get_custom_curve_values(is_cabin=False)
+            custom_cabin_values = self.get_custom_curve_values(is_cabin=True)
+
+            # Update Saloon Custom Graph
+            self.plot_custom_curve_graph(custom_saloon_values, "Custom Saloon Graph", self.lblSaloonGraphCustom)
+
+            # Update Cabin Custom Graph
+            self.plot_custom_curve_graph(custom_cabin_values, "Custom Cabin Graph", self.lblCabinGraphCustom)
+
+        except Exception as e:
+            print(f"Error updating custom graphs: {e}")
+
+    def plot_custom_curve_graph(self, curve_values, standard, label_widget):
+        """
+        Plots the custom curve graph, saves it as an image, displays it in a QLabel, and deletes the image.
+        :param curve_values: Dictionary containing curve values.
+        :param standard: The standard being used (e.g., "Custom Standard").
+        :param label_widget: The QLabel where the image will be displayed.
+        """
+        try:
+            # Extract first 5 values from the respective limits
+            def get_values(limit_name):
+                values = curve_values.get(limit_name, {})
+                return [val if isinstance(val, (int, float)) else None for val in list(values.values())[:5]]
+
+            # Fetch data
+            Text_upper = get_values("Text Upper Limit")
+            Tin_upper = get_values("Tin Upper Limit")
+            
+            Text = get_values("Text Curve Limit")
+            Tin = get_values("Tin Curve Limit")
+
+            Text_low = get_values("Text Lower Limit")
+            Tin_low = get_values("Tin Lower Limit")
+
+            print(Text_upper, Tin_upper, Text, Tin, Text_low, Tin_low)
+            # Ensure all values are valid before plotting
+            if all(val is not None for val in Text_upper + Tin_upper + Text + Tin + Text_low + Tin_low):
+                # Create the plot
+                plt.figure(figsize=(5, 4))  # Set figure size
+                plt.plot(Text_upper, Tin_upper, marker='o', linestyle='-', color='r', label="Upper Limit")
+                plt.plot(Text, Tin, marker='o', linestyle='-', color='b', label="Curve")
+                plt.plot(Text_low, Tin_low, marker='o', linestyle='-', color='g', label="Lower Limit")
+
+                # Labels and title
+                plt.xlabel("Text [ºC]")
+                plt.ylabel("Tin [ºC]")
+                plt.title(standard)
+                plt.legend()
+                plt.grid(True)
+
+                # Save and display the plot
+                temp_filename = "custom_curve_plot.png"
+                plt.savefig(temp_filename)
+
+                # Convert the saved image to a QPixmap and display it
+                qpixmap = QPixmap(temp_filename)
+                if not qpixmap.isNull():
+                    label_widget.setPixmap(qpixmap)
+                    label_widget.setScaledContents(True)  # Scale to fit label
+
+                # Delete the temporary file
+                os.remove(temp_filename)
+
+            else:
+                print("Invalid values found in custom curve data. Ensure all values are numeric.")
+
+        except Exception as e:
+            print(f"Error generating custom graph: {e}")

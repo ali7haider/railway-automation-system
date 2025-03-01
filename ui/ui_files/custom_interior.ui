@@ -228,9 +228,9 @@ QComboBox QAbstractItemView {
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-1409</y>
+            <y>-492</y>
             <width>984</width>
-            <height>2091</height>
+            <height>2096</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -801,7 +801,7 @@ border:2px solid black;
              <property name="maximumSize">
               <size>
                <width>16777215</width>
-               <height>35</height>
+               <height>40</height>
               </size>
              </property>
              <property name="frameShape">
@@ -1791,7 +1791,7 @@ border:1px solid rgba(46, 82, 101, 200);
                  <item>
                   <widget class="QLabel" name="lblSaloonGraphCustom">
                    <property name="text">
-                    <string>TextLabel</string>
+                    <string>Graph Here</string>
                    </property>
                   </widget>
                  </item>
@@ -2743,7 +2743,7 @@ border:1px solid rgba(46, 82, 101, 200);
                  <item>
                   <widget class="QLabel" name="lblCabinGraphCustom">
                    <property name="text">
-                    <string>TextLabel</string>
+                    <string>Graph Here</string>
                    </property>
                   </widget>
                  </item>
