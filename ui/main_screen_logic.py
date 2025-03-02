@@ -237,6 +237,10 @@ class MasterScreen(QtWidgets.QMainWindow):
 
             # Open Custom Exterior Conditions screen with formatted values
             self.custom_exterior_window = CustomExteriorConditionsCabinScreen(default_values)
+            if hasattr(self.custom_exterior_window, "custom_values_updated"):
+                self.custom_exterior_window.custom_values_updated.connect(self.apply_custom_values_cabin)
+            else:
+                print("custom_values_updated signal not found!")
             self.custom_exterior_window.show()
 
         except Exception as e:
@@ -480,6 +484,99 @@ class MasterScreen(QtWidgets.QMainWindow):
 
         except Exception as e:
             print(f"[ERROR] Exception in apply_custom_values_saloon: {str(e)}")
+            QtWidgets.QMessageBox.critical(self, "Error", f"Error applying custom values: {str(e)}")
+    def apply_custom_values_cabin(self, custom_values):
+        """
+        Updates cabin labels with custom values and highlights them if changed.
+        Locks fields with custom values to prevent further updates.
+        :param custom_values: Dictionary containing custom values.
+        """
+        try:
+            print("\n[DEBUG] Received custom values for Cabin:", custom_values)
+
+            # Initialize locked fields if not already defined
+            if not hasattr(self, "locked_custom_fields"):
+                self.locked_custom_fields = set()
+
+            # Define label mappings for Zone values (Direct Text)
+            label_mappings = {
+                "CustomWinterZone": self.lblWinterZoneCabin,
+                "CustomSummerZone": self.lblSummerZoneCabin,
+            }
+
+            # Directly set Zone values
+            for key, label in label_mappings.items():
+                custom_value = custom_values.get(key, "").strip()
+                print(f"[DEBUG] Processing {key}: {custom_value}")
+
+                if custom_value:
+                    text = f"{custom_value}"
+                    label.setText(text)
+                    label.setStyleSheet("background-color: #F97D02; padding-left:5px;")
+                    self.locked_custom_fields.add(key)
+                    print(f"[DEBUG] Updated {key} --> {text}")
+
+            # Process Normal Values (Winter & Summer)
+            normal_mappings = {
+                "CustomWinterNormalMin": self.lblWinterNormalCabin,
+                "CustomSummerNormalMax": self.lblSummerNormalCabin,
+            }
+
+            for key, label in normal_mappings.items():
+                custom_value = custom_values.get(key, "").strip()
+                print(f"[DEBUG] Processing {key}: {custom_value}")
+
+                if custom_value:
+                    if "Min" in key:
+                        self.set_label_textNormalWinter(label, custom_value)
+                    elif "Max" in key:
+                        self.set_label_textNormalSummer(label, custom_value)
+                    label.setStyleSheet("background-color: #F97D02; padding-left:5px;")
+                    self.locked_custom_fields.add(key)
+
+            # Process Extended Values (Winter & Summer)
+            for season in ["Winter", "Summer"]:
+                min_key = f"Custom{season}ExtendedMin"
+                max_key = f"Custom{season}ExtendedMax"
+                label_attr = f"lbl{season}ExtendedCabin"
+
+                if hasattr(self, label_attr):  # Check if label exists
+                    label = getattr(self, label_attr)
+
+                    min_val = custom_values.get(min_key, "").strip()
+                    max_val = custom_values.get(max_key, "").strip()
+                    print(f"[DEBUG] Processing {min_key}: {min_val}, {max_key}: {max_val}")
+
+                    if min_val or max_val:  # If either value is set, update both
+                        self.set_label_text_range(label, min_val if min_val else None, max_val if max_val else None)
+                        label.setStyleSheet("background-color: #F97D02; padding-left:5px;")
+                        self.locked_custom_fields.update({min_key, max_key})
+
+            # Process Design, Extreme, and Operational values
+            for condition in ["Design", "Extreme", "Operational"]:
+                for season in ["Winter", "Summer"]:
+                    temp_key = f"Custom{season}{condition}Temp"
+                    hum_key = f"Custom{season}{condition}Humi"
+                    flux_key = f"Custom{season}{condition}Solar"
+                    label_attr = f"lbl{season}{condition}Cabin"
+
+                    if hasattr(self, label_attr):  # Check if label exists
+                        label = getattr(self, label_attr)
+
+                        temp = custom_values.get(temp_key, "").strip() or "None"
+                        hum = custom_values.get(hum_key, "").strip() or "None"
+                        flux = custom_values.get(flux_key, "").strip() or "None"
+                        print(f"[DEBUG] Processing {temp_key}: {temp}, {hum_key}: {hum}, {flux_key}: {flux}")
+
+                        if temp != "None" or hum != "None" or flux != "None":  # If any value is set, mark all as custom
+                            text = f"{temp}°C, {hum}%, {flux} W/m²"
+                            label.setText(text)
+                            label.setStyleSheet("background-color: #F97D02; padding-left:5px;")
+                            self.locked_custom_fields.update({temp_key, hum_key, flux_key})
+                            print(f"[DEBUG] Updated {label_attr} --> {text}")
+
+        except Exception as e:
+            print(f"[ERROR] Exception in apply_custom_values_cabin: {str(e)}")
             QtWidgets.QMessageBox.critical(self, "Error", f"Error applying custom values: {str(e)}")
 
     def open_custom_interior_conditions(self):

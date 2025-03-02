@@ -1,6 +1,9 @@
 from PyQt5 import QtWidgets, uic
+from PyQt5.QtCore import pyqtSignal
 
 class CustomExteriorConditionsCabinScreen(QtWidgets.QMainWindow):
+    custom_values_updated = pyqtSignal(dict)  # Signal to send custom values
+
     def __init__(self, default_values=None):
         super().__init__()
         try:
@@ -50,7 +53,59 @@ class CustomExteriorConditionsCabinScreen(QtWidgets.QMainWindow):
                 self.txtNormSummerOperationalTemp.setText(self.default_values.get("SummerOperationalTemp", "None"))
                 self.txtNormSummerOperationalHumi.setText(self.default_values.get("SummerOperationalHumidity", "None"))
                 self.txtNormSummerOperationalSolar.setText(self.default_values.get("SummerOperationalHeatFlux", "None"))
+            self.btnSave.clicked.connect(self.save_custom_values)
 
 
         except Exception as e:
             QtWidgets.QMessageBox.critical(self, "Error", f"Error loading Custom Interior Conditions UI: {str(e)}")
+    def save_custom_values(self):
+        try:
+            custom_values = {
+                "CustomWinterZone": self.txtCustomWinterZone.text().strip(),
+                "CustomSummerZone": self.txtCustomSummerZone.text().strip(),
+                "CustomWinterNormalMin": self.txtCustomWinterNormalMin.text().strip(),
+                "CustomSummerNormalMax": self.txtCustomSummerNormalMax.text().strip(),
+
+                # Extended values (Min/Max)
+                "CustomWinterExtendedMin": self.txtCustomWinterExtendedMin.text().strip(),
+                "CustomWinterExtendedMax": self.txtCustomWinterExtendedMax.text().strip(),
+                "CustomSummerExtendedMin": self.txtCustomSummerExtendedMin.text().strip(),
+                "CustomSummerExtendedMax": self.txtCustomSummerExtendedMax.text().strip(),
+
+                # Design values (Temp, Humidity, Heat Flux)
+                "CustomWinterDesignTemp": self.txtCustomWinterDesignTemp.text().strip(),
+                "CustomWinterDesignHumi": self.txtCustomWinterDesignHumi.text().strip(),
+                "CustomWinterDesignSolar": self.txtCustomWinterDesignSolar.text().strip(),
+
+                "CustomSummerDesignTemp": self.txtCustomSummerDesignTemp.text().strip(),
+                "CustomSummerDesignHumi": self.txtCustomSummerDesignHumi.text().strip(),
+                "CustomSummerDesignSolar": self.txtCustomSummerDesignSolar.text().strip(),
+
+                # Extreme values
+                "CustomWinterExtremeTemp": self.txtCustomWinterExtremeTemp.text().strip(),
+                "CustomWinterExtremeHumi": self.txtCustomWinterExtremeHumi.text().strip(),
+                "CustomWinterExtremeSolar": self.txtCustomWinterExtremeSolar.text().strip(),
+
+                "CustomSummerExtremeTemp": self.txtCustomSummerExtremeTemp.text().strip(),
+                "CustomSummerExtremeHumi": self.txtCustomSummerExtremeHumi.text().strip(),
+                "CustomSummerExtremeSolar": self.txtCustomSummerExtremeSolar.text().strip(),
+
+                # Operational values
+                "CustomWinterOperationalTemp": self.txtCustomWinterOperationalTemp.text().strip(),
+                "CustomWinterOperationalHumi": self.txtCustomWinterOperationalHumi.text().strip(),
+                "CustomWinterOperationalSolar": self.txtCustomWinterOperationalSolar.text().strip(),
+
+                "CustomSummerOperationalTemp": self.txtCustomSummerOperationalTemp.text().strip(),
+                "CustomSummerOperationalHumi": self.txtCustomSummerOperationalHumi.text().strip(),
+                "CustomSummerOperationalSolar": self.txtCustomSummerOperationalSolar.text().strip(),
+            }
+
+            if self.custom_values_updated:
+                self.custom_values_updated.emit(custom_values)
+            else:
+                print("Signal not found!")
+
+            self.close()  # Ensure window closes after saving
+
+        except Exception as e:
+            QtWidgets.QMessageBox.critical(self, "Error", f"Error saving custom values: {str(e)}")

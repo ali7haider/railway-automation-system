@@ -3332,42 +3332,42 @@ background-color:#1159A8;
                                        <item row="11" column="1">
                                         <widget class="QLabel" name="lblWinterDesignSaloon">
                                          <property name="text">
-                                          <string>°C, % , W/m2</string>
+                                          <string>°C, % , W/m²</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="12" column="1">
                                         <widget class="QLabel" name="lblSummerDesignSaloon">
                                          <property name="text">
-                                          <string>°C, % , W/m2</string>
+                                          <string>°C, % , W/m²</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="13" column="1">
                                         <widget class="QLabel" name="lblWinterExtremeSaloon">
                                          <property name="text">
-                                          <string>°C, % , W/m2</string>
+                                          <string>°C, % , W/m²</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="14" column="1">
                                         <widget class="QLabel" name="lblSummerExtremeSaloon">
                                          <property name="text">
-                                          <string>°C, % , W/m2</string>
+                                          <string>°C, % , W/m²</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="15" column="1">
                                         <widget class="QLabel" name="lblWinterOperationalSaloon">
                                          <property name="text">
-                                          <string>°C, % , W/m2</string>
+                                          <string>°C, % , W/m²</string>
                                          </property>
                                         </widget>
                                        </item>
                                        <item row="16" column="1">
                                         <widget class="QLabel" name="lblSummerOperationalSaloon">
                                          <property name="text">
-                                          <string>°C, % , W/m2</string>
+                                          <string>°C, % , W/m²</string>
                                          </property>
                                         </widget>
                                        </item>

@@ -622,7 +622,7 @@ border:1px solid rgba(46, 82, 101, 200);
                      <widget class="QLineEdit" name="txtCustomSummerExtendedMin"/>
                     </item>
                     <item row="5" column="8">
-                     <widget class="QLineEdit" name="txtCustomLowerLimit7"/>
+                     <widget class="QLineEdit" name="txtCustomSummerExtendedMax"/>
                     </item>
                     <item row="2" column="0" colspan="2">
                      <widget class="QLabel" name="label_124">
