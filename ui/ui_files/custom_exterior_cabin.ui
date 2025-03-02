@@ -238,6 +238,30 @@ QComboBox QAbstractItemView {
             <number>15</number>
            </property>
            <item>
+            <widget class="QPushButton" name="btnSave">
+             <property name="styleSheet">
+              <string notr="true">QPushButton
+{
+background-color:#345CBF;
+color:white;
+border-radius:3px;
+font: 12pt &quot;Calibri&quot;;
+font-weight:bold;
+color:white;
+padding:5px;
+
+}
+QPushButton:hover
+{
+background-color:#1159A8;
+}</string>
+             </property>
+             <property name="text">
+              <string>Save and Close</string>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QFrame" name="zoneFrame">
              <property name="minimumSize">
               <size>
@@ -641,7 +665,11 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="2" column="6">
-                     <widget class="QLineEdit" name="txtCustomWinterNormalMax"/>
+                     <widget class="QLineEdit" name="txtCustomWinterNormalMax">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="3" column="3">
                      <widget class="QLineEdit" name="txtNormSummerNormalMax">
@@ -669,6 +697,9 @@ border:1px solid rgba(46, 82, 101, 200);
                     </item>
                     <item row="3" column="4">
                      <widget class="QLineEdit" name="txtNormSummerNormalMin">
+                      <property name="text">
+                       <string>-</string>
+                      </property>
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
@@ -678,7 +709,11 @@ border:1px solid rgba(46, 82, 101, 200);
                      <widget class="QLineEdit" name="txtCustomSummerNormalMax"/>
                     </item>
                     <item row="3" column="8">
-                     <widget class="QLineEdit" name="txtCustomSummerNormalMin"/>
+                     <widget class="QLineEdit" name="txtCustomSummerNormalMin">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="5" column="4">
                      <widget class="QLineEdit" name="txtNormSummerExtendedMin">
@@ -696,6 +731,9 @@ border:1px solid rgba(46, 82, 101, 200);
                     </item>
                     <item row="2" column="3">
                      <widget class="QLineEdit" name="txtNormWinterNormalMax">
+                      <property name="text">
+                       <string>-</string>
+                      </property>
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>

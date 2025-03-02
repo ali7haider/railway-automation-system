@@ -308,27 +308,27 @@ class CustomInteriorConditionsScreen(QtWidgets.QMainWindow):
 
         except Exception as e:
             print(f"Error generating custom graph: {e}")
-    def save_custom_values(self):
-        try:
-            custom_values = {
-                "TicMaxSaloon": self.txtCustomTicMaxSaloon.text().strip(),
-                "TicMinSaloon": self.txtCustomTicMinSaloon.text().strip(),
-                "TicMaxCabin": self.txtCustomTicMaxCabin.text().strip(),
-                "TicMinCabin": self.txtCustomTicMinCabin.text().strip(),
-                "MaxMeanTempSaloon": self.txtCustomMaxMeanInteriorSaloon.text().strip(),
-                "MaxMeanTempCabin": self.txtCustomMaxMeanInteriorCabin.text().strip(),
-                "StandByOperatorSaloonMax": self.txtCustomMaxSaloon.text().strip(),
-                "StandByOperatorSaloonMin": self.txtCustomMinSaloon.text().strip(),
-                "StandByOperatorCabinMax": self.txtCustomMaxCabin.text().strip(),
-                "StandByOperatorCabinMin": self.txtCustomMinCabin.text().strip(),
-            }
-            
-            if self.custom_values_updated:
-                self.custom_values_updated.emit(custom_values)
-            else:
-                print("Signal not found!")
+        def save_custom_values(self):
+            try:
+                custom_values = {
+                    "TicMaxSaloon": self.txtCustomTicMaxSaloon.text().strip(),
+                    "TicMinSaloon": self.txtCustomTicMinSaloon.text().strip(),
+                    "TicMaxCabin": self.txtCustomTicMaxCabin.text().strip(),
+                    "TicMinCabin": self.txtCustomTicMinCabin.text().strip(),
+                    "MaxMeanTempSaloon": self.txtCustomMaxMeanInteriorSaloon.text().strip(),
+                    "MaxMeanTempCabin": self.txtCustomMaxMeanInteriorCabin.text().strip(),
+                    "StandByOperatorSaloonMax": self.txtCustomMaxSaloon.text().strip(),
+                    "StandByOperatorSaloonMin": self.txtCustomMinSaloon.text().strip(),
+                    "StandByOperatorCabinMax": self.txtCustomMaxCabin.text().strip(),
+                    "StandByOperatorCabinMin": self.txtCustomMinCabin.text().strip(),
+                }
+                
+                if self.custom_values_updated:
+                    self.custom_values_updated.emit(custom_values)
+                else:
+                    print("Signal not found!")
 
-            self.close()  # Ensure window closes after saving
+                self.close()  # Ensure window closes after saving
 
-        except Exception as e:
-            QtWidgets.QMessageBox.critical(self, "Error", f"Error saving custom values: {str(e)}")
+            except Exception as e:
+                QtWidgets.QMessageBox.critical(self, "Error", f"Error saving custom values: {str(e)}")
