@@ -7,7 +7,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1034</width>
+    <width>1063</width>
     <height>835</height>
    </rect>
   </property>
@@ -2082,7 +2082,7 @@ background-color:#1159A8;
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>0</number>
+                      <number>1</number>
                      </property>
                      <widget class="QWidget" name="projectPage">
                       <property name="acceptDrops">
@@ -2193,8 +2193,8 @@ font-weight:bold;</string>
                                 <property name="geometry">
                                  <rect>
                                   <x>0</x>
-                                  <y>-1033</y>
-                                  <width>948</width>
+                                  <y>0</y>
+                                  <width>714</width>
                                   <height>1973</height>
                                  </rect>
                                 </property>
@@ -3661,7 +3661,7 @@ font-weight:bold;</string>
                         <number>10</number>
                        </property>
                        <item>
-                        <widget class="QFrame" name="row_1">
+                        <widget class="QFrame" name="frame_8">
                          <property name="frameShape">
                           <enum>QFrame::StyledPanel</enum>
                          </property>
@@ -3669,9 +3669,6 @@ font-weight:bold;</string>
                           <enum>QFrame::Raised</enum>
                          </property>
                          <layout class="QVBoxLayout" name="verticalLayout_16">
-                          <property name="spacing">
-                           <number>0</number>
-                          </property>
                           <property name="leftMargin">
                            <number>0</number>
                           </property>
@@ -3685,29 +3682,20 @@ font-weight:bold;</string>
                            <number>0</number>
                           </property>
                           <item>
-                           <widget class="QFrame" name="frame_div_content_1">
-                            <property name="minimumSize">
-                             <size>
-                              <width>0</width>
-                              <height>110</height>
-                             </size>
-                            </property>
+                           <widget class="QFrame" name="frame_9">
                             <property name="maximumSize">
                              <size>
                               <width>16777215</width>
-                              <height>110</height>
+                              <height>50</height>
                              </size>
                             </property>
                             <property name="frameShape">
-                             <enum>QFrame::NoFrame</enum>
+                             <enum>QFrame::StyledPanel</enum>
                             </property>
                             <property name="frameShadow">
                              <enum>QFrame::Raised</enum>
                             </property>
                             <layout class="QVBoxLayout" name="verticalLayout_17">
-                             <property name="spacing">
-                              <number>0</number>
-                             </property>
                              <property name="leftMargin">
                               <number>0</number>
                              </property>
@@ -3721,734 +3709,1250 @@ font-weight:bold;</string>
                               <number>0</number>
                              </property>
                              <item>
-                              <widget class="QFrame" name="frame_title_wid_1">
-                               <property name="maximumSize">
-                                <size>
-                                 <width>16777215</width>
-                                 <height>35</height>
-                                </size>
+                              <widget class="QLabel" name="label_40">
+                               <property name="styleSheet">
+                                <string notr="true">font: 17pt &quot;Calibri&quot;;
+font-weight:bold;</string>
                                </property>
-                               <property name="frameShape">
-                                <enum>QFrame::StyledPanel</enum>
+                               <property name="text">
+                                <string>CRITERIA</string>
                                </property>
-                               <property name="frameShadow">
-                                <enum>QFrame::Raised</enum>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
                                </property>
-                               <layout class="QVBoxLayout" name="verticalLayout_18">
-                                <item>
-                                 <widget class="QLabel" name="labelBoxBlenderInstalation">
-                                  <property name="font">
-                                   <font>
-                                    <family>Calibri</family>
-                                    <pointsize>10</pointsize>
-                                    <weight>50</weight>
-                                    <italic>false</italic>
-                                    <bold>false</bold>
-                                   </font>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true"/>
-                                  </property>
-                                  <property name="text">
-                                   <string>FILE BOX</string>
-                                  </property>
-                                 </widget>
-                                </item>
-                               </layout>
-                              </widget>
-                             </item>
-                             <item>
-                              <widget class="QFrame" name="frame_content_wid_1">
-                               <property name="frameShape">
-                                <enum>QFrame::NoFrame</enum>
-                               </property>
-                               <property name="frameShadow">
-                                <enum>QFrame::Raised</enum>
-                               </property>
-                               <layout class="QHBoxLayout" name="horizontalLayout_9">
-                                <item>
-                                 <layout class="QGridLayout" name="gridLayout">
-                                  <property name="bottomMargin">
-                                   <number>0</number>
-                                  </property>
-                                  <item row="0" column="0">
-                                   <widget class="QLineEdit" name="lineEdit">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>0</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                    </property>
-                                    <property name="text">
-                                     <string/>
-                                    </property>
-                                    <property name="placeholderText">
-                                     <string>Type here</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item row="0" column="1">
-                                   <widget class="QPushButton" name="pushButton">
-                                    <property name="minimumSize">
-                                     <size>
-                                      <width>150</width>
-                                      <height>30</height>
-                                     </size>
-                                    </property>
-                                    <property name="font">
-                                     <font>
-                                      <family>Calibri</family>
-                                      <pointsize>12</pointsize>
-                                      <weight>75</weight>
-                                      <italic>false</italic>
-                                      <bold>true</bold>
-                                     </font>
-                                    </property>
-                                    <property name="cursor">
-                                     <cursorShape>PointingHandCursor</cursorShape>
-                                    </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">background-color: rgb(52, 59, 72);</string>
-                                    </property>
-                                    <property name="text">
-                                     <string>Open</string>
-                                    </property>
-                                    <property name="icon">
-                                     <iconset resource="resources.qrc">
-                                      <normaloff>:/icons/images/icons/cil-folder-open.png</normaloff>:/icons/images/icons/cil-folder-open.png</iconset>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item row="1" column="0" colspan="2">
-                                   <widget class="QLabel" name="labelVersion_3">
-                                    <property name="styleSheet">
-                                     <string notr="true">color: rgb(113, 126, 149);</string>
-                                    </property>
-                                    <property name="lineWidth">
-                                     <number>1</number>
-                                    </property>
-                                    <property name="text">
-                                     <string>Label description</string>
-                                    </property>
-                                    <property name="alignment">
-                                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                 </layout>
-                                </item>
-                               </layout>
                               </widget>
                              </item>
                             </layout>
                            </widget>
                           </item>
-                         </layout>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QFrame" name="row_2">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>150</height>
-                          </size>
-                         </property>
-                         <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
-                         </property>
-                         <layout class="QVBoxLayout" name="verticalLayout_19">
                           <item>
-                           <layout class="QGridLayout" name="gridLayout_2">
-                            <item row="0" column="0">
-                             <widget class="QCheckBox" name="checkBox">
-                              <property name="autoFillBackground">
-                               <bool>false</bool>
+                           <widget class="QScrollArea" name="scrollArea">
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <property name="widgetResizable">
+                             <bool>true</bool>
+                            </property>
+                            <widget class="QWidget" name="scrollAreaWidgetContents">
+                             <property name="geometry">
+                              <rect>
+                               <x>0</x>
+                               <y>0</y>
+                               <width>1225</width>
+                               <height>1074</height>
+                              </rect>
+                             </property>
+                             <layout class="QHBoxLayout" name="horizontalLayout_11">
+                              <property name="leftMargin">
+                               <number>0</number>
                               </property>
-                              <property name="styleSheet">
-                               <string notr="true"/>
+                              <property name="topMargin">
+                               <number>0</number>
                               </property>
-                              <property name="text">
-                               <string>CheckBox</string>
+                              <property name="rightMargin">
+                               <number>0</number>
                               </property>
-                             </widget>
-                            </item>
-                            <item row="0" column="1">
-                             <widget class="QRadioButton" name="radioButton">
-                              <property name="styleSheet">
-                               <string notr="true"/>
-                              </property>
-                              <property name="text">
-                               <string>RadioButton</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item row="0" column="2" rowspan="3">
-                             <widget class="QSlider" name="verticalSlider">
-                              <property name="styleSheet">
-                               <string notr="true"/>
-                              </property>
-                              <property name="orientation">
-                               <enum>Qt::Vertical</enum>
-                              </property>
-                             </widget>
-                            </item>
-                            <item row="0" column="4" rowspan="3">
-                             <widget class="QScrollBar" name="verticalScrollBar">
-                              <property name="styleSheet">
-                               <string notr="true"> QScrollBar:vertical { background: rgb(52, 59, 72); }
- QScrollBar:horizontal { background: rgb(52, 59, 72); }</string>
-                              </property>
-                              <property name="orientation">
-                               <enum>Qt::Vertical</enum>
-                              </property>
-                             </widget>
-                            </item>
-                            <item row="0" column="5" rowspan="3">
-                             <widget class="QScrollArea" name="scrollArea">
-                              <property name="styleSheet">
-                               <string notr="true"> QScrollBar:vertical {
-    background: rgb(52, 59, 72);
- }
- QScrollBar:horizontal {
-    background: rgb(52, 59, 72);
- }</string>
-                              </property>
-                              <property name="frameShape">
-                               <enum>QFrame::NoFrame</enum>
-                              </property>
-                              <property name="verticalScrollBarPolicy">
-                               <enum>Qt::ScrollBarAlwaysOn</enum>
-                              </property>
-                              <property name="horizontalScrollBarPolicy">
-                               <enum>Qt::ScrollBarAsNeeded</enum>
-                              </property>
-                              <property name="widgetResizable">
-                               <bool>true</bool>
-                              </property>
-                              <widget class="QWidget" name="scrollAreaWidgetContents">
-                               <property name="geometry">
-                                <rect>
-                                 <x>0</x>
-                                 <y>0</y>
-                                 <width>222</width>
-                                 <height>222</height>
-                                </rect>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true"> QScrollBar:vertical {
-	border: none;
-    background: rgb(52, 59, 72);
-    width: 14px;
-    margin: 21px 0 21px 0;
-	border-radius: 0px;
- }</string>
-                               </property>
-                               <layout class="QHBoxLayout" name="horizontalLayout_11">
-                                <item>
-                                 <widget class="QPlainTextEdit" name="plainTextEdit">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>200</width>
-                                    <height>200</height>
-                                   </size>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">background-color: rgb(33, 37, 43);</string>
-                                  </property>
-                                 </widget>
-                                </item>
-                               </layout>
-                              </widget>
-                             </widget>
-                            </item>
-                            <item row="1" column="0" colspan="2">
-                             <widget class="QComboBox" name="comboBox">
-                              <property name="font">
-                               <font>
-                                <family>Calibri</family>
-                                <pointsize>10</pointsize>
-                                <weight>50</weight>
-                                <italic>false</italic>
-                                <bold>false</bold>
-                               </font>
-                              </property>
-                              <property name="autoFillBackground">
-                               <bool>false</bool>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">background-color: rgb(33, 37, 43);</string>
-                              </property>
-                              <property name="iconSize">
-                               <size>
-                                <width>16</width>
-                                <height>16</height>
-                               </size>
-                              </property>
-                              <property name="frame">
-                               <bool>true</bool>
+                              <property name="bottomMargin">
+                               <number>0</number>
                               </property>
                               <item>
-                               <property name="text">
-                                <string>Test 1</string>
-                               </property>
+                               <widget class="QFrame" name="frame_12">
+                                <property name="frameShape">
+                                 <enum>QFrame::StyledPanel</enum>
+                                </property>
+                                <property name="frameShadow">
+                                 <enum>QFrame::Raised</enum>
+                                </property>
+                                <layout class="QHBoxLayout" name="horizontalLayout_9">
+                                 <property name="leftMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="topMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="rightMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="bottomMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <item>
+                                  <widget class="QFrame" name="frame_13">
+                                   <property name="frameShape">
+                                    <enum>QFrame::StyledPanel</enum>
+                                   </property>
+                                   <property name="frameShadow">
+                                    <enum>QFrame::Raised</enum>
+                                   </property>
+                                   <layout class="QGridLayout" name="gridLayout">
+                                    <item row="0" column="0" colspan="4">
+                                     <widget class="QLabel" name="label_73">
+                                      <property name="styleSheet">
+                                       <string notr="true">font: 13pt &quot;Calibri&quot;;
+font-weight:bold;</string>
+                                      </property>
+                                      <property name="text">
+                                       <string>Saloon Criteria</string>
+                                      </property>
+                                      <property name="alignment">
+                                       <set>Qt::AlignCenter</set>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="14" column="3">
+                                     <widget class="QLineEdit" name="txtVMinimumTempSaloon"/>
+                                    </item>
+                                    <item row="13" column="3">
+                                     <widget class="QLineEdit" name="txtVGradientStandFoot2Saloon"/>
+                                    </item>
+                                    <item row="28" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesNotExposedMaxQ2Saloon"/>
+                                    </item>
+                                    <item row="29" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesNotExposedMinQ1Saloon"/>
+                                    </item>
+                                    <item row="30" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesNotExposedMinQ2"/>
+                                    </item>
+                                    <item row="31" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesFrameQ1Saloon"/>
+                                    </item>
+                                    <item row="12" column="1">
+                                     <widget class="QLabel" name="lblVGradientStandFoot1Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="12" column="0">
+                                     <widget class="QLabel" name="label_125">
+                                      <property name="text">
+                                       <string>Vertical gradient stand (Foot warmest) q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="13" column="0">
+                                     <widget class="QLabel" name="label_127">
+                                      <property name="text">
+                                       <string>Vertical gradient stand (Foot warmest) q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="13" column="1">
+                                     <widget class="QLabel" name="lblVGradientStandFoot2Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="32" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesFrameQ2Saloon"/>
+                                    </item>
+                                    <item row="14" column="0">
+                                     <widget class="QLabel" name="label_129">
+                                      <property name="text">
+                                       <string>Vertical minimun temperature</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="15" column="0">
+                                     <widget class="QLabel" name="label_131">
+                                      <property name="text">
+                                       <string>Surfaces (Walls) I'Max q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="14" column="1">
+                                     <widget class="QLabel" name="lblVMinimumTempSaloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="16" column="0">
+                                     <widget class="QLabel" name="label_132">
+                                      <property name="text">
+                                       <string>Surfaces (Walls) I'Max q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="15" column="1">
+                                     <widget class="QLabel" name="lblSurfaceWallsMaxQ1Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="16" column="1">
+                                     <widget class="QLabel" name="lblSurfaceWallsMaxQ2Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="29" column="0">
+                                     <widget class="QLabel" name="label_157">
+                                      <property name="text">
+                                       <string>Surfaces (Window panes not exposed to sun radiation) I'Min q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="23" column="0">
+                                     <widget class="QLabel" name="label_153">
+                                      <property name="text">
+                                       <string>Surfaces (Window panes exposed to sun radiation) I'Max q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="24" column="0">
+                                     <widget class="QLabel" name="label_151">
+                                      <property name="text">
+                                       <string>Surfaces (Window panes exposed to sun radiation) I'Max q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="20" column="0">
+                                     <widget class="QLabel" name="label_152">
+                                      <property name="text">
+                                       <string>Surfaces (ceilings) [&quot;Max q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="25" column="0">
+                                     <widget class="QLabel" name="label_156">
+                                      <property name="text">
+                                       <string>Surfaces (Window panes exposed to sun radiation) I'Min q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="22" column="0">
+                                     <widget class="QLabel" name="label_154">
+                                      <property name="text">
+                                       <string>Surfaces (ceilings) I'Min q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="21" column="0">
+                                     <widget class="QLabel" name="label_155">
+                                      <property name="text">
+                                       <string>Surfaces (ceilings) I'Min q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="27" column="0">
+                                     <widget class="QLabel" name="label_158">
+                                      <property name="text">
+                                       <string>Surfaces (Window panes not exposed to sun radiation) I'Max q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="28" column="0">
+                                     <widget class="QLabel" name="label_160">
+                                      <property name="text">
+                                       <string>Surfaces (Window panes not exposed to sun radiation) I'Max q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="26" column="0">
+                                     <widget class="QLabel" name="label_159">
+                                      <property name="text">
+                                       <string>Surfaces (Window panes exposed to sun radiation) I'Min q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="31" column="0">
+                                     <widget class="QLabel" name="label_163">
+                                      <property name="text">
+                                       <string>Surfaces (Window frame) q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="32" column="0">
+                                     <widget class="QLabel" name="label_161">
+                                      <property name="text">
+                                       <string>Surfaces (Window frame) q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="30" column="0">
+                                     <widget class="QLabel" name="label_162">
+                                      <property name="text">
+                                       <string>Surfaces (Window panes not exposed to sun radiation) I'Min q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="22" column="1">
+                                     <widget class="QLabel" name="lblSurfaceCeilingsMinQ2Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="20" column="1">
+                                     <widget class="QLabel" name="lblSurfaceCeilingsMaxQ2Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="21" column="1">
+                                     <widget class="QLabel" name="lblSurfaceCeilingsMinQ1Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="23" column="1">
+                                     <widget class="QLabel" name="lblSurfacesExposedMaxQ1Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="24" column="1">
+                                     <widget class="QLabel" name="lblSurfacesExposedMaxQ2Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="25" column="1">
+                                     <widget class="QLabel" name="lblSurfacesExposedMinQ1Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="26" column="1">
+                                     <widget class="QLabel" name="lblSurfacesExposedMinQ2Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="27" column="1">
+                                     <widget class="QLabel" name="lblSurfacesNotExposedMaxQ1Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="29" column="1">
+                                     <widget class="QLabel" name="lblSurfacesNotExposedMinQ1Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="28" column="1">
+                                     <widget class="QLabel" name="lblSurfacesNotExposedMaxQ2Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="30" column="1">
+                                     <widget class="QLabel" name="lblSurfacesNotExposedMinQ2Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="31" column="1">
+                                     <widget class="QLabel" name="lblSurfacesFrameQ1Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="32" column="1">
+                                     <widget class="QLabel" name="lblSurfacesFrameQ2Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="15" column="3">
+                                     <widget class="QLineEdit" name="txtSurfaceWallsMaxQ1Saloon"/>
+                                    </item>
+                                    <item row="17" column="3">
+                                     <widget class="QLineEdit" name="txtSurfaceWallsMinQ1Saloon"/>
+                                    </item>
+                                    <item row="18" column="3">
+                                     <widget class="QLineEdit" name="txtSurfaceWallsMinQ2Saloon"/>
+                                    </item>
+                                    <item row="19" column="3">
+                                     <widget class="QLineEdit" name="txtSurfaceCeilingsMaxQ1Saloon"/>
+                                    </item>
+                                    <item row="16" column="3">
+                                     <widget class="QLineEdit" name="txtSurfaceWallsMaxQ2Saloon"/>
+                                    </item>
+                                    <item row="20" column="3">
+                                     <widget class="QLineEdit" name="txtSurfaceCeilingsMaxQ2Saloon"/>
+                                    </item>
+                                    <item row="21" column="3">
+                                     <widget class="QLineEdit" name="txtSurfaceCeilingsMinQ1Saloon"/>
+                                    </item>
+                                    <item row="22" column="3">
+                                     <widget class="QLineEdit" name="txtSurfaceCeilingsMinQ2Saloon"/>
+                                    </item>
+                                    <item row="23" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesExposedMaxQ1Saloon"/>
+                                    </item>
+                                    <item row="26" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesExposedMinQ2Saloon"/>
+                                    </item>
+                                    <item row="24" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesExposedMaxQ2Saloon"/>
+                                    </item>
+                                    <item row="25" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesExposedMinQ1Saloon"/>
+                                    </item>
+                                    <item row="27" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesNotExposedMaxQ1Saloon"/>
+                                    </item>
+                                    <item row="3" column="3">
+                                     <widget class="QLineEdit" name="txtTim2Saloon"/>
+                                    </item>
+                                    <item row="4" column="3">
+                                     <widget class="QLineEdit" name="txtHGradient1Saloon"/>
+                                    </item>
+                                    <item row="7" column="3">
+                                     <widget class="QLineEdit" name="txtVGradientSeated2Saloon"/>
+                                    </item>
+                                    <item row="5" column="3">
+                                     <widget class="QLineEdit" name="txtHGradient2Saloon"/>
+                                    </item>
+                                    <item row="6" column="3">
+                                     <widget class="QLineEdit" name="txtVGradientSeated1Saloon"/>
+                                    </item>
+                                    <item row="19" column="1">
+                                     <widget class="QLabel" name="lblSurfaceCeilingsMaxQ1Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="8" column="3">
+                                     <widget class="QLineEdit" name="txtVGradientSeatedFoot1Saloon"/>
+                                    </item>
+                                    <item row="12" column="3">
+                                     <widget class="QLineEdit" name="txtVGradientStandFoot1Saloon"/>
+                                    </item>
+                                    <item row="11" column="3">
+                                     <widget class="QLineEdit" name="txtVGradientStand2Saloon"/>
+                                    </item>
+                                    <item row="9" column="3">
+                                     <widget class="QLineEdit" name="txtVGradientSeatedFoot2Saloon"/>
+                                    </item>
+                                    <item row="10" column="3">
+                                     <widget class="QLineEdit" name="txtVGradientStand1Saloon"/>
+                                    </item>
+                                    <item row="19" column="0">
+                                     <widget class="QLabel" name="label_45">
+                                      <property name="text">
+                                       <string>Surfaces (ceilings) I'Max q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="18" column="0">
+                                     <widget class="QLabel" name="label_49">
+                                      <property name="text">
+                                       <string>Surfaces (Walls) I'Min q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="18" column="1">
+                                     <widget class="QLabel" name="lblSurfaceWallsMinQ2Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="1" column="0">
+                                     <widget class="QLabel" name="label_66">
+                                      <property name="styleSheet">
+                                       <string notr="true">font: 11pt &quot;Calibri&quot;;
+font-weight:bold;</string>
+                                      </property>
+                                      <property name="text">
+                                       <string>Criteria</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="1" column="1">
+                                     <widget class="QLabel" name="label_68">
+                                      <property name="styleSheet">
+                                       <string notr="true">font: 11pt &quot;Calibri&quot;;
+font-weight:bold;</string>
+                                      </property>
+                                      <property name="text">
+                                       <string>Value</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="1" column="3">
+                                     <widget class="QLabel" name="label_69">
+                                      <property name="styleSheet">
+                                       <string notr="true">font: 11pt &quot;Calibri&quot;;
+font-weight:bold;</string>
+                                      </property>
+                                      <property name="text">
+                                       <string>Custom</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="17" column="1">
+                                     <widget class="QLabel" name="lblSurfaceWallsMinQ1Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="17" column="0">
+                                     <widget class="QLabel" name="label_42">
+                                      <property name="text">
+                                       <string>Surfaces (Walls) I'Min q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="2" column="3">
+                                     <widget class="QLineEdit" name="txtTim1Saloon"/>
+                                    </item>
+                                    <item row="9" column="1">
+                                     <widget class="QLabel" name="lblVGradientSeatedFoot2Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="11" column="0">
+                                     <widget class="QLabel" name="label_123">
+                                      <property name="text">
+                                       <string>Vertical gradient stand q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="10" column="1">
+                                     <widget class="QLabel" name="lblVGradientStand1Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="10" column="0">
+                                     <widget class="QLabel" name="label_121">
+                                      <property name="text">
+                                       <string>Vertical gradient stand q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="11" column="1">
+                                     <widget class="QLabel" name="lblVGradientStand2Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="2" column="0">
+                                     <widget class="QLabel" name="label_75">
+                                      <property name="text">
+                                       <string>Tim q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="2" column="1">
+                                     <widget class="QLabel" name="lblTim1Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="3" column="0">
+                                     <widget class="QLabel" name="label_77">
+                                      <property name="text">
+                                       <string>Tim q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="3" column="1">
+                                     <widget class="QLabel" name="lblTim2Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="4" column="0">
+                                     <widget class="QLabel" name="label_91">
+                                      <property name="text">
+                                       <string>Horizontal Gradient q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="5" column="0">
+                                     <widget class="QLabel" name="label_94">
+                                      <property name="text">
+                                       <string>Horizontal Gradient q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="4" column="1">
+                                     <widget class="QLabel" name="lblHGradient1Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="6" column="0">
+                                     <widget class="QLabel" name="label_96">
+                                      <property name="text">
+                                       <string>Vertical gradient seated q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="7" column="0">
+                                     <widget class="QLabel" name="label_98">
+                                      <property name="text">
+                                       <string>Vertical gradient seated q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="6" column="1">
+                                     <widget class="QLabel" name="lblVGradientSeated1Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="5" column="1">
+                                     <widget class="QLabel" name="lblHGradient2Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="7" column="1">
+                                     <widget class="QLabel" name="lblVGradientSeated2Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="8" column="1">
+                                     <widget class="QLabel" name="lblVGradientSeatedFoot1Saloon">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="8" column="0">
+                                     <widget class="QLabel" name="label_111">
+                                      <property name="text">
+                                       <string>Vertical gradient seated (Foot warmest) q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="9" column="0">
+                                     <widget class="QLabel" name="label_115">
+                                      <property name="text">
+                                       <string>Vertical gradient seated (Foot warmest) q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                   </layout>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QFrame" name="frame_29">
+                                   <property name="frameShape">
+                                    <enum>QFrame::StyledPanel</enum>
+                                   </property>
+                                   <property name="frameShadow">
+                                    <enum>QFrame::Raised</enum>
+                                   </property>
+                                   <layout class="QGridLayout" name="gridLayout_19">
+                                    <item row="0" column="0" colspan="4">
+                                     <widget class="QLabel" name="label_133">
+                                      <property name="styleSheet">
+                                       <string notr="true">font: 13pt &quot;Calibri&quot;;
+font-weight:bold;</string>
+                                      </property>
+                                      <property name="text">
+                                       <string>Cabin Criteria</string>
+                                      </property>
+                                      <property name="alignment">
+                                       <set>Qt::AlignCenter</set>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="12" column="1">
+                                     <widget class="QLabel" name="lblVGradientStandFoot1Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="12" column="0">
+                                     <widget class="QLabel" name="label_206">
+                                      <property name="text">
+                                       <string>Vertical gradient stand (Foot warmest) q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="13" column="0">
+                                     <widget class="QLabel" name="label_207">
+                                      <property name="text">
+                                       <string>Vertical gradient stand (Foot warmest) q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="13" column="1">
+                                     <widget class="QLabel" name="lblVGradientStandFoot2Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="14" column="0">
+                                     <widget class="QLabel" name="label_208">
+                                      <property name="text">
+                                       <string>Vertical minimun temperature</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="15" column="0">
+                                     <widget class="QLabel" name="label_209">
+                                      <property name="text">
+                                       <string>Surfaces (Walls) I'Max q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="14" column="1">
+                                     <widget class="QLabel" name="lblVMinimumTempCabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="16" column="0">
+                                     <widget class="QLabel" name="label_210">
+                                      <property name="text">
+                                       <string>Surfaces (Walls) I'Max q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="15" column="1">
+                                     <widget class="QLabel" name="lblSurfaceWallsMaxQ1Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="16" column="1">
+                                     <widget class="QLabel" name="lblSurfaceWallsMaxQ2Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="29" column="0">
+                                     <widget class="QLabel" name="label_211">
+                                      <property name="text">
+                                       <string>Surfaces (Window panes not exposed to sun radiation) I'Min q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="23" column="0">
+                                     <widget class="QLabel" name="label_212">
+                                      <property name="text">
+                                       <string>Surfaces (Window panes exposed to sun radiation) I'Max q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="24" column="0">
+                                     <widget class="QLabel" name="label_213">
+                                      <property name="text">
+                                       <string>Surfaces (Window panes exposed to sun radiation) I'Max q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="20" column="0">
+                                     <widget class="QLabel" name="label_214">
+                                      <property name="text">
+                                       <string>Surfaces (ceilings) [&quot;Max q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="25" column="0">
+                                     <widget class="QLabel" name="label_215">
+                                      <property name="text">
+                                       <string>Surfaces (Window panes exposed to sun radiation) I'Min q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="22" column="0">
+                                     <widget class="QLabel" name="label_216">
+                                      <property name="text">
+                                       <string>Surfaces (ceilings) I'Min q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="21" column="0">
+                                     <widget class="QLabel" name="label_217">
+                                      <property name="text">
+                                       <string>Surfaces (ceilings) I'Min q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="27" column="0">
+                                     <widget class="QLabel" name="label_218">
+                                      <property name="text">
+                                       <string>Surfaces (Window panes not exposed to sun radiation) I'Max q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="28" column="0">
+                                     <widget class="QLabel" name="label_219">
+                                      <property name="text">
+                                       <string>Surfaces (Window panes not exposed to sun radiation) I'Max q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="26" column="0">
+                                     <widget class="QLabel" name="label_220">
+                                      <property name="text">
+                                       <string>Surfaces (Window panes exposed to sun radiation) I'Min q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="32" column="0">
+                                     <widget class="QLabel" name="label_221">
+                                      <property name="text">
+                                       <string>Surfaces (Window frame) q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="30" column="0">
+                                     <widget class="QLabel" name="label_222">
+                                      <property name="text">
+                                       <string>Surfaces (Window panes not exposed to sun radiation) I'Min q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="19" column="1">
+                                     <widget class="QLabel" name="lblSurfaceCeilingsMaxQ1Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="19" column="0">
+                                     <widget class="QLabel" name="label_134">
+                                      <property name="text">
+                                       <string>Surfaces (ceilings) I'Max q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="18" column="0">
+                                     <widget class="QLabel" name="label_223">
+                                      <property name="text">
+                                       <string>Surfaces (Walls) I'Min q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="18" column="1">
+                                     <widget class="QLabel" name="lblSurfaceWallsMinQ2Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="1" column="0">
+                                     <widget class="QLabel" name="label_224">
+                                      <property name="styleSheet">
+                                       <string notr="true">font: 11pt &quot;Calibri&quot;;
+font-weight:bold;</string>
+                                      </property>
+                                      <property name="text">
+                                       <string>Criteria</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="1" column="1">
+                                     <widget class="QLabel" name="label_225">
+                                      <property name="styleSheet">
+                                       <string notr="true">font: 11pt &quot;Calibri&quot;;
+font-weight:bold;</string>
+                                      </property>
+                                      <property name="text">
+                                       <string>Value</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="1" column="3">
+                                     <widget class="QLabel" name="label_226">
+                                      <property name="styleSheet">
+                                       <string notr="true">font: 11pt &quot;Calibri&quot;;
+font-weight:bold;</string>
+                                      </property>
+                                      <property name="text">
+                                       <string>Custom</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="17" column="1">
+                                     <widget class="QLabel" name="lblSurfaceWallsMinQ1Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="17" column="0">
+                                     <widget class="QLabel" name="label_227">
+                                      <property name="text">
+                                       <string>Surfaces (Walls) I'Min q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="2" column="3">
+                                     <widget class="QLineEdit" name="txtTim1Cabin"/>
+                                    </item>
+                                    <item row="9" column="1">
+                                     <widget class="QLabel" name="lblVGradientSeatedFoot2Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="11" column="0">
+                                     <widget class="QLabel" name="label_228">
+                                      <property name="text">
+                                       <string>Vertical gradient stand q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="10" column="1">
+                                     <widget class="QLabel" name="lblVGradientStand1Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="10" column="0">
+                                     <widget class="QLabel" name="label_229">
+                                      <property name="text">
+                                       <string>Vertical gradient stand q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="11" column="1">
+                                     <widget class="QLabel" name="lblVGradientStand2Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="2" column="0">
+                                     <widget class="QLabel" name="label_230">
+                                      <property name="text">
+                                       <string>Tim q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="2" column="1">
+                                     <widget class="QLabel" name="lblTim1Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="3" column="0">
+                                     <widget class="QLabel" name="label_231">
+                                      <property name="text">
+                                       <string>Tim q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="3" column="1">
+                                     <widget class="QLabel" name="lblTim2Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="4" column="0">
+                                     <widget class="QLabel" name="label_232">
+                                      <property name="text">
+                                       <string>Horizontal Gradient q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="5" column="0">
+                                     <widget class="QLabel" name="label_233">
+                                      <property name="text">
+                                       <string>Horizontal Gradient q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="4" column="1">
+                                     <widget class="QLabel" name="lblHGradient1Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="6" column="0">
+                                     <widget class="QLabel" name="label_234">
+                                      <property name="text">
+                                       <string>Vertical gradient seated q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="7" column="0">
+                                     <widget class="QLabel" name="label_235">
+                                      <property name="text">
+                                       <string>Vertical gradient seated q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="6" column="1">
+                                     <widget class="QLabel" name="lblVGradientSeated1Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="5" column="1">
+                                     <widget class="QLabel" name="lblHGradient2Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="7" column="1">
+                                     <widget class="QLabel" name="lblVGradientSeated2Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="8" column="1">
+                                     <widget class="QLabel" name="lblVGradientSeatedFoot1Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="8" column="0">
+                                     <widget class="QLabel" name="label_236">
+                                      <property name="text">
+                                       <string>Vertical gradient seated (Foot warmest) q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="9" column="0">
+                                     <widget class="QLabel" name="label_237">
+                                      <property name="text">
+                                       <string>Vertical gradient seated (Foot warmest) q2</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="31" column="0">
+                                     <widget class="QLabel" name="label_238">
+                                      <property name="text">
+                                       <string>Surfaces (Window frame) q1</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="20" column="1">
+                                     <widget class="QLabel" name="lblSurfaceCeilingsMaxQ2Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="21" column="1">
+                                     <widget class="QLabel" name="lblSurfaceCeilingsMinQ1Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="22" column="1">
+                                     <widget class="QLabel" name="lblSurfaceCeilingsMinQ2Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="23" column="1">
+                                     <widget class="QLabel" name="lblSurfacesExposedMaxQ1Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="24" column="1">
+                                     <widget class="QLabel" name="lblSurfacesExposedMaxQ2Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="25" column="1">
+                                     <widget class="QLabel" name="lblSurfacesExposedMinQ1Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="26" column="1">
+                                     <widget class="QLabel" name="lblSurfacesExposedMinQ2Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="27" column="1">
+                                     <widget class="QLabel" name="lblSurfacesNotExposedMaxQ1Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="28" column="1">
+                                     <widget class="QLabel" name="lblSurfacesNotExposedMaxQ2Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="29" column="1">
+                                     <widget class="QLabel" name="lblSurfacesNotExposedMinQ1Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="30" column="1">
+                                     <widget class="QLabel" name="lblSurfacesNotExposedMinQ2Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="31" column="1">
+                                     <widget class="QLabel" name="lblSurfacesFrameQ1Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="32" column="1">
+                                     <widget class="QLabel" name="lblSurfacesFrameQ2Cabin">
+                                      <property name="text">
+                                       <string>TextLabel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item row="3" column="3">
+                                     <widget class="QLineEdit" name="txtTim2Cabin"/>
+                                    </item>
+                                    <item row="4" column="3">
+                                     <widget class="QLineEdit" name="txtHGradient1Cabin"/>
+                                    </item>
+                                    <item row="5" column="3">
+                                     <widget class="QLineEdit" name="txtHGradient2Cabin"/>
+                                    </item>
+                                    <item row="6" column="3">
+                                     <widget class="QLineEdit" name="txtVGradientSeated1Cabin"/>
+                                    </item>
+                                    <item row="7" column="3">
+                                     <widget class="QLineEdit" name="txtVGradientSeated2Cabin"/>
+                                    </item>
+                                    <item row="8" column="3">
+                                     <widget class="QLineEdit" name="txtVGradientSeatedFoot1Cabin"/>
+                                    </item>
+                                    <item row="9" column="3">
+                                     <widget class="QLineEdit" name="txtVGradientSeatedFoot2Cabin"/>
+                                    </item>
+                                    <item row="10" column="3">
+                                     <widget class="QLineEdit" name="txtVGradientStand1Cabin"/>
+                                    </item>
+                                    <item row="11" column="3">
+                                     <widget class="QLineEdit" name="txtVGradientStand2Cabin"/>
+                                    </item>
+                                    <item row="12" column="3">
+                                     <widget class="QLineEdit" name="txtVGradientStandFoot1Cabin"/>
+                                    </item>
+                                    <item row="13" column="3">
+                                     <widget class="QLineEdit" name="txtVGradientStandFoot2Cabin"/>
+                                    </item>
+                                    <item row="14" column="3">
+                                     <widget class="QLineEdit" name="txtVMinimumTempCabin"/>
+                                    </item>
+                                    <item row="15" column="3">
+                                     <widget class="QLineEdit" name="txtSurfaceWallsMaxQ1Cabin"/>
+                                    </item>
+                                    <item row="16" column="3">
+                                     <widget class="QLineEdit" name="txtSurfaceWallsMaxQ2Cabin"/>
+                                    </item>
+                                    <item row="17" column="3">
+                                     <widget class="QLineEdit" name="txtSurfaceWallsMinQ1Cabin"/>
+                                    </item>
+                                    <item row="18" column="3">
+                                     <widget class="QLineEdit" name="txtSurfaceWallsMinQ2Cabin"/>
+                                    </item>
+                                    <item row="19" column="3">
+                                     <widget class="QLineEdit" name="txtSurfaceCeilingsMaxQ1Cabin"/>
+                                    </item>
+                                    <item row="20" column="3">
+                                     <widget class="QLineEdit" name="txtSurfaceCeilingsMaxQ2Cabin"/>
+                                    </item>
+                                    <item row="21" column="3">
+                                     <widget class="QLineEdit" name="txtSurfaceCeilingsMinQ1Cabin"/>
+                                    </item>
+                                    <item row="22" column="3">
+                                     <widget class="QLineEdit" name="txtSurfaceCeilingsMinQ2Cabin"/>
+                                    </item>
+                                    <item row="23" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesExposedMaxQ1Cabin"/>
+                                    </item>
+                                    <item row="24" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesExposedMaxQ2Cabin"/>
+                                    </item>
+                                    <item row="25" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesExposedMinQ1Cabin"/>
+                                    </item>
+                                    <item row="26" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesExposedMinQ2Cabin"/>
+                                    </item>
+                                    <item row="27" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesNotExposedMaxQ1Cabin"/>
+                                    </item>
+                                    <item row="28" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesNotExposedMaxQ2Cabin"/>
+                                    </item>
+                                    <item row="29" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesNotExposedMinQ1Cabin"/>
+                                    </item>
+                                    <item row="30" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesNotExposedMinQ2Cabin"/>
+                                    </item>
+                                    <item row="31" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesFrameQ1Cabin"/>
+                                    </item>
+                                    <item row="32" column="3">
+                                     <widget class="QLineEdit" name="txtSurfacesFrameQ2Cabin"/>
+                                    </item>
+                                   </layout>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </widget>
                               </item>
-                              <item>
-                               <property name="text">
-                                <string>Test 2</string>
-                               </property>
-                              </item>
-                              <item>
-                               <property name="text">
-                                <string>Test 3</string>
-                               </property>
-                              </item>
-                             </widget>
-                            </item>
-                            <item row="1" column="3">
-                             <widget class="QScrollBar" name="horizontalScrollBar">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true"> QScrollBar:vertical { background: rgb(52, 59, 72); }
- QScrollBar:horizontal { background: rgb(52, 59, 72); }</string>
-                              </property>
-                              <property name="orientation">
-                               <enum>Qt::Horizontal</enum>
-                              </property>
-                             </widget>
-                            </item>
-                            <item row="1" column="6">
-                             <widget class="QCommandLinkButton" name="commandLinkButton">
-                              <property name="cursor">
-                               <cursorShape>PointingHandCursor</cursorShape>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true"/>
-                              </property>
-                              <property name="text">
-                               <string>Link Button</string>
-                              </property>
-                              <property name="icon">
-                               <iconset resource="resources.qrc">
-                                <normaloff>:/icons/images/icons/cil-link.png</normaloff>:/icons/images/icons/cil-link.png</iconset>
-                              </property>
-                              <property name="description">
-                               <string>Link description</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item row="2" column="0" colspan="2">
-                             <widget class="QSlider" name="horizontalSlider">
-                              <property name="styleSheet">
-                               <string notr="true"/>
-                              </property>
-                              <property name="orientation">
-                               <enum>Qt::Horizontal</enum>
-                              </property>
-                             </widget>
-                            </item>
-                           </layout>
-                          </item>
-                         </layout>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QFrame" name="row_3">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>150</height>
-                          </size>
-                         </property>
-                         <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
-                         </property>
-                         <layout class="QHBoxLayout" name="horizontalLayout_12">
-                          <property name="spacing">
-                           <number>0</number>
-                          </property>
-                          <property name="leftMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="topMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="rightMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="bottomMargin">
-                           <number>0</number>
-                          </property>
-                          <item>
-                           <widget class="QTableWidget" name="tableWidget">
-                            <property name="sizePolicy">
-                             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                             </sizepolicy>
-                            </property>
-                            <property name="palette">
-                             <palette>
-                              <active>
-                               <colorrole role="WindowText">
-                                <brush brushstyle="SolidPattern">
-                                 <color alpha="255">
-                                  <red>255</red>
-                                  <green>255</green>
-                                  <blue>255</blue>
-                                 </color>
-                                </brush>
-                               </colorrole>
-                               <colorrole role="Button">
-                                <brush brushstyle="SolidPattern">
-                                 <color alpha="0">
-                                  <red>0</red>
-                                  <green>0</green>
-                                  <blue>0</blue>
-                                 </color>
-                                </brush>
-                               </colorrole>
-                               <colorrole role="Text">
-                                <brush brushstyle="SolidPattern">
-                                 <color alpha="255">
-                                  <red>255</red>
-                                  <green>255</green>
-                                  <blue>255</blue>
-                                 </color>
-                                </brush>
-                               </colorrole>
-                               <colorrole role="ButtonText">
-                                <brush brushstyle="SolidPattern">
-                                 <color alpha="255">
-                                  <red>255</red>
-                                  <green>255</green>
-                                  <blue>255</blue>
-                                 </color>
-                                </brush>
-                               </colorrole>
-                               <colorrole role="Base">
-                                <brush brushstyle="NoBrush">
-                                 <color alpha="255">
-                                  <red>0</red>
-                                  <green>0</green>
-                                  <blue>0</blue>
-                                 </color>
-                                </brush>
-                               </colorrole>
-                               <colorrole role="Window">
-                                <brush brushstyle="SolidPattern">
-                                 <color alpha="0">
-                                  <red>0</red>
-                                  <green>0</green>
-                                  <blue>0</blue>
-                                 </color>
-                                </brush>
-                               </colorrole>
-                              </active>
-                              <inactive>
-                               <colorrole role="WindowText">
-                                <brush brushstyle="SolidPattern">
-                                 <color alpha="255">
-                                  <red>255</red>
-                                  <green>255</green>
-                                  <blue>255</blue>
-                                 </color>
-                                </brush>
-                               </colorrole>
-                               <colorrole role="Button">
-                                <brush brushstyle="SolidPattern">
-                                 <color alpha="0">
-                                  <red>0</red>
-                                  <green>0</green>
-                                  <blue>0</blue>
-                                 </color>
-                                </brush>
-                               </colorrole>
-                               <colorrole role="Text">
-                                <brush brushstyle="SolidPattern">
-                                 <color alpha="255">
-                                  <red>255</red>
-                                  <green>255</green>
-                                  <blue>255</blue>
-                                 </color>
-                                </brush>
-                               </colorrole>
-                               <colorrole role="ButtonText">
-                                <brush brushstyle="SolidPattern">
-                                 <color alpha="255">
-                                  <red>255</red>
-                                  <green>255</green>
-                                  <blue>255</blue>
-                                 </color>
-                                </brush>
-                               </colorrole>
-                               <colorrole role="Base">
-                                <brush brushstyle="NoBrush">
-                                 <color alpha="255">
-                                  <red>0</red>
-                                  <green>0</green>
-                                  <blue>0</blue>
-                                 </color>
-                                </brush>
-                               </colorrole>
-                               <colorrole role="Window">
-                                <brush brushstyle="SolidPattern">
-                                 <color alpha="0">
-                                  <red>0</red>
-                                  <green>0</green>
-                                  <blue>0</blue>
-                                 </color>
-                                </brush>
-                               </colorrole>
-                              </inactive>
-                              <disabled>
-                               <colorrole role="WindowText">
-                                <brush brushstyle="SolidPattern">
-                                 <color alpha="255">
-                                  <red>255</red>
-                                  <green>255</green>
-                                  <blue>255</blue>
-                                 </color>
-                                </brush>
-                               </colorrole>
-                               <colorrole role="Button">
-                                <brush brushstyle="SolidPattern">
-                                 <color alpha="0">
-                                  <red>0</red>
-                                  <green>0</green>
-                                  <blue>0</blue>
-                                 </color>
-                                </brush>
-                               </colorrole>
-                               <colorrole role="Text">
-                                <brush brushstyle="SolidPattern">
-                                 <color alpha="255">
-                                  <red>255</red>
-                                  <green>255</green>
-                                  <blue>255</blue>
-                                 </color>
-                                </brush>
-                               </colorrole>
-                               <colorrole role="ButtonText">
-                                <brush brushstyle="SolidPattern">
-                                 <color alpha="255">
-                                  <red>255</red>
-                                  <green>255</green>
-                                  <blue>255</blue>
-                                 </color>
-                                </brush>
-                               </colorrole>
-                               <colorrole role="Base">
-                                <brush brushstyle="NoBrush">
-                                 <color alpha="255">
-                                  <red>0</red>
-                                  <green>0</green>
-                                  <blue>0</blue>
-                                 </color>
-                                </brush>
-                               </colorrole>
-                               <colorrole role="Window">
-                                <brush brushstyle="SolidPattern">
-                                 <color alpha="0">
-                                  <red>0</red>
-                                  <green>0</green>
-                                  <blue>0</blue>
-                                 </color>
-                                </brush>
-                               </colorrole>
-                              </disabled>
-                             </palette>
-                            </property>
-                            <property name="frameShape">
-                             <enum>QFrame::NoFrame</enum>
-                            </property>
-                            <property name="verticalScrollBarPolicy">
-                             <enum>Qt::ScrollBarAlwaysOn</enum>
-                            </property>
-                            <property name="sizeAdjustPolicy">
-                             <enum>QAbstractScrollArea::AdjustToContents</enum>
-                            </property>
-                            <property name="editTriggers">
-                             <set>QAbstractItemView::NoEditTriggers</set>
-                            </property>
-                            <property name="selectionMode">
-                             <enum>QAbstractItemView::SingleSelection</enum>
-                            </property>
-                            <property name="selectionBehavior">
-                             <enum>QAbstractItemView::SelectRows</enum>
-                            </property>
-                            <property name="showGrid">
-                             <bool>true</bool>
-                            </property>
-                            <property name="gridStyle">
-                             <enum>Qt::SolidLine</enum>
-                            </property>
-                            <property name="sortingEnabled">
-                             <bool>false</bool>
-                            </property>
-                            <attribute name="horizontalHeaderVisible">
-                             <bool>false</bool>
-                            </attribute>
-                            <attribute name="horizontalHeaderCascadingSectionResizes">
-                             <bool>true</bool>
-                            </attribute>
-                            <attribute name="horizontalHeaderDefaultSectionSize">
-                             <number>200</number>
-                            </attribute>
-                            <attribute name="horizontalHeaderStretchLastSection">
-                             <bool>true</bool>
-                            </attribute>
-                            <attribute name="verticalHeaderVisible">
-                             <bool>false</bool>
-                            </attribute>
-                            <attribute name="verticalHeaderCascadingSectionResizes">
-                             <bool>false</bool>
-                            </attribute>
-                            <attribute name="verticalHeaderHighlightSections">
-                             <bool>false</bool>
-                            </attribute>
-                            <attribute name="verticalHeaderStretchLastSection">
-                             <bool>true</bool>
-                            </attribute>
-                            <row>
-                             <property name="text">
-                              <string>New Row</string>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <family>Segoe UI</family>
-                              </font>
-                             </property>
-                            </row>
-                            <row>
-                             <property name="text">
-                              <string>New Row</string>
-                             </property>
-                            </row>
-                            <row>
-                             <property name="text">
-                              <string>New Row</string>
-                             </property>
-                            </row>
-                            <row>
-                             <property name="text">
-                              <string>New Row</string>
-                             </property>
-                            </row>
-                            <row>
-                             <property name="text">
-                              <string>New Row</string>
-                             </property>
-                            </row>
-                            <row>
-                             <property name="text">
-                              <string>New Row</string>
-                             </property>
-                            </row>
-                            <row>
-                             <property name="text">
-                              <string>New Row</string>
-                             </property>
-                            </row>
-                            <row>
-                             <property name="text">
-                              <string>New Row</string>
-                             </property>
-                            </row>
-                            <row>
-                             <property name="text">
-                              <string>New Row</string>
-                             </property>
-                            </row>
-                            <row>
-                             <property name="text">
-                              <string>New Row</string>
-                             </property>
-                            </row>
-                            <row>
-                             <property name="text">
-                              <string>New Row</string>
-                             </property>
-                            </row>
-                            <row>
-                             <property name="text">
-                              <string>New Row</string>
-                             </property>
-                            </row>
-                            <row>
-                             <property name="text">
-                              <string>New Row</string>
-                             </property>
-                            </row>
-                            <row>
-                             <property name="text">
-                              <string>New Row</string>
-                             </property>
-                            </row>
-                            <row>
-                             <property name="text">
-                              <string>New Row</string>
-                             </property>
-                            </row>
-                            <row>
-                             <property name="text">
-                              <string>New Row</string>
-                             </property>
-                            </row>
-                            <column>
-                             <property name="text">
-                              <string>0</string>
-                             </property>
-                            </column>
-                            <column>
-                             <property name="text">
-                              <string>1</string>
-                             </property>
-                            </column>
-                            <column>
-                             <property name="text">
-                              <string>2</string>
-                             </property>
-                            </column>
-                            <column>
-                             <property name="text">
-                              <string>3</string>
-                             </property>
-                            </column>
-                            <item row="0" column="0">
-                             <property name="text">
-                              <string>Test</string>
-                             </property>
-                            </item>
-                            <item row="0" column="1">
-                             <property name="text">
-                              <string>Text</string>
-                             </property>
-                            </item>
-                            <item row="0" column="2">
-                             <property name="text">
-                              <string>Cell</string>
-                             </property>
-                            </item>
-                            <item row="0" column="3">
-                             <property name="text">
-                              <string>Line</string>
-                             </property>
-                            </item>
+                             </layout>
+                            </widget>
                            </widget>
                           </item>
                          </layout>
