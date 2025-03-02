@@ -3662,6 +3662,12 @@ font-weight:bold;</string>
                        </property>
                        <item>
                         <widget class="QFrame" name="frame_8">
+                         <property name="styleSheet">
+                          <string notr="true">QLineEdit {
+    background-color: yellow; /* Light gray */
+    color: black;
+}</string>
+                         </property>
                          <property name="frameShape">
                           <enum>QFrame::StyledPanel</enum>
                          </property>

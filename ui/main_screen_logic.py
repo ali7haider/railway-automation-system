@@ -83,6 +83,8 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.btnSensorList.clicked.connect(self.show_pairip_pass_menu)
             self.btnPlanning.clicked.connect(self.show_offset_leech_menu)
 
+            self.btnCriteria.clicked.connect(self.update_criteria_standard_fields)
+
 
             # Define combo box - JSON file mapping
             self.cmbxOperationCountryProject = self.findChild(QComboBox, "cmbxOperationCountryProject")
@@ -699,6 +701,28 @@ class MasterScreen(QtWidgets.QMainWindow):
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to update Standby Operator Temperature: {str(e)}")
 
+    def update_criteria_standard_fields(self):
+        """Fetch and update temperature conditions for Saloon and Cabin."""
+        try:
+            # Define invalid values
+            invalid_values = {"", "--- Select ---", "--- Select Train Type ---", "--- Select Country ---", "--- Select deck ---"}
+
+            # Get Train Type and Standards
+            selected_train_type = self.cmbxTypeOfTrainProject.currentText().strip()
+            standard_saloon, standard_cabin = self.get_standard_saloon_and_cabin(
+                selected_train_type, self.cmbxStandardSaloon, self.lblStandardSaloon,
+                self.cmbxStandardCabin, self.lblStandardCabin
+            )
+
+            # Get Winter & Summer Zones
+            selected_country = self.cmbxOperationCountryProject.currentText().strip()
+            winter_zone_saloon = ProjectManager.get_winter_zone(selected_country, standard_saloon)
+            winter_zone_cabin = ProjectManager.get_winter_zone(selected_country, standard_cabin)
+            summer_zone_saloon = ProjectManager.get_summer_zone(selected_country, standard_saloon)
+            summer_zone_cabin = ProjectManager.get_summer_zone(selected_country, standard_cabin)
+        except Exception as e:
+            QMessageBox.critical(None, "Error", f"Failed to update temperature conditions: {str(e)}")
+
     def update_temperature_conditions(self):
         """Fetch and update temperature conditions for Saloon and Cabin."""
         try:
@@ -1112,7 +1136,7 @@ class MasterScreen(QtWidgets.QMainWindow):
         self.handleMenuClick(self.btnProjects, 0)
 
     def show_menu_compiler(self):
-        self.handleMenuClick(self.btnCriteria,2)
+        self.handleMenuClick(self.btnCriteria,1)
     def show_game_update_menu(self):
         self.handleMenuClick(self.btnTestList,3)
     def show_pairip_pass_menu(self):
