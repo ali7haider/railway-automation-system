@@ -22,6 +22,7 @@ import sys
 import os
 from PyQt5 import uic
 from PyQt5 import QtWidgets, uic
+from modules.criteria_manager import CriteriaManager
 from modules.project_manager import ProjectManager  # Import ProjectManager
 from PyQt5.QtGui import QIntValidator, QMouseEvent
 
@@ -59,6 +60,7 @@ class MasterScreen(QtWidgets.QMainWindow):
             UIFunctions.uiDefinitions(self)
 
             self.btnProjects.setStyleSheet(UIFunctions.selectMenu(self.btnProjects.styleSheet()))
+            self.locked_custom_fields = set()
 
             self.stacked_widget = self.findChild(QStackedWidget, "stackedWidget")  # Match the object name in Qt Designer
         #     # Initialize individual pages
@@ -83,7 +85,6 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.btnSensorList.clicked.connect(self.show_pairip_pass_menu)
             self.btnPlanning.clicked.connect(self.show_offset_leech_menu)
 
-            self.btnCriteria.clicked.connect(self.update_criteria_standard_fields)
 
 
             # Define combo box - JSON file mapping
@@ -144,7 +145,7 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.cmbxStandardSaloon = self.findChild(QComboBox, "cmbxStandardSaloon")
             self.lblStandardCabin = self.findChild(QLabel, "lblStandardCabin")
             self.cmbxStandardCabin = self.findChild(QComboBox, "cmbxStandardCabin")
-
+            self.btnCriteria.clicked.connect(self.update_criteria_standard_fields)
             # Initially hide them
             self.lblStandardSaloon.hide()
             self.cmbxStandardSaloon.hide()
@@ -183,6 +184,10 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.btnCustomInteriorConditions.clicked.connect(self.open_custom_interior_conditions)
             self.btnCustomExteriorSaloon.clicked.connect(self.open_custom_exterior_conditions_saloon)
             self.btnCustomExteriorCabin.clicked.connect(self.open_custom_exterior_conditions_cabin)
+
+
+
+
 
         except Exception as e:
             self.show_message_box("Error", f"Error loading UI: {str(e)}")
@@ -713,13 +718,30 @@ class MasterScreen(QtWidgets.QMainWindow):
                 selected_train_type, self.cmbxStandardSaloon, self.lblStandardSaloon,
                 self.cmbxStandardCabin, self.lblStandardCabin
             )
+            standard_saloon=self.cmbxStandardSaloon.currentText()
+            if standard_saloon == "":
+                standard_saloon = self.lblStandardSaloon.text()
+            if not standard_saloon or not standard_cabin:
+                # QtWidgets.QMessageBox.warning(
+                #     self, 
+                #     "Selection Required", 
+                #     "Please select both Standard Saloon and Standard Cabin before proceeding."
+                # )
+                return  # Stop function execution
 
-            # Get Winter & Summer Zones
-            selected_country = self.cmbxOperationCountryProject.currentText().strip()
-            winter_zone_saloon = ProjectManager.get_winter_zone(selected_country, standard_saloon)
-            winter_zone_cabin = ProjectManager.get_winter_zone(selected_country, standard_cabin)
-            summer_zone_saloon = ProjectManager.get_summer_zone(selected_country, standard_saloon)
-            summer_zone_cabin = ProjectManager.get_summer_zone(selected_country, standard_cabin)
+            category_saloon = self.lblCategorySaloon.text().strip()
+            category_cabin = self.lblCategoryCabin.text().strip()
+            print("Standard Saloon:", standard_saloon)
+            print("Standard Cabin:", standard_cabin)
+            print("Category Saloon:", category_saloon)
+            print("Category Cabin:", category_cabin)
+            # Pass data to CriteriaManager and fetch the results
+            saloon_criteria = CriteriaManager.get_criteria_values(standard_saloon, category_saloon, "Normal range")
+            cabin_criteria = CriteriaManager.get_criteria_values(standard_cabin, category_cabin, "Normal range")
+
+            # Example: Update UI elements with fetched criteria values
+            print("Saloon Criteria:", saloon_criteria)
+            print("Cabin Criteria:", cabin_criteria)
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to update temperature conditions: {str(e)}")
 
