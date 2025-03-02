@@ -28,6 +28,7 @@ from PyQt5.QtGui import QIntValidator, QMouseEvent
 from ui.custom_exterior_cabin_logic import CustomExteriorConditionsCabinScreen
 from ui.custom_exterior_saloon_logic import CustomExteriorConditionsSaloonScreen
 from ui.custom_interior_conditions_logic import CustomInteriorConditionsScreen
+import re  # For regex-based extraction
 
 
 GLOBAL_STATE = False
@@ -184,55 +185,74 @@ class MasterScreen(QtWidgets.QMainWindow):
         except Exception as e:
             self.show_message_box("Error", f"Error loading UI: {str(e)}")
     def open_custom_exterior_conditions_cabin(self):
-        """Opens the Custom Interior Conditions screen."""
+        """Opens the Custom Exterior Conditions screen for the Cabin with properly formatted default values."""
         try:
             selected_train_type = self.cmbxTypeOfTrainProject.currentText().strip()
             standard_saloon, standard_cabin = self.get_standard_saloon_and_cabin(
                 selected_train_type, self.cmbxStandardSaloon, self.lblStandardSaloon,
                 self.cmbxStandardCabin, self.lblStandardCabin
             )
-            
-            if not standard_saloon or not standard_cabin:
+
+            # Validation: Ensure both Standard Saloon & Standard Cabin are selected
+            if not standard_cabin:
                 QtWidgets.QMessageBox.warning(
                     self, 
                     "Selection Required", 
                     "Please select both Standard Saloon and Standard Cabin before proceeding."
                 )
                 return  # Stop function execution
-            # Fetch all values for saloon and cabin
-            category_saloon = self.lblCategorySaloon.text().strip()
-            category_cabin = self.lblCategoryCabin.text().strip()
-            default_values = {
-            "standard":standard_cabin,
-            "WinterZone": self.lblWinterZoneSaloon.text(),  # Example
-            "SummerZone": self.lblSummerZoneSaloon.text(),
-            "WinterNormal": self.lblWinterNormalSaloon.text(),
-            "SummerNormal": self.lblSummerNormalSaloon.text(),
-            "WinterExtended": self.lblWinterExtendedSaloon.text(),
-            "SummerExtended": self.lblSummerExtendedSaloon.text(),
-            "WinterDesign": self.lblWinterDesignSaloon.text(),
-            "SummerDesign": self.lblSummerDesignSaloon.text(),
-            "WinterExtreme": self.lblWinterExtremeSaloon.text(),
-            "SummerExtreme": self.lblSummerExtremeSaloon.text(),
-            "WinterOperational": self.lblWinterOperationalSaloon.text(),
-            "SummerOperational": self.lblSummerOperationalSaloon.text(),
 
-        }
-            # Open Custom Interior Conditions screen with the default values
-            self.custom_interior_window = CustomExteriorConditionsCabinScreen(default_values)
-            self.custom_interior_window.show()
+            # Initialize default values
+            default_values = {
+                "standard": standard_cabin,
+                "WinterZone": self.lblWinterZoneCabin.text().strip(),
+                "SummerZone": self.lblSummerZoneCabin.text().strip(),
+            }
+
+            # Step 1: Process "Normal" values (Extract temperature)
+            normal_keys = ["WinterNormal", "SummerNormal"]
+            for key in normal_keys:
+                raw_value = getattr(self, f"lbl{key}Cabin").text().strip()
+                temperature = self.extract_normal_temperature(raw_value)
+                default_values[key] = temperature  # Store extracted temperature
+
+            # Step 2: Process "Extended" values (Extract min/max)
+            extended_keys = ["WinterExtended", "SummerExtended"]
+            for key in extended_keys:
+                raw_value = getattr(self, f"lbl{key}Cabin").text().strip()
+                min_val, max_val = self.extract_extended_range(raw_value)
+
+                default_values[f"{key}Min"] = min_val
+                default_values[f"{key}Max"] = max_val
+
+            # Step 3: Process "Design", "Extreme", and "Operational" values (Extract °C, %, W/m²)
+            climate_keys = ["WinterDesign", "SummerDesign", "WinterExtreme", "SummerExtreme", "WinterOperational", "SummerOperational"]
+            for key in climate_keys:
+                raw_value = getattr(self, f"lbl{key}Cabin").text().strip()
+                temp, humidity, heat_flux = self.extract_climate_parameters(raw_value)
+
+                default_values[f"{key}Temp"] = temp
+                default_values[f"{key}Humidity"] = humidity
+                default_values[f"{key}HeatFlux"] = heat_flux
+
+            # Open Custom Exterior Conditions screen with formatted values
+            self.custom_exterior_window = CustomExteriorConditionsCabinScreen(default_values)
+            self.custom_exterior_window.show()
+
         except Exception as e:
-            QtWidgets.QMessageBox.critical(self, "Error", f"Error opening Custom Interior Conditions screen: {str(e)}")
+            QtWidgets.QMessageBox.critical(self, "Error", f"Error opening Custom Exterior Conditions screen: {str(e)}")
+
 
     def open_custom_exterior_conditions_saloon(self):
-        """Opens the Custom Interior Conditions screen."""
+        """Opens the Custom Interior Conditions screen with properly formatted default values."""
         try:
             selected_train_type = self.cmbxTypeOfTrainProject.currentText().strip()
             standard_saloon, standard_cabin = self.get_standard_saloon_and_cabin(
                 selected_train_type, self.cmbxStandardSaloon, self.lblStandardSaloon,
                 self.cmbxStandardCabin, self.lblStandardCabin
             )
-            
+
+            # Validation: Ensure both Standard Saloon & Standard Cabin are selected
             if not standard_saloon or not standard_cabin:
                 QtWidgets.QMessageBox.warning(
                     self, 
@@ -240,32 +260,94 @@ class MasterScreen(QtWidgets.QMainWindow):
                     "Please select both Standard Saloon and Standard Cabin before proceeding."
                 )
                 return  # Stop function execution
-            # Fetch all values for saloon and cabin
-            category_saloon = self.lblCategorySaloon.text().strip()
-            category_cabin = self.lblCategoryCabin.text().strip()
+
+            # Initialize default values
             default_values = {
-            "standard":standard_saloon,
-            "WinterZone": self.lblWinterZoneSaloon.text(),  # Example
-            "SummerZone": self.lblSummerZoneSaloon.text(),
-            "WinterNormal": self.lblWinterNormalSaloon.text(),
-            "SummerNormal": self.lblSummerNormalSaloon.text(),
-            "WinterExtended": self.lblWinterExtendedSaloon.text(),
-            "SummerExtended": self.lblSummerExtendedSaloon.text(),
-            "WinterDesign": self.lblWinterDesignSaloon.text(),
-            "SummerDesign": self.lblSummerDesignSaloon.text(),
-            "WinterExtreme": self.lblWinterExtremeSaloon.text(),
-            "SummerExtreme": self.lblSummerExtremeSaloon.text(),
-            "WinterOperational": self.lblWinterOperationalSaloon.text(),
-            "SummerOperational": self.lblSummerOperationalSaloon.text(),
+                "standard": standard_saloon,
+                "WinterZone": self.lblWinterZoneSaloon.text().strip(),
+                "SummerZone": self.lblSummerZoneSaloon.text().strip(),
+            }
 
-        }
-            # Open Custom Interior Conditions screen with the default values
+            # Step 1: Process "Normal" values (Extract temperature)
+            normal_keys = ["WinterNormal", "SummerNormal"]
+            for key in normal_keys:
+                raw_value = getattr(self, f"lbl{key}Saloon").text().strip()
+                temperature = self.extract_normal_temperature(raw_value)
+                default_values[key] = temperature  # Store extracted temperature
+
+            # Step 2: Process "Extended" values (Extract min/max)
+            extended_keys = ["WinterExtended", "SummerExtended"]
+            for key in extended_keys:
+                raw_value = getattr(self, f"lbl{key}Saloon").text().strip()
+                min_val, max_val = self.extract_extended_range(raw_value)
+
+                default_values[f"{key}Min"] = min_val
+                default_values[f"{key}Max"] = max_val
+
+            # Step 3: Process "Design", "Extreme", and "Operational" values (Extract °C, %, W/m²)
+            climate_keys = ["WinterDesign", "SummerDesign", "WinterExtreme", "SummerExtreme", "WinterOperational", "SummerOperational"]
+            for key in climate_keys:
+                raw_value = getattr(self, f"lbl{key}Saloon").text().strip()
+                temp, humidity, heat_flux = self.extract_climate_parameters(raw_value)
+
+                default_values[f"{key}Temp"] = temp
+                default_values[f"{key}Humidity"] = humidity
+                default_values[f"{key}HeatFlux"] = heat_flux
+
+            # Open Custom Interior Conditions screen with formatted values
             self.custom_interior_window = CustomExteriorConditionsSaloonScreen(default_values)
-
-            
             self.custom_interior_window.show()
+
         except Exception as e:
             QtWidgets.QMessageBox.critical(self, "Error", f"Error opening Custom Interior Conditions screen: {str(e)}")
+
+    # Helper function to extract temperature from "Normal" climate conditions
+    def extract_normal_temperature(self, text):
+        """
+        Extracts the numeric temperature value from a string in the format: 
+        'Text ≥ 25°C' and ensures it captures negative values as well.
+        """
+        try:
+            match = re.search(r"≥\s*(-?\d+\.?\d*)°C", text)  # Capture positive or negative temperature
+            if match:
+                return f"{match.group(1)}°C"
+            return "None"
+        except:
+            return "None"
+
+    # Helper function to extract extended min/max values
+    def extract_extended_range(self, text):
+        """Extracts min and max values from extended climate conditions."""
+        try:
+            match = re.search(r"(-?\d+\.?\d*)°C\s*≤.*≤\s*(-?\d+\.?\d*)°C", text)  # Handles negative values too
+            if match:
+                min_val, max_val = match.groups()
+                return f"{min_val}°C", f"{max_val}°C"
+            else:
+                return "None", "None"
+        except:
+            return "None", "None"
+
+    # Helper function to extract Design/Extreme/Operational values
+    def extract_climate_parameters(self, text):
+        """Extracts temperature (°C), humidity (%), and heat flux (W/m²) from a string."""
+        try:
+            values = re.findall(r"(-?\d+\.?\d*)\s*(°C|%|W/m²)", text)  # Capture negative values
+            temp, humidity, heat_flux = "None", "None", "None"
+
+            for val, unit in values:
+                if unit == "°C":
+                    temp = f"{val}°C"
+                elif unit == "%":
+                    humidity = f"{val}%"
+                elif unit == "W/m²":
+                    heat_flux = f"{val} W/m²"
+
+            return temp, humidity, heat_flux
+        except:
+            return "None", "None", "None"
+
+
 
     def apply_custom_values(self, custom_values):
         """
@@ -300,7 +382,6 @@ class MasterScreen(QtWidgets.QMainWindow):
                     label.setText(f"{custom_value}°C")
                     label.setStyleSheet("background-color: #F97D02; padding-left:5px;")  # Highlight in orange
                     self.locked_custom_fields.add(key)  # Lock this field
-                    print(f"Locked field: {key} with value: {custom_value}")  # Debugging
 
         except Exception as e:
             QtWidgets.QMessageBox.critical(self, "Error", f"Error applying custom values: {str(e)}")
@@ -669,7 +750,6 @@ class MasterScreen(QtWidgets.QMainWindow):
                 self.lblHeatTransferSaloon.setText("")
                 self.lblHeatTransferCabin.setText("")
                 return
-            print(winter_zone, winter_zone_2,standard_cabin, category_cabin, deck_type)
             # Step 6: Fetch k coefficient from K_coefficient.json
             k_saloon = ProjectManager.get_k_coefficient(standard_saloon, category_saloon, deck_type, winter_zone)
             k_cabin = ProjectManager.get_k_coefficient(standard_cabin, category_cabin, deck_type, winter_zone_2)

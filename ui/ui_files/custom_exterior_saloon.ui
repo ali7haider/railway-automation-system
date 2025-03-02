@@ -641,7 +641,11 @@ border:1px solid rgba(46, 82, 101, 200);
                      </widget>
                     </item>
                     <item row="2" column="6">
-                     <widget class="QLineEdit" name="txtCustomWinterNormalMax"/>
+                     <widget class="QLineEdit" name="txtCustomWinterNormalMax">
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
                     </item>
                     <item row="3" column="3">
                      <widget class="QLineEdit" name="txtNormSummerNormalMax">
@@ -669,6 +673,9 @@ border:1px solid rgba(46, 82, 101, 200);
                     </item>
                     <item row="3" column="4">
                      <widget class="QLineEdit" name="txtNormSummerNormalMin">
+                      <property name="text">
+                       <string>-</string>
+                      </property>
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
@@ -696,6 +703,9 @@ border:1px solid rgba(46, 82, 101, 200);
                     </item>
                     <item row="2" column="3">
                      <widget class="QLineEdit" name="txtNormWinterNormalMax">
+                      <property name="text">
+                       <string>-</string>
+                      </property>
                       <property name="readOnly">
                        <bool>true</bool>
                       </property>
