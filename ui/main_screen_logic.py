@@ -731,20 +731,40 @@ class MasterScreen(QtWidgets.QMainWindow):
 
             category_saloon = self.lblCategorySaloon.text().strip()
             category_cabin = self.lblCategoryCabin.text().strip()
-            print("Standard Saloon:", standard_saloon)
-            print("Standard Cabin:", standard_cabin)
-            print("Category Saloon:", category_saloon)
-            print("Category Cabin:", category_cabin)
             # Pass data to CriteriaManager and fetch the results
             saloon_criteria = CriteriaManager.get_criteria_values(standard_saloon, category_saloon, "Normal range")
             cabin_criteria = CriteriaManager.get_criteria_values(standard_cabin, category_cabin, "Normal range")
 
-            # Example: Update UI elements with fetched criteria values
-            print("Saloon Criteria:", saloon_criteria)
-            print("Cabin Criteria:", cabin_criteria)
+            # Process and update UI labels
+            self.update_saloon_labels(saloon_criteria)
+            self.update_cabin_labels(cabin_criteria)
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to update temperature conditions: {str(e)}")
 
+    def update_saloon_labels(self, saloon_criteria):
+        """Update the UI labels with saloon criteria values."""
+        if not saloon_criteria:
+            print("No Saloon Criteria data available.")
+            return
+
+        # Example: Assuming you have labels for each criteria value
+        self.lblTimQ1Saloon.setText(f"Tim q1: {saloon_criteria.get('Tim q1', 'N/A')}")
+        self.lblTimQ2Saloon.setText(f"Tim q2: {saloon_criteria.get('Tim q2', 'N/A')}")
+        self.lblGradientQ1Saloon.setText(f"Horizontal Gradient q1: {saloon_criteria.get('Horizontal gradient q1', 'N/A')}")
+        self.lblGradientQ2Saloon.setText(f"Horizontal Gradient q2: {saloon_criteria.get('Horizontal gradient q2', 'N/A')}")
+
+
+    def update_cabin_labels(self, cabin_criteria):
+        """Update the UI labels with cabin criteria values."""
+        if not cabin_criteria:
+            print("No Cabin Criteria data available.")
+            return
+
+        # Example: Assuming you have labels for each criteria value
+        self.lblTimQ1Cabin.setText(f"Tim q1: {cabin_criteria.get('Tim q1', 'N/A')}")
+        self.lblTimQ2Cabin.setText(f"Tim q2: {cabin_criteria.get('Tim q2', 'N/A')}")
+        self.lblGradientQ1Cabin.setText(f"Horizontal Gradient q1: {cabin_criteria.get('Horizontal gradient q1', 'N/A')}")
+        self.lblGradientQ2Cabin.setText(f"Horizontal Gradient q2: {cabin_criteria.get('Horizontal gradient q2', 'N/A')}")
     def update_temperature_conditions(self):
         """Fetch and update temperature conditions for Saloon and Cabin."""
         try:
@@ -1073,6 +1093,7 @@ class MasterScreen(QtWidgets.QMainWindow):
         elif len(keys) == 1:
             label.setText(keys[0])  # Show key directly in label
             label.show()
+            combo_box.clear()
             combo_box.hide()
             category_label.setText(data_dict[keys[0]])  # Show the category directly
             category_label.show()

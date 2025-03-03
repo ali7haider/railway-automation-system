@@ -308,7 +308,7 @@ class CustomInteriorConditionsScreen(QtWidgets.QMainWindow):
 
         except Exception as e:
             print(f"Error generating custom graph: {e}")
-        def save_custom_values(self):
+    def save_custom_values(self):
             try:
                 custom_values = {
                     "TicMaxSaloon": self.txtCustomTicMaxSaloon.text().strip(),
