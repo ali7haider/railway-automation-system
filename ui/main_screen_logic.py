@@ -748,11 +748,7 @@ class MasterScreen(QtWidgets.QMainWindow):
             return
 
         # Example: Assuming you have labels for each criteria value
-        self.lblTimQ1Saloon.setText(f"Tim q1: {saloon_criteria.get('Tim q1', 'N/A')}")
-        self.lblTimQ2Saloon.setText(f"Tim q2: {saloon_criteria.get('Tim q2', 'N/A')}")
-        self.lblGradientQ1Saloon.setText(f"Horizontal Gradient q1: {saloon_criteria.get('Horizontal gradient q1', 'N/A')}")
-        self.lblGradientQ2Saloon.setText(f"Horizontal Gradient q2: {saloon_criteria.get('Horizontal gradient q2', 'N/A')}")
-
+        
 
     def update_cabin_labels(self, cabin_criteria):
         """Update the UI labels with cabin criteria values."""
@@ -760,11 +756,7 @@ class MasterScreen(QtWidgets.QMainWindow):
             print("No Cabin Criteria data available.")
             return
 
-        # Example: Assuming you have labels for each criteria value
-        self.lblTimQ1Cabin.setText(f"Tim q1: {cabin_criteria.get('Tim q1', 'N/A')}")
-        self.lblTimQ2Cabin.setText(f"Tim q2: {cabin_criteria.get('Tim q2', 'N/A')}")
-        self.lblGradientQ1Cabin.setText(f"Horizontal Gradient q1: {cabin_criteria.get('Horizontal gradient q1', 'N/A')}")
-        self.lblGradientQ2Cabin.setText(f"Horizontal Gradient q2: {cabin_criteria.get('Horizontal gradient q2', 'N/A')}")
+       
     def update_temperature_conditions(self):
         """Fetch and update temperature conditions for Saloon and Cabin."""
         try:
