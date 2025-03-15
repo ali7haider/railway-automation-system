@@ -2120,7 +2120,7 @@ background-color:#1159A8;
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>1</number>
+                      <number>0</number>
                      </property>
                      <widget class="QWidget" name="projectPage">
                       <property name="acceptDrops">
@@ -2232,7 +2232,7 @@ font-weight:bold;</string>
                                  <rect>
                                   <x>0</x>
                                   <y>0</y>
-                                  <width>714</width>
+                                  <width>985</width>
                                   <height>1973</height>
                                  </rect>
                                 </property>
@@ -3780,7 +3780,7 @@ font-weight:bold;</string>
                             <widget class="QWidget" name="scrollAreaWidgetContents">
                              <property name="geometry">
                               <rect>
-                               <x>-122</x>
+                               <x>-39</x>
                                <y>0</y>
                                <width>1523</width>
                                <height>1140</height>

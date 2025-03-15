@@ -65,6 +65,7 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.stacked_widget = self.findChild(QStackedWidget, "stackedWidget")  # Match the object name in Qt Designer
         #     # Initialize individual pages
             self.init_pages()
+            self.original_default_interior_values={}
 
             self.menu_buttons = [
             self.btnProjects,  # Replace with your actual button objects
@@ -602,32 +603,53 @@ class MasterScreen(QtWidgets.QMainWindow):
                     "Please select both Standard Saloon and Standard Cabin before proceeding."
                 )
                 return  # Stop function execution
+
             # Fetch all values for saloon and cabin
             category_saloon = self.lblCategorySaloon.text().strip()
             category_cabin = self.lblCategoryCabin.text().strip()
             saloon_curve_values = ProjectManager.get_curve_values(standard_saloon, category_saloon)
             cabin_curve_values = ProjectManager.get_curve_values(standard_cabin, category_cabin)
-            default_values = {
-            "standard_saloon":standard_saloon,
-            "standard_cabin":standard_cabin,
-            "saloon_curve": saloon_curve_values,
-            "cabin_curve": cabin_curve_values,
-            "TicMaxSaloon": self.lblMaxSaloonInterior.text(),  # Example
-            "TicMinSaloon": self.lblMinSaloonInterior.text(),
-            "TicMaxCabin": self.lblTicMaxCabinInterior.text(),
-            "TicMinCabin": self.lblTicMinSaloonInterior.text(),
-            "MaxMeanTempSaloon": self.lblMaxMeanInteriorTempSaloon.text(),
-            "MaxMeanTempCabin": self.lblMaxMeanInteriorTempCabin.text(),
-            "StandByOperatorSaloonMax": self.lblStandByOperatorSaloonMax.text(),
-            "StandByOperatorSaloonMin": self.lblStandByOperatorSaloonMin.text(),
-            "StandByOperatorCabinMax": self.lblStandByOperatorCabinMax.text(),
-            "StandByOperatorCabinMin": self.lblStandByOperatorCabinMin.text(),
 
+            # Store the original default values only once at the start of the application
+            if not hasattr(self, 'original_default_interior_values'):
+                self.original_default_interior_values = {
+                    "standard_saloon": standard_saloon,
+                    "standard_cabin": standard_cabin,
+                    "saloon_curve": saloon_curve_values,
+                    "cabin_curve": cabin_curve_values
+                }
+            else:
+                # Update only the relevant parts
+                self.original_default_interior_values.update({
+                    "standard_saloon": standard_saloon,
+                    "standard_cabin": standard_cabin,
+                    "saloon_curve": saloon_curve_values,
+                    "cabin_curve": cabin_curve_values
+                })
 
-        }
+            custom_values = {}
+            label_mappings = {
+                "TicMaxSaloon": self.lblMaxSaloonInterior,
+                "TicMinSaloon": self.lblMinSaloonInterior,
+                "TicMaxCabin": self.lblTicMaxCabinInterior,
+                "TicMinCabin": self.lblTicMinSaloonInterior,
+                "MaxMeanTempSaloon": self.lblMaxMeanInteriorTempSaloon,
+                "MaxMeanTempCabin": self.lblMaxMeanInteriorTempCabin,
+                "StandByOperatorSaloonMax": self.lblStandByOperatorSaloonMax,
+                "StandByOperatorSaloonMin": self.lblStandByOperatorSaloonMin,
+                "StandByOperatorCabinMax": self.lblStandByOperatorCabinMax,
+                "StandByOperatorCabinMin": self.lblStandByOperatorCabinMin,
+            }
 
-            # Open Custom Interior Conditions screen with the default values
-            self.custom_interior_window = CustomInteriorConditionsScreen(default_values)
+            for key, label in label_mappings.items():
+                if key in self.locked_custom_fields:  # Only fetch locked fields (custom values)
+                    custom_values[key] = label.text().strip()
+            # Open Custom Interior Conditions screen with both default and custom values
+            self.custom_interior_window = CustomInteriorConditionsScreen(
+                default_values=self.original_default_interior_values,
+                custom_values=custom_values
+            )
+            
             if hasattr(self.custom_interior_window, "custom_values_updated"):
                 self.custom_interior_window.custom_values_updated.connect(self.apply_custom_values)
             else:
@@ -666,9 +688,15 @@ class MasterScreen(QtWidgets.QMainWindow):
     def update_standby_operator_temp(self):
         """Fetch and update Standby Operator Temperature for Saloon and Cabin with validation."""
         try:
-            # Define invalid values
+            # Initialize locked fields if not already defined
             if not hasattr(self, "locked_custom_fields"):
                 self.locked_custom_fields = set()
+            
+            # Initialize original_default_interior_values if not already defined
+            if not hasattr(self, "original_default_interior_values"):
+                self.original_default_interior_values = {}
+            
+            # Define invalid values
             invalid_values = {"", "--- Select ---", "--- Select Train Type ---", "--- Select Country ---", "--- Select deck ---"}
 
             # Step 1: Get Standard Saloon & Standard Cabin
@@ -693,7 +721,17 @@ class MasterScreen(QtWidgets.QMainWindow):
             # Step 3: Fetch Standby Operator Temperature from ProjectManager
             summer_saloon, winter_saloon = ProjectManager.get_standby_operator_temp(standard_saloon)
             summer_cabin, winter_cabin = ProjectManager.get_standby_operator_temp(standard_cabin)
-            # Step 4: Update UI Labels
+
+            # Step 4: Store default values even if labels are locked
+            self.original_default_interior_values.update({
+                "StandByOperatorSaloonMax": str(summer_saloon) if summer_saloon is not None else "None°C",
+                "StandByOperatorSaloonMin": str(winter_saloon) if winter_saloon is not None else "None°C",
+                "StandByOperatorCabinMax": str(summer_cabin) if summer_cabin is not None else "None°C",
+                "StandByOperatorCabinMin": str(winter_cabin) if winter_cabin is not None else "None°C"
+            })
+
+
+            # Step 5: Update UI Labels
             if "StandByOperatorSaloonMax" not in self.locked_custom_fields:
                 self.lblStandByOperatorSaloonMax.setText(str(summer_saloon) if summer_saloon is not None else "None°C")
             if "StandByOperatorSaloonMin" not in self.locked_custom_fields:
@@ -746,6 +784,52 @@ class MasterScreen(QtWidgets.QMainWindow):
         if not saloon_criteria:
             print("No Saloon Criteria data available.")
             return
+        saloon_label_map = {
+                "Tim q1": "lblTim1NormalSaloon",
+                "Tim q2": "lblTim2NormalSaloon",
+                "Horizontal gradient q1": "lblHGradient1NormalSaloon",
+                "Horizontal gradient q2": "lblHGradient2NormalSaloon",
+                "Vertical gradient seated q1": "lblVGradientSeated1NormalSaloon",
+                "Vertical gradient seated q2": "lblVGradientSeated2NormalSaloon",
+                "Vertical gradient seated (Foot warmest) q1": "lblVGradientSeatedFoot1NormalSaloon",
+                "Vertical gradient seated (Foot warmest) q2": "lblVGradientSeatedFoot2NormalSaloon",
+                "Vertical gradient stand q1": "lblVGradientStand1NormalSaloon",
+                "Vertical gradient stand q2": "lblVGradientStand2NormalSaloon",
+                "Vertical gradient stand (Foot warmest) q1": "lblVGradientStandFoot1NormalSaloon",
+                "Vertical gradient stand (Foot warmest) q2": "lblVGradientStandFoot2NormalSaloon",
+                "Vertical minimun temperature": "lblVMinimumTempNormalSaloon",
+                "Surfaces (Walls) ΔMax q1": "lblSurfaceWallsMaxQ1NormalSaloon",
+                "Surfaces (Walls) ΔMax q2": "lblSurfaceWallsMaxQ2NormalSaloon",
+                "Surfaces (Walls) ΔMin q1": "lblSurfaceWallsMinQ1NormalSaloon",
+                "Surfaces (Walls) ΔMin q2": "lblSurfaceWallsMinQ2NormalSaloon",
+                "Surfaces (ceilings) ΔMax q1": "lblSurfaceCeilingsMaxQ1NormalSaloon",
+                "Surfaces (ceilings) ΔMax q2": "lblSurfaceCeilingsMaxQ2NormalSaloon",
+                "Surfaces (ceilings) ΔMin q1": "lblSurfaceCeilingsMinQ1NormalSaloon",
+                "Surfaces (ceilings) ΔMin q2": "lblSurfaceCeilingsMinQ2NormalSaloon",
+                "Surfaces (Window panes exposed to sun radiation) ΔMax q1": "lblSurfacesExposedMaxQ1NormalSaloon",
+                "Surfaces (Window panes exposed to sun radiation) ΔMax q2": "lblSurfacesExposedMaxQ2NormalSaloon",
+                "Surfaces (Window panes exposed to sun radiation) ΔMin q1": "lblSurfacesExposedMinQ1NormalSaloon",
+                "Surfaces (Window panes exposed to sun radiation) ΔMin q2": "lblSurfacesExposedMinQ2NormalSaloon",
+                "Surfaces (Window panes not exposed to sun radiation) ΔMax q1": "lblSurfacesNotExposedMaxQ1NormalSaloon",
+                "Surfaces (Window panes not exposed to sun radiation) ΔMax q2": "lblSurfacesNotExposedMaxQ2NormalSaloon",
+                "Surfaces (Window panes not exposed to sun radiation) ΔMin q1": "lblSurfacesNotExposedMinQ1NormalSaloon",
+                "Surfaces (Window panes not exposed to sun radiation) ΔMin q2": "lblSurfacesNotExposedMinQ2NormalSaloon",
+                "Surfaces (Window frame) q1": "lblSurfacesFrameQ1NormalSaloon",
+                "Surfaces (Window frame) q2": "lblSurfacesFrameQ2NormalSaloon",
+                # Add additional mappings here as needed
+            }
+
+        for key, value in saloon_criteria.items():
+            formatted_value = str(value) if value is not None else "N/A"
+
+            # Get the corresponding label name from the dictionary
+            label_name = saloon_label_map.get(key)
+
+            if label_name and hasattr(self, label_name):
+                getattr(self, label_name).setText(formatted_value)
+            else:
+                print(f"Warning: No UI label found for {key}")
+
 
         # Example: Assuming you have labels for each criteria value
         
@@ -755,6 +839,83 @@ class MasterScreen(QtWidgets.QMainWindow):
         if not cabin_criteria:
             print("No Cabin Criteria data available.")
             return
+        cabin_label_map = {
+            "Tim q1": "lblTim1NormalCabin",
+            "Tim q2": "lblTim2NormalCabin",
+            "Horizontal gradient q1": "lblHGradient1NormalCabin",
+            "Horizontal gradient q2": "lblHGradient2NormalCabin",
+            "Vertical gradient seated q1": "lblVGradientSeated1NormalCabin",
+            "Vertical gradient seated q2": "lblVGradientSeated2NormalCabin",
+            "Vertical gradient seated (Foot warmest) q1": "lblVGradientSeatedFoot1NormalCabin",
+            "Vertical gradient seated (Foot warmest) q2": "lblVGradientSeatedFoot2NormalCabin",
+            "Vertical gradient stand q1": "lblVGradientStand1NormalCabin",
+            "Vertical gradient stand q2": "lblVGradientStand2NormalCabin",
+            "Vertical gradient stand (Foot warmest) q1": "lblVGradientStandFoot1NormalCabin",
+            "Vertical gradient stand (Foot warmest) q2": "lblVGradientStandFoot2NormalCabin",
+            "Vertical minimun temperature": "lblVMinimumTempNormalCabin",
+            "Surfaces (Walls) ΔMax q1": "lblSurfaceWallsMaxQ1NormalCabin",
+            "Surfaces (Walls) ΔMax q2": "lblSurfaceWallsMaxQ2NormalCabin",
+            "Surfaces (Walls) ΔMin q1": "lblSurfaceWallsMinQ1NormalCabin",
+            "Surfaces (Walls) ΔMin q2": "lblSurfaceWallsMinQ2NormalCabin",
+            "Surfaces (ceilings) ΔMax q1": "lblSurfaceCeilingsMaxQ1NormalCabin",
+            "Surfaces (ceilings) ΔMax q2": "lblSurfaceCeilingsMaxQ2NormalCabin",
+            "Surfaces (ceilings) ΔMin q1": "lblSurfaceCeilingsMinQ1NormalCabin",
+            "Surfaces (ceilings) ΔMin q2": "lblSurfaceCeilingsMinQ2NormalCabin",
+            "Surfaces (Window panes exposed to sun radiation) ΔMax q1": "lblSurfacesExposedMaxQ1NormalCabin",
+            "Surfaces (Window panes exposed to sun radiation) ΔMax q2": "lblSurfacesExposedMaxQ2NormalCabin",
+            "Surfaces (Window panes exposed to sun radiation) ΔMin q1": "lblSurfacesExposedMinQ1NormalCabin",
+            "Surfaces (Window panes exposed to sun radiation) ΔMin q2": "lblSurfacesExposedMinQ2NormalCabin",
+            "Surfaces (Window panes not exposed to sun radiation) ΔMax q1": "lblSurfacesNotExposedMaxQ1NormalCabin",
+            "Surfaces (Window panes not exposed to sun radiation) ΔMax q2": "lblSurfacesNotExposedMaxQ2NormalCabin",
+            "Surfaces (Window panes not exposed to sun radiation) ΔMin q1": "lblSurfacesNotExposedMinQ1NormalCabin",
+            "Surfaces (Window panes not exposed to sun radiation) ΔMin q2": "lblSurfacesNotExposedMinQ2NormalCabin",
+            "Surfaces (Window frame) q1": "lblSurfacesFrameQ1NormalCabin",
+            "Surfaces (Window frame) q2": "lblSurfacesFrameQ2NormalCabin",
+            # Extended values
+            "Tim q1 Extended": "lblTim1ExtendedCabin",
+            "Tim q2 Extended": "lblTim2ExtendedCabin",
+            "Horizontal gradient q1 Extended": "lblHGradient1ExtendedCabin",
+            "Horizontal gradient q2 Extended": "lblHGradient2ExtendedCabin",
+            "Vertical gradient seated q1 Extended": "lblVGradientSeated1ExtendedCabin",
+            "Vertical gradient seated q2 Extended": "lblVGradientSeated2ExtendedCabin",
+            "Vertical gradient seated (Foot warmest) q1 Extended": "lblVGradientSeatedFoot1ExtendedCabin",
+            "Vertical gradient seated (Foot warmest) q2 Extended": "lblVGradientSeatedFoot2ExtendedCabin",
+            "Vertical gradient stand q1 Extended": "lblVGradientStand1ExtendedCabin",
+            "Vertical gradient stand q2 Extended": "lblVGradientStand2ExtendedCabin",
+            "Vertical gradient stand (Foot warmest) q1 Extended": "lblVGradientStandFoot1ExtendedCabin",
+            "Vertical gradient stand (Foot warmest) q2 Extended": "lblVGradientStandFoot2ExtendedCabin",
+            "Vertical minimun temperature Extended": "lblVMinimumTempExtendedCabin",
+            "Surfaces (Walls) ΔMax q1 Extended": "lblSurfaceWallsMaxQ1ExtendedCabin",
+            "Surfaces (Walls) ΔMax q2 Extended": "lblSurfaceWallsMaxQ2ExtendedCabin",
+            "Surfaces (Walls) ΔMin q1 Extended": "lblSurfaceWallsMinQ1ExtendedCabin",
+            "Surfaces (Walls) ΔMin q2 Extended": "lblSurfaceWallsMinQ2ExtendedCabin",
+            "Surfaces (ceilings) ΔMax q1 Extended": "lblSurfaceCeilingsMaxQ1ExtendedCabin",
+            "Surfaces (ceilings) ΔMax q2 Extended": "lblSurfaceCeilingsMaxQ2ExtendedCabin",
+            "Surfaces (ceilings) ΔMin q1 Extended": "lblSurfaceCeilingsMinQ1ExtendedCabin",
+            "Surfaces (ceilings) ΔMin q2 Extended": "lblSurfaceCeilingsMinQ2ExtendedCabin",
+            "Surfaces (Window panes exposed to sun radiation) ΔMax q1 Extended": "lblSurfacesExposedMaxQ1ExtendedCabin",
+            "Surfaces (Window panes exposed to sun radiation) ΔMax q2 Extended": "lblSurfacesExposedMaxQ2ExtendedCabin",
+            "Surfaces (Window panes exposed to sun radiation) ΔMin q1 Extended": "lblSurfacesExposedMinQ1ExtendedCabin",
+            "Surfaces (Window panes exposed to sun radiation) ΔMin q2 Extended": "lblSurfacesExposedMinQ2ExtendedCabin",
+            "Surfaces (Window panes not exposed to sun radiation) ΔMax q1 Extended": "lblSurfacesNotExposedMaxQ1ExtendedCabin",
+            "Surfaces (Window panes not exposed to sun radiation) ΔMax q2 Extended": "lblSurfacesNotExposedMaxQ2ExtendedCabin",
+            "Surfaces (Window panes not exposed to sun radiation) ΔMin q1 Extended": "lblSurfacesNotExposedMinQ1ExtendedCabin",
+            "Surfaces (Window panes not exposed to sun radiation) ΔMin q2 Extended": "lblSurfacesNotExposedMinQ2ExtendedCabin",
+            "Surfaces (Window frame) q1 Extended": "lblSurfacesFrameQ1ExtendedCabin",
+            "Surfaces (Window frame) q2 Extended": "lblSurfacesFrameQ2ExtendedCabin",
+        }
+
+        for key, value in cabin_criteria.items():
+            formatted_value = str(value) if value is not None else "N/A"
+
+            # Get the corresponding label name from the dictionary
+            label_name = cabin_label_map.get(key)
+
+            if label_name and hasattr(self, label_name):
+                getattr(self, label_name).setText(formatted_value)
+            else:
+                print(f"Warning: No UI label found for {key}")
+
 
        
     def update_temperature_conditions(self):
@@ -916,6 +1077,10 @@ class MasterScreen(QtWidgets.QMainWindow):
             # Initialize locked fields if not already defined
             if not hasattr(self, "locked_custom_fields"):
                 self.locked_custom_fields = set()
+            
+            # Initialize original_default_interior_values if not already defined
+            if not hasattr(self, "original_default_interior_values"):
+                self.original_default_interior_values = {}
 
             # Step 1: Get Standard Saloon & Category
             selected_train_type = self.cmbxTypeOfTrainProject.currentText().strip()
@@ -945,7 +1110,16 @@ class MasterScreen(QtWidgets.QMainWindow):
             tic_max_saloon, tic_min_saloon = ProjectManager.get_tic_coefficients(standard_saloon, compartment)
             tic_max_cabin, tic_min_cabin = ProjectManager.get_tic_coefficients(standard_cabin, compartment)
 
-            # Step 3: Update Labels, but only if they are NOT locked
+            # Step 3: Store default values even if labels are locked
+            self.original_default_interior_values.update({
+            "TicMaxSaloon": f"{tic_max_saloon}°C",
+            "TicMinSaloon": f"{tic_min_saloon}°C",
+            "TicMaxCabin": f"{tic_max_cabin}°C",
+            "TicMinCabin": f"{tic_min_cabin}°C",
+        })
+
+
+            # Step 4: Update Labels, but only if they are NOT locked
             if "TicMaxSaloon" not in self.locked_custom_fields:
                 self.lblMaxSaloonInterior.setText(f"{tic_max_saloon}°C")
             if "TicMinSaloon" not in self.locked_custom_fields:
@@ -1015,6 +1189,14 @@ class MasterScreen(QtWidgets.QMainWindow):
     def update_max_mean_interior_temp(self):
         """Fetch and update Max Mean Interior Temperature for Saloon and Cabin."""
         try:
+            # Initialize locked fields if not already defined
+            if not hasattr(self, "locked_custom_fields"):
+                self.locked_custom_fields = set()
+            
+            # Initialize original_default_interior_values if not already defined
+            if not hasattr(self, "original_default_interior_values"):
+                self.original_default_interior_values = {}
+
             # Step 1: Get Standard Saloon & Standard Cabin
             selected_train_type = self.cmbxTypeOfTrainProject.currentText().strip()
             standard_saloon, standard_cabin = self.get_standard_saloon_and_cabin(
@@ -1033,9 +1215,9 @@ class MasterScreen(QtWidgets.QMainWindow):
                 if "MaxMeanTempSaloon" not in self.locked_custom_fields:
                     self.lblMaxMeanInteriorTempSaloon.setText("°C")
                 if "MaxMeanTempCabin" not in self.locked_custom_fields:
- 
                     self.lblMaxMeanInteriorTempCabin.setText("°C")
                 return  # Exit the function without proceeding further
+            
             summer_zone_saloon = ProjectManager.get_summer_zone(selected_country, standard_saloon)
             summer_zone_cabin = ProjectManager.get_summer_zone(selected_country, standard_cabin)
             
@@ -1044,13 +1226,22 @@ class MasterScreen(QtWidgets.QMainWindow):
             category_cabin = self.lblCategoryCabin.text().strip()
 
             # Step 4: Fetch Max Mean Interior Temperature from JSON
-            temp_saloon = ProjectManager.get_max_mean_interior_temp(standard_saloon, "Summer zone", category_saloon,summer_zone_saloon)
-            temp_cabin = ProjectManager.get_max_mean_interior_temp(standard_cabin, "Summer zone", category_cabin,summer_zone_cabin)
+            temp_saloon = ProjectManager.get_max_mean_interior_temp(
+                standard_saloon, "Summer zone", category_saloon, summer_zone_saloon
+            )
+            temp_cabin = ProjectManager.get_max_mean_interior_temp(
+                standard_cabin, "Summer zone", category_cabin, summer_zone_cabin
+            )
 
-            # Step 5: Update Labels
+            # Step 5: Store default values even if labels are locked
+            self.original_default_interior_values.update({
+            "MaxMeanTempSaloon": f"{temp_saloon}°C" if temp_saloon else "°C",
+            "MaxMeanTempCabin": f"{temp_cabin}°C" if temp_cabin else "°C"
+        })
+
+            # Step 6: Update Labels only if they are NOT locked
             if temp_saloon:
                 if "MaxMeanTempSaloon" not in self.locked_custom_fields:
-
                     self.lblMaxMeanInteriorTempSaloon.setText(f'{temp_saloon}°C')
             else:
                 self.lblMaxMeanInteriorTempSaloon.setText("°C")
@@ -1063,7 +1254,7 @@ class MasterScreen(QtWidgets.QMainWindow):
 
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to update Max Mean Interior Temperature: {str(e)}")
-    
+
     def update_field(self, data_dict, label, combo_box, category_label):
         """Updates label & combo box visibility based on dictionary keys.
         - Shows keys (e.g., EN14750:2006) in combo box if multiple options exist.
