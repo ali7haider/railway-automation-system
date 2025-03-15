@@ -12,6 +12,7 @@ class CustomInteriorConditionsScreen(QtWidgets.QMainWindow):
         super().__init__()
         try:
             self.default_values = default_values
+            self.custom_values=custom_values
             uic.loadUi("ui/ui_files/custom_interior.ui", self)  # Load custom UI
             self.setWindowTitle("Custom Interior Conditions")  # Set window title
 
@@ -39,6 +40,7 @@ class CustomInteriorConditionsScreen(QtWidgets.QMainWindow):
                 self.txtNormMaxCabin.setText(default_values.get("StandByOperatorCabinMax", ""))
                 self.txtNormMinCabin.setText(default_values.get("StandByOperatorCabinMin", ""))
 
+                
                 # Format and display saloon values
                 # Fetch values
                 saloon_curve = default_values.get("saloon_curve", {})
@@ -47,10 +49,24 @@ class CustomInteriorConditionsScreen(QtWidgets.QMainWindow):
                 # Display values in labels
                 self.display_curve_values(saloon_curve, "saloon",default_values.get("standard_saloon", ""),self.lblSaloonGraphNorm)
                 self.display_curve_values(cabin_curve, "cabin",default_values.get("standard_cabin", ""),self.lblCabinGraphNorm)
+            if self.custom_values:
+                self.txtCustomTicMaxSaloon.setText(self.custom_values.get("TicMaxSaloon", ""))
+                self.txtCustomTicMinSaloon.setText(self.custom_values.get("TicMinSaloon", ""))
+                self.txtCustomTicMaxCabin.setText(self.custom_values.get("TicMaxCabin", ""))
+                self.txtCustomTicMinCabin.setText(self.custom_values.get("TicMinCabin", ""))
+                self.txtCustomMaxMeanInteriorSaloon.setText(self.custom_values.get("MaxMeanTempSaloon", ""))
+                self.txtCustomMaxMeanInteriorCabin.setText(self.custom_values.get("MaxMeanTempCabin", ""))
+                self.txtCustomMaxSaloon.setText(self.custom_values.get("StandByOperatorSaloonMax", ""))
+                self.txtCustomMinSaloon.setText(self.custom_values.get("StandByOperatorSaloonMin", ""))
+                self.txtCustomMaxCabin.setText(self.custom_values.get("StandByOperatorCabinMax", ""))
+                self.txtCustomMinCabin.setText(self.custom_values.get("StandByOperatorCabinMin", ""))
+                
+                # Set comboboxes
+                self.cmbxSaloonCustomNorm.setCurrentText(self.custom_values.get("RegulationCurveSaloon", ""))
+                self.cmbxCabinCustomNorm.setCurrentText(self.custom_values.get("RegulationCurveCabin", ""))
 
-
-                self.setup_custom_value_listeners()  # Connect custom input fields to update graph
-                self.btnSave.clicked.connect(self.save_custom_values)
+            self.setup_custom_value_listeners()  # Connect custom input fields to update graph
+            self.btnSave.clicked.connect(self.save_custom_values)
 
         except Exception as e:
             QtWidgets.QMessageBox.critical(self, "Error", f"Error loading Custom Interior Conditions UI: {str(e)}")
@@ -309,26 +325,33 @@ class CustomInteriorConditionsScreen(QtWidgets.QMainWindow):
         except Exception as e:
             print(f"Error generating custom graph: {e}")
     def save_custom_values(self):
-            try:
-                custom_values = {
-                    "TicMaxSaloon": self.txtCustomTicMaxSaloon.text().strip(),
-                    "TicMinSaloon": self.txtCustomTicMinSaloon.text().strip(),
-                    "TicMaxCabin": self.txtCustomTicMaxCabin.text().strip(),
-                    "TicMinCabin": self.txtCustomTicMinCabin.text().strip(),
-                    "MaxMeanTempSaloon": self.txtCustomMaxMeanInteriorSaloon.text().strip(),
-                    "MaxMeanTempCabin": self.txtCustomMaxMeanInteriorCabin.text().strip(),
-                    "StandByOperatorSaloonMax": self.txtCustomMaxSaloon.text().strip(),
-                    "StandByOperatorSaloonMin": self.txtCustomMinSaloon.text().strip(),
-                    "StandByOperatorCabinMax": self.txtCustomMaxCabin.text().strip(),
-                    "StandByOperatorCabinMin": self.txtCustomMinCabin.text().strip(),
-                }
-                
-                if self.custom_values_updated:
-                    self.custom_values_updated.emit(custom_values)
-                else:
-                    print("Signal not found!")
+        try:
+            custom_values = {
+                "TicMaxSaloon": self.txtCustomTicMaxSaloon.text().strip(),
+                "TicMinSaloon": self.txtCustomTicMinSaloon.text().strip(),
+                "TicMaxCabin": self.txtCustomTicMaxCabin.text().strip(),
+                "TicMinCabin": self.txtCustomTicMinCabin.text().strip(),
+                "MaxMeanTempSaloon": self.txtCustomMaxMeanInteriorSaloon.text().strip(),
+                "MaxMeanTempCabin": self.txtCustomMaxMeanInteriorCabin.text().strip(),
+                "StandByOperatorSaloonMax": self.txtCustomMaxSaloon.text().strip(),
+                "StandByOperatorSaloonMin": self.txtCustomMinSaloon.text().strip(),
+                "StandByOperatorCabinMax": self.txtCustomMaxCabin.text().strip(),
+                "StandByOperatorCabinMin": self.txtCustomMinCabin.text().strip(),
+            }
 
-                self.close()  # Ensure window closes after saving
+            # Only include if combo box text is "Custom"
+            if self.cmbxSaloonCustomNorm.currentText().strip() == "Custom":
+                custom_values["RegulationCurveSaloon"] = self.cmbxSaloonCustomNorm.currentText().strip()
 
-            except Exception as e:
-                QtWidgets.QMessageBox.critical(self, "Error", f"Error saving custom values: {str(e)}")
+            if self.cmbxCabinCustomNorm.currentText().strip() == "Custom":
+                custom_values["RegulationCurveCabin"] = self.cmbxCabinCustomNorm.currentText().strip()
+
+            if self.custom_values_updated:
+                self.custom_values_updated.emit(custom_values)
+            else:
+                print("Signal not found!")
+
+            self.close()  # Ensure window closes after saving
+
+        except Exception as e:
+            QtWidgets.QMessageBox.critical(self, "Error", f"Error saving custom values: {str(e)}")

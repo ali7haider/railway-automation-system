@@ -388,6 +388,8 @@ class MasterScreen(QtWidgets.QMainWindow):
                 "StandByOperatorSaloonMin": self.lblStandByOperatorSaloonMin,
                 "StandByOperatorCabinMax": self.lblStandByOperatorCabinMax,
                 "StandByOperatorCabinMin": self.lblStandByOperatorCabinMin,
+                "RegulationCurveSaloon":self.lblRegulationCurveSaloon,
+                "RegulationCurveCabin":self.lblRegulationCurveCabin
             }
 
             # Loop through each label and update values
@@ -395,7 +397,12 @@ class MasterScreen(QtWidgets.QMainWindow):
                 custom_value = custom_values.get(key, "").strip()
 
                 if custom_value:  # If custom value exists
-                    label.setText(f"{custom_value}°C")
+                    # Skip adding "°C" for regulation curves
+                    if key in ["RegulationCurveSaloon", "RegulationCurveCabin"]:
+                        label.setText(custom_value)
+                    else:
+                        label.setText(f"{custom_value}°C")
+                    
                     label.setStyleSheet("background-color: #F97D02; padding-left:5px;")  # Highlight in orange
                     self.locked_custom_fields.add(key)  # Lock this field
 
@@ -639,11 +646,13 @@ class MasterScreen(QtWidgets.QMainWindow):
                 "StandByOperatorSaloonMin": self.lblStandByOperatorSaloonMin,
                 "StandByOperatorCabinMax": self.lblStandByOperatorCabinMax,
                 "StandByOperatorCabinMin": self.lblStandByOperatorCabinMin,
+                "RegulationCurveSaloon":self.lblRegulationCurveSaloon,
+                "RegulationCurveCabin":self.lblRegulationCurveCabin
             }
 
             for key, label in label_mappings.items():
                 if key in self.locked_custom_fields:  # Only fetch locked fields (custom values)
-                    custom_values[key] = label.text().strip()
+                    custom_values[key] = label.text().replace("°C", "").strip()
             # Open Custom Interior Conditions screen with both default and custom values
             self.custom_interior_window = CustomInteriorConditionsScreen(
                 default_values=self.original_default_interior_values,

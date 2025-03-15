@@ -228,7 +228,7 @@ QComboBox QAbstractItemView {
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>0</y>
+            <y>-974</y>
             <width>984</width>
             <height>2145</height>
            </rect>
