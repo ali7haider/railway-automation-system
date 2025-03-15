@@ -375,6 +375,12 @@ class MasterScreen(QtWidgets.QMainWindow):
             # Initialize locked fields if not already defined
             if not hasattr(self, "locked_custom_fields"):
                 self.locked_custom_fields = set()
+            # Initialize locked fields if not already defined
+            if not hasattr(self, "custom_saloon_curve"):
+                self.custom_saloon_curve = {}
+            if not hasattr(self, "custom_cabin_curve"):
+                self.custom_cabin_curve = {}
+            
 
             # Define label mappings
             label_mappings = {
@@ -405,6 +411,9 @@ class MasterScreen(QtWidgets.QMainWindow):
                     
                     label.setStyleSheet("background-color: #F97D02; padding-left:5px;")  # Highlight in orange
                     self.locked_custom_fields.add(key)  # Lock this field
+            # Load Saloon & Cabin Curves
+            self.custom_saloon_curve = custom_values.get("saloon_curve", {})
+            self.custom_cabin_curve = custom_values.get("cabin_curve", {})
 
         except Exception as e:
             QtWidgets.QMessageBox.critical(self, "Error", f"Error applying custom values: {str(e)}")
@@ -633,7 +642,10 @@ class MasterScreen(QtWidgets.QMainWindow):
                     "saloon_curve": saloon_curve_values,
                     "cabin_curve": cabin_curve_values
                 })
-
+            if not hasattr(self, "custom_saloon_curve"):
+                self.custom_saloon_curve = {}
+            if not hasattr(self, "custom_cabin_curve"):
+                self.custom_cabin_curve = {}
             custom_values = {}
             label_mappings = {
                 "TicMaxSaloon": self.lblMaxSaloonInterior,
@@ -653,6 +665,12 @@ class MasterScreen(QtWidgets.QMainWindow):
             for key, label in label_mappings.items():
                 if key in self.locked_custom_fields:  # Only fetch locked fields (custom values)
                     custom_values[key] = label.text().replace("°C", "").strip()
+             # Update only the relevant parts
+            custom_values.update({
+                "saloon_curve": self.custom_saloon_curve,
+                "cabin_curve": self.custom_cabin_curve,
+            })
+            print(custom_values)
             # Open Custom Interior Conditions screen with both default and custom values
             self.custom_interior_window = CustomInteriorConditionsScreen(
                 default_values=self.original_default_interior_values,

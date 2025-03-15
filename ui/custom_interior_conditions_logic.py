@@ -45,7 +45,6 @@ class CustomInteriorConditionsScreen(QtWidgets.QMainWindow):
                 # Fetch values
                 saloon_curve = default_values.get("saloon_curve", {})
                 cabin_curve = default_values.get("cabin_curve", {})
-
                 # Display values in labels
                 self.display_curve_values(saloon_curve, "saloon",default_values.get("standard_saloon", ""),self.lblSaloonGraphNorm)
                 self.display_curve_values(cabin_curve, "cabin",default_values.get("standard_cabin", ""),self.lblCabinGraphNorm)
@@ -64,12 +63,64 @@ class CustomInteriorConditionsScreen(QtWidgets.QMainWindow):
                 # Set comboboxes
                 self.cmbxSaloonCustomNorm.setCurrentText(self.custom_values.get("RegulationCurveSaloon", ""))
                 self.cmbxCabinCustomNorm.setCurrentText(self.custom_values.get("RegulationCurveCabin", ""))
-
+                saloon_curve = self.custom_values.get("saloon_curve", {})
+                cabin_curve = self.custom_values.get("cabin_curve", {})
+                self.display_curve_values_custom(saloon_curve, "saloon",self.default_values.get("standard_saloon", ""),self.lblSaloonGraphCustom)
+                self.display_curve_values_custom(cabin_curve, "cabin",self.default_values.get("standard_cabin", ""),self.lblCabinGraphCustom)
             self.setup_custom_value_listeners()  # Connect custom input fields to update graph
             self.btnSave.clicked.connect(self.save_custom_values)
 
         except Exception as e:
             QtWidgets.QMessageBox.critical(self, "Error", f"Error loading Custom Interior Conditions UI: {str(e)}")
+    def display_curve_values_custom(self, curve_values, label_prefix,standard,graphLabel):
+        """
+        Maps curve values to UI labels for Saloon and Cabin.
+        :param curve_values: Dictionary containing curve values.
+        :param label_prefix: 'saloon' or 'cabin' to determine which labels to update.
+        """
+        try:
+            limit_keys = [
+                "Text Upper Limit", "Tin Upper Limit",
+                "Text Lower Limit", "Tin Lower Limit",
+                "Text Curve Limit", "Tin Curve Limit"
+            ]
+
+            for key in limit_keys:
+                values = curve_values.get(key, {})
+                first_five_values = list(values.values())[:5]  # Get first 5 values
+                formatted_values = [str(val) if val is not None else "-" for val in first_five_values]
+
+                # Map keys to correct label names
+                if key == "Text Upper Limit":
+                    label_names = [f"txtCustomUpperLimit{i+1}" for i in range(5)]
+                elif key == "Tin Upper Limit":
+                    label_names = [f"txtCustomUpperLimit{i+6}" for i in range(5)]  # Same as text
+                elif key == "Text Lower Limit":
+                    label_names = [f"txtCustomLowerLimit{i+1}" for i in range(5)]
+                elif key == "Tin Lower Limit":
+                    label_names = [f"txtCustomLowerLimit{i+6}" for i in range(5)]
+                elif key == "Text Curve Limit":
+                    label_names = [f"txtCustomCurve{i+1}" for i in range(5)]
+                elif key == "Tin Curve Limit":
+                    label_names = [f"txtCustomCurve{i+6}" for i in range(5)]
+
+                # Adjust label names for Cabin
+                if label_prefix == "cabin":
+                    label_names = [name.replace("txtCustom", "txtCustomCabin") for name in label_names]
+
+                # Set values in the labels
+                for label, value in zip(label_names, formatted_values):
+                    label_widget = getattr(self, label, None)
+                    if label_widget:
+                        if value=='0':
+                            continue
+                        label_widget.setText(value)
+
+        # After setting UI labels, generate the curve graph
+            self.plot_curve_graph(curve_values, standard,graphLabel)
+
+        except Exception as e:
+            print(f"Error displaying {label_prefix} curve values: {e}")
     def display_curve_values(self, curve_values, label_prefix,standard,graphLabel):
         """
         Maps curve values to UI labels for Saloon and Cabin.
@@ -339,12 +390,51 @@ class CustomInteriorConditionsScreen(QtWidgets.QMainWindow):
                 "StandByOperatorCabinMin": self.txtCustomMinCabin.text().strip(),
             }
 
-            # Only include if combo box text is "Custom"
             if self.cmbxSaloonCustomNorm.currentText().strip() == "Custom":
                 custom_values["RegulationCurveSaloon"] = self.cmbxSaloonCustomNorm.currentText().strip()
-
+            
             if self.cmbxCabinCustomNorm.currentText().strip() == "Custom":
                 custom_values["RegulationCurveCabin"] = self.cmbxCabinCustomNorm.currentText().strip()
+            
+            # Save saloon curve data
+            saloon_curve = {
+                "Text Upper Limit": {},
+                "Tin Upper Limit": {},
+                "Text Lower Limit": {},
+                "Tin Lower Limit": {},
+                "Text Curve Limit": {},
+                "Tin Curve Limit": {}
+            }
+            
+            for i, letter in enumerate(["A", "B", "C", "D", "E", "F", "G"], start=1):
+                saloon_curve["Text Upper Limit"][letter] = self.get_value(f"txtCustomUpperLimit{i}")
+                saloon_curve["Tin Upper Limit"][letter] = self.get_value(f"txtCustomUpperLimit{i+5}")
+                saloon_curve["Text Lower Limit"][letter] = self.get_value(f"txtCustomLowerLimit{i}")
+                saloon_curve["Tin Lower Limit"][letter] = self.get_value(f"txtCustomLowerLimit{i+5}")
+                saloon_curve["Text Curve Limit"][letter] = self.get_value(f"txtCustomCurve{i}")
+                saloon_curve["Tin Curve Limit"][letter] = self.get_value(f"txtCustomCurve{i+5}")
+            
+            custom_values["saloon_curve"] = saloon_curve
+            
+            # Save cabin curve data
+            cabin_curve = {
+                "Text Upper Limit": {},
+                "Tin Upper Limit": {},
+                "Text Lower Limit": {},
+                "Tin Lower Limit": {},
+                "Text Curve Limit": {},
+                "Tin Curve Limit": {}
+            }
+            
+            for i, letter in enumerate(["A", "B", "C", "D", "E", "F", "G"], start=1):
+                cabin_curve["Text Upper Limit"][letter] = self.get_value(f"txtCustomCabinUpperLimit{i}")
+                cabin_curve["Tin Upper Limit"][letter] = self.get_value(f"txtCustomCabinUpperLimit{i+5}")
+                cabin_curve["Text Lower Limit"][letter] = self.get_value(f"txtCustomCabinLowerLimit{i}")
+                cabin_curve["Tin Lower Limit"][letter] = self.get_value(f"txtCustomCabinLowerLimit{i+5}")
+                cabin_curve["Text Curve Limit"][letter] = self.get_value(f"txtCustomCabinCurve{i}")
+                cabin_curve["Tin Curve Limit"][letter] = self.get_value(f"txtCustomCabinCurve{i+5}")
+            
+            custom_values["cabin_curve"] = cabin_curve
 
             if self.custom_values_updated:
                 self.custom_values_updated.emit(custom_values)
@@ -355,3 +445,18 @@ class CustomInteriorConditionsScreen(QtWidgets.QMainWindow):
 
         except Exception as e:
             QtWidgets.QMessageBox.critical(self, "Error", f"Error saving custom values: {str(e)}")
+
+    def get_value(self, field_name):
+        """
+        Retrieve the text from a specified input field and convert it to integer if possible.
+        If the field is empty, return 0.
+        """
+        field = getattr(self, field_name, None)
+        if field:
+            value = field.text().strip()
+            if value:  # Only return value if it's not empty
+                try:
+                    return int(value)  # Convert to integer for consistency
+                except ValueError:
+                    return value  # If conversion fails, return the original string (for labels like 'G')
+        return 0  # Return 0 if field is empty or doesn't exist

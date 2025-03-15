@@ -228,9 +228,9 @@ QComboBox QAbstractItemView {
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-974</y>
+            <y>-1224</y>
             <width>984</width>
-            <height>2145</height>
+            <height>2110</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -267,35 +267,6 @@ QComboBox QAbstractItemView {
               <property name="bottomMargin">
                <number>0</number>
               </property>
-              <item alignment="Qt::AlignLeft">
-               <widget class="QLabel" name="label">
-                <property name="minimumSize">
-                 <size>
-                  <width>200</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>35</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">border-radius:6px;
-padding:5px;
-border:1px solid black;
-background-color:#A9D18E;
-color:#fff;</string>
-                </property>
-                <property name="text">
-                 <string>Project Info</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
              </layout>
             </widget>
            </item>
@@ -1817,6 +1788,9 @@ border:1px solid rgba(46, 82, 101, 200);
                    <property name="text">
                     <string>Graph Here</string>
                    </property>
+                   <property name="scaledContents">
+                    <bool>true</bool>
+                   </property>
                   </widget>
                  </item>
                 </layout>
@@ -2768,6 +2742,9 @@ border:1px solid rgba(46, 82, 101, 200);
                   <widget class="QLabel" name="lblCabinGraphCustom">
                    <property name="text">
                     <string>Graph Here</string>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
