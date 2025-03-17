@@ -3,7 +3,7 @@ from PyQt5.QtCore import pyqtSignal
 
 class CustomExteriorConditionsSaloonScreen(QtWidgets.QMainWindow):
     custom_values_updated = pyqtSignal(dict)  # Signal to send custom values
-    def __init__(self, default_values=None):
+    def __init__(self, default_values=None,custom_values=None):
 
         super().__init__()
         try:
@@ -57,7 +57,7 @@ class CustomExteriorConditionsSaloonScreen(QtWidgets.QMainWindow):
 
 
         except Exception as e:
-            QtWidgets.QMessageBox.critical(self, "Error", f"Error loading Custom Interior Conditions UI: {str(e)}")
+            QtWidgets.QMessageBox.critical(self, "Error", f"Error loading Custom Exterior Conditions UI: {str(e)}")
     def save_custom_values(self):
         try:
             custom_values = {

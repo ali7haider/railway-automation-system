@@ -66,6 +66,7 @@ class MasterScreen(QtWidgets.QMainWindow):
         #     # Initialize individual pages
             self.init_pages()
             self.original_default_interior_values={}
+            self.original_default_exterior_saloon_values={}
 
             self.menu_buttons = [
             self.btnProjects,  # Replace with your actual button objects
@@ -256,7 +257,7 @@ class MasterScreen(QtWidgets.QMainWindow):
 
 
     def open_custom_exterior_conditions_saloon(self):
-        """Opens the Custom Interior Conditions screen with properly formatted default values."""
+        """Opens the Custom Exterior Conditions screen with properly formatted custom values."""
         try:
             selected_train_type = self.cmbxTypeOfTrainProject.currentText().strip()
             standard_saloon, standard_cabin = self.get_standard_saloon_and_cabin(
@@ -272,50 +273,136 @@ class MasterScreen(QtWidgets.QMainWindow):
                     "Please select both Standard Saloon and Standard Cabin before proceeding."
                 )
                 return  # Stop function execution
+            if not hasattr(self, 'original_default_exterior_saloon_values'):
+                self.original_default_exterior_saloon_values = {
+                    "standard": standard_saloon,
+                }
+            else:
+                # Update only the relevant parts
+                self.original_default_exterior_saloon_values.update({
+                    "standard_saloon": standard_saloon,
 
-            # Initialize default values
-            default_values = {
-                "standard": standard_saloon,
-                "WinterZone": self.lblWinterZoneSaloon.text().strip(),
-                "SummerZone": self.lblSummerZoneSaloon.text().strip(),
+                })
+            # Initialize custom values
+            custom_values = {}
+            
+            # Handle zone values
+            label_mappings = {
+                "WinterZone": self.lblWinterZoneSaloon,
+                "SummerZone": self.lblSummerZoneSaloon,
             }
-
+            
+            for key, label in label_mappings.items():
+                if key in self.locked_custom_fields:
+                    custom_values[key] = label.text().strip()
+            
             # Step 1: Process "Normal" values (Extract temperature)
             normal_keys = ["WinterNormal", "SummerNormal"]
             for key in normal_keys:
-                raw_value = getattr(self, f"lbl{key}Saloon").text().strip()
-                temperature = self.extract_normal_temperature(raw_value)
-                default_values[key] = temperature  # Store extracted temperature
+                label = getattr(self, f"lbl{key}Saloon")
+                if key in self.locked_custom_fields:
+                    raw_value = label.text().strip()
+                    temperature = self.extract_normal_temperature(raw_value)
+                    custom_values[key] = temperature
 
             # Step 2: Process "Extended" values (Extract min/max)
             extended_keys = ["WinterExtended", "SummerExtended"]
             for key in extended_keys:
-                raw_value = getattr(self, f"lbl{key}Saloon").text().strip()
-                min_val, max_val = self.extract_extended_range(raw_value)
-
-                default_values[f"{key}Min"] = min_val
-                default_values[f"{key}Max"] = max_val
+                label = getattr(self, f"lbl{key}Saloon")
+                if key in self.locked_custom_fields:
+                    raw_value = label.text().strip()
+                    min_val, max_val = self.extract_extended_range(raw_value)
+                    custom_values[f"{key}Min"] = min_val
+                    custom_values[f"{key}Max"] = max_val
 
             # Step 3: Process "Design", "Extreme", and "Operational" values (Extract °C, %, W/m²)
-            climate_keys = ["WinterDesign", "SummerDesign", "WinterExtreme", "SummerExtreme", "WinterOperational", "SummerOperational"]
+            climate_keys = [
+                "WinterDesign", "SummerDesign", "WinterExtreme", "SummerExtreme", 
+                "WinterOperational", "SummerOperational"
+            ]
             for key in climate_keys:
-                raw_value = getattr(self, f"lbl{key}Saloon").text().strip()
-                temp, humidity, heat_flux = self.extract_climate_parameters(raw_value)
+                label = getattr(self, f"lbl{key}Saloon")
+                if key in self.locked_custom_fields:
+                    raw_value = label.text().strip()
+                    temp, humidity, heat_flux = self.extract_climate_parameters(raw_value)
+                    custom_values[f"{key}Temp"] = temp
+                    custom_values[f"{key}Humidity"] = humidity
+                    custom_values[f"{key}HeatFlux"] = heat_flux
 
-                default_values[f"{key}Temp"] = temp
-                default_values[f"{key}Humidity"] = humidity
-                default_values[f"{key}HeatFlux"] = heat_flux
+            # Open the Custom Exterior Conditions screen with custom values
+            transformed_values = self.transform_default_values(self.original_default_exterior_saloon_values)
+            print(transformed_values)
+            self.custom_exterior_window = CustomExteriorConditionsSaloonScreen(                
+                default_values=transformed_values,
+                custom_values=custom_values)
 
-            # Open Custom Interior Conditions screen with formatted values
-            self.custom_interior_window = CustomExteriorConditionsSaloonScreen(default_values)
-            if hasattr(self.custom_interior_window, "custom_values_updated"):
-                self.custom_interior_window.custom_values_updated.connect(self.apply_custom_values_saloon)
+            if hasattr(self.custom_exterior_window, "custom_values_updated"):
+                self.custom_exterior_window.custom_values_updated.connect(self.apply_custom_values_saloon)
             else:
                 print("custom_values_updated signal not found!")
-            self.custom_interior_window.show()
+
+            self.custom_exterior_window.show()
 
         except Exception as e:
-            QtWidgets.QMessageBox.critical(self, "Error", f"Error opening Custom Interior Conditions screen: {str(e)}")
+            QtWidgets.QMessageBox.critical(self, "Error", f"Error opening Custom Exterior Conditions screen: {str(e)}")
+
+    def transform_default_values(self,original_values: dict) -> dict:
+        """Transform original_default_exterior_saloon_values to the new key format, ensuring all values are strings."""
+        transformed_values = {}
+
+        # Map Standard Labels
+        transformed_values["standard"] = str(original_values.get("standard_saloon", "None"))
+
+        # Map Zone Values
+        transformed_values["WinterZone"] = str(original_values.get("WinterZoneSaloon", "None"))
+        transformed_values["SummerZone"] = str(original_values.get("SummerZoneSaloon", "None"))
+
+        # Map Normal Range
+        transformed_values["WinterNormal"] = str(original_values.get("WinterNormalSaloon", "None"))
+        transformed_values["SummerNormal"] = str(original_values.get("SummerNormalSaloon", "None"))
+
+        # Map Extended Range (Split into Min and Max)
+        winter_extended = original_values.get("WinterExtendedSaloon", "None - None").split(" - ")
+        transformed_values["WinterExtendedMin"] = str(winter_extended[0])
+        transformed_values["WinterExtendedMax"] = str(winter_extended[1])
+
+        summer_extended = original_values.get("SummerExtendedSaloon", "None - None").split(" - ")
+        transformed_values["SummerExtendedMin"] = str(summer_extended[0])
+        transformed_values["SummerExtendedMax"] = str(summer_extended[1])
+
+        # Helper function to extract temperature, humidity, and heat flux
+        def extract_components(value):
+            if value and value != "None°C, None%, None W/m2":
+                try:
+                    temp, humidity, heat_flux = value.split(", ")
+                    return str(temp.replace("°C", "")), str(humidity.replace("%", "")), str(heat_flux.replace(" W/m2", ""))
+                except ValueError:
+                    return "None", "None", "None"
+            return "None", "None", "None"
+
+        # Map Design Values
+        design_winter = extract_components(original_values.get("WinterDesignSaloon", "None�C, None%, None W/m2"))
+        transformed_values["WinterDesignTemp"], transformed_values["WinterDesignHumidity"], transformed_values["WinterDesignHeatFlux"] = design_winter
+
+        design_summer = extract_components(original_values.get("SummerDesignSaloon", "None�C, None%, None W/m2"))
+        transformed_values["SummerDesignTemp"], transformed_values["SummerDesignHumidity"], transformed_values["SummerDesignHeatFlux"] = design_summer
+
+        # Map Extreme Values
+        extreme_winter = extract_components(original_values.get("WinterExtremeSaloon", "None�C, None%, None W/m2"))
+        transformed_values["WinterExtremeTemp"], transformed_values["WinterExtremeHumidity"], transformed_values["WinterExtremeHeatFlux"] = extreme_winter
+
+        extreme_summer = extract_components(original_values.get("SummerExtremeSaloon", "None�C, None%, None W/m2"))
+        transformed_values["SummerExtremeTemp"], transformed_values["SummerExtremeHumidity"], transformed_values["SummerExtremeHeatFlux"] = extreme_summer
+
+        # Map Operational Values
+        operational_winter = extract_components(original_values.get("WinterOperationalSaloon", "None�C, None%, None W/m2"))
+        transformed_values["WinterOperationalTemp"], transformed_values["WinterOperationalHumidity"], transformed_values["WinterOperationalHeatFlux"] = operational_winter
+
+        operational_summer = extract_components(original_values.get("SummerOperationalSaloon", "None�C, None%, None W/m2"))
+        transformed_values["SummerOperationalTemp"], transformed_values["SummerOperationalHumidity"], transformed_values["SummerOperationalHeatFlux"] = operational_summer
+
+        return transformed_values
+
 
     # Helper function to extract temperature from "Normal" climate conditions
     def extract_normal_temperature(self, text):
@@ -670,7 +757,6 @@ class MasterScreen(QtWidgets.QMainWindow):
                 "saloon_curve": self.custom_saloon_curve,
                 "cabin_curve": self.custom_cabin_curve,
             })
-            print(custom_values)
             # Open Custom Interior Conditions screen with both default and custom values
             self.custom_interior_window = CustomInteriorConditionsScreen(
                 default_values=self.original_default_interior_values,
@@ -987,56 +1073,77 @@ class MasterScreen(QtWidgets.QMainWindow):
             summer_saloon = ProjectManager.get_temperature_conditions(standard_saloon, "Summer", summer_zone_saloon)
             summer_cabin = ProjectManager.get_temperature_conditions(standard_cabin, "Summer", summer_zone_cabin)
 
-            # Update Winter Labels (Saloon & Cabin)
-            self.lblWinterZoneSaloon.setText(winter_zone_saloon)
-            self.lblWinterOperationalSaloon.setText(self.format_label_text(winter_saloon["Operational"]))
-            self.lblWinterDesignSaloon.setText(self.format_label_text(winter_saloon["Design"]))
-            self.lblWinterExtremeSaloon.setText(self.format_label_text(winter_saloon["Extreme"]))
+            # Define label mappings for easy access
+            label_mappings = {
+                "WinterZoneSaloon": (self.lblWinterZoneSaloon, winter_zone_saloon),
+                "WinterOperationalSaloon": (self.lblWinterOperationalSaloon, self.format_label_text(winter_saloon["Operational"])),
+                "WinterDesignSaloon": (self.lblWinterDesignSaloon, self.format_label_text(winter_saloon["Design"])),
+                "WinterExtremeSaloon": (self.lblWinterExtremeSaloon, self.format_label_text(winter_saloon["Extreme"])),
+                "SummerZoneSaloon": (self.lblSummerZoneSaloon, summer_zone_saloon),
+                "SummerOperationalSaloon": (self.lblSummerOperationalSaloon, self.format_label_text(summer_saloon["Operational"])),
+                "SummerDesignSaloon": (self.lblSummerDesignSaloon, self.format_label_text(summer_saloon["Design"])),
+                "SummerExtremeSaloon": (self.lblSummerExtremeSaloon, self.format_label_text(summer_saloon["Extreme"])),
+                "WinterZoneCabin": (self.lblWinterZoneCabin, winter_zone_cabin),
+                "WinterOperationalCabin": (self.lblWinterOperationalCabin, self.format_label_text(winter_cabin["Operational"])),
+                "WinterDesignCabin": (self.lblWinterDesignCabin, self.format_label_text(winter_cabin["Design"])),
+                "WinterExtremeCabin": (self.lblWinterExtremeCabin, self.format_label_text(winter_cabin["Extreme"])),
+                "SummerZoneCabin": (self.lblSummerZoneCabin, summer_zone_cabin),
+                "SummerOperationalCabin": (self.lblSummerOperationalCabin, self.format_label_text(summer_cabin["Operational"])),
+                "SummerDesignCabin": (self.lblSummerDesignCabin, self.format_label_text(summer_cabin["Design"])),
+                "SummerExtremeCabin": (self.lblSummerExtremeCabin, self.format_label_text(summer_cabin["Extreme"]))
+            }
 
+            # Update labels and store values in original_default_exterior_saloon_values
+            for key, (label, value) in label_mappings.items():
+                self.original_default_exterior_saloon_values[key] = value
+                if key not in self.locked_custom_fields:  # Update UI only if not locked
+                    label.setText(value)
 
-            self.lblWinterZoneCabin.setText(winter_zone_cabin)
-            self.lblWinterOperationalCabin.setText(self.format_label_text(winter_cabin["Operational"]))
-            self.lblWinterDesignCabin.setText(self.format_label_text(winter_cabin["Design"]))
-            self.lblWinterExtremeCabin.setText(self.format_label_text(winter_cabin["Extreme"]))
+            # Fetch Normal and Extended Range Temperatures
+            for season, labels in [("Winter", ["WinterNormalSaloon", "WinterNormalCabin"]), 
+                                ("Summer", ["SummerNormalSaloon", "SummerNormalCabin"])]:
+                for label_name in labels:
+                    temperature_data = ProjectManager.get_zone_temperature(
+                        standard_saloon if "Saloon" in label_name else standard_cabin,
+                        season,
+                        "Normal_Range",
+                        winter_zone_saloon if season == "Winter" else summer_zone_saloon
+                    )
+                    temperature_value = temperature_data["Min"] if season == "Winter" else temperature_data["Max"]
+                    
+                    # Store in original default values
+                    self.original_default_exterior_saloon_values[label_name] = temperature_value
+                    
+                    # Update label if not locked
+                    if label_name not in self.locked_custom_fields:
+                        label_widget = getattr(self, f"lbl{label_name}")
+                        
+                        if season == "Winter":
+                            self.set_label_textNormalWinter(label_widget, temperature_value)
+                        elif season == "Summer":
+                            self.set_label_textNormalSummer(label_widget, temperature_value)
 
-            # Update Summer Labels (Saloon & Cabin)
-            self.lblSummerZoneSaloon.setText(summer_zone_saloon)
-            self.lblSummerOperationalSaloon.setText(self.format_label_text(summer_saloon["Operational"]))
-            self.lblSummerDesignSaloon.setText(self.format_label_text(summer_saloon["Design"]))
-            self.lblSummerExtremeSaloon.setText(self.format_label_text(summer_saloon["Extreme"]))
-
-            self.lblSummerZoneCabin.setText(summer_zone_cabin)
-            self.lblSummerOperationalCabin.setText(self.format_label_text(summer_cabin["Operational"]))
-            self.lblSummerDesignCabin.setText(self.format_label_text(summer_cabin["Design"]))
-            self.lblSummerExtremeCabin.setText(self.format_label_text(summer_cabin["Extreme"]))
-
-
-                        # Fetch Winter & Summer Temperature Conditions for Saloon and Cabin
-            winter_saloon = ProjectManager.get_zone_temperature(standard_saloon, "Winter", "Normal_Range", winter_zone_saloon)
-            winter_cabin = ProjectManager.get_zone_temperature(standard_cabin, "Winter", "Normal_Range", winter_zone_cabin)
-            summer_saloon = ProjectManager.get_zone_temperature(standard_saloon, "Summer", "Normal_Range", summer_zone_saloon)
-            summer_cabin = ProjectManager.get_zone_temperature(standard_cabin, "Summer", "Normal_Range", summer_zone_cabin)
-
-            # Fetch Extended Range Temperatures
-            winter_extended_saloon = ProjectManager.get_zone_temperature(standard_saloon, "Winter", "Extended_Range", winter_zone_saloon)
-            winter_extended_cabin = ProjectManager.get_zone_temperature(standard_cabin, "Winter", "Extended_Range", winter_zone_cabin)
-            summer_extended_saloon = ProjectManager.get_zone_temperature(standard_saloon, "Summer", "Extended_Range", summer_zone_saloon)
-            summer_extended_cabin = ProjectManager.get_zone_temperature(standard_cabin, "Summer", "Extended_Range", summer_zone_cabin)
-            # Update Labels - Winter Normal
-            self.set_label_textNormalWinter(self.lblWinterNormalSaloon, winter_saloon["Min"])
-            self.set_label_textNormalWinter(self.lblWinterNormalCabin, winter_cabin["Min"])
-
-            # Update Labels - Winter Extended
-            # Update Labels - Winter Extended
-            self.set_label_text_range(self.lblWinterExtendedSaloon, winter_extended_saloon["Min"], winter_extended_saloon["Max"])
-            self.set_label_text_range(self.lblWinterExtendedCabin, winter_extended_cabin["Min"], winter_extended_cabin["Max"])
-            
-            self.set_label_text_range(self.lblSummerExtendedSaloon, summer_extended_saloon["Min"], summer_extended_saloon["Max"])
-            self.set_label_text_range(self.lblSummerExtendedCabin, summer_extended_cabin["Min"], summer_extended_cabin["Max"])
-
-            # Update Labels - Summer Normal
-            self.set_label_textNormalSummer(self.lblSummerNormalSaloon,summer_saloon["Max"])
-            self.set_label_textNormalSummer(self.lblSummerNormalCabin,summer_cabin["Max"])
+            # Handle Extended Range
+            for season in ["Winter", "Summer"]:
+                for location in ["Saloon", "Cabin"]:
+                    extended_data = ProjectManager.get_zone_temperature(
+                        standard_saloon if location == "Saloon" else standard_cabin,
+                        season,
+                        "Extended_Range",
+                        winter_zone_saloon if season == "Winter" else summer_zone_saloon
+                    )
+                    
+                    min_val = extended_data["Min"]
+                    max_val = extended_data["Max"]
+                    key = f"{season}Extended{location}"
+                    
+                    # Store in original default values
+                    self.original_default_exterior_saloon_values[key] = f"{min_val} - {max_val}"
+                    
+                    # Update label if not locked
+                    if key not in self.locked_custom_fields:
+                        label_widget = getattr(self, f"lbl{key}")
+                        self.set_label_text_range(label_widget, min_val, max_val)
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to update temperature conditions: {str(e)}")
 
