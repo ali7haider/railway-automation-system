@@ -284,57 +284,16 @@ class MasterScreen(QtWidgets.QMainWindow):
 
                 })
             # Initialize custom values
-            custom_values = {}
-            
-            # Handle zone values
-            label_mappings = {
-                "WinterZone": self.lblWinterZoneSaloon,
-                "SummerZone": self.lblSummerZoneSaloon,
-            }
-            
-            for key, label in label_mappings.items():
-                if key in self.locked_custom_fields:
-                    custom_values[key] = label.text().strip()
-            
-            # Step 1: Process "Normal" values (Extract temperature)
-            normal_keys = ["WinterNormal", "SummerNormal"]
-            for key in normal_keys:
-                label = getattr(self, f"lbl{key}Saloon")
-                if key in self.locked_custom_fields:
-                    raw_value = label.text().strip()
-                    temperature = self.extract_normal_temperature(raw_value)
-                    custom_values[key] = temperature
-
-            # Step 2: Process "Extended" values (Extract min/max)
-            extended_keys = ["WinterExtended", "SummerExtended"]
-            for key in extended_keys:
-                label = getattr(self, f"lbl{key}Saloon")
-                if key in self.locked_custom_fields:
-                    raw_value = label.text().strip()
-                    min_val, max_val = self.extract_extended_range(raw_value)
-                    custom_values[f"{key}Min"] = min_val
-                    custom_values[f"{key}Max"] = max_val
-
-            # Step 3: Process "Design", "Extreme", and "Operational" values (Extract °C, %, W/m²)
-            climate_keys = [
-                "WinterDesign", "SummerDesign", "WinterExtreme", "SummerExtreme", 
-                "WinterOperational", "SummerOperational"
-            ]
-            for key in climate_keys:
-                label = getattr(self, f"lbl{key}Saloon")
-                if key in self.locked_custom_fields:
-                    raw_value = label.text().strip()
-                    temp, humidity, heat_flux = self.extract_climate_parameters(raw_value)
-                    custom_values[f"{key}Temp"] = temp
-                    custom_values[f"{key}Humidity"] = humidity
-                    custom_values[f"{key}HeatFlux"] = heat_flux
+            # Initialize custom values storage if not already defined
+            if not hasattr(self, "saloon_custom_values"):
+                self.saloon_custom_values = {}
+            print("Saloon Custom Values:", self.saloon_custom_values)
 
             # Open the Custom Exterior Conditions screen with custom values
             transformed_values = self.transform_default_values(self.original_default_exterior_saloon_values)
-            print(transformed_values)
             self.custom_exterior_window = CustomExteriorConditionsSaloonScreen(                
                 default_values=transformed_values,
-                custom_values=custom_values)
+                custom_values=self.saloon_custom_values)
 
             if hasattr(self.custom_exterior_window, "custom_values_updated"):
                 self.custom_exterior_window.custom_values_updated.connect(self.apply_custom_values_saloon)
@@ -508,14 +467,17 @@ class MasterScreen(QtWidgets.QMainWindow):
         """
         Updates saloon labels with custom values and highlights them if changed.
         Locks fields with custom values to prevent further updates.
+        Stores custom values in a separate dictionary for saving.
         :param custom_values: Dictionary containing custom values.
         """
         try:
-            print("\n[DEBUG] Received custom values:", custom_values)
-
             # Initialize locked fields if not already defined
             if not hasattr(self, "locked_custom_fields"):
                 self.locked_custom_fields = set()
+            
+            # Initialize custom values storage if not already defined
+            if not hasattr(self, "saloon_custom_values"):
+                self.saloon_custom_values = {}
 
             # Define label mappings for Zone values (Direct Text)
             label_mappings = {
@@ -526,14 +488,13 @@ class MasterScreen(QtWidgets.QMainWindow):
             # Directly set Zone values
             for key, label in label_mappings.items():
                 custom_value = custom_values.get(key, "").strip()
-                print(f"[DEBUG] Processing {key}: {custom_value}")
 
                 if custom_value:
                     text = f"{custom_value}"
                     label.setText(text)
                     label.setStyleSheet("background-color: #F97D02; padding-left:5px;")
                     self.locked_custom_fields.add(key)
-                    print(f"[DEBUG] Updated {key} --> {text}")
+                    self.saloon_custom_values[key] = custom_value  # Store custom value
 
             # Process Normal Values (Winter & Summer)
             normal_mappings = {
@@ -543,7 +504,6 @@ class MasterScreen(QtWidgets.QMainWindow):
 
             for key, label in normal_mappings.items():
                 custom_value = custom_values.get(key, "").strip()
-                print(f"[DEBUG] Processing {key}: {custom_value}")
 
                 if custom_value:
                     if "Min" in key:
@@ -552,6 +512,7 @@ class MasterScreen(QtWidgets.QMainWindow):
                         self.set_label_textNormalSummer(label, custom_value)
                     label.setStyleSheet("background-color: #F97D02; padding-left:5px;")
                     self.locked_custom_fields.add(key)
+                    self.saloon_custom_values[key] = custom_value  # Store custom value
 
             # Process Extended Values (Winter & Summer)
             for season in ["Winter", "Summer"]:
@@ -564,12 +525,14 @@ class MasterScreen(QtWidgets.QMainWindow):
 
                     min_val = custom_values.get(min_key, "").strip()
                     max_val = custom_values.get(max_key, "").strip()
-                    print(f"[DEBUG] Processing {min_key}: {min_val}, {max_key}: {max_val}")
 
                     if min_val or max_val:  # If either value is set, update both
                         self.set_label_text_range(label, min_val if min_val else None, max_val if max_val else None)
                         label.setStyleSheet("background-color: #F97D02; padding-left:5px;")
                         self.locked_custom_fields.update({min_key, max_key})
+                        self.saloon_custom_values[min_key] = min_val  # Store custom value
+                        self.saloon_custom_values[max_key] = max_val  # Store custom value
+
             # Process Design, Extreme, and Operational values
             for condition in ["Design", "Extreme", "Operational"]:
                 for season in ["Winter", "Summer"]:
@@ -584,14 +547,17 @@ class MasterScreen(QtWidgets.QMainWindow):
                         temp = custom_values.get(temp_key, "").strip() or "None"
                         hum = custom_values.get(hum_key, "").strip() or "None"
                         flux = custom_values.get(flux_key, "").strip() or "None"
-                        print(f"[DEBUG] Processing {temp_key}: {temp}, {hum_key}: {hum}, {flux_key}: {flux}")
 
                         if temp != "None" or hum != "None" or flux != "None":  # If any value is set, mark all as custom
                             text = f"{temp}°C, {hum}%, {flux} W/m²"
                             label.setText(text)
                             label.setStyleSheet("background-color: #F97D02; padding-left:5px;")
                             self.locked_custom_fields.update({temp_key, hum_key, flux_key})
-                            print(f"[DEBUG] Updated {label_attr} --> {text}")
+                            
+                            # Store custom values in the separate dictionary
+                            self.saloon_custom_values[temp_key] = temp
+                            self.saloon_custom_values[hum_key] = hum
+                            self.saloon_custom_values[flux_key] = flux
 
         except Exception as e:
             print(f"[ERROR] Exception in apply_custom_values_saloon: {str(e)}")
@@ -603,7 +569,6 @@ class MasterScreen(QtWidgets.QMainWindow):
         :param custom_values: Dictionary containing custom values.
         """
         try:
-            print("\n[DEBUG] Received custom values for Cabin:", custom_values)
 
             # Initialize locked fields if not already defined
             if not hasattr(self, "locked_custom_fields"):
@@ -618,14 +583,12 @@ class MasterScreen(QtWidgets.QMainWindow):
             # Directly set Zone values
             for key, label in label_mappings.items():
                 custom_value = custom_values.get(key, "").strip()
-                print(f"[DEBUG] Processing {key}: {custom_value}")
 
                 if custom_value:
                     text = f"{custom_value}"
                     label.setText(text)
                     label.setStyleSheet("background-color: #F97D02; padding-left:5px;")
                     self.locked_custom_fields.add(key)
-                    print(f"[DEBUG] Updated {key} --> {text}")
 
             # Process Normal Values (Winter & Summer)
             normal_mappings = {
@@ -635,7 +598,6 @@ class MasterScreen(QtWidgets.QMainWindow):
 
             for key, label in normal_mappings.items():
                 custom_value = custom_values.get(key, "").strip()
-                print(f"[DEBUG] Processing {key}: {custom_value}")
 
                 if custom_value:
                     if "Min" in key:
@@ -656,7 +618,6 @@ class MasterScreen(QtWidgets.QMainWindow):
 
                     min_val = custom_values.get(min_key, "").strip()
                     max_val = custom_values.get(max_key, "").strip()
-                    print(f"[DEBUG] Processing {min_key}: {min_val}, {max_key}: {max_val}")
 
                     if min_val or max_val:  # If either value is set, update both
                         self.set_label_text_range(label, min_val if min_val else None, max_val if max_val else None)
@@ -677,14 +638,12 @@ class MasterScreen(QtWidgets.QMainWindow):
                         temp = custom_values.get(temp_key, "").strip() or "None"
                         hum = custom_values.get(hum_key, "").strip() or "None"
                         flux = custom_values.get(flux_key, "").strip() or "None"
-                        print(f"[DEBUG] Processing {temp_key}: {temp}, {hum_key}: {hum}, {flux_key}: {flux}")
 
                         if temp != "None" or hum != "None" or flux != "None":  # If any value is set, mark all as custom
                             text = f"{temp}°C, {hum}%, {flux} W/m²"
                             label.setText(text)
                             label.setStyleSheet("background-color: #F97D02; padding-left:5px;")
                             self.locked_custom_fields.update({temp_key, hum_key, flux_key})
-                            print(f"[DEBUG] Updated {label_attr} --> {text}")
 
         except Exception as e:
             print(f"[ERROR] Exception in apply_custom_values_cabin: {str(e)}")
