@@ -66,7 +66,7 @@ class MasterScreen(QtWidgets.QMainWindow):
         #     # Initialize individual pages
             self.init_pages()
             self.original_default_interior_values={}
-            self.original_default_exterior_saloon_values={}
+            self.original_default_exterior_values={}
 
             self.menu_buttons = [
             self.btnProjects,  # Replace with your actual button objects
@@ -211,41 +211,29 @@ class MasterScreen(QtWidgets.QMainWindow):
                 )
                 return  # Stop function execution
 
-            # Initialize default values
-            default_values = {
-                "standard": standard_cabin,
-                "WinterZone": self.lblWinterZoneCabin.text().strip(),
-                "SummerZone": self.lblSummerZoneCabin.text().strip(),
-            }
+            if not hasattr(self, 'original_default_exterior_values'):
+                self.original_default_exterior_values = {
+                    "standard_saloon": standard_saloon,
+                }
+            else:
+                # Update only the relevant parts
+                self.original_default_exterior_values.update({
+                    "standard_saloon": standard_saloon,
 
-            # Step 1: Process "Normal" values (Extract temperature)
-            normal_keys = ["WinterNormal", "SummerNormal"]
-            for key in normal_keys:
-                raw_value = getattr(self, f"lbl{key}Cabin").text().strip()
-                temperature = self.extract_normal_temperature(raw_value)
-                default_values[key] = temperature  # Store extracted temperature
+                })
+            # Initialize custom values
+            # Initialize custom values storage if not already defined
+            if not hasattr(self, "cabin_custom_values"):
+                self.cabin_custom_values = {}
+            print("Cabin Custom Values:", self.cabin_custom_values)
 
-            # Step 2: Process "Extended" values (Extract min/max)
-            extended_keys = ["WinterExtended", "SummerExtended"]
-            for key in extended_keys:
-                raw_value = getattr(self, f"lbl{key}Cabin").text().strip()
-                min_val, max_val = self.extract_extended_range(raw_value)
-
-                default_values[f"{key}Min"] = min_val
-                default_values[f"{key}Max"] = max_val
-
-            # Step 3: Process "Design", "Extreme", and "Operational" values (Extract °C, %, W/m²)
-            climate_keys = ["WinterDesign", "SummerDesign", "WinterExtreme", "SummerExtreme", "WinterOperational", "SummerOperational"]
-            for key in climate_keys:
-                raw_value = getattr(self, f"lbl{key}Cabin").text().strip()
-                temp, humidity, heat_flux = self.extract_climate_parameters(raw_value)
-
-                default_values[f"{key}Temp"] = temp
-                default_values[f"{key}Humidity"] = humidity
-                default_values[f"{key}HeatFlux"] = heat_flux
-
+            # Open the Custom Exterior Conditions screen with custom values
+            transformed_values = self.transform_default_cabin_values(self.original_default_exterior_values)
+ 
             # Open Custom Exterior Conditions screen with formatted values
-            self.custom_exterior_window = CustomExteriorConditionsCabinScreen(default_values)
+            self.custom_exterior_window = CustomExteriorConditionsCabinScreen(  
+                default_values=transformed_values,
+                custom_values=self.cabin_custom_values)
             if hasattr(self.custom_exterior_window, "custom_values_updated"):
                 self.custom_exterior_window.custom_values_updated.connect(self.apply_custom_values_cabin)
             else:
@@ -273,13 +261,13 @@ class MasterScreen(QtWidgets.QMainWindow):
                     "Please select both Standard Saloon and Standard Cabin before proceeding."
                 )
                 return  # Stop function execution
-            if not hasattr(self, 'original_default_exterior_saloon_values'):
-                self.original_default_exterior_saloon_values = {
+            if not hasattr(self, 'original_default_exterior_values'):
+                self.original_default_exterior_values = {
                     "standard": standard_saloon,
                 }
             else:
                 # Update only the relevant parts
-                self.original_default_exterior_saloon_values.update({
+                self.original_default_exterior_values.update({
                     "standard_saloon": standard_saloon,
 
                 })
@@ -290,7 +278,7 @@ class MasterScreen(QtWidgets.QMainWindow):
             print("Saloon Custom Values:", self.saloon_custom_values)
 
             # Open the Custom Exterior Conditions screen with custom values
-            transformed_values = self.transform_default_values(self.original_default_exterior_saloon_values)
+            transformed_values = self.transform_default_values(self.original_default_exterior_values)
             self.custom_exterior_window = CustomExteriorConditionsSaloonScreen(                
                 default_values=transformed_values,
                 custom_values=self.saloon_custom_values)
@@ -305,8 +293,65 @@ class MasterScreen(QtWidgets.QMainWindow):
         except Exception as e:
             QtWidgets.QMessageBox.critical(self, "Error", f"Error opening Custom Exterior Conditions screen: {str(e)}")
 
+    def transform_default_cabin_values(self, original_values: dict) -> dict:
+        """Transform original_default_exterior_values to the new key format for Cabin, ensuring all values are strings."""
+        transformed_values = {}
+
+        # Map Standard Labels
+        transformed_values["standard"] = str(original_values.get("standard_cabin", "None"))
+
+        # Map Zone Values
+        transformed_values["WinterZone"] = str(original_values.get("WinterZoneCabin", "None"))
+        transformed_values["SummerZone"] = str(original_values.get("SummerZoneCabin", "None"))
+
+        # Map Normal Range
+        transformed_values["WinterNormal"] = str(original_values.get("WinterNormalCabin", "None"))
+        transformed_values["SummerNormal"] = str(original_values.get("SummerNormalCabin", "None"))
+
+        # Map Extended Range (Split into Min and Max)
+        winter_extended = original_values.get("WinterExtendedCabin", "None - None").split(" - ")
+        transformed_values["WinterExtendedMin"] = str(winter_extended[0])
+        transformed_values["WinterExtendedMax"] = str(winter_extended[1])
+
+        summer_extended = original_values.get("SummerExtendedCabin", "None - None").split(" - ")
+        transformed_values["SummerExtendedMin"] = str(summer_extended[0])
+        transformed_values["SummerExtendedMax"] = str(summer_extended[1])
+
+        # Helper function to extract temperature, humidity, and heat flux
+        def extract_components(value):
+            if value and value != "None°C, None%, None W/m2":
+                try:
+                    temp, humidity, heat_flux = value.split(", ")
+                    return str(temp.replace("°C", "")), str(humidity.replace("%", "")), str(heat_flux.replace(" W/m2", ""))
+                except ValueError:
+                    return "None", "None", "None"
+            return "None", "None", "None"
+
+        # Map Design Values
+        design_winter = extract_components(original_values.get("WinterDesignCabin", "None°C, None%, None W/m2"))
+        transformed_values["WinterDesignTemp"], transformed_values["WinterDesignHumidity"], transformed_values["WinterDesignHeatFlux"] = design_winter
+
+        design_summer = extract_components(original_values.get("SummerDesignCabin", "None°C, None%, None W/m2"))
+        transformed_values["SummerDesignTemp"], transformed_values["SummerDesignHumidity"], transformed_values["SummerDesignHeatFlux"] = design_summer
+
+        # Map Extreme Values
+        extreme_winter = extract_components(original_values.get("WinterExtremeCabin", "None°C, None%, None W/m2"))
+        transformed_values["WinterExtremeTemp"], transformed_values["WinterExtremeHumidity"], transformed_values["WinterExtremeHeatFlux"] = extreme_winter
+
+        extreme_summer = extract_components(original_values.get("SummerExtremeCabin", "None°C, None%, None W/m2"))
+        transformed_values["SummerExtremeTemp"], transformed_values["SummerExtremeHumidity"], transformed_values["SummerExtremeHeatFlux"] = extreme_summer
+
+        # Map Operational Values
+        operational_winter = extract_components(original_values.get("WinterOperationalCabin", "None°C, None%, None W/m2"))
+        transformed_values["WinterOperationalTemp"], transformed_values["WinterOperationalHumidity"], transformed_values["WinterOperationalHeatFlux"] = operational_winter
+
+        operational_summer = extract_components(original_values.get("SummerOperationalCabin", "None°C, None%, None W/m2"))
+        transformed_values["SummerOperationalTemp"], transformed_values["SummerOperationalHumidity"], transformed_values["SummerOperationalHeatFlux"] = operational_summer
+
+        return transformed_values
+
     def transform_default_values(self,original_values: dict) -> dict:
-        """Transform original_default_exterior_saloon_values to the new key format, ensuring all values are strings."""
+        """Transform original_default_exterior_values to the new key format, ensuring all values are strings."""
         transformed_values = {}
 
         # Map Standard Labels
@@ -415,18 +460,24 @@ class MasterScreen(QtWidgets.QMainWindow):
         """
         Updates labels with custom values and highlights them if changed.
         Locks fields with custom values to prevent further updates.
+        Stores custom values in a separate dictionary for saving.
         :param custom_values: Dictionary containing custom values.
         """
         try:
             # Initialize locked fields if not already defined
             if not hasattr(self, "locked_custom_fields"):
                 self.locked_custom_fields = set()
-            # Initialize locked fields if not already defined
+            
+            # Initialize storage for custom values if not already defined
+            if not hasattr(self, "custom_values_interior"):
+                self.custom_values_interior = {}
+            
+            # Initialize storage for curves if not already defined
             if not hasattr(self, "custom_saloon_curve"):
                 self.custom_saloon_curve = {}
+            
             if not hasattr(self, "custom_cabin_curve"):
                 self.custom_cabin_curve = {}
-            
 
             # Define label mappings
             label_mappings = {
@@ -440,15 +491,15 @@ class MasterScreen(QtWidgets.QMainWindow):
                 "StandByOperatorSaloonMin": self.lblStandByOperatorSaloonMin,
                 "StandByOperatorCabinMax": self.lblStandByOperatorCabinMax,
                 "StandByOperatorCabinMin": self.lblStandByOperatorCabinMin,
-                "RegulationCurveSaloon":self.lblRegulationCurveSaloon,
-                "RegulationCurveCabin":self.lblRegulationCurveCabin
+                "RegulationCurveSaloon": self.lblRegulationCurveSaloon,
+                "RegulationCurveCabin": self.lblRegulationCurveCabin
             }
 
             # Loop through each label and update values
             for key, label in label_mappings.items():
                 custom_value = custom_values.get(key, "").strip()
 
-                if custom_value:  # If custom value exists
+                if custom_value:  # If a custom value exists
                     # Skip adding "°C" for regulation curves
                     if key in ["RegulationCurveSaloon", "RegulationCurveCabin"]:
                         label.setText(custom_value)
@@ -457,12 +508,15 @@ class MasterScreen(QtWidgets.QMainWindow):
                     
                     label.setStyleSheet("background-color: #F97D02; padding-left:5px;")  # Highlight in orange
                     self.locked_custom_fields.add(key)  # Lock this field
+                    self.custom_values_interior[key] = custom_value  # Store custom value separately
+
             # Load Saloon & Cabin Curves
             self.custom_saloon_curve = custom_values.get("saloon_curve", {})
             self.custom_cabin_curve = custom_values.get("cabin_curve", {})
 
         except Exception as e:
             QtWidgets.QMessageBox.critical(self, "Error", f"Error applying custom values: {str(e)}")
+
     def apply_custom_values_saloon(self, custom_values):
         """
         Updates saloon labels with custom values and highlights them if changed.
@@ -566,13 +620,17 @@ class MasterScreen(QtWidgets.QMainWindow):
         """
         Updates cabin labels with custom values and highlights them if changed.
         Locks fields with custom values to prevent further updates.
+        Stores custom values in a separate dictionary for saving.
         :param custom_values: Dictionary containing custom values.
         """
         try:
-
             # Initialize locked fields if not already defined
-            if not hasattr(self, "locked_custom_fields"):
-                self.locked_custom_fields = set()
+            if not hasattr(self, "locked_custom_fields_cabin"):
+                self.locked_custom_fields_cabin = set()
+            
+            # Initialize custom values storage if not already defined
+            if not hasattr(self, "cabin_custom_values"):
+                self.cabin_custom_values = {}
 
             # Define label mappings for Zone values (Direct Text)
             label_mappings = {
@@ -588,7 +646,8 @@ class MasterScreen(QtWidgets.QMainWindow):
                     text = f"{custom_value}"
                     label.setText(text)
                     label.setStyleSheet("background-color: #F97D02; padding-left:5px;")
-                    self.locked_custom_fields.add(key)
+                    self.locked_custom_fields_cabin.add(key)
+                    self.cabin_custom_values[key] = custom_value  # Store custom value
 
             # Process Normal Values (Winter & Summer)
             normal_mappings = {
@@ -605,7 +664,8 @@ class MasterScreen(QtWidgets.QMainWindow):
                     elif "Max" in key:
                         self.set_label_textNormalSummer(label, custom_value)
                     label.setStyleSheet("background-color: #F97D02; padding-left:5px;")
-                    self.locked_custom_fields.add(key)
+                    self.locked_custom_fields_cabin.add(key)
+                    self.cabin_custom_values[key] = custom_value  # Store custom value
 
             # Process Extended Values (Winter & Summer)
             for season in ["Winter", "Summer"]:
@@ -622,7 +682,10 @@ class MasterScreen(QtWidgets.QMainWindow):
                     if min_val or max_val:  # If either value is set, update both
                         self.set_label_text_range(label, min_val if min_val else None, max_val if max_val else None)
                         label.setStyleSheet("background-color: #F97D02; padding-left:5px;")
-                        self.locked_custom_fields.update({min_key, max_key})
+                        self.locked_custom_fields_cabin.update({min_key, max_key})
+                        
+                        self.cabin_custom_values[min_key] = min_val  # Store custom value
+                        self.cabin_custom_values[max_key] = max_val  # Store custom value
 
             # Process Design, Extreme, and Operational values
             for condition in ["Design", "Extreme", "Operational"]:
@@ -643,7 +706,12 @@ class MasterScreen(QtWidgets.QMainWindow):
                             text = f"{temp}°C, {hum}%, {flux} W/m²"
                             label.setText(text)
                             label.setStyleSheet("background-color: #F97D02; padding-left:5px;")
-                            self.locked_custom_fields.update({temp_key, hum_key, flux_key})
+                            self.locked_custom_fields_cabin.update({temp_key, hum_key, flux_key})
+                            
+                            # Store custom values in the separate dictionary
+                            self.cabin_custom_values[temp_key] = temp
+                            self.cabin_custom_values[hum_key] = hum
+                            self.cabin_custom_values[flux_key] = flux
 
         except Exception as e:
             print(f"[ERROR] Exception in apply_custom_values_cabin: {str(e)}")
@@ -692,34 +760,21 @@ class MasterScreen(QtWidgets.QMainWindow):
                 self.custom_saloon_curve = {}
             if not hasattr(self, "custom_cabin_curve"):
                 self.custom_cabin_curve = {}
-            custom_values = {}
-            label_mappings = {
-                "TicMaxSaloon": self.lblMaxSaloonInterior,
-                "TicMinSaloon": self.lblMinSaloonInterior,
-                "TicMaxCabin": self.lblTicMaxCabinInterior,
-                "TicMinCabin": self.lblTicMinSaloonInterior,
-                "MaxMeanTempSaloon": self.lblMaxMeanInteriorTempSaloon,
-                "MaxMeanTempCabin": self.lblMaxMeanInteriorTempCabin,
-                "StandByOperatorSaloonMax": self.lblStandByOperatorSaloonMax,
-                "StandByOperatorSaloonMin": self.lblStandByOperatorSaloonMin,
-                "StandByOperatorCabinMax": self.lblStandByOperatorCabinMax,
-                "StandByOperatorCabinMin": self.lblStandByOperatorCabinMin,
-                "RegulationCurveSaloon":self.lblRegulationCurveSaloon,
-                "RegulationCurveCabin":self.lblRegulationCurveCabin
-            }
+            
 
-            for key, label in label_mappings.items():
-                if key in self.locked_custom_fields:  # Only fetch locked fields (custom values)
-                    custom_values[key] = label.text().replace("°C", "").strip()
-             # Update only the relevant parts
-            custom_values.update({
+            
+            # Initialize storage for custom values if not already defined
+            if not hasattr(self, "custom_values_interior"):
+                self.custom_values_interior = {}
+            # Update only the relevant parts
+            self.custom_values_interior.update({
                 "saloon_curve": self.custom_saloon_curve,
                 "cabin_curve": self.custom_cabin_curve,
             })
             # Open Custom Interior Conditions screen with both default and custom values
             self.custom_interior_window = CustomInteriorConditionsScreen(
                 default_values=self.original_default_interior_values,
-                custom_values=custom_values
+                custom_values=self.custom_values_interior
             )
             
             if hasattr(self.custom_interior_window, "custom_values_updated"):
@@ -1052,9 +1107,9 @@ class MasterScreen(QtWidgets.QMainWindow):
                 "SummerExtremeCabin": (self.lblSummerExtremeCabin, self.format_label_text(summer_cabin["Extreme"]))
             }
 
-            # Update labels and store values in original_default_exterior_saloon_values
+            # Update labels and store values in original_default_exterior_values
             for key, (label, value) in label_mappings.items():
-                self.original_default_exterior_saloon_values[key] = value
+                self.original_default_exterior_values[key] = value
                 if key not in self.locked_custom_fields:  # Update UI only if not locked
                     label.setText(value)
 
@@ -1071,7 +1126,7 @@ class MasterScreen(QtWidgets.QMainWindow):
                     temperature_value = temperature_data["Min"] if season == "Winter" else temperature_data["Max"]
                     
                     # Store in original default values
-                    self.original_default_exterior_saloon_values[label_name] = temperature_value
+                    self.original_default_exterior_values[label_name] = temperature_value
                     
                     # Update label if not locked
                     if label_name not in self.locked_custom_fields:
@@ -1097,7 +1152,7 @@ class MasterScreen(QtWidgets.QMainWindow):
                     key = f"{season}Extended{location}"
                     
                     # Store in original default values
-                    self.original_default_exterior_saloon_values[key] = f"{min_val} - {max_val}"
+                    self.original_default_exterior_values[key] = f"{min_val} - {max_val}"
                     
                     # Update label if not locked
                     if key not in self.locked_custom_fields:

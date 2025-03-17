@@ -4,7 +4,7 @@ from PyQt5.QtCore import pyqtSignal
 class CustomExteriorConditionsCabinScreen(QtWidgets.QMainWindow):
     custom_values_updated = pyqtSignal(dict)  # Signal to send custom values
 
-    def __init__(self, default_values=None):
+    def __init__(self, default_values=None,custom_values=None):
         super().__init__()
         try:
             uic.loadUi("ui/ui_files/custom_exterior_cabin.ui", self)  # Load custom UI
@@ -53,6 +53,47 @@ class CustomExteriorConditionsCabinScreen(QtWidgets.QMainWindow):
                 self.txtNormSummerOperationalTemp.setText(self.default_values.get("SummerOperationalTemp", "None"))
                 self.txtNormSummerOperationalHumi.setText(self.default_values.get("SummerOperationalHumidity", "None"))
                 self.txtNormSummerOperationalSolar.setText(self.default_values.get("SummerOperationalHeatFlux", "None"))
+            
+            
+            if custom_values:
+                self.custom_values=custom_values
+                self.txtCustomWinterZone.setText(self.custom_values.get("CustomWinterZone", ""))
+                self.txtCustomSummerZone.setText(self.custom_values.get("CustomSummerZone", ""))
+                self.txtCustomWinterNormalMin.setText(self.custom_values.get("CustomWinterNormalMin", ""))
+                self.txtCustomSummerNormalMax.setText(self.custom_values.get("CustomSummerNormalMax", ""))
+                 # Extended values (Min/Max)
+                self.txtCustomWinterExtendedMin.setText(self.custom_values.get("CustomWinterExtendedMin", ""))
+                self.txtCustomWinterExtendedMax.setText(self.custom_values.get("CustomWinterExtendedMax", ""))
+                self.txtCustomSummerExtendedMin.setText(self.custom_values.get("CustomSummerExtendedMin", ""))
+                self.txtCustomSummerExtendedMax.setText(self.custom_values.get("CustomSummerExtendedMax", ""))
+
+                # Design values (Temp, Humidity, Heat Flux)
+                self.txtCustomWinterDesignTemp.setText(self.custom_values.get("CustomWinterDesignTemp", ""))
+                self.txtCustomWinterDesignHumi.setText(self.custom_values.get("CustomWinterDesignHumi", ""))
+                self.txtCustomWinterDesignSolar.setText(self.custom_values.get("CustomWinterDesignSolar", ""))
+
+                self.txtCustomSummerDesignTemp.setText(self.custom_values.get("CustomSummerDesignTemp", ""))
+                self.txtCustomSummerDesignHumi.setText(self.custom_values.get("CustomSummerDesignHumi", ""))
+                self.txtCustomSummerDesignSolar.setText(self.custom_values.get("CustomSummerDesignSolar", ""))
+
+                # Extreme values
+                self.txtCustomWinterExtremeTemp.setText(self.custom_values.get("CustomWinterExtremeTemp", ""))
+                self.txtCustomWinterExtremeHumi.setText(self.custom_values.get("CustomWinterExtremeHumi", ""))
+                self.txtCustomWinterExtremeSolar.setText(self.custom_values.get("CustomWinterExtremeSolar", ""))
+
+                self.txtCustomSummerExtremeTemp.setText(self.custom_values.get("CustomSummerExtremeTemp", ""))
+                self.txtCustomSummerExtremeHumi.setText(self.custom_values.get("CustomSummerExtremeHumi", ""))
+                self.txtCustomSummerExtremeSolar.setText(self.custom_values.get("CustomSummerExtremeSolar", ""))
+
+                # Operational values
+                self.txtCustomWinterOperationalTemp.setText(self.custom_values.get("CustomWinterOperationalTemp", ""))
+                self.txtCustomWinterOperationalHumi.setText(self.custom_values.get("CustomWinterOperationalHumi", ""))
+                self.txtCustomWinterOperationalSolar.setText(self.custom_values.get("CustomWinterOperationalSolar", ""))
+
+                self.txtCustomSummerOperationalTemp.setText(self.custom_values.get("CustomSummerOperationalTemp", ""))
+                self.txtCustomSummerOperationalHumi.setText(self.custom_values.get("CustomSummerOperationalHumi", ""))
+                self.txtCustomSummerOperationalSolar.setText(self.custom_values.get("CustomSummerOperationalSolar", ""))
+            
             self.btnSave.clicked.connect(self.save_custom_values)
 
 
