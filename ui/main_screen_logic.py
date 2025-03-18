@@ -30,6 +30,7 @@ from ui.custom_exterior_cabin_logic import CustomExteriorConditionsCabinScreen
 from ui.custom_exterior_saloon_logic import CustomExteriorConditionsSaloonScreen
 from ui.custom_interior_conditions_logic import CustomInteriorConditionsScreen
 import re  # For regex-based extraction
+from modules.saving_project_manager import SavingProjectManager  # Add this line
 
 
 GLOBAL_STATE = False
@@ -61,6 +62,9 @@ class MasterScreen(QtWidgets.QMainWindow):
 
             self.btnProjects.setStyleSheet(UIFunctions.selectMenu(self.btnProjects.styleSheet()))
             self.locked_custom_fields = set()
+
+
+            saving_manager = SavingProjectManager()
 
             self.stacked_widget = self.findChild(QStackedWidget, "stackedWidget")  # Match the object name in Qt Designer
         #     # Initialize individual pages
