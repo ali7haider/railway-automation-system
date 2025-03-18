@@ -2120,7 +2120,7 @@ background-color:#1159A8;
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>0</number>
+                      <number>1</number>
                      </property>
                      <widget class="QWidget" name="projectPage">
                       <property name="acceptDrops">
@@ -2232,7 +2232,7 @@ font-weight:bold;</string>
                                  <rect>
                                   <x>0</x>
                                   <y>0</y>
-                                  <width>985</width>
+                                  <width>714</width>
                                   <height>1973</height>
                                  </rect>
                                 </property>
@@ -3780,9 +3780,9 @@ font-weight:bold;</string>
                             <widget class="QWidget" name="scrollAreaWidgetContents">
                              <property name="geometry">
                               <rect>
-                               <x>-39</x>
+                               <x>0</x>
                                <y>0</y>
-                               <width>1523</width>
+                               <width>1509</width>
                                <height>1140</height>
                               </rect>
                              </property>
@@ -3852,21 +3852,21 @@ font-weight:bold;</string>
                                     <item row="4" column="1">
                                      <widget class="QLabel" name="lblHGradient1NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="5" column="1">
                                      <widget class="QLabel" name="lblHGradient2NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="6" column="1">
                                      <widget class="QLabel" name="lblVGradientSeated1NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -3898,7 +3898,7 @@ font-weight:bold;</string>
                                     <item row="2" column="1">
                                      <widget class="QLabel" name="lblTim1NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -3933,7 +3933,7 @@ font-weight:bold;</string>
                                     <item row="7" column="1">
                                      <widget class="QLabel" name="lblVGradientSeated2NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -3968,7 +3968,7 @@ font-weight:bold;</string>
                                     <item row="3" column="1">
                                      <widget class="QLabel" name="lblTim2NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -3989,7 +3989,7 @@ font-weight:bold;</string>
                                     <item row="10" column="1">
                                      <widget class="QLabel" name="lblVGradientStand1NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4003,14 +4003,14 @@ font-weight:bold;</string>
                                     <item row="9" column="1">
                                      <widget class="QLabel" name="lblVGradientSeatedFoot2NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="12" column="1">
                                      <widget class="QLabel" name="lblVGradientStandFoot1NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4024,7 +4024,7 @@ font-weight:bold;</string>
                                     <item row="13" column="1">
                                      <widget class="QLabel" name="lblVGradientStandFoot2NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4052,7 +4052,7 @@ font-weight:bold;</string>
                                     <item row="8" column="1">
                                      <widget class="QLabel" name="lblVGradientSeatedFoot1NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4066,7 +4066,7 @@ font-weight:bold;</string>
                                     <item row="11" column="1">
                                      <widget class="QLabel" name="lblVGradientStand2NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4087,21 +4087,21 @@ font-weight:bold;</string>
                                     <item row="16" column="1">
                                      <widget class="QLabel" name="lblSurfaceWallsMaxQ2NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="17" column="1">
                                      <widget class="QLabel" name="lblSurfaceWallsMinQ1NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="14" column="1">
                                      <widget class="QLabel" name="lblVMinimumTempNormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4115,35 +4115,35 @@ font-weight:bold;</string>
                                     <item row="15" column="1">
                                      <widget class="QLabel" name="lblSurfaceWallsMaxQ1NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="28" column="1">
                                      <widget class="QLabel" name="lblSurfacesNotExposedMaxQ2NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="21" column="1">
                                      <widget class="QLabel" name="lblSurfaceCeilingsMinQ1NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="26" column="1">
                                      <widget class="QLabel" name="lblSurfacesExposedMinQ2NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="20" column="1">
                                      <widget class="QLabel" name="lblSurfaceCeilingsMaxQ2NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4157,7 +4157,7 @@ font-weight:bold;</string>
                                     <item row="23" column="1">
                                      <widget class="QLabel" name="lblSurfacesExposedMaxQ1NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4171,7 +4171,7 @@ font-weight:bold;</string>
                                     <item row="18" column="1">
                                      <widget class="QLabel" name="lblSurfaceWallsMinQ2NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4185,7 +4185,7 @@ font-weight:bold;</string>
                                     <item row="24" column="1">
                                      <widget class="QLabel" name="lblSurfacesExposedMaxQ2NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4206,14 +4206,14 @@ font-weight:bold;</string>
                                     <item row="19" column="1">
                                      <widget class="QLabel" name="lblSurfaceCeilingsMaxQ1NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="27" column="1">
                                      <widget class="QLabel" name="lblSurfacesNotExposedMaxQ1NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4227,7 +4227,7 @@ font-weight:bold;</string>
                                     <item row="22" column="1">
                                      <widget class="QLabel" name="lblSurfaceCeilingsMinQ2NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4248,7 +4248,7 @@ font-weight:bold;</string>
                                     <item row="25" column="1">
                                      <widget class="QLabel" name="lblSurfacesExposedMinQ1NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4269,14 +4269,14 @@ font-weight:bold;</string>
                                     <item row="29" column="1">
                                      <widget class="QLabel" name="lblSurfacesNotExposedMinQ1NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="30" column="1">
                                      <widget class="QLabel" name="lblSurfacesNotExposedMinQ2NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4297,7 +4297,7 @@ font-weight:bold;</string>
                                     <item row="31" column="1">
                                      <widget class="QLabel" name="lblSurfacesFrameQ1NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4311,7 +4311,7 @@ font-weight:bold;</string>
                                     <item row="32" column="1">
                                      <widget class="QLabel" name="lblSurfacesFrameQ2NormalSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4530,217 +4530,217 @@ font-weight:bold;</string>
                                     <item row="2" column="2">
                                      <widget class="QLabel" name="lblTim1ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="3" column="2">
                                      <widget class="QLabel" name="lblTim2ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="4" column="2">
                                      <widget class="QLabel" name="lblHGradient1ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="5" column="2">
                                      <widget class="QLabel" name="lblHGradient2ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="6" column="2">
                                      <widget class="QLabel" name="lblVGradientSeated1ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="7" column="2">
                                      <widget class="QLabel" name="lblVGradientSeated2ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="8" column="2">
                                      <widget class="QLabel" name="lblVGradientSeatedFoot1ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="9" column="2">
                                      <widget class="QLabel" name="lblVGradientSeatedFoot2ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="10" column="2">
                                      <widget class="QLabel" name="lblVGradientStand1ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="11" column="2">
                                      <widget class="QLabel" name="lblVGradientStand2ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="12" column="2">
                                      <widget class="QLabel" name="lblVGradientStandFoot1ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="13" column="2">
                                      <widget class="QLabel" name="lblVGradientStandFoot2ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="14" column="2">
                                      <widget class="QLabel" name="lblVMinimumTempExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="15" column="2">
                                      <widget class="QLabel" name="lblSurfaceWallsMaxQ1ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="16" column="2">
                                      <widget class="QLabel" name="lblSurfaceWallsMaxQ2ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="17" column="2">
                                      <widget class="QLabel" name="lblSurfaceWallsMinQ1ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="18" column="2">
                                      <widget class="QLabel" name="lblSurfaceWallsMinQ2ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="19" column="2">
                                      <widget class="QLabel" name="lblSurfaceCeilingsMaxQ1ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="20" column="2">
                                      <widget class="QLabel" name="lblSurfaceCeilingsMaxQ2ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="21" column="2">
                                      <widget class="QLabel" name="lblSurfaceCeilingsMinQ1ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="22" column="2">
                                      <widget class="QLabel" name="lblSurfaceCeilingsMinQ2ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="23" column="2">
                                      <widget class="QLabel" name="lblSurfacesExposedMaxQ1ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="24" column="2">
                                      <widget class="QLabel" name="lblSurfacesExposedMaxQ2ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="25" column="2">
                                      <widget class="QLabel" name="lblSurfacesExposedMinQ1ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="26" column="2">
                                      <widget class="QLabel" name="lblSurfacesExposedMinQ2ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="27" column="2">
                                      <widget class="QLabel" name="lblSurfacesNotExposedMaxQ1ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="28" column="2">
                                      <widget class="QLabel" name="lblSurfacesNotExposedMaxQ2ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="29" column="2">
                                      <widget class="QLabel" name="lblSurfacesNotExposedMinQ1ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="30" column="2">
                                      <widget class="QLabel" name="lblSurfacesNotExposedMinQ2ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="31" column="2">
                                      <widget class="QLabel" name="lblSurfacesFrameQ1ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="32" column="2">
                                      <widget class="QLabel" name="lblSurfacesFrameQ2ExtendedSaloon">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4822,14 +4822,14 @@ font-weight:bold;</string>
                                     <item row="3" column="2">
                                      <widget class="QLabel" name="lblTim2ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="2" column="2">
                                      <widget class="QLabel" name="lblTim1ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4839,77 +4839,77 @@ font-weight:bold;</string>
                                     <item row="5" column="2">
                                      <widget class="QLabel" name="lblHGradient2ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="4" column="2">
                                      <widget class="QLabel" name="lblHGradient1ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="6" column="2">
                                      <widget class="QLabel" name="lblVGradientSeated1ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="7" column="2">
                                      <widget class="QLabel" name="lblVGradientSeated2ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="8" column="2">
                                      <widget class="QLabel" name="lblVGradientSeatedFoot1ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="9" column="2">
                                      <widget class="QLabel" name="lblVGradientSeatedFoot2ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="11" column="2">
                                      <widget class="QLabel" name="lblVGradientStand2ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="10" column="2">
                                      <widget class="QLabel" name="lblVGradientStand1ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="13" column="2">
                                      <widget class="QLabel" name="lblVGradientStandFoot2ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="12" column="2">
                                      <widget class="QLabel" name="lblVGradientStandFoot1ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="12" column="1">
                                      <widget class="QLabel" name="lblVGradientStandFoot1Cabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4937,7 +4937,7 @@ font-weight:bold;</string>
                                     <item row="29" column="1">
                                      <widget class="QLabel" name="lblSurfacesNotExposedMinQ1NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4965,21 +4965,21 @@ font-weight:bold;</string>
                                     <item row="32" column="1">
                                      <widget class="QLabel" name="lblSurfacesFrameQ2NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="31" column="1">
                                      <widget class="QLabel" name="lblSurfacesFrameQ1NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="30" column="1">
                                      <widget class="QLabel" name="lblSurfacesNotExposedMinQ2NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -4993,14 +4993,14 @@ font-weight:bold;</string>
                                     <item row="14" column="1">
                                      <widget class="QLabel" name="lblVMinimumTempNormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="13" column="1">
                                      <widget class="QLabel" name="lblVGradientStandFoot2NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -5021,14 +5021,14 @@ font-weight:bold;</string>
                                     <item row="16" column="1">
                                      <widget class="QLabel" name="lblSurfaceWallsMaxQ2NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="15" column="1">
                                      <widget class="QLabel" name="lblSurfaceWallsMaxQ1NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -5133,14 +5133,14 @@ font-weight:bold;</string>
                                     <item row="19" column="1">
                                      <widget class="QLabel" name="lblSurfaceCeilingsMaxQ1NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="18" column="1">
                                      <widget class="QLabel" name="lblSurfaceWallsMinQ2NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -5196,7 +5196,7 @@ font-weight:bold;</string>
                                     <item row="17" column="1">
                                      <widget class="QLabel" name="lblSurfaceWallsMinQ1NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -5210,7 +5210,7 @@ font-weight:bold;</string>
                                     <item row="9" column="1">
                                      <widget class="QLabel" name="lblVGradientSeatedFoot2NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -5224,21 +5224,21 @@ font-weight:bold;</string>
                                     <item row="10" column="1">
                                      <widget class="QLabel" name="lblVGradientStand1NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="11" column="1">
                                      <widget class="QLabel" name="lblVGradientStand2NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="2" column="1">
                                      <widget class="QLabel" name="lblTim1NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -5259,7 +5259,7 @@ font-weight:bold;</string>
                                     <item row="3" column="1">
                                      <widget class="QLabel" name="lblTim2NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -5287,14 +5287,14 @@ font-weight:bold;</string>
                                     <item row="4" column="1">
                                      <widget class="QLabel" name="lblHGradient1NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="5" column="1">
                                      <widget class="QLabel" name="lblHGradient2NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -5308,21 +5308,21 @@ font-weight:bold;</string>
                                     <item row="6" column="1">
                                      <widget class="QLabel" name="lblVGradientSeated1NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="8" column="1">
                                      <widget class="QLabel" name="lblVGradientSeatedFoot1NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="7" column="1">
                                      <widget class="QLabel" name="lblVGradientSeated2NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -5350,56 +5350,56 @@ font-weight:bold;</string>
                                     <item row="20" column="1">
                                      <widget class="QLabel" name="lblSurfaceCeilingsMaxQ2NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="23" column="1">
                                      <widget class="QLabel" name="lblSurfacesExposedMaxQ1NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="22" column="1">
                                      <widget class="QLabel" name="lblSurfaceCeilingsMinQ2NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="21" column="1">
                                      <widget class="QLabel" name="lblSurfaceCeilingsMinQ1NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="26" column="1">
                                      <widget class="QLabel" name="lblSurfacesExposedMinQ2NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="25" column="1">
                                      <widget class="QLabel" name="lblSurfacesExposedMinQ1NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="24" column="1">
                                      <widget class="QLabel" name="lblSurfacesExposedMaxQ2NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="28" column="1">
                                      <widget class="QLabel" name="lblSurfacesNotExposedMaxQ2NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -5423,7 +5423,7 @@ font-weight:bold;</string>
                                     <item row="27" column="1">
                                      <widget class="QLabel" name="lblSurfacesNotExposedMaxQ1NormalCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
@@ -5547,133 +5547,133 @@ font-weight:bold;</string>
                                     <item row="14" column="2">
                                      <widget class="QLabel" name="lblVMinimumTempExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="15" column="2">
                                      <widget class="QLabel" name="lblSurfaceWallsMaxQ1ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="16" column="2">
                                      <widget class="QLabel" name="lblSurfaceWallsMaxQ2ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="18" column="2">
                                      <widget class="QLabel" name="lblSurfaceWallsMinQ2ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="17" column="2">
                                      <widget class="QLabel" name="lblSurfaceWallsMinQ1ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="19" column="2">
                                      <widget class="QLabel" name="lblSurfaceCeilingsMaxQ1ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="21" column="2">
                                      <widget class="QLabel" name="lblSurfaceCeilingsMinQ1ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="20" column="2">
                                      <widget class="QLabel" name="lblSurfaceCeilingsMaxQ2ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="22" column="2">
                                      <widget class="QLabel" name="lblSurfaceCeilingsMinQ2ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="24" column="2">
                                      <widget class="QLabel" name="lblSurfacesExposedMaxQ2ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="23" column="2">
                                      <widget class="QLabel" name="lblSurfacesExposedMaxQ1ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="25" column="2">
                                      <widget class="QLabel" name="lblSurfacesExposedMinQ1ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="26" column="2">
                                      <widget class="QLabel" name="lblSurfacesExposedMinQ2ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="27" column="2">
                                      <widget class="QLabel" name="lblSurfacesNotExposedMaxQ1ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="28" column="2">
                                      <widget class="QLabel" name="lblSurfacesNotExposedMaxQ2ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="29" column="2">
                                      <widget class="QLabel" name="lblSurfacesNotExposedMinQ1ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="30" column="2">
                                      <widget class="QLabel" name="lblSurfacesNotExposedMinQ2ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="31" column="2">
                                      <widget class="QLabel" name="lblSurfacesFrameQ1ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="32" column="2">
                                      <widget class="QLabel" name="lblSurfacesFrameQ2ExtendedCabin">
                                       <property name="text">
-                                       <string>TextLabel</string>
+                                       <string/>
                                       </property>
                                      </widget>
                                     </item>

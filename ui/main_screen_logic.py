@@ -221,11 +221,9 @@ class MasterScreen(QtWidgets.QMainWindow):
                     "standard_saloon": standard_saloon,
 
                 })
-            # Initialize custom values
             # Initialize custom values storage if not already defined
             if not hasattr(self, "cabin_custom_values"):
                 self.cabin_custom_values = {}
-            print("Cabin Custom Values:", self.cabin_custom_values)
 
             # Open the Custom Exterior Conditions screen with custom values
             transformed_values = self.transform_default_cabin_values(self.original_default_exterior_values)
@@ -275,7 +273,6 @@ class MasterScreen(QtWidgets.QMainWindow):
             # Initialize custom values storage if not already defined
             if not hasattr(self, "saloon_custom_values"):
                 self.saloon_custom_values = {}
-            print("Saloon Custom Values:", self.saloon_custom_values)
 
             # Open the Custom Exterior Conditions screen with custom values
             transformed_values = self.transform_default_values(self.original_default_exterior_values)
@@ -897,20 +894,81 @@ class MasterScreen(QtWidgets.QMainWindow):
             category_saloon = self.lblCategorySaloon.text().strip()
             category_cabin = self.lblCategoryCabin.text().strip()
             # Pass data to CriteriaManager and fetch the results
-            saloon_criteria = CriteriaManager.get_criteria_values(standard_saloon, category_saloon, "Normal range")
-            cabin_criteria = CriteriaManager.get_criteria_values(standard_cabin, category_cabin, "Normal range")
+            saloon_criteria_normal = CriteriaManager.get_criteria_values(standard_saloon, category_saloon, "Normal range")
+            saloon_criteria_extended= CriteriaManager.get_criteria_values(standard_saloon, category_saloon, "Extended range")
+
+            cabin_criteria_normal = CriteriaManager.get_criteria_values(standard_cabin, category_cabin, "Normal range")
+            cabin_criteria_extended = CriteriaManager.get_criteria_values(standard_cabin, category_cabin, "Extended range")
 
             # Process and update UI labels
-            self.update_saloon_labels(saloon_criteria)
-            self.update_cabin_labels(cabin_criteria)
+            self.update_saloon_labels_normal(saloon_criteria_normal)
+            self.update_saloon_labels_extended(saloon_criteria_extended)
+            self.update_cabin_labels_normal(cabin_criteria_normal)
+            self.update_cabin_labels_extended(cabin_criteria_extended)
+            
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Failed to update temperature conditions: {str(e)}")
 
-    def update_saloon_labels(self, saloon_criteria):
+    def update_saloon_labels_extended(self, saloon_criteria):
         """Update the UI labels with saloon criteria values."""
         if not saloon_criteria:
             print("No Saloon Criteria data available.")
             return
+        print(saloon_criteria)
+        saloon_label_map = {
+            
+                # Add additional mappings here as needed
+
+                "Tim q1": "lblTim1ExtendedSaloon",
+                "Tim q2": "lblTim2ExtendedSaloon",
+                "Horizontal gradient q1": "lblHGradient1ExtendedSaloon",
+                "Horizontal gradient q2": "lblHGradient2ExtendedSaloon",
+                "Vertical gradient seated q1": "lblVGradientSeated1ExtendedSaloon",
+                "Vertical gradient seated q2": "lblVGradientSeated2ExtendedSaloon",
+                "Vertical gradient seated (Foot warmest) q1": "lblVGradientSeatedFoot1ExtendedSaloon",
+                "Vertical gradient seated (Foot warmest) q2": "lblVGradientSeatedFoot2ExtendedSaloon",
+                "Vertical gradient stand q1": "lblVGradientStand1ExtendedSaloon",
+                "Vertical gradient stand q2": "lblVGradientStand2ExtendedSaloon",
+                "Vertical gradient stand (Foot warmest) q1": "lblVGradientStandFoot1ExtendedSaloon",
+                "Vertical gradient stand (Foot warmest) q2": "lblVGradientStandFoot2ExtendedSaloon",
+                "Vertical minimun temperature": "lblVMinimumTempExtendedSaloon",
+                "Surfaces (Walls) DMax q1": "lblSurfaceWallsMaxQ1ExtendedSaloon",
+                "Surfaces (Walls) DMax q2": "lblSurfaceWallsMaxQ2ExtendedSaloon",
+                "Surfaces (Walls) DMin q1": "lblSurfaceWallsMinQ1ExtendedSaloon",
+                "Surfaces (Walls) DMin q2": "lblSurfaceWallsMinQ2ExtendedSaloon",
+                "Surfaces (ceilings) DMax q1": "lblSurfaceCeilingsMaxQ1ExtendedSaloon",
+                "Surfaces (ceilings) DMax q2": "lblSurfaceCeilingsMaxQ2ExtendedSaloon",
+                "Surfaces (ceilings) DMin q1": "lblSurfaceCeilingsMinQ1ExtendedSaloon",
+                "Surfaces (ceilings) DMin q2": "lblSurfaceCeilingsMinQ2ExtendedSaloon",
+                "Surfaces (Window panes exposed to sun radiation) DMax q1": "lblSurfacesExposedMaxQ1ExtendedSaloon",
+                "Surfaces (Window panes exposed to sun radiation) DMax q2": "lblSurfacesExposedMaxQ2ExtendedSaloon",
+                "Surfaces (Window panes exposed to sun radiation) DMin q1": "lblSurfacesExposedMinQ1ExtendedSaloon",
+                "Surfaces (Window panes exposed to sun radiation) DMin q2": "lblSurfacesExposedMinQ2ExtendedSaloon",
+                "Surfaces (Window panes not exposed to sun radiation) DMax q1": "lblSurfacesNotExposedMaxQ1ExtendedSaloon",
+                "Surfaces (Window panes not exposed to sun radiation) DMax q2": "lblSurfacesNotExposedMaxQ2ExtendedSaloon",
+                "Surfaces (Window panes not exposed to sun radiation) DMin q1": "lblSurfacesNotExposedMinQ1ExtendedSaloon",
+                "Surfaces (Window panes not exposed to sun radiation) DMin q2": "lblSurfacesNotExposedMinQ2ExtendedSaloon",
+                "Surfaces (Window frame) q1": "lblSurfacesFrameQ1ExtendedSaloon",
+                "Surfaces (Window frame) q2": "lblSurfacesFrameQ2ExtendedSaloon",
+            }
+
+        for key, value in saloon_criteria.items():
+            formatted_value = str(value) if value is not None else "N/A"
+
+            # Get the corresponding label name from the dictionary
+            print("Key: ", key)
+            label_name = saloon_label_map.get(key)
+            if label_name and hasattr(self, label_name):
+                getattr(self, label_name).setText(formatted_value)
+            else:
+                print(f"Warning: No UI label found for {key}")
+
+    def update_saloon_labels_normal(self, saloon_criteria):
+        """Update the UI labels with saloon criteria values."""
+        if not saloon_criteria:
+            print("No Saloon Criteria data available.")
+            return
+        
         saloon_label_map = {
                 "Tim q1": "lblTim1NormalSaloon",
                 "Tim q2": "lblTim2NormalSaloon",
@@ -925,25 +983,25 @@ class MasterScreen(QtWidgets.QMainWindow):
                 "Vertical gradient stand (Foot warmest) q1": "lblVGradientStandFoot1NormalSaloon",
                 "Vertical gradient stand (Foot warmest) q2": "lblVGradientStandFoot2NormalSaloon",
                 "Vertical minimun temperature": "lblVMinimumTempNormalSaloon",
-                "Surfaces (Walls) ΔMax q1": "lblSurfaceWallsMaxQ1NormalSaloon",
-                "Surfaces (Walls) ΔMax q2": "lblSurfaceWallsMaxQ2NormalSaloon",
-                "Surfaces (Walls) ΔMin q1": "lblSurfaceWallsMinQ1NormalSaloon",
-                "Surfaces (Walls) ΔMin q2": "lblSurfaceWallsMinQ2NormalSaloon",
-                "Surfaces (ceilings) ΔMax q1": "lblSurfaceCeilingsMaxQ1NormalSaloon",
-                "Surfaces (ceilings) ΔMax q2": "lblSurfaceCeilingsMaxQ2NormalSaloon",
-                "Surfaces (ceilings) ΔMin q1": "lblSurfaceCeilingsMinQ1NormalSaloon",
-                "Surfaces (ceilings) ΔMin q2": "lblSurfaceCeilingsMinQ2NormalSaloon",
-                "Surfaces (Window panes exposed to sun radiation) ΔMax q1": "lblSurfacesExposedMaxQ1NormalSaloon",
-                "Surfaces (Window panes exposed to sun radiation) ΔMax q2": "lblSurfacesExposedMaxQ2NormalSaloon",
-                "Surfaces (Window panes exposed to sun radiation) ΔMin q1": "lblSurfacesExposedMinQ1NormalSaloon",
-                "Surfaces (Window panes exposed to sun radiation) ΔMin q2": "lblSurfacesExposedMinQ2NormalSaloon",
-                "Surfaces (Window panes not exposed to sun radiation) ΔMax q1": "lblSurfacesNotExposedMaxQ1NormalSaloon",
-                "Surfaces (Window panes not exposed to sun radiation) ΔMax q2": "lblSurfacesNotExposedMaxQ2NormalSaloon",
-                "Surfaces (Window panes not exposed to sun radiation) ΔMin q1": "lblSurfacesNotExposedMinQ1NormalSaloon",
-                "Surfaces (Window panes not exposed to sun radiation) ΔMin q2": "lblSurfacesNotExposedMinQ2NormalSaloon",
+                "Surfaces (Walls) DMax q1": "lblSurfaceWallsMaxQ1NormalSaloon",
+                "Surfaces (Walls) DMax q2": "lblSurfaceWallsMaxQ2NormalSaloon",
+                "Surfaces (Walls) DMin q1": "lblSurfaceWallsMinQ1NormalSaloon",
+                "Surfaces (Walls) DMin q2": "lblSurfaceWallsMinQ2NormalSaloon",
+                "Surfaces (ceilings) DMax q1": "lblSurfaceCeilingsMaxQ1NormalSaloon",
+                "Surfaces (ceilings) DMax q2": "lblSurfaceCeilingsMaxQ2NormalSaloon",
+                "Surfaces (ceilings) DMin q1": "lblSurfaceCeilingsMinQ1NormalSaloon",
+                "Surfaces (ceilings) DMin q2": "lblSurfaceCeilingsMinQ2NormalSaloon",
+                "Surfaces (Window panes exposed to sun radiation) DMax q1": "lblSurfacesExposedMaxQ1NormalSaloon",
+                "Surfaces (Window panes exposed to sun radiation) DMax q2": "lblSurfacesExposedMaxQ2NormalSaloon",
+                "Surfaces (Window panes exposed to sun radiation) DMin q1": "lblSurfacesExposedMinQ1NormalSaloon",
+                "Surfaces (Window panes exposed to sun radiation) DMin q2": "lblSurfacesExposedMinQ2NormalSaloon",
+                "Surfaces (Window panes not exposed to sun radiation) DMax q1": "lblSurfacesNotExposedMaxQ1NormalSaloon",
+                "Surfaces (Window panes not exposed to sun radiation) DMax q2": "lblSurfacesNotExposedMaxQ2NormalSaloon",
+                "Surfaces (Window panes not exposed to sun radiation) DMin q1": "lblSurfacesNotExposedMinQ1NormalSaloon",
+                "Surfaces (Window panes not exposed to sun radiation) DMin q2": "lblSurfacesNotExposedMinQ2NormalSaloon",
                 "Surfaces (Window frame) q1": "lblSurfacesFrameQ1NormalSaloon",
                 "Surfaces (Window frame) q2": "lblSurfacesFrameQ2NormalSaloon",
-                # Add additional mappings here as needed
+                
             }
 
         for key, value in saloon_criteria.items():
@@ -951,17 +1009,65 @@ class MasterScreen(QtWidgets.QMainWindow):
 
             # Get the corresponding label name from the dictionary
             label_name = saloon_label_map.get(key)
+            if label_name and hasattr(self, label_name):
+                getattr(self, label_name).setText(formatted_value)
+    
+
+
+        # Example: Assuming you have labels for each criteria value
+        
+    def update_cabin_labels_extended(self, cabin_criteria):
+        """Update the UI labels with cabin criteria values."""
+        if not cabin_criteria:
+            print("No Cabin Criteria data available.")
+            return
+        cabin_label_map = {
+          
+            # Extended values
+            "Tim q1": "lblTim1ExtendedCabin",
+            "Tim q2": "lblTim2ExtendedCabin",
+            "Horizontal gradient q1": "lblHGradient1ExtendedCabin",
+            "Horizontal gradient q2": "lblHGradient2ExtendedCabin",
+            "Vertical gradient seated q1": "lblVGradientSeated1ExtendedCabin",
+            "Vertical gradient seated q2": "lblVGradientSeated2ExtendedCabin",
+            "Vertical gradient seated (Foot warmest) q1": "lblVGradientSeatedFoot1ExtendedCabin",
+            "Vertical gradient seated (Foot warmest) q2": "lblVGradientSeatedFoot2ExtendedCabin",
+            "Vertical gradient stand q1": "lblVGradientStand1ExtendedCabin",
+            "Vertical gradient stand q2": "lblVGradientStand2ExtendedCabin",
+            "Vertical gradient stand (Foot warmest) q1": "lblVGradientStandFoot1ExtendedCabin",
+            "Vertical gradient stand (Foot warmest) q2": "lblVGradientStandFoot2ExtendedCabin",
+            "Vertical minimun temperature": "lblVMinimumTempExtendedCabin",
+            "Surfaces (Walls) DMax q1": "lblSurfaceWallsMaxQ1ExtendedCabin",
+            "Surfaces (Walls) DMax q2": "lblSurfaceWallsMaxQ2ExtendedCabin",
+            "Surfaces (Walls) DMin q1": "lblSurfaceWallsMinQ1ExtendedCabin",
+            "Surfaces (Walls) DMin q2": "lblSurfaceWallsMinQ2ExtendedCabin",
+            "Surfaces (ceilings) DMax q1": "lblSurfaceCeilingsMaxQ1ExtendedCabin",
+            "Surfaces (ceilings) DMax q2": "lblSurfaceCeilingsMaxQ2ExtendedCabin",
+            "Surfaces (ceilings) DMin q1": "lblSurfaceCeilingsMinQ1ExtendedCabin",
+            "Surfaces (ceilings) DMin q2": "lblSurfaceCeilingsMinQ2ExtendedCabin",
+            "Surfaces (Window panes exposed to sun radiation) DMax q1": "lblSurfacesExposedMaxQ1ExtendedCabin",
+            "Surfaces (Window panes exposed to sun radiation) DMax q2": "lblSurfacesExposedMaxQ2ExtendedCabin",
+            "Surfaces (Window panes exposed to sun radiation) DMin q1": "lblSurfacesExposedMinQ1ExtendedCabin",
+            "Surfaces (Window panes exposed to sun radiation) DMin q2": "lblSurfacesExposedMinQ2ExtendedCabin",
+            "Surfaces (Window panes not exposed to sun radiation) DMax q1": "lblSurfacesNotExposedMaxQ1ExtendedCabin",
+            "Surfaces (Window panes not exposed to sun radiation) DMax q2": "lblSurfacesNotExposedMaxQ2ExtendedCabin",
+            "Surfaces (Window panes not exposed to sun radiation) DMin q1": "lblSurfacesNotExposedMinQ1ExtendedCabin",
+            "Surfaces (Window panes not exposed to sun radiation) DMin q2": "lblSurfacesNotExposedMinQ2ExtendedCabin",
+            "Surfaces (Window frame) q1": "lblSurfacesFrameQ1ExtendedCabin",
+            "Surfaces (Window frame) q2": "lblSurfacesFrameQ2ExtendedCabin",
+        }
+
+        for key, value in cabin_criteria.items():
+            formatted_value = str(value) if value is not None else "N/A"
+
+            # Get the corresponding label name from the dictionary
+            label_name = cabin_label_map.get(key)
 
             if label_name and hasattr(self, label_name):
                 getattr(self, label_name).setText(formatted_value)
             else:
                 print(f"Warning: No UI label found for {key}")
-
-
-        # Example: Assuming you have labels for each criteria value
-        
-
-    def update_cabin_labels(self, cabin_criteria):
+    def update_cabin_labels_normal(self, cabin_criteria):
         """Update the UI labels with cabin criteria values."""
         if not cabin_criteria:
             print("No Cabin Criteria data available.")
@@ -980,56 +1086,25 @@ class MasterScreen(QtWidgets.QMainWindow):
             "Vertical gradient stand (Foot warmest) q1": "lblVGradientStandFoot1NormalCabin",
             "Vertical gradient stand (Foot warmest) q2": "lblVGradientStandFoot2NormalCabin",
             "Vertical minimun temperature": "lblVMinimumTempNormalCabin",
-            "Surfaces (Walls) ΔMax q1": "lblSurfaceWallsMaxQ1NormalCabin",
-            "Surfaces (Walls) ΔMax q2": "lblSurfaceWallsMaxQ2NormalCabin",
-            "Surfaces (Walls) ΔMin q1": "lblSurfaceWallsMinQ1NormalCabin",
-            "Surfaces (Walls) ΔMin q2": "lblSurfaceWallsMinQ2NormalCabin",
-            "Surfaces (ceilings) ΔMax q1": "lblSurfaceCeilingsMaxQ1NormalCabin",
-            "Surfaces (ceilings) ΔMax q2": "lblSurfaceCeilingsMaxQ2NormalCabin",
-            "Surfaces (ceilings) ΔMin q1": "lblSurfaceCeilingsMinQ1NormalCabin",
-            "Surfaces (ceilings) ΔMin q2": "lblSurfaceCeilingsMinQ2NormalCabin",
-            "Surfaces (Window panes exposed to sun radiation) ΔMax q1": "lblSurfacesExposedMaxQ1NormalCabin",
-            "Surfaces (Window panes exposed to sun radiation) ΔMax q2": "lblSurfacesExposedMaxQ2NormalCabin",
-            "Surfaces (Window panes exposed to sun radiation) ΔMin q1": "lblSurfacesExposedMinQ1NormalCabin",
-            "Surfaces (Window panes exposed to sun radiation) ΔMin q2": "lblSurfacesExposedMinQ2NormalCabin",
-            "Surfaces (Window panes not exposed to sun radiation) ΔMax q1": "lblSurfacesNotExposedMaxQ1NormalCabin",
-            "Surfaces (Window panes not exposed to sun radiation) ΔMax q2": "lblSurfacesNotExposedMaxQ2NormalCabin",
-            "Surfaces (Window panes not exposed to sun radiation) ΔMin q1": "lblSurfacesNotExposedMinQ1NormalCabin",
-            "Surfaces (Window panes not exposed to sun radiation) ΔMin q2": "lblSurfacesNotExposedMinQ2NormalCabin",
+            "Surfaces (Walls) DMax q1": "lblSurfaceWallsMaxQ1NormalCabin",
+            "Surfaces (Walls) DMax q2": "lblSurfaceWallsMaxQ2NormalCabin",
+            "Surfaces (Walls) DMin q1": "lblSurfaceWallsMinQ1NormalCabin",
+            "Surfaces (Walls) DMin q2": "lblSurfaceWallsMinQ2NormalCabin",
+            "Surfaces (ceilings) DMax q1": "lblSurfaceCeilingsMaxQ1NormalCabin",
+            "Surfaces (ceilings) DMax q2": "lblSurfaceCeilingsMaxQ2NormalCabin",
+            "Surfaces (ceilings) DMin q1": "lblSurfaceCeilingsMinQ1NormalCabin",
+            "Surfaces (ceilings) DMin q2": "lblSurfaceCeilingsMinQ2NormalCabin",
+            "Surfaces (Window panes exposed to sun radiation) DMax q1": "lblSurfacesExposedMaxQ1NormalCabin",
+            "Surfaces (Window panes exposed to sun radiation) DMax q2": "lblSurfacesExposedMaxQ2NormalCabin",
+            "Surfaces (Window panes exposed to sun radiation) DMin q1": "lblSurfacesExposedMinQ1NormalCabin",
+            "Surfaces (Window panes exposed to sun radiation) DMin q2": "lblSurfacesExposedMinQ2NormalCabin",
+            "Surfaces (Window panes not exposed to sun radiation) DMax q1": "lblSurfacesNotExposedMaxQ1NormalCabin",
+            "Surfaces (Window panes not exposed to sun radiation) DMax q2": "lblSurfacesNotExposedMaxQ2NormalCabin",
+            "Surfaces (Window panes not exposed to sun radiation) DMin q1": "lblSurfacesNotExposedMinQ1NormalCabin",
+            "Surfaces (Window panes not exposed to sun radiation) DMin q2": "lblSurfacesNotExposedMinQ2NormalCabin",
             "Surfaces (Window frame) q1": "lblSurfacesFrameQ1NormalCabin",
             "Surfaces (Window frame) q2": "lblSurfacesFrameQ2NormalCabin",
-            # Extended values
-            "Tim q1 Extended": "lblTim1ExtendedCabin",
-            "Tim q2 Extended": "lblTim2ExtendedCabin",
-            "Horizontal gradient q1 Extended": "lblHGradient1ExtendedCabin",
-            "Horizontal gradient q2 Extended": "lblHGradient2ExtendedCabin",
-            "Vertical gradient seated q1 Extended": "lblVGradientSeated1ExtendedCabin",
-            "Vertical gradient seated q2 Extended": "lblVGradientSeated2ExtendedCabin",
-            "Vertical gradient seated (Foot warmest) q1 Extended": "lblVGradientSeatedFoot1ExtendedCabin",
-            "Vertical gradient seated (Foot warmest) q2 Extended": "lblVGradientSeatedFoot2ExtendedCabin",
-            "Vertical gradient stand q1 Extended": "lblVGradientStand1ExtendedCabin",
-            "Vertical gradient stand q2 Extended": "lblVGradientStand2ExtendedCabin",
-            "Vertical gradient stand (Foot warmest) q1 Extended": "lblVGradientStandFoot1ExtendedCabin",
-            "Vertical gradient stand (Foot warmest) q2 Extended": "lblVGradientStandFoot2ExtendedCabin",
-            "Vertical minimun temperature Extended": "lblVMinimumTempExtendedCabin",
-            "Surfaces (Walls) ΔMax q1 Extended": "lblSurfaceWallsMaxQ1ExtendedCabin",
-            "Surfaces (Walls) ΔMax q2 Extended": "lblSurfaceWallsMaxQ2ExtendedCabin",
-            "Surfaces (Walls) ΔMin q1 Extended": "lblSurfaceWallsMinQ1ExtendedCabin",
-            "Surfaces (Walls) ΔMin q2 Extended": "lblSurfaceWallsMinQ2ExtendedCabin",
-            "Surfaces (ceilings) ΔMax q1 Extended": "lblSurfaceCeilingsMaxQ1ExtendedCabin",
-            "Surfaces (ceilings) ΔMax q2 Extended": "lblSurfaceCeilingsMaxQ2ExtendedCabin",
-            "Surfaces (ceilings) ΔMin q1 Extended": "lblSurfaceCeilingsMinQ1ExtendedCabin",
-            "Surfaces (ceilings) ΔMin q2 Extended": "lblSurfaceCeilingsMinQ2ExtendedCabin",
-            "Surfaces (Window panes exposed to sun radiation) ΔMax q1 Extended": "lblSurfacesExposedMaxQ1ExtendedCabin",
-            "Surfaces (Window panes exposed to sun radiation) ΔMax q2 Extended": "lblSurfacesExposedMaxQ2ExtendedCabin",
-            "Surfaces (Window panes exposed to sun radiation) ΔMin q1 Extended": "lblSurfacesExposedMinQ1ExtendedCabin",
-            "Surfaces (Window panes exposed to sun radiation) ΔMin q2 Extended": "lblSurfacesExposedMinQ2ExtendedCabin",
-            "Surfaces (Window panes not exposed to sun radiation) ΔMax q1 Extended": "lblSurfacesNotExposedMaxQ1ExtendedCabin",
-            "Surfaces (Window panes not exposed to sun radiation) ΔMax q2 Extended": "lblSurfacesNotExposedMaxQ2ExtendedCabin",
-            "Surfaces (Window panes not exposed to sun radiation) ΔMin q1 Extended": "lblSurfacesNotExposedMinQ1ExtendedCabin",
-            "Surfaces (Window panes not exposed to sun radiation) ΔMin q2 Extended": "lblSurfacesNotExposedMinQ2ExtendedCabin",
-            "Surfaces (Window frame) q1 Extended": "lblSurfacesFrameQ1ExtendedCabin",
-            "Surfaces (Window frame) q2 Extended": "lblSurfacesFrameQ2ExtendedCabin",
+          
         }
 
         for key, value in cabin_criteria.items():
