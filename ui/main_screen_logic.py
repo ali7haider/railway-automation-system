@@ -914,7 +914,8 @@ class MasterScreen(QtWidgets.QMainWindow):
         if not saloon_criteria:
             print("No Saloon Criteria data available.")
             return
-        print(saloon_criteria)
+        if not hasattr(self, 'default_saloon_extended_criteria_values'):
+            self.default_saloon_extended_criteria_values = {}  # Initialize if not already present
         saloon_label_map = {
             
                 # Add additional mappings here as needed
@@ -959,16 +960,16 @@ class MasterScreen(QtWidgets.QMainWindow):
             print("Key: ", key)
             label_name = saloon_label_map.get(key)
             if label_name and hasattr(self, label_name):
+                self.default_saloon_extended_criteria_values[key] = formatted_value
                 getattr(self, label_name).setText(formatted_value)
-            else:
-                print(f"Warning: No UI label found for {key}")
 
     def update_saloon_labels_normal(self, saloon_criteria):
         """Update the UI labels with saloon criteria values."""
         if not saloon_criteria:
             print("No Saloon Criteria data available.")
             return
-        
+        if not hasattr(self, 'default_saloon_normal_criteria_values'):
+            self.default_saloon_normal_criteria_values = {}  # Initialize if not already present
         saloon_label_map = {
                 "Tim q1": "lblTim1NormalSaloon",
                 "Tim q2": "lblTim2NormalSaloon",
@@ -1010,6 +1011,8 @@ class MasterScreen(QtWidgets.QMainWindow):
             # Get the corresponding label name from the dictionary
             label_name = saloon_label_map.get(key)
             if label_name and hasattr(self, label_name):
+                # Store the default value in the dictionary
+                self.default_saloon_normal_criteria_values[key] = formatted_value
                 getattr(self, label_name).setText(formatted_value)
     
 
@@ -1021,6 +1024,8 @@ class MasterScreen(QtWidgets.QMainWindow):
         if not cabin_criteria:
             print("No Cabin Criteria data available.")
             return
+        if not hasattr(self, 'default_cabin_extended_criteria_values'):
+            self.default_cabin_extended_criteria_values = {}  # Initialize if not already present
         cabin_label_map = {
           
             # Extended values
@@ -1064,14 +1069,16 @@ class MasterScreen(QtWidgets.QMainWindow):
             label_name = cabin_label_map.get(key)
 
             if label_name and hasattr(self, label_name):
+                self.default_cabin_extended_criteria_values[key] = formatted_value
+
                 getattr(self, label_name).setText(formatted_value)
-            else:
-                print(f"Warning: No UI label found for {key}")
     def update_cabin_labels_normal(self, cabin_criteria):
         """Update the UI labels with cabin criteria values."""
         if not cabin_criteria:
             print("No Cabin Criteria data available.")
             return
+        if not hasattr(self, 'default_cabin_normal_criteria_values'):
+            self.default_cabin_normal_criteria_values = {}  # Initialize if not already present 
         cabin_label_map = {
             "Tim q1": "lblTim1NormalCabin",
             "Tim q2": "lblTim2NormalCabin",
@@ -1114,9 +1121,8 @@ class MasterScreen(QtWidgets.QMainWindow):
             label_name = cabin_label_map.get(key)
 
             if label_name and hasattr(self, label_name):
+                self.default_cabin_normal_criteria_values[key] = formatted_value
                 getattr(self, label_name).setText(formatted_value)
-            else:
-                print(f"Warning: No UI label found for {key}")
 
 
        
