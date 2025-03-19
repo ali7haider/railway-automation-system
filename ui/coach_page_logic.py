@@ -142,14 +142,11 @@ class CoachPageManager:
     def save_current_coach_inputs(self, index):
         """Saves the current inputs for the given coach index."""
         try:
-            print(f"Saving inputs for Coach {index + 1}...")
             if index in self.coach_inputs:
                 for label_name, line_edit in self.coach_inputs[index].items():
                     widget = self.parent.findChild(QLineEdit, label_name)
                     if widget:  # If QLineEdit exists, save as tuple (object name, text)
                         self.coach_inputs[index][label_name] = (widget.objectName(), widget.text())
-                        print(f"Saved: {label_name} -> ({widget.objectName()}, '{widget.text()}')")
-            print(f"Inputs for Coach {index + 1} saved successfully.")
         except Exception as e:
             print(f"An error occurred while saving inputs for Coach {index + 1}: {e}")
 
@@ -157,30 +154,16 @@ class CoachPageManager:
     def load_coach_inputs(self, index):
         """Loads the saved inputs for the given coach index into the UI."""
         try:
-            print(f"Loading inputs for Coach {index + 1}...")
             if index in self.coach_inputs:
                 for label_name, (object_name, saved_text) in self.coach_inputs[index].items():
                     widget = self.parent.findChild(QLineEdit, object_name)
                     if widget:  # If QLineEdit exists, set its text
                         widget.setText(saved_text)
                         print(f"Loaded: {label_name} -> {saved_text}")
-            print(f"Inputs for Coach {index + 1} loaded successfully.")
         except Exception as e:
             print(f"An error occurred while loading inputs for Coach {index + 1}: {e}")
 
 
-    def find_line_edit(self, label_name):
-        """Finds the QLineEdit by name in the current UI."""
-        for frame in [self.parent.frameAreaLabels, self.parent.frameAreaLabels_2]:
-            layout = frame.layout()
-            if layout is not None:
-                for i in range(layout.count()):
-                    item = layout.itemAt(i)
-                    if isinstance(item, QHBoxLayout):
-                        line_edit = item.itemAt(1).widget()  # Assuming it's QLabel + QLineEdit
-                        if isinstance(line_edit, QLineEdit) and line_edit.objectName() == label_name:
-                            return line_edit
-        return None
 
 
 
