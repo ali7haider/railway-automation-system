@@ -2120,7 +2120,7 @@ background-color:#1159A8;
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>1</number>
+                      <number>2</number>
                      </property>
                      <widget class="QWidget" name="projectPage">
                       <property name="acceptDrops">
@@ -2232,7 +2232,7 @@ font-weight:bold;</string>
                                  <rect>
                                   <x>0</x>
                                   <y>0</y>
-                                  <width>714</width>
+                                  <width>985</width>
                                   <height>1973</height>
                                  </rect>
                                 </property>
@@ -3678,9 +3678,9 @@ font-weight:bold;</string>
                        </item>
                       </layout>
                      </widget>
-                     <widget class="QWidget" name="widgets">
+                     <widget class="QWidget" name="criteriaPage">
                       <property name="styleSheet">
-                       <string notr="true">b</string>
+                       <string notr="true"/>
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout">
                        <property name="spacing">
@@ -3780,9 +3780,9 @@ font-weight:bold;</string>
                             <widget class="QWidget" name="scrollAreaWidgetContents">
                              <property name="geometry">
                               <rect>
-                               <x>0</x>
-                               <y>0</y>
-                               <width>1509</width>
+                               <x>-495</x>
+                               <y>-421</y>
+                               <width>1513</width>
                                <height>1140</height>
                               </rect>
                              </property>
@@ -3975,14 +3975,14 @@ font-weight:bold;</string>
                                     <item row="17" column="0">
                                      <widget class="QLabel" name="label_42">
                                       <property name="text">
-                                       <string>Surfaces (Walls) I'Min q1</string>
+                                       <string>Surfaces (Walls) ΔMin q1</string>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="18" column="0">
                                      <widget class="QLabel" name="label_49">
                                       <property name="text">
-                                       <string>Surfaces (Walls) I'Min q2</string>
+                                       <string>Surfaces (Walls) ΔMin q2</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -4045,7 +4045,7 @@ font-weight:bold;</string>
                                     <item row="15" column="0">
                                      <widget class="QLabel" name="label_131">
                                       <property name="text">
-                                       <string>Surfaces (Walls) I'Max q1</string>
+                                       <string>Surfaces (Walls) ΔMax q1</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -4108,7 +4108,7 @@ font-weight:bold;</string>
                                     <item row="16" column="0">
                                      <widget class="QLabel" name="label_132">
                                       <property name="text">
-                                       <string>Surfaces (Walls) I'Max q2</string>
+                                       <string>Surfaces (Walls) ΔMax q2</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -4150,7 +4150,7 @@ font-weight:bold;</string>
                                     <item row="19" column="0">
                                      <widget class="QLabel" name="label_45">
                                       <property name="text">
-                                       <string>Surfaces (ceilings) I'Max q1</string>
+                                       <string>Surfaces (ceilings) ΔMax q1</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -4164,7 +4164,7 @@ font-weight:bold;</string>
                                     <item row="24" column="0">
                                      <widget class="QLabel" name="label_151">
                                       <property name="text">
-                                       <string>Surfaces (Window panes exposed to sun radiation) I'Max q2</string>
+                                       <string>Surfaces (Window panes exposed to sun radiation) ΔMax q2</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -4178,7 +4178,7 @@ font-weight:bold;</string>
                                     <item row="23" column="0">
                                      <widget class="QLabel" name="label_153">
                                       <property name="text">
-                                       <string>Surfaces (Window panes exposed to sun radiation) I'Max q1</string>
+                                       <string>Surfaces (Window panes exposed to sun radiation) ΔMax q1</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -4192,14 +4192,14 @@ font-weight:bold;</string>
                                     <item row="22" column="0">
                                      <widget class="QLabel" name="label_154">
                                       <property name="text">
-                                       <string>Surfaces (ceilings) I'Min q2</string>
+                                       <string>Surfaces (ceilings) ΔMin q2</string>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="27" column="0">
                                      <widget class="QLabel" name="label_158">
                                       <property name="text">
-                                       <string>Surfaces (Window panes not exposed to sun radiation) I'Max q1</string>
+                                       <string>Surfaces (Window panes not exposed to sun radiation) ΔMax q1</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -4220,7 +4220,7 @@ font-weight:bold;</string>
                                     <item row="21" column="0">
                                      <widget class="QLabel" name="label_155">
                                       <property name="text">
-                                       <string>Surfaces (ceilings) I'Min q1</string>
+                                       <string>Surfaces (ceilings) ΔMin q1</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -4234,14 +4234,14 @@ font-weight:bold;</string>
                                     <item row="20" column="0">
                                      <widget class="QLabel" name="label_152">
                                       <property name="text">
-                                       <string>Surfaces (ceilings) [&quot;Max q2</string>
+                                       <string>Surfaces (ceilings) ΔMax q2</string>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="25" column="0">
                                      <widget class="QLabel" name="label_156">
                                       <property name="text">
-                                       <string>Surfaces (Window panes exposed to sun radiation) I'Min q1</string>
+                                       <string>Surfaces (Window panes exposed to sun radiation) ΔMin q1</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -4255,14 +4255,14 @@ font-weight:bold;</string>
                                     <item row="26" column="0">
                                      <widget class="QLabel" name="label_159">
                                       <property name="text">
-                                       <string>Surfaces (Window panes exposed to sun radiation) I'Min q2</string>
+                                       <string>Surfaces (Window panes exposed to sun radiation) ΔMin q2</string>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="28" column="0">
                                      <widget class="QLabel" name="label_160">
                                       <property name="text">
-                                       <string>Surfaces (Window panes not exposed to sun radiation) I'Max q2</string>
+                                       <string>Surfaces (Window panes not exposed to sun radiation) ΔMax q2</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -4283,14 +4283,14 @@ font-weight:bold;</string>
                                     <item row="29" column="0">
                                      <widget class="QLabel" name="label_157">
                                       <property name="text">
-                                       <string>Surfaces (Window panes not exposed to sun radiation) I'Min q1</string>
+                                       <string>Surfaces (Window panes not exposed to sun radiation) ΔMin q1</string>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="30" column="0">
                                      <widget class="QLabel" name="label_162">
                                       <property name="text">
-                                       <string>Surfaces (Window panes not exposed to sun radiation) I'Min q2</string>
+                                       <string>Surfaces (Window panes not exposed to sun radiation) ΔMin q2</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -5007,14 +5007,14 @@ font-weight:bold;</string>
                                     <item row="16" column="0">
                                      <widget class="QLabel" name="label_210">
                                       <property name="text">
-                                       <string>Surfaces (Walls) I'Max q2</string>
+                                       <string>Surfaces (Walls) ΔMax q2</string>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="15" column="0">
                                      <widget class="QLabel" name="label_209">
                                       <property name="text">
-                                       <string>Surfaces (Walls) I'Max q1</string>
+                                       <string>Surfaces (Walls) ΔMax q1</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -5035,77 +5035,77 @@ font-weight:bold;</string>
                                     <item row="23" column="0">
                                      <widget class="QLabel" name="label_212">
                                       <property name="text">
-                                       <string>Surfaces (Window panes exposed to sun radiation) I'Max q1</string>
+                                       <string>Surfaces (Window panes exposed to sun radiation) ΔMax q1</string>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="29" column="0">
                                      <widget class="QLabel" name="label_211">
                                       <property name="text">
-                                       <string>Surfaces (Window panes not exposed to sun radiation) I'Min q1</string>
+                                       <string>Surfaces (Window panes not exposed to sun radiation) ΔMin q1</string>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="25" column="0">
                                      <widget class="QLabel" name="label_215">
                                       <property name="text">
-                                       <string>Surfaces (Window panes exposed to sun radiation) I'Min q1</string>
+                                       <string>Surfaces (Window panes exposed to sun radiation) ΔMin q1</string>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="24" column="0">
                                      <widget class="QLabel" name="label_213">
                                       <property name="text">
-                                       <string>Surfaces (Window panes exposed to sun radiation) I'Max q2</string>
+                                       <string>Surfaces (Window panes exposed to sun radiation) ΔMax q2</string>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="20" column="0">
                                      <widget class="QLabel" name="label_214">
                                       <property name="text">
-                                       <string>Surfaces (ceilings) [&quot;Max q2</string>
+                                       <string>Surfaces (ceilings) ΔMax q2</string>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="22" column="0">
                                      <widget class="QLabel" name="label_216">
                                       <property name="text">
-                                       <string>Surfaces (ceilings) I'Min q2</string>
+                                       <string>Surfaces (ceilings) ΔMin q2</string>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="27" column="0">
                                      <widget class="QLabel" name="label_218">
                                       <property name="text">
-                                       <string>Surfaces (Window panes not exposed to sun radiation) I'Max q1</string>
+                                       <string>Surfaces (Window panes not exposed to sun radiation) ΔMax q1</string>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="28" column="0">
                                      <widget class="QLabel" name="label_219">
                                       <property name="text">
-                                       <string>Surfaces (Window panes not exposed to sun radiation) I'Max q2</string>
+                                       <string>Surfaces (Window panes not exposed to sun radiation) ΔMax q2</string>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="21" column="0">
                                      <widget class="QLabel" name="label_217">
                                       <property name="text">
-                                       <string>Surfaces (ceilings) I'Min q1</string>
+                                       <string>Surfaces (ceilings) ΔMin q1</string>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="30" column="0">
                                      <widget class="QLabel" name="label_222">
                                       <property name="text">
-                                       <string>Surfaces (Window panes not exposed to sun radiation) I'Min q2</string>
+                                       <string>Surfaces (Window panes not exposed to sun radiation) ΔMin q2</string>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="26" column="0">
                                      <widget class="QLabel" name="label_220">
                                       <property name="text">
-                                       <string>Surfaces (Window panes exposed to sun radiation) I'Min q2</string>
+                                       <string>Surfaces (Window panes exposed to sun radiation) ΔMin q2</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -5119,14 +5119,14 @@ font-weight:bold;</string>
                                     <item row="18" column="0">
                                      <widget class="QLabel" name="label_223">
                                       <property name="text">
-                                       <string>Surfaces (Walls) I'Min q2</string>
+                                       <string>Surfaces (Walls) ΔMin q2</string>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="19" column="0">
                                      <widget class="QLabel" name="label_134">
                                       <property name="text">
-                                       <string>Surfaces (ceilings) I'Max q1</string>
+                                       <string>Surfaces (ceilings) ΔMax q1</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -5189,7 +5189,7 @@ font-weight:bold;</string>
                                     <item row="17" column="0">
                                      <widget class="QLabel" name="label_227">
                                       <property name="text">
-                                       <string>Surfaces (Walls) I'Min q1</string>
+                                       <string>Surfaces (Walls) ΔMin q1</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -5693,6 +5693,22 @@ font-weight:bold;</string>
                       </layout>
                      </widget>
                      <widget class="QWidget" name="MenuCompilerPage">
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton
+{
+background-color:#345CBF;
+color:white;
+border-radius:3px;
+font: 12pt &quot;Calibri&quot;;
+font-weight:bold;
+
+}
+QPushButton:hover
+{
+background-color:#1159A8;
+}
+</string>
+                      </property>
                       <layout class="QVBoxLayout" name="verticalLayout_20">
                        <item>
                         <widget class="QFrame" name="frame_14">
@@ -5702,13 +5718,13 @@ font-weight:bold;</string>
                          <property name="frameShadow">
                           <enum>QFrame::Raised</enum>
                          </property>
-                         <layout class="QHBoxLayout" name="horizontalLayout_15">
-                          <item alignment="Qt::AlignTop">
+                         <layout class="QVBoxLayout" name="verticalLayout_18">
+                          <item>
                            <widget class="QFrame" name="frame_15">
                             <property name="maximumSize">
                              <size>
-                              <width>220</width>
-                              <height>16777215</height>
+                              <width>16777215</width>
+                              <height>70</height>
                              </size>
                             </property>
                             <property name="frameShape">
@@ -5717,15 +5733,12 @@ font-weight:bold;</string>
                             <property name="frameShadow">
                              <enum>QFrame::Raised</enum>
                             </property>
-                            <layout class="QVBoxLayout" name="verticalLayout_26">
-                             <property name="spacing">
-                              <number>30</number>
-                             </property>
+                            <layout class="QHBoxLayout" name="horizontalLayout_12">
                              <property name="leftMargin">
                               <number>0</number>
                              </property>
                              <property name="topMargin">
-                              <number>20</number>
+                              <number>0</number>
                              </property>
                              <property name="rightMargin">
                               <number>0</number>
@@ -5734,129 +5747,57 @@ font-weight:bold;</string>
                               <number>0</number>
                              </property>
                              <item>
-                              <widget class="QPushButton" name="mainlaunch_add_button">
-                               <property name="minimumSize">
-                                <size>
-                                 <width>0</width>
-                                 <height>30</height>
-                                </size>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">background-color: rgb(52, 59, 72);</string>
-                               </property>
-                               <property name="text">
-                                <string>Launch Aç</string>
-                               </property>
-                              </widget>
-                             </item>
-                             <item>
-                              <widget class="QFrame" name="frame_18">
+                              <widget class="QFrame" name="frameCoaches_2">
                                <property name="frameShape">
                                 <enum>QFrame::StyledPanel</enum>
                                </property>
                                <property name="frameShadow">
                                 <enum>QFrame::Raised</enum>
                                </property>
-                               <layout class="QVBoxLayout" name="verticalLayout_28">
-                                <property name="spacing">
-                                 <number>15</number>
-                                </property>
-                                <property name="leftMargin">
-                                 <number>0</number>
-                                </property>
-                                <property name="topMargin">
-                                 <number>20</number>
-                                </property>
-                                <property name="rightMargin">
-                                 <number>0</number>
-                                </property>
-                                <property name="bottomMargin">
-                                 <number>0</number>
-                                </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QFrame" name="frame_18">
+                               <property name="maximumSize">
+                                <size>
+                                 <width>280</width>
+                                 <height>16777215</height>
+                                </size>
+                               </property>
+                               <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QHBoxLayout" name="horizontalLayout_13">
                                 <item>
-                                 <widget class="QPushButton" name="openmanifest_add_button">
+                                 <widget class="QPushButton" name="btnCabin1">
                                   <property name="minimumSize">
                                    <size>
                                     <width>0</width>
-                                    <height>30</height>
+                                    <height>35</height>
                                    </size>
                                   </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">background-color: rgb(52, 59, 72);</string>
-                                  </property>
                                   <property name="text">
-                                   <string>Manifest Aç</string>
+                                   <string>Cabin 1</string>
                                   </property>
                                  </widget>
                                 </item>
                                 <item>
-                                 <widget class="QPushButton" name="decompilenondex_button">
+                                 <widget class="QPushButton" name="btnCabin2">
                                   <property name="minimumSize">
                                    <size>
                                     <width>0</width>
-                                    <height>30</height>
+                                    <height>35</height>
                                    </size>
                                   </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">background-color: rgb(52, 59, 72);</string>
-                                  </property>
                                   <property name="text">
-                                   <string>DecompileNon Dex</string>
-                                  </property>
-                                 </widget>
-                                </item>
-                                <item>
-                                 <widget class="QPushButton" name="updateradd_button">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>0</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">background-color: rgb(52, 59, 72);</string>
-                                  </property>
-                                  <property name="text">
-                                   <string>Updater Add</string>
-                                  </property>
-                                 </widget>
-                                </item>
-                                <item>
-                                 <widget class="QPushButton" name="protectapk_button">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>0</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">background-color: rgb(52, 59, 72);</string>
-                                  </property>
-                                  <property name="text">
-                                   <string>Protect APK</string>
+                                   <string>Cabin 2</string>
                                   </property>
                                  </widget>
                                 </item>
                                </layout>
-                              </widget>
-                             </item>
-                             <item>
-                              <widget class="QPushButton" name="drop_buttonMenu">
-                               <property name="minimumSize">
-                                <size>
-                                 <width>0</width>
-                                 <height>170</height>
-                                </size>
-                               </property>
-                               <property name="acceptDrops">
-                                <bool>true</bool>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">background-color: rgb(52, 59, 72);</string>
-                               </property>
-                               <property name="text">
-                                <string>Auto Multiple Apk Function</string>
-                               </property>
                               </widget>
                              </item>
                             </layout>
@@ -5870,188 +5811,16 @@ font-weight:bold;</string>
                             <property name="frameShadow">
                              <enum>QFrame::Raised</enum>
                             </property>
-                            <layout class="QGridLayout" name="gridLayout_6">
-                             <property name="topMargin">
-                              <number>0</number>
-                             </property>
-                             <item row="1" column="0">
-                              <widget class="QTextEdit" name="log_text2">
-                               <property name="styleSheet">
-                                <string notr="true">QTextEdit { background-color: rgb(33, 37, 43); color: #ffc000; font-size: 12px; border-radius: 5px; border: 2px solid #292929; padding: 5px; } QTextEdit:focus { border: 2px solid #1e90ff; }</string>
-                               </property>
-                               <property name="readOnly">
-                                <bool>true</bool>
-                               </property>
-                              </widget>
-                             </item>
-                             <item row="1" column="1">
-                              <widget class="QTextEdit" name="log_text_2">
-                               <property name="styleSheet">
-                                <string notr="true">QTextEdit { background-color: rgb(33, 37, 43); color: #ffc000; font-size: 12px; border-radius: 5px; border: 2px solid #292929; padding: 5px; } QTextEdit:focus { border: 2px solid #1e90ff; }</string>
-                               </property>
-                               <property name="readOnly">
-                                <bool>true</bool>
-                               </property>
-                              </widget>
-                             </item>
-                             <item row="0" column="1" alignment="Qt::AlignRight">
-                              <widget class="QPushButton" name="clear_log_button_2">
-                               <property name="minimumSize">
-                                <size>
-                                 <width>120</width>
-                                 <height>30</height>
-                                </size>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">background-color: rgb(52, 59, 72);</string>
-                               </property>
-                               <property name="text">
-                                <string>Clear</string>
-                               </property>
-                              </widget>
-                             </item>
-                            </layout>
                            </widget>
                           </item>
                           <item>
                            <widget class="QFrame" name="frame_17">
-                            <property name="maximumSize">
-                             <size>
-                              <width>200</width>
-                              <height>16777215</height>
-                             </size>
-                            </property>
                             <property name="frameShape">
                              <enum>QFrame::StyledPanel</enum>
                             </property>
                             <property name="frameShadow">
                              <enum>QFrame::Raised</enum>
                             </property>
-                            <layout class="QVBoxLayout" name="verticalLayout_27">
-                             <item alignment="Qt::AlignTop">
-                              <widget class="QFrame" name="frame_19">
-                               <property name="frameShape">
-                                <enum>QFrame::StyledPanel</enum>
-                               </property>
-                               <property name="frameShadow">
-                                <enum>QFrame::Raised</enum>
-                               </property>
-                               <layout class="QVBoxLayout" name="verticalLayout_29">
-                                <property name="spacing">
-                                 <number>25</number>
-                                </property>
-                                <property name="leftMargin">
-                                 <number>0</number>
-                                </property>
-                                <property name="topMargin">
-                                 <number>20</number>
-                                </property>
-                                <property name="rightMargin">
-                                 <number>0</number>
-                                </property>
-                                <property name="bottomMargin">
-                                 <number>0</number>
-                                </property>
-                                <item>
-                                 <widget class="QPushButton" name="compile_apk_button">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>0</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">background-color: rgb(52, 59, 72);</string>
-                                  </property>
-                                  <property name="text">
-                                   <string>Apk Compile</string>
-                                  </property>
-                                 </widget>
-                                </item>
-                                <item>
-                                 <widget class="QPushButton" name="tfive_mod_button">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>0</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">background-color: rgb(52, 59, 72);</string>
-                                  </property>
-                                  <property name="text">
-                                   <string>Liteapks Ekle (T5)</string>
-                                  </property>
-                                 </widget>
-                                </item>
-                                <item>
-                                 <widget class="QPushButton" name="tfive2_mod_button">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>0</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">background-color: rgb(52, 59, 72);</string>
-                                  </property>
-                                  <property name="text">
-                                   <string>Liteapks Ekle (cpp)</string>
-                                  </property>
-                                 </widget>
-                                </item>
-                                <item>
-                                 <widget class="QPushButton" name="tfive23_mod_button">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>0</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">background-color: rgb(52, 59, 72);</string>
-                                  </property>
-                                  <property name="text">
-                                   <string>XAPK PASS</string>
-                                  </property>
-                                 </widget>
-                                </item>
-                                <item>
-                                 <widget class="QPushButton" name="signkill_button">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>0</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">background-color: rgb(52, 59, 72);</string>
-                                  </property>
-                                  <property name="text">
-                                   <string>Kill Sign APK</string>
-                                  </property>
-                                 </widget>
-                                </item>
-                                <item>
-                                 <widget class="QPushButton" name="autodump_button">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>0</width>
-                                    <height>30</height>
-                                   </size>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">background-color: rgb(52, 59, 72);</string>
-                                  </property>
-                                  <property name="text">
-                                   <string>Auto Dumper</string>
-                                  </property>
-                                 </widget>
-                                </item>
-                               </layout>
-                              </widget>
-                             </item>
-                            </layout>
                            </widget>
                           </item>
                          </layout>

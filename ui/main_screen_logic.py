@@ -64,7 +64,8 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.locked_custom_fields = set()
 
 
-            saving_manager = SavingProjectManager()
+            self.saving_manager = SavingProjectManager()
+            self.ProjectName=None
 
             self.stacked_widget = self.findChild(QStackedWidget, "stackedWidget")  # Match the object name in Qt Designer
         #     # Initialize individual pages
@@ -90,6 +91,8 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.btnReport.clicked.connect(self.show_multi_tool_menu)
             self.btnSensorList.clicked.connect(self.show_pairip_pass_menu)
             self.btnPlanning.clicked.connect(self.show_offset_leech_menu)
+
+            self.btnSave.clicked.connect(self.on_save_button_clicked)
 
 
 
@@ -197,6 +200,55 @@ class MasterScreen(QtWidgets.QMainWindow):
 
         except Exception as e:
             self.show_message_box("Error", f"Error loading UI: {str(e)}")
+    
+    def on_save_button_clicked(self):
+        """Triggered when btnSave is clicked. Collects all project details and passes them for saving."""
+        try:
+            # Check if Project Name is provided
+            project_name = self.txtNameProject.text().strip()
+            if not project_name:
+                QMessageBox.warning(self, "Missing Information", "Please enter the Project Name before saving.")
+                return
+
+            # Create the base structure for project information
+            self.ProjectName=project_name
+            project_data = {
+                "Project_info": {
+                    "Project Name": project_name,
+                    "Coach Builder": self.txtCoachBuilderProject.text(),
+                    "Customer/Operator": self.txtCustomerOperatorProject.text(),
+                    "Operation Country": self.cmbxOperationCountryProject.currentText(),
+                    "Type of Train": self.cmbxTypeOfTrainProject.currentText(),
+                    "Number of Coaches per Train": self.txtNCoachesPerTrainProject.text(),
+                    "Type of Compartment": self.cmbxCompartmentProject.currentText(),
+                    "Type of HVAC": self.cmbxTypesOfHVACProject.currentText(),
+                    "Maximum Speed": self.txtMaximumSpeedProject.text(),
+                    "Single/Double Deck": self.cmbxSigleDeckDoubleDeck.currentText(),
+                    "Standard Saloon": self.lblStandardSaloon.text() if self.lblStandardSaloon.isVisible() else self.cmbxStandardSaloon.currentText(),
+                    "Category Saloon": self.lblCategorySaloon.text(),
+                    "Standard Cabin": self.lblStandardCabin.text() if self.lblStandardCabin.isVisible() else self.cmbxStandardCabin.currentText(),
+                    "Category Cabin": self.lblCategoryCabin.text(),
+                    "Heat Transfer Saloon": self.lblHeatTransferSaloon.text(),
+                    "Heat Transfer Cabin": self.lblHeatTransferCabin.text(),
+                    "Cabin 1 Name": self.txtCabin1NameProject.text(),
+                    "Cabin 2 Name": self.txtCabin2NameProject.text(),
+                    "Coaches": {}
+                }
+            }
+
+            # Collect dynamically generated coach names
+            for index, widget in enumerate(self.coach_widgets):
+                coach_name = widget["input"].text().strip()
+                if coach_name:
+                    project_data["Project_info"]["Coaches"][f"Coach {index + 1}"] = coach_name
+
+            # Save using SavingProjectManager
+            self.saving_manager.save_project(project_data)
+            QMessageBox.information(self, "Success", f"Project '{project_name}' saved successfully.")
+
+        except Exception as e:
+            QMessageBox.critical(self, "Error", f"An error occurred while saving the project: {str(e)}")
+
     def open_custom_exterior_conditions_cabin(self):
         """Opens the Custom Exterior Conditions screen for the Cabin with properly formatted default values."""
         try:
