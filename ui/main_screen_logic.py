@@ -26,6 +26,7 @@ from modules.criteria_manager import CriteriaManager
 from modules.project_manager import ProjectManager  # Import ProjectManager
 from PyQt5.QtGui import QIntValidator, QMouseEvent
 
+from ui.coach_page_logic import CoachPageManager
 from ui.custom_exterior_cabin_logic import CustomExteriorConditionsCabinScreen
 from ui.custom_exterior_saloon_logic import CustomExteriorConditionsSaloonScreen
 from ui.custom_interior_conditions_logic import CustomInteriorConditionsScreen
@@ -65,7 +66,7 @@ class MasterScreen(QtWidgets.QMainWindow):
 
 
             self.saving_manager = SavingProjectManager()
-            self.ProjectName=None
+            self.ProjectName="Test"
 
             self.stacked_widget = self.findChild(QStackedWidget, "stackedWidget")  # Match the object name in Qt Designer
         #     # Initialize individual pages
@@ -77,6 +78,7 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.btnProjects,  # Replace with your actual button objects
             self.btnCriteria,
             self.btnTestList,
+            self.btnCoach,
             self.btnReport,
             self.btnProjects,
             self.btnSensorList,
@@ -85,15 +87,16 @@ class MasterScreen(QtWidgets.QMainWindow):
         ]
 
             # Assign menu button clicks
-            self.btnProjects.clicked.connect(self.show_config_system)
-            self.btnCriteria.clicked.connect(self.show_menu_compiler)
-            self.btnTestList.clicked.connect(self.show_game_update_menu)
+            self.btnProjects.clicked.connect(self.show_project_page)
+            self.btnCriteria.clicked.connect(self.show_criteria_page)
+            self.btnCoach.clicked.connect(self.show_coach_page)
             self.btnReport.clicked.connect(self.show_multi_tool_menu)
             self.btnSensorList.clicked.connect(self.show_pairip_pass_menu)
             self.btnPlanning.clicked.connect(self.show_offset_leech_menu)
 
             self.btnSave.clicked.connect(self.on_save_button_clicked)
 
+            self.coach_page_manager = CoachPageManager(self)
 
 
             # Define combo box - JSON file mapping
@@ -1013,7 +1016,6 @@ class MasterScreen(QtWidgets.QMainWindow):
             formatted_value = str(value) if value is not None else "N/A"
 
             # Get the corresponding label name from the dictionary
-            print("Key: ", key)
             label_name = saloon_label_map.get(key)
             if label_name and hasattr(self, label_name):
                 self.default_saloon_extended_criteria_values[key] = formatted_value
@@ -1643,13 +1645,21 @@ class MasterScreen(QtWidgets.QMainWindow):
         self.stackedWidget.setCurrentIndex(0)
 
 
-    def show_config_system(self):
+    def show_project_page(self):
         self.handleMenuClick(self.btnProjects, 0)
 
-    def show_menu_compiler(self):
+    def show_criteria_page(self):
         self.handleMenuClick(self.btnCriteria,1)
-    def show_game_update_menu(self):
-        self.handleMenuClick(self.btnTestList,3)
+    def show_coach_page(self):
+        self.handleMenuClick(self.btnCoach,2)
+
+        
+        # Load the project data
+        project_data = self.saving_manager.load_project(self.ProjectName)
+        # Pass the loaded data to the CoachPageManager
+        if project_data:
+            self.coach_page_manager.load_coach_data(project_data)
+
     def show_pairip_pass_menu(self):
         """Show the Pair IP Pass page."""
         self.handleMenuClick(self.btnSensorList, 4)

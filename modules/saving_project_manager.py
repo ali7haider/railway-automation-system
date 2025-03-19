@@ -70,6 +70,7 @@ class SavingProjectManager:
         except Exception as e:
             print(f"Error saving project: {e}")
 
+
     def load_project(self, project_name):
         """Load project data from an encrypted JSON file."""
         try:
@@ -86,7 +87,18 @@ class SavingProjectManager:
             if not decrypted_data:
                 raise Exception("Decryption failed. Data could not be loaded.")
 
-            return decrypted_data
+            # Convert decrypted JSON string to Python dictionary
+            project_data = json.loads(decrypted_data)
+            
+            if not isinstance(project_data, dict):
+                raise TypeError("Decrypted data is not a valid dictionary.")
+            
+            return project_data
+
+        except json.JSONDecodeError:
+            print("Error: Failed to decode the decrypted data as JSON.")
+            return None
         except Exception as e:
             print(f"Error loading project: {e}")
             return None
+

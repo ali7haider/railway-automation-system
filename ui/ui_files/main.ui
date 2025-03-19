@@ -5719,6 +5719,18 @@ background-color:#1159A8;
                           <enum>QFrame::Raised</enum>
                          </property>
                          <layout class="QVBoxLayout" name="verticalLayout_18">
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
                           <item>
                            <widget class="QFrame" name="frame_15">
                             <property name="maximumSize">
@@ -5726,6 +5738,11 @@ background-color:#1159A8;
                               <width>16777215</width>
                               <height>70</height>
                              </size>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">#frame_15{
+	border-bottom: 2px solid #DBDADD;
+}</string>
                             </property>
                             <property name="frameShape">
                              <enum>QFrame::StyledPanel</enum>
@@ -5747,13 +5764,14 @@ background-color:#1159A8;
                               <number>0</number>
                              </property>
                              <item>
-                              <widget class="QFrame" name="frameCoaches_2">
+                              <widget class="QFrame" name="frameCoachesButtons">
                                <property name="frameShape">
                                 <enum>QFrame::StyledPanel</enum>
                                </property>
                                <property name="frameShadow">
                                 <enum>QFrame::Raised</enum>
                                </property>
+                               <layout class="QHBoxLayout" name="horizontalLayout_14"/>
                               </widget>
                              </item>
                              <item>
@@ -5776,7 +5794,7 @@ background-color:#1159A8;
                                   <property name="minimumSize">
                                    <size>
                                     <width>0</width>
-                                    <height>35</height>
+                                    <height>32</height>
                                    </size>
                                   </property>
                                   <property name="text">
@@ -5789,7 +5807,7 @@ background-color:#1159A8;
                                   <property name="minimumSize">
                                    <size>
                                     <width>0</width>
-                                    <height>35</height>
+                                    <height>32</height>
                                    </size>
                                   </property>
                                   <property name="text">
