@@ -84,9 +84,9 @@ class CoachPageManager:
                     
                     self.parent.frameAreaLabels.layout().addLayout(row_layout)
 
-                    # Store the same QLineEdit object for ALL coaches
+                    # Store the QLineEdit as a tuple (object name, current text) for all coaches
                     for coach_index in range(total_coaches):
-                        self.coach_inputs[coach_index][label_name] = line_edit  
+                        self.coach_inputs[coach_index][label_name] = (line_edit.objectName(), line_edit.text())
 
                 # Adding labels and QLineEdits for frameAreaLabels_2
                 for label_name in self.area_labels_2:
@@ -104,15 +104,14 @@ class CoachPageManager:
                     
                     self.parent.frameAreaLabels_2.layout().addLayout(row_layout)
 
-                    # Store the same QLineEdit object for ALL coaches
+                    # Store the QLineEdit as a tuple (object name, current text) for all coaches
                     for coach_index in range(total_coaches):
-                        self.coach_inputs[coach_index][label_name] = line_edit  
+                        self.coach_inputs[coach_index][label_name] = (line_edit.objectName(), line_edit.text())
 
                 print("UI for coaches created successfully.")
 
         except Exception as e:
             print(f"An error occurred while initializing the coach UI: {e}")
-
 
 
     def on_coach_button_click(self, index):
@@ -126,7 +125,7 @@ class CoachPageManager:
             self.current_coach_index = index
 
             # Display stored inputs for the selected coach
-            self.update_coach_inputs(index)
+            self.load_coach_inputs(index)
             
             # Update the coach name label
             coaches = self.project_data.get("Coaches", {})
@@ -144,29 +143,30 @@ class CoachPageManager:
         """Saves the current inputs for the given coach index."""
         try:
             print(f"Saving inputs for Coach {index + 1}...")
-            print(self.coach_inputs)
             if index in self.coach_inputs:
                 for label_name, line_edit in self.coach_inputs[index].items():
-                    if isinstance(line_edit, QLineEdit):
-                        self.coach_inputs[index][label_name] = line_edit.text()  # Store QLineEdit text
+                    widget = self.parent.findChild(QLineEdit, label_name)
+                    if widget:  # If QLineEdit exists, save as tuple (object name, text)
+                        self.coach_inputs[index][label_name] = (widget.objectName(), widget.text())
+                        print(f"Saved: {label_name} -> ({widget.objectName()}, '{widget.text()}')")
             print(f"Inputs for Coach {index + 1} saved successfully.")
         except Exception as e:
             print(f"An error occurred while saving inputs for Coach {index + 1}: {e}")
 
 
-    def update_coach_inputs(self, index):
-        """Updates the UI with stored inputs for the given coach index."""
+    def load_coach_inputs(self, index):
+        """Loads the saved inputs for the given coach index into the UI."""
         try:
+            print(f"Loading inputs for Coach {index + 1}...")
             if index in self.coach_inputs:
-                inputs_dict = self.coach_inputs[index]
-                for label_name, saved_value in inputs_dict.items():
-                    if isinstance(saved_value, str):  # Restore only if it's a saved text value
-                        line_edit = self.find_line_edit(label_name)
-                        if line_edit:
-                            line_edit.setText(saved_value)
-            print(f"Inputs for Coach {index + 1} restored successfully.")
+                for label_name, (object_name, saved_text) in self.coach_inputs[index].items():
+                    widget = self.parent.findChild(QLineEdit, object_name)
+                    if widget:  # If QLineEdit exists, set its text
+                        widget.setText(saved_text)
+                        print(f"Loaded: {label_name} -> {saved_text}")
+            print(f"Inputs for Coach {index + 1} loaded successfully.")
         except Exception as e:
-            print(f"An error occurred while updating inputs for Coach {index + 1}: {e}")
+            print(f"An error occurred while loading inputs for Coach {index + 1}: {e}")
 
 
     def find_line_edit(self, label_name):
