@@ -881,7 +881,11 @@ font-weight:bold;</string>
                      <widget class="QLineEdit" name="txtAreaPerSide"/>
                     </item>
                     <item row="9" column="1" colspan="2">
-                     <widget class="QLineEdit" name="txtTotalArea"/>
+                     <widget class="QLineEdit" name="txtTotalArea">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="10" column="1" colspan="2">
                      <widget class="QLineEdit" name="txtGWindow"/>
@@ -899,7 +903,11 @@ font-weight:bold;</string>
                      <widget class="QLineEdit" name="txtTheta"/>
                     </item>
                     <item row="15" column="1" colspan="2">
-                     <widget class="QLineEdit" name="txtHWalls"/>
+                     <widget class="QLineEdit" name="txtHWalls">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                     <item row="16" column="1" colspan="2">
                      <widget class="QLineEdit" name="txtKD"/>
@@ -908,7 +916,11 @@ font-weight:bold;</string>
                      <widget class="QLineEdit" name="txtED"/>
                     </item>
                     <item row="18" column="1" colspan="2">
-                     <widget class="QLineEdit" name="txtHRoof"/>
+                     <widget class="QLineEdit" name="txtHRoof">
+                      <property name="readOnly">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </widget>

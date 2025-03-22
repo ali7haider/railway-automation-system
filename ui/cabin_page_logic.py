@@ -29,9 +29,36 @@ class CabinScreen(QtWidgets.QMainWindow):
             self.load_existing_values()
             self.btnUploadLayout.clicked.connect(lambda: self.upload_layout_image(self.cabin_index))
             self.btnSave.clicked.connect(self.save_custom_values)
+             # Connect textChanged signals to trigger area calculation
+            for field_name in ["txtCabinHeight", "txtCabinWidth", "txtCabinLengthFloor", "txtCabinLengthRoof", "txtWindowAngle"]:
+                widget = self.findChild(QtWidgets.QLineEdit, field_name)
+                if widget:
+                    widget.textChanged.connect(self.update_area_cabin)
+        
         except Exception as e:
             QtWidgets.QMessageBox.critical(self, "Error", f"Error loading Cabin UI: {str(e)}")
     
+   
+    def update_area_cabin(self):
+        try:
+            # Get the input values from the respective fields
+            H = float(self.txtCabinHeight.text()) if self.txtCabinHeight.text() else 0
+            W = float(self.txtCabinWidth.text()) if self.txtCabinWidth.text() else 0
+            Lfloor = float(self.txtCabinLengthFloor.text()) if self.txtCabinLengthFloor.text() else 0
+            Lroof = float(self.txtCabinLengthRoof.text()) if self.txtCabinLengthRoof.text() else 0
+            FrontWindowsAngle = float(self.txtWindowAngle.text()) if self.txtWindowAngle.text() else 0
+
+            # Convert angle to radians
+            angle_rad = math.radians(FrontWindowsAngle)
+            
+            # Calculate the Area cabin using the given formula
+            Area_cabin = (2 * H * Lroof) + (W * Lfloor) + (W * Lroof) + ((Lfloor - Lroof) * H) + (W * ((Lfloor - Lroof) / math.cos(angle_rad)))
+            
+            # Update the relevant field with the calculated area
+            self.txtTotalArea.setText(f"{Area_cabin:.2f}")
+        
+        except Exception as e:
+            print(f"Error calculating Area cabin: {e}")
     def save_custom_values(self):
         try:
             # Collect all current inputs into the dictionary

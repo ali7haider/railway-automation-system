@@ -1700,7 +1700,8 @@ class MasterScreen(QtWidgets.QMainWindow):
 
     def show_pairip_pass_menu(self):
         """Show the Pair IP Pass page."""
-        self.handleMenuClick(self.btnSensorList, 4)
+        self.handleMenuClick(self.btnSensorList, 3)
+
 
     def show_offset_leech_menu(self):
         """Show the Offset Leech page."""
