@@ -6894,16 +6894,11 @@ background-color:#8ED973;
                                           <item row="0" column="1">
                                            <widget class="QTableWidget" name="tableWidget_2">
                                             <property name="rowCount">
-                                             <number>5</number>
+                                             <number>0</number>
                                             </property>
                                             <property name="columnCount">
                                              <number>0</number>
                                             </property>
-                                            <row/>
-                                            <row/>
-                                            <row/>
-                                            <row/>
-                                            <row/>
                                            </widget>
                                           </item>
                                           <item row="0" column="0">

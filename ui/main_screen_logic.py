@@ -32,7 +32,8 @@ from ui.custom_exterior_cabin_logic import CustomExteriorConditionsCabinScreen
 from ui.custom_exterior_saloon_logic import CustomExteriorConditionsSaloonScreen
 from ui.custom_interior_conditions_logic import CustomInteriorConditionsScreen
 import re  # For regex-based extraction
-from modules.saving_project_manager import SavingProjectManager  # Add this line
+from modules.saving_project_manager import SavingProjectManager
+from ui.sensor_page_logic import SensorPageManager  # Add this line
 
 
 GLOBAL_STATE = False
@@ -99,6 +100,7 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.btnSave.clicked.connect(self.on_save_button_clicked)
 
             self.coach_page_manager = CoachPageManager(self)
+            self.sensor_page_manager = SensorPageManager(self)
 
             self.btnCabin1.clicked.connect(lambda: self.open_cabin_form(0))
             self.btnCabin2.clicked.connect(lambda: self.open_cabin_form(1))
@@ -1701,6 +1703,12 @@ class MasterScreen(QtWidgets.QMainWindow):
     def show_pairip_pass_menu(self):
         """Show the Pair IP Pass page."""
         self.handleMenuClick(self.btnSensorList, 3)
+
+        # Load the project data
+        project_data = self.saving_manager.load_project(self.ProjectName)
+        # Pass the loaded data to the CoachPageManager
+        if project_data:
+            self.sensor_page_manager.load_coach_data(project_data)
 
 
     def show_offset_leech_menu(self):
