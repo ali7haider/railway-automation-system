@@ -26,6 +26,7 @@ from modules.criteria_manager import CriteriaManager
 from modules.project_manager import ProjectManager  # Import ProjectManager
 from PyQt5.QtGui import QIntValidator, QMouseEvent
 
+from ui.cabin_page_logic import CabinScreen
 from ui.coach_page_logic import CoachPageManager
 from ui.custom_exterior_cabin_logic import CustomExteriorConditionsCabinScreen
 from ui.custom_exterior_saloon_logic import CustomExteriorConditionsSaloonScreen
@@ -97,6 +98,10 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.btnSave.clicked.connect(self.on_save_button_clicked)
 
             self.coach_page_manager = CoachPageManager(self)
+
+            self.btnCabin1.clicked.connect(lambda: self.open_cabin_form(1))
+            self.btnCabin2.clicked.connect(lambda: self.open_cabin_form(2))
+
 
 
             # Define combo box - JSON file mapping
@@ -204,6 +209,20 @@ class MasterScreen(QtWidgets.QMainWindow):
         except Exception as e:
             self.show_message_box("Error", f"Error loading UI: {str(e)}")
     
+    def open_cabin_form(self, cabin_index):
+        """Opens a new form for the specified cabin."""
+        try:
+            if cabin_index == 1:
+                self.cabin_form = CabinScreen(self, cabin_index)
+                self.cabin_form.setWindowTitle("Cabin 1 Configuration")
+            elif cabin_index == 2:
+                self.cabin_form = CabinScreen(self, cabin_index)
+                self.cabin_form.setWindowTitle("Cabin 2 Configuration")
+            
+            self.cabin_form.show()
+        except Exception as e:
+            print(f"An error occurred while opening the cabin form: {e}")
+
     def on_save_button_clicked(self):
         """Triggered when btnSave is clicked. Collects all project details and passes them for saving."""
         try:
