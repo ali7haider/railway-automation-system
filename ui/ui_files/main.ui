@@ -8,7 +8,7 @@
     <x>0</x>
     <y>0</y>
     <width>1071</width>
-    <height>872</height>
+    <height>866</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -232,7 +232,6 @@ Content App */
 QTableWidget */
 QTableWidget {	
 	background-color: #444;
-	padding: 5px;
 	border-radius: 8px;
 	gridline-color: #555;
     color: #FFF;
@@ -6550,19 +6549,23 @@ background-color:#8ED973;
                                       <property name="geometry">
                                        <rect>
                                         <x>0</x>
-                                        <y>0</y>
+                                        <y>-888</y>
                                         <width>925</width>
-                                        <height>2705</height>
+                                        <height>2352</height>
                                        </rect>
                                       </property>
                                       <property name="styleSheet">
-                                       <string notr="true">QFrame {
-    min-height: 260px; /* Set the desired minimum height */
-}</string>
+                                       <string notr="true"/>
                                       </property>
                                       <layout class="QGridLayout" name="gridLayout_21">
-                                       <item row="5" column="0">
+                                       <item row="6" column="0">
                                         <widget class="QFrame" name="frame_35">
+                                         <property name="minimumSize">
+                                          <size>
+                                           <width>0</width>
+                                           <height>250</height>
+                                          </size>
+                                         </property>
                                          <property name="frameShape">
                                           <enum>QFrame::StyledPanel</enum>
                                          </property>
@@ -6570,7 +6573,7 @@ background-color:#8ED973;
                                           <enum>QFrame::Sunken</enum>
                                          </property>
                                          <layout class="QGridLayout" name="gridLayout_14">
-                                          <item row="0" column="0">
+                                          <item row="1" column="0">
                                            <widget class="QPushButton" name="pushButton_6">
                                             <property name="minimumSize">
                                              <size>
@@ -6583,8 +6586,14 @@ background-color:#8ED973;
                                             </property>
                                            </widget>
                                           </item>
-                                          <item row="0" column="1">
-                                           <widget class="QTableWidget" name="tableWidget_5">
+                                          <item row="1" column="1">
+                                           <widget class="QTableWidget" name="tableCO2">
+                                            <property name="minimumSize">
+                                             <size>
+                                              <width>0</width>
+                                              <height>0</height>
+                                             </size>
+                                            </property>
                                             <property name="rowCount">
                                              <number>0</number>
                                             </property>
@@ -6593,11 +6602,31 @@ background-color:#8ED973;
                                             </property>
                                            </widget>
                                           </item>
+                                          <item row="0" column="0" colspan="2">
+                                           <widget class="QLabel" name="label_74">
+                                            <property name="styleSheet">
+                                             <string notr="true">font: 12pt &quot;Calibri&quot;;
+font-weight:bold;</string>
+                                            </property>
+                                            <property name="text">
+                                             <string>CO2 sensor (CO2)</string>
+                                            </property>
+                                            <property name="alignment">
+                                             <set>Qt::AlignCenter</set>
+                                            </property>
+                                           </widget>
+                                          </item>
                                          </layout>
                                         </widget>
                                        </item>
-                                       <item row="6" column="0">
+                                       <item row="7" column="0">
                                         <widget class="QFrame" name="frame_34">
+                                         <property name="minimumSize">
+                                          <size>
+                                           <width>0</width>
+                                           <height>250</height>
+                                          </size>
+                                         </property>
                                          <property name="frameShape">
                                           <enum>QFrame::StyledPanel</enum>
                                          </property>
@@ -6605,7 +6634,7 @@ background-color:#8ED973;
                                           <enum>QFrame::Sunken</enum>
                                          </property>
                                          <layout class="QGridLayout" name="gridLayout_15">
-                                          <item row="0" column="0">
+                                          <item row="1" column="0">
                                            <widget class="QPushButton" name="pushButton_7">
                                             <property name="minimumSize">
                                              <size>
@@ -6618,8 +6647,14 @@ background-color:#8ED973;
                                             </property>
                                            </widget>
                                           </item>
-                                          <item row="0" column="1">
-                                           <widget class="QTableWidget" name="tableWidget_6">
+                                          <item row="1" column="1">
+                                           <widget class="QTableWidget" name="tableDP">
+                                            <property name="minimumSize">
+                                             <size>
+                                              <width>0</width>
+                                              <height>0</height>
+                                             </size>
+                                            </property>
                                             <property name="rowCount">
                                              <number>0</number>
                                             </property>
@@ -6628,10 +6663,24 @@ background-color:#8ED973;
                                             </property>
                                            </widget>
                                           </item>
+                                          <item row="0" column="0" colspan="2">
+                                           <widget class="QLabel" name="label_76">
+                                            <property name="styleSheet">
+                                             <string notr="true">font: 12pt &quot;Calibri&quot;;
+font-weight:bold;</string>
+                                            </property>
+                                            <property name="text">
+                                             <string>Differential pressure sensor (DP)</string>
+                                            </property>
+                                            <property name="alignment">
+                                             <set>Qt::AlignCenter</set>
+                                            </property>
+                                           </widget>
+                                          </item>
                                          </layout>
                                         </widget>
                                        </item>
-                                       <item row="7" column="0">
+                                       <item row="8" column="0">
                                         <widget class="QFrame" name="frame_33">
                                          <property name="frameShape">
                                           <enum>QFrame::StyledPanel</enum>
@@ -6640,7 +6689,7 @@ background-color:#8ED973;
                                           <enum>QFrame::Sunken</enum>
                                          </property>
                                          <layout class="QGridLayout" name="gridLayout_20">
-                                          <item row="0" column="0">
+                                          <item row="1" column="0">
                                            <widget class="QPushButton" name="pushButton_8">
                                             <property name="minimumSize">
                                              <size>
@@ -6653,8 +6702,14 @@ background-color:#8ED973;
                                             </property>
                                            </widget>
                                           </item>
-                                          <item row="0" column="1">
-                                           <widget class="QTableWidget" name="tableWidget_7">
+                                          <item row="1" column="1">
+                                           <widget class="QTableWidget" name="tableP">
+                                            <property name="minimumSize">
+                                             <size>
+                                              <width>0</width>
+                                              <height>0</height>
+                                             </size>
+                                            </property>
                                             <property name="rowCount">
                                              <number>0</number>
                                             </property>
@@ -6663,11 +6718,31 @@ background-color:#8ED973;
                                             </property>
                                            </widget>
                                           </item>
+                                          <item row="0" column="0" colspan="2">
+                                           <widget class="QLabel" name="label_90">
+                                            <property name="styleSheet">
+                                             <string notr="true">font: 12pt &quot;Calibri&quot;;
+font-weight:bold;</string>
+                                            </property>
+                                            <property name="text">
+                                             <string>Power sensor (P)</string>
+                                            </property>
+                                            <property name="alignment">
+                                             <set>Qt::AlignCenter</set>
+                                            </property>
+                                           </widget>
+                                          </item>
                                          </layout>
                                         </widget>
                                        </item>
-                                       <item row="8" column="0">
+                                       <item row="9" column="0">
                                         <widget class="QFrame" name="frame_32">
+                                         <property name="minimumSize">
+                                          <size>
+                                           <width>0</width>
+                                           <height>250</height>
+                                          </size>
+                                         </property>
                                          <property name="frameShape">
                                           <enum>QFrame::StyledPanel</enum>
                                          </property>
@@ -6675,8 +6750,24 @@ background-color:#8ED973;
                                           <enum>QFrame::Sunken</enum>
                                          </property>
                                          <layout class="QGridLayout" name="gridLayout_18">
-                                          <item row="0" column="0">
-                                           <widget class="QPushButton" name="pushButton_9">
+                                          <item row="1" column="1">
+                                           <widget class="QTableWidget" name="tableOTH">
+                                            <property name="minimumSize">
+                                             <size>
+                                              <width>0</width>
+                                              <height>0</height>
+                                             </size>
+                                            </property>
+                                            <property name="rowCount">
+                                             <number>0</number>
+                                            </property>
+                                            <property name="columnCount">
+                                             <number>0</number>
+                                            </property>
+                                           </widget>
+                                          </item>
+                                          <item row="1" column="0">
+                                           <widget class="QPushButton" name="btn">
                                             <property name="minimumSize">
                                              <size>
                                               <width>120</width>
@@ -6688,21 +6779,31 @@ background-color:#8ED973;
                                             </property>
                                            </widget>
                                           </item>
-                                          <item row="0" column="1">
-                                           <widget class="QTableWidget" name="tableWidget_8">
-                                            <property name="rowCount">
-                                             <number>0</number>
+                                          <item row="0" column="0" colspan="2">
+                                           <widget class="QLabel" name="label_93">
+                                            <property name="styleSheet">
+                                             <string notr="true">font: 12pt &quot;Calibri&quot;;
+font-weight:bold;</string>
                                             </property>
-                                            <property name="columnCount">
-                                             <number>0</number>
+                                            <property name="text">
+                                             <string>Other sensor (OTH)</string>
+                                            </property>
+                                            <property name="alignment">
+                                             <set>Qt::AlignCenter</set>
                                             </property>
                                            </widget>
                                           </item>
                                          </layout>
                                         </widget>
                                        </item>
-                                       <item row="9" column="0">
+                                       <item row="10" column="0">
                                         <widget class="QFrame" name="frame_31">
+                                         <property name="minimumSize">
+                                          <size>
+                                           <width>0</width>
+                                           <height>250</height>
+                                          </size>
+                                         </property>
                                          <property name="frameShape">
                                           <enum>QFrame::StyledPanel</enum>
                                          </property>
@@ -6710,7 +6811,7 @@ background-color:#8ED973;
                                           <enum>QFrame::Sunken</enum>
                                          </property>
                                          <layout class="QGridLayout" name="gridLayout_17">
-                                          <item row="0" column="0">
+                                          <item row="1" column="0">
                                            <widget class="QPushButton" name="pushButton_10">
                                             <property name="minimumSize">
                                              <size>
@@ -6723,43 +6824,14 @@ background-color:#8ED973;
                                             </property>
                                            </widget>
                                           </item>
-                                          <item row="0" column="1">
-                                           <widget class="QTableWidget" name="tableWidget_9">
-                                            <property name="rowCount">
-                                             <number>0</number>
-                                            </property>
-                                            <property name="columnCount">
-                                             <number>0</number>
-                                            </property>
-                                           </widget>
-                                          </item>
-                                         </layout>
-                                        </widget>
-                                       </item>
-                                       <item row="10" column="0">
-                                        <widget class="QFrame" name="frame_27">
-                                         <property name="frameShape">
-                                          <enum>QFrame::StyledPanel</enum>
-                                         </property>
-                                         <property name="frameShadow">
-                                          <enum>QFrame::Sunken</enum>
-                                         </property>
-                                         <layout class="QGridLayout" name="gridLayout_16">
-                                          <item row="0" column="0">
-                                           <widget class="QPushButton" name="pushButton_11">
+                                          <item row="1" column="1">
+                                           <widget class="QTableWidget" name="tableVAR">
                                             <property name="minimumSize">
                                              <size>
-                                              <width>120</width>
-                                              <height>30</height>
+                                              <width>0</width>
+                                              <height>0</height>
                                              </size>
                                             </property>
-                                            <property name="text">
-                                             <string>New Sensor</string>
-                                            </property>
-                                           </widget>
-                                          </item>
-                                          <item row="0" column="1">
-                                           <widget class="QTableWidget" name="tableWidget_10">
                                             <property name="rowCount">
                                              <number>0</number>
                                             </property>
@@ -6768,11 +6840,31 @@ background-color:#8ED973;
                                             </property>
                                            </widget>
                                           </item>
+                                          <item row="0" column="0" colspan="2">
+                                           <widget class="QLabel" name="label_95">
+                                            <property name="styleSheet">
+                                             <string notr="true">font: 12pt &quot;Calibri&quot;;
+font-weight:bold;</string>
+                                            </property>
+                                            <property name="text">
+                                             <string>Variables (VAR)</string>
+                                            </property>
+                                            <property name="alignment">
+                                             <set>Qt::AlignCenter</set>
+                                            </property>
+                                           </widget>
+                                          </item>
                                          </layout>
                                         </widget>
                                        </item>
-                                       <item row="3" column="0">
+                                       <item row="4" column="0">
                                         <widget class="QFrame" name="frame_37">
+                                         <property name="minimumSize">
+                                          <size>
+                                           <width>0</width>
+                                           <height>250</height>
+                                          </size>
+                                         </property>
                                          <property name="frameShape">
                                           <enum>QFrame::StyledPanel</enum>
                                          </property>
@@ -6780,7 +6872,7 @@ background-color:#8ED973;
                                           <enum>QFrame::Sunken</enum>
                                          </property>
                                          <layout class="QGridLayout" name="gridLayout_12">
-                                          <item row="0" column="0">
+                                          <item row="1" column="0">
                                            <widget class="QPushButton" name="pushButton_4">
                                             <property name="minimumSize">
                                              <size>
@@ -6793,8 +6885,14 @@ background-color:#8ED973;
                                             </property>
                                            </widget>
                                           </item>
-                                          <item row="0" column="1">
-                                           <widget class="QTableWidget" name="tableWidget_3">
+                                          <item row="1" column="1">
+                                           <widget class="QTableWidget" name="tableAS">
+                                            <property name="minimumSize">
+                                             <size>
+                                              <width>0</width>
+                                              <height>0</height>
+                                             </size>
+                                            </property>
                                             <property name="rowCount">
                                              <number>0</number>
                                             </property>
@@ -6803,11 +6901,31 @@ background-color:#8ED973;
                                             </property>
                                            </widget>
                                           </item>
+                                          <item row="0" column="0" colspan="2">
+                                           <widget class="QLabel" name="label_51">
+                                            <property name="styleSheet">
+                                             <string notr="true">font: 12pt &quot;Calibri&quot;;
+font-weight:bold;</string>
+                                            </property>
+                                            <property name="text">
+                                             <string>Air speed sensor (AS)</string>
+                                            </property>
+                                            <property name="alignment">
+                                             <set>Qt::AlignCenter</set>
+                                            </property>
+                                           </widget>
+                                          </item>
                                          </layout>
                                         </widget>
                                        </item>
-                                       <item row="4" column="0">
+                                       <item row="5" column="0">
                                         <widget class="QFrame" name="frame_38">
+                                         <property name="minimumSize">
+                                          <size>
+                                           <width>0</width>
+                                           <height>250</height>
+                                          </size>
+                                         </property>
                                          <property name="frameShape">
                                           <enum>QFrame::StyledPanel</enum>
                                          </property>
@@ -6815,7 +6933,7 @@ background-color:#8ED973;
                                           <enum>QFrame::Sunken</enum>
                                          </property>
                                          <layout class="QGridLayout" name="gridLayout_13">
-                                          <item row="0" column="0">
+                                          <item row="1" column="0">
                                            <widget class="QPushButton" name="pushButton_5">
                                             <property name="minimumSize">
                                              <size>
@@ -6828,8 +6946,14 @@ background-color:#8ED973;
                                             </property>
                                            </widget>
                                           </item>
-                                          <item row="0" column="1">
-                                           <widget class="QTableWidget" name="tableWidget_4">
+                                          <item row="1" column="1">
+                                           <widget class="QTableWidget" name="tableST">
+                                            <property name="minimumSize">
+                                             <size>
+                                              <width>0</width>
+                                              <height>0</height>
+                                             </size>
+                                            </property>
                                             <property name="rowCount">
                                              <number>0</number>
                                             </property>
@@ -6838,11 +6962,31 @@ background-color:#8ED973;
                                             </property>
                                            </widget>
                                           </item>
+                                          <item row="0" column="0" colspan="2">
+                                           <widget class="QLabel" name="label_65">
+                                            <property name="styleSheet">
+                                             <string notr="true">font: 12pt &quot;Calibri&quot;;
+font-weight:bold;</string>
+                                            </property>
+                                            <property name="text">
+                                             <string>Surface temperature sensor (ST)</string>
+                                            </property>
+                                            <property name="alignment">
+                                             <set>Qt::AlignCenter</set>
+                                            </property>
+                                           </widget>
+                                          </item>
                                          </layout>
                                         </widget>
                                        </item>
                                        <item row="1" column="0">
                                         <widget class="QFrame" name="frame_30">
+                                         <property name="minimumSize">
+                                          <size>
+                                           <width>250</width>
+                                           <height>262</height>
+                                          </size>
+                                         </property>
                                          <property name="frameShape">
                                           <enum>QFrame::StyledPanel</enum>
                                          </property>
@@ -6850,7 +6994,7 @@ background-color:#8ED973;
                                           <enum>QFrame::Sunken</enum>
                                          </property>
                                          <layout class="QGridLayout" name="gridLayout_7">
-                                          <item row="0" column="0">
+                                          <item row="1" column="0">
                                            <widget class="QPushButton" name="pushButton_2">
                                             <property name="minimumSize">
                                              <size>
@@ -6863,8 +7007,14 @@ background-color:#8ED973;
                                             </property>
                                            </widget>
                                           </item>
-                                          <item row="0" column="1">
-                                           <widget class="QTableWidget" name="tableWidget">
+                                          <item row="1" column="1">
+                                           <widget class="QTableWidget" name="tableAT">
+                                            <property name="minimumSize">
+                                             <size>
+                                              <width>0</width>
+                                              <height>0</height>
+                                             </size>
+                                            </property>
                                             <property name="alternatingRowColors">
                                              <bool>true</bool>
                                             </property>
@@ -6879,11 +7029,31 @@ background-color:#8ED973;
                                             </attribute>
                                            </widget>
                                           </item>
+                                          <item row="0" column="0" colspan="2">
+                                           <widget class="QLabel" name="label_48">
+                                            <property name="styleSheet">
+                                             <string notr="true">font: 12pt &quot;Calibri&quot;;
+font-weight:bold;</string>
+                                            </property>
+                                            <property name="text">
+                                             <string>Air temperature sensor (AT)</string>
+                                            </property>
+                                            <property name="alignment">
+                                             <set>Qt::AlignCenter</set>
+                                            </property>
+                                           </widget>
+                                          </item>
                                          </layout>
                                         </widget>
                                        </item>
                                        <item row="2" column="0">
                                         <widget class="QFrame" name="frame_36">
+                                         <property name="minimumSize">
+                                          <size>
+                                           <width>0</width>
+                                           <height>250</height>
+                                          </size>
+                                         </property>
                                          <property name="frameShape">
                                           <enum>QFrame::StyledPanel</enum>
                                          </property>
@@ -6891,8 +7061,14 @@ background-color:#8ED973;
                                           <enum>QFrame::Sunken</enum>
                                          </property>
                                          <layout class="QGridLayout" name="gridLayout_11">
-                                          <item row="0" column="1">
-                                           <widget class="QTableWidget" name="tableWidget_2">
+                                          <item row="1" column="1">
+                                           <widget class="QTableWidget" name="tableRH">
+                                            <property name="minimumSize">
+                                             <size>
+                                              <width>0</width>
+                                              <height>0</height>
+                                             </size>
+                                            </property>
                                             <property name="rowCount">
                                              <number>0</number>
                                             </property>
@@ -6901,7 +7077,7 @@ background-color:#8ED973;
                                             </property>
                                            </widget>
                                           </item>
-                                          <item row="0" column="0">
+                                          <item row="1" column="0">
                                            <widget class="QPushButton" name="pushButton_13">
                                             <property name="minimumSize">
                                              <size>
@@ -6911,6 +7087,20 @@ background-color:#8ED973;
                                             </property>
                                             <property name="text">
                                              <string>New Sensor</string>
+                                            </property>
+                                           </widget>
+                                          </item>
+                                          <item row="0" column="0" colspan="2">
+                                           <widget class="QLabel" name="label_50">
+                                            <property name="styleSheet">
+                                             <string notr="true">font: 12pt &quot;Calibri&quot;;
+font-weight:bold;</string>
+                                            </property>
+                                            <property name="text">
+                                             <string>Relative humidity sensor (RH)</string>
+                                            </property>
+                                            <property name="alignment">
+                                             <set>Qt::AlignCenter</set>
                                             </property>
                                            </widget>
                                           </item>

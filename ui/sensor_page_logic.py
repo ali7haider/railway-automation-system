@@ -1,7 +1,8 @@
-from PyQt5.QtWidgets import QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout,QFileDialog
+from PyQt5.QtWidgets import QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout, QFileDialog, QTableWidget, QHeaderView
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtCore import Qt
 import math
+from PyQt5 import QtWidgets
 
 class SensorPageManager:
     def __init__(self, parent):
@@ -10,6 +11,47 @@ class SensorPageManager:
         self.current_coach_index = 0  # Initialize current_coach_index
         self.project_data = {}  # Initialize project_data    
     
+     # Initialize an array to store all tables
+        self.sensor_tables = {
+            "tableAT": None,   # Air temperature sensor
+            "tableRH": None,   # Relative humidity sensor
+            "tableAS": None,   # Air speed sensor
+            "tableST": None,   # Surface temperature sensor
+            "tableCO2": None,  # CO2 sensor
+            "tableDP": None,   # Differential pressure sensor
+            "tableP": None,    # Power sensor
+            "tableOTH": None,  # Other sensor
+            "tableVAR": None   # Variables
+        }
+        self.load_tables()
+    def load_tables(self):
+        # Define the same headers for all tables
+        headers = ["Sensor Name", "Zone", "Type", "Valuation 1", 
+                "Position", "Seat", "Height", "Description"]
+        
+        # Set uniform row height and maximum header height
+        row_height = 30
+        header_max_height = 35
+
+        for table_name in self.sensor_tables.keys():
+            table_widget = self.parent.findChild(QtWidgets.QTableWidget, table_name)
+            
+            if table_widget:
+                self.sensor_tables[table_name] = table_widget  # Store the table widget
+
+                # Set the table to have 8 columns
+                table_widget.setColumnCount(8)
+                table_widget.setRowCount(5)
+                table_widget.setHorizontalHeaderLabels(headers)
+
+                # Make the headers stretch to fill the width
+                header = table_widget.horizontalHeader()
+                header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+                header.setMaximumHeight(header_max_height)
+
+                # Set the uniform row height for all rows
+                table_widget.verticalHeader().setDefaultSectionSize(row_height)
+
     def load_coach_data(self, project_data):
         """Loads coach data from project and updates UI."""
         try:
