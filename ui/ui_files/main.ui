@@ -5981,6 +5981,7 @@ background-color:#fff;
 
 QLineEdit[readOnly=&quot;true&quot;] {
     background-color: lightgrey;
+color:black;
 }
 </string>
                                </property>

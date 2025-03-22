@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtCore import Qt
+import json
 
 class CoachPageManager:
     def __init__(self, parent):
@@ -17,7 +18,7 @@ class CoachPageManager:
         self.area_labels_2 = ["Nº Passengers", "Heat transfer coefficient standstill (k)", "Coach Length",
                               "Saloon 1 Length","Saloon 2 Length","Saloon 3 Length","Coach Width","Coach Length"
                               ,"Windows Area per side","Total Exterior Area","Total Exterior Area (no ends)"
-                              ,"g (Windows)","ϐ (Windows)","kW (Walls)","εW","φ (Walls)","h (Walls)","kD (Roof)","εD","h (Roof)"]
+                              ,"g (Windows)","B (Windows)","kW (Walls)","EW","Theta (Walls)","h (Walls)","kD (Roof)","ED","h (Roof)"]
 
     def load_coach_data(self, project_data):
         """Loads coach data from project and updates UI."""
@@ -59,6 +60,8 @@ class CoachPageManager:
                     print(f"An error occurred while creating button for Coach {i + 1}: {e}")
 
             self.initialize_coach_ui(num_coaches)
+            self.load_heat_transfer_from_json()  # Load the JSON data
+            self.load_json_values_to_ui()  # Apply the loaded value to the UI
 
         except Exception as e:
             print(f"An error occurred while updating coach inputs: {e}")
@@ -74,11 +77,26 @@ class CoachPageManager:
                 "h (Roof)"
             }
             
+            # Labels that require two inputs (read-only + custom)
+            double_input_labels = {"Heat transfer coefficient standstill (k)"}
+            # Dictionary to store the read-only value separately
+            self.readonly_heat_transfer_values = {} 
+
             # Define units for specific labels in area_labels_2
             units = {
+                "Heat transfer coefficient standstill (k)": "W/k*m²",
+                "Coach Length": "m",
+                "Saloon 1 Length": "m",
+                "Saloon 2 Length": "m",
+                "Saloon 3 Length": "m",
+                "Coach Width": "m",
+                "Coach Height": "m",
+                "Windows Area per side": "m²",
                 "Total Exterior Area": "m²",
                 "Total Exterior Area (no ends)": "m²",
+                "kW (Walls)": "W/k*m²",
                 "h (Walls)": "W/k*m²",
+                "kD (Roof)": "W/k*m²",
                 "h (Roof)": "W/k*m²"
             }
 
@@ -97,7 +115,7 @@ class CoachPageManager:
                     row_layout.setSpacing(15)  
 
                     label = QLabel(label_name)
-                    label.setMinimumWidth(label_minimum_width)  # Set minimum width for label
+                    label.setMinimumWidth(label_minimum_width)
 
                     line_edit = QLineEdit()
                     line_edit.setObjectName(label_name)
@@ -108,6 +126,9 @@ class CoachPageManager:
                     row_layout.addWidget(label)
                     row_layout.addWidget(line_edit)
                     
+                    # Adding an empty label at the end for alignment
+                    row_layout.addWidget(QLabel("")) 
+
                     self.parent.frameAreaLabels.layout().addLayout(row_layout)
 
                     for coach_index in range(total_coaches):
@@ -121,36 +142,90 @@ class CoachPageManager:
                     row_layout.setSpacing(15)  
 
                     label = QLabel(label_name)
-                    label.setMinimumWidth(260)  # Set minimum width for label
+                    label.setMinimumWidth(260)
 
-                    line_edit = QLineEdit()
-                    line_edit.setObjectName(label_name)
-                    
-                    if label_name in readonly_fields:
-                        line_edit.setReadOnly(True)
+                    if label_name in double_input_labels:
+                        # Creating two inputs: read-only and custom
+                        readonly_input = QLineEdit()
+                        readonly_input.setObjectName(f"readonly_{label_name}")
+                        readonly_input.setReadOnly(True)
+                        
+                        custom_input = QLineEdit()
+                        custom_input.setObjectName(f"{label_name}")
 
-                    row_layout.addWidget(label)
-                    row_layout.addWidget(line_edit)
+                        row_layout.addWidget(label)
+                        row_layout.addWidget(readonly_input)
+                        row_layout.addWidget(custom_input)
 
-                    # Add unit label if it exists, otherwise add a placeholder QLabel for alignment
-                    if label_name in units:
-                        unit_label = QLabel(units[label_name])
+                        # Add unit label if it exists, otherwise placeholder for alignment
+                        unit_label = QLabel(units.get(label_name, ""))
+                        unit_label.setMinimumWidth(60)
+                        row_layout.addWidget(unit_label)
+                        # Save only the read-only widget separately
+                        self.readonly_heat_transfer_values[f"readonly_{label_name}"] = readonly_input.text()
+
+                        # Save the widgets for all coaches
+                        for coach_index in range(total_coaches):
+                            self.coach_inputs[coach_index][label_name] = (custom_input.objectName(), custom_input.text())
+
                     else:
-                        unit_label = QLabel("")  # Placeholder QLabel
-                    
-                    unit_label.setMinimumWidth(50)  # Ensuring a consistent space even if no unit exists
-                    row_layout.addWidget(unit_label)
+                        # Regular QLineEdit for all other labels
+                        line_edit = QLineEdit()
+                        line_edit.setObjectName(label_name)
+                        
+                        if label_name in readonly_fields:
+                            line_edit.setReadOnly(True)
 
+                        row_layout.addWidget(label)
+                        row_layout.addWidget(line_edit)
+
+                        # Add unit label if it exists, otherwise placeholder for alignment
+                        unit_label = QLabel(units.get(label_name, ""))
+                        unit_label.setMinimumWidth(60)
+                        row_layout.addWidget(unit_label)
+
+                        for coach_index in range(total_coaches):
+                            self.coach_inputs[coach_index][label_name] = (line_edit.objectName(), line_edit.text())
+                    
                     self.parent.frameAreaLabels_2.layout().addLayout(row_layout)
 
-                    for coach_index in range(total_coaches):
-                        self.coach_inputs[coach_index][label_name] = (line_edit.objectName(), line_edit.text())
-
                 print("UI for coaches created successfully.")
-
+                
         except Exception as e:
             print(f"An error occurred while initializing the coach UI: {e}")
 
+
+    def load_heat_transfer_from_json(self):
+        """Loads Heat transfer coefficient standstill (k) from the project data."""
+        try:
+            print(self.project_data)
+            
+            # Check if 'Heat Transfer Saloon' key exists in project data
+            if "Heat Transfer Saloon" in self.project_data:
+                heat_transfer_value = self.project_data["Heat Transfer Saloon"]
+                self.readonly_heat_transfer_values["Heat transfer coefficient standstill (k)"] = heat_transfer_value
+                print(f"Loaded Heat Transfer Saloon value: {heat_transfer_value}")
+            else:
+                print("Key 'Heat Transfer Saloon' not found in project data.")
+                
+        except Exception as e:
+            print(f"An error occurred while loading the JSON file: {e}")
+
+
+    def load_json_values_to_ui(self):
+        """Loads read-only values from the JSON file to the UI."""
+        try:
+            if hasattr(self, 'readonly_heat_transfer_values'):
+                for label_name, value in self.readonly_heat_transfer_values.items():
+                    # Handle double input fields
+                    readonly_input = self.parent.findChild(QLineEdit, f"readonly_{label_name}")
+                    if readonly_input:
+                        readonly_input.setText(str(value))
+                        print(f"Loaded JSON value for {label_name}: {value}")
+            else:
+                print("JSON data not found. Make sure 'self.readonly_heat_transfer_values' exists.")
+        except Exception as e:
+            print(f"An error occurred while loading JSON values to UI: {e}")
     def on_coach_button_click(self, index):
         """Handles clicking on a coach button and updates the UI."""
         try:  
@@ -185,8 +260,7 @@ class CoachPageManager:
                     if widget:  # If QLineEdit exists, save as tuple (object name, text)
                         self.coach_inputs[index][label_name] = (widget.objectName(), widget.text())
         except Exception as e:
-            print(f"An error occurred while saving inputs for Coach {index + 1}: {e}")
-
+            self.print_utf8(f"An error occurred while saving inputs for Coach {index + 1}: {e}")
 
     def load_coach_inputs(self, index):
         """Loads the saved inputs for the given coach index into the UI."""
@@ -196,10 +270,13 @@ class CoachPageManager:
                     widget = self.parent.findChild(QLineEdit, object_name)
                     if widget:  # If QLineEdit exists, set its text
                         widget.setText(saved_text)
-                        print(f"Loaded: {label_name} -> {saved_text}")
         except Exception as e:
-            print(f"An error occurred while loading inputs for Coach {index + 1}: {e}")
-
+            self.print_utf8(f"An error occurred while loading inputs for Coach {index + 1}: {e}")
+    def print_utf8(self,text):
+        try:
+            print(text.encode('utf-8').decode('utf-8'))  # Ensure the text is properly encoded/decoded
+        except UnicodeEncodeError:
+            print("Error printing text due to unsupported characters.")
 
 
 
