@@ -1,7 +1,7 @@
-from PyQt5.QtWidgets import QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout
+from PyQt5.QtWidgets import QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout,QFileDialog
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtCore import Qt
-import json
+import math
 
 class CoachPageManager:
     def __init__(self, parent):
@@ -11,6 +11,8 @@ class CoachPageManager:
         self.coach_inputs = {}
         self.current_coach_index = 0  # Initialize current_coach_index
         self.first_time_click = True  # Track if it's the first click
+        self.parent.btnUploadLayout.clicked.connect(lambda: self.upload_layout_image(self.current_coach_index))
+
 
         self.area_labels = ["Saloon 1", "Saloon 2", "Saloon 3","Catering/Buffet","Vestibule 1","Vestibule 2","WC 1","WC 2"
                             ,"Crew","Corridor 1","Corridor 2","Compartment 1","Compartment 2","Compartment 3","Compartment 4","Compartment 5","Compartment 6",
@@ -19,6 +21,28 @@ class CoachPageManager:
                               "Saloon 1 Length","Saloon 2 Length","Saloon 3 Length","Coach Width","Coach Length"
                               ,"Windows Area per side","Total Exterior Area","Total Exterior Area (no ends)"
                               ,"g (Windows)","B (Windows)","kW (Walls)","EW","Theta (Walls)","h (Walls)","kD (Roof)","ED","h (Roof)"]
+
+
+    def upload_layout_image(self, cabin_index):
+        """Handles uploading and saving the layout image for a specific cabin."""
+        try:
+            # Open a file dialog to select an image file
+            image_path, _ = QFileDialog.getOpenFileName(
+                self.parent,
+                "Select Image File",
+                "",
+                "Image Files (*.png *.jpg *.jpeg *.bmp *.gif)"
+            )
+
+            if image_path:
+                # Save the selected image path to self.coach_inputs for the given cabin index
+                if cabin_index not in self.coach_inputs:
+                    self.coach_inputs[cabin_index] = {}
+                
+                self.coach_inputs[cabin_index]["Layout Image"] = image_path
+
+        except Exception as e:
+            print(f"An error occurred while uploading the layout image: {e}")
 
     def load_coach_data(self, project_data):
         """Loads coach data from project and updates UI."""
@@ -197,14 +221,11 @@ class CoachPageManager:
 
     def load_heat_transfer_from_json(self):
         """Loads Heat transfer coefficient standstill (k) from the project data."""
-        try:
-            print(self.project_data)
-            
+        try:            
             # Check if 'Heat Transfer Saloon' key exists in project data
             if "Heat Transfer Saloon" in self.project_data:
                 heat_transfer_value = self.project_data["Heat Transfer Saloon"]
                 self.readonly_heat_transfer_values["Heat transfer coefficient standstill (k)"] = heat_transfer_value
-                print(f"Loaded Heat Transfer Saloon value: {heat_transfer_value}")
             else:
                 print("Key 'Heat Transfer Saloon' not found in project data.")
                 
@@ -278,6 +299,44 @@ class CoachPageManager:
         except UnicodeEncodeError:
             print("Error printing text due to unsupported characters.")
 
+
+    def natural_convection_heat_transfer_coefficient_vertical(self, delta_t, l):
+        """
+        Calculates the natural convection heat transfer coefficient for a vertical surface.
+        
+        Parameters:
+        delta_t (float): Temperature difference (°C)
+        l (float): Characteristic length (m)
+        
+        Returns:
+        float: Natural convection heat transfer coefficient (h) in W/m²K
+        """
+        # Constants (these may be updated later)
+        C = 1.42
+        n = 0.25
+
+        # Apply the formula: h = C * (ΔT / L)^n
+        h = C * ((delta_t / l) ** n)
+        return h
+    
+    def natural_convection_heat_transfer_coefficient_horizontal(self, delta_t, l):
+        """
+        Calculates the natural convection heat transfer coefficient for a horizontal surface.
+        
+        Parameters:
+        delta_t (float): Temperature difference (°C)
+        l (float): Characteristic length (m)
+        
+        Returns:
+        float: Natural convection heat transfer coefficient (h) in W/m²K
+        """
+        # Constants (these may be updated later)
+        C = 1.31
+        n = 0.33
+
+        # Apply the formula: h = C * (ΔT / L)^n
+        h = C * ((delta_t / l) ** n)
+        return h
 
 
 
