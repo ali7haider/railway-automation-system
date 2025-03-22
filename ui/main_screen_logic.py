@@ -212,13 +212,17 @@ class MasterScreen(QtWidgets.QMainWindow):
     def open_cabin_form(self, cabin_index):
         """Opens a new form for the specified cabin."""
         try:
-            if cabin_index == 1:
-                self.cabin_form = CabinScreen(self, cabin_index)
-                self.cabin_form.setWindowTitle("Cabin 1 Configuration")
-            elif cabin_index == 2:
-                self.cabin_form = CabinScreen(self, cabin_index)
-                self.cabin_form.setWindowTitle("Cabin 2 Configuration")
-            
+            project_data = self.saving_manager.load_project(self.ProjectName)
+                # Pass the loaded data to the CoachPageManager
+            if project_data:
+                if cabin_index == 1:
+                    # Load the project data
+                    self.cabin_form = CabinScreen(self, cabin_index,project_data)
+                    self.cabin_form.setWindowTitle("Cabin 1 Configuration")
+                elif cabin_index == 2:
+                    self.cabin_form = CabinScreen(self, cabin_index,project_data)
+                    self.cabin_form.setWindowTitle("Cabin 2 Configuration")
+                
             self.cabin_form.show()
         except Exception as e:
             print(f"An error occurred while opening the cabin form: {e}")
