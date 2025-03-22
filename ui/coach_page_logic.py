@@ -11,8 +11,13 @@ class CoachPageManager:
         self.current_coach_index = 0  # Initialize current_coach_index
         self.first_time_click = True  # Track if it's the first click
 
-        self.area_labels = ["Area 1", "Area 2", "Area 3"]
-        self.area_labels_2 = ["Area A", "Area B", "Area C"]
+        self.area_labels = ["Saloon 1", "Saloon 2", "Saloon 3","Catering/Buffet","Vestibule 1","Vestibule 2","WC 1","WC 2"
+                            ,"Crew","Corridor 1","Corridor 2","Compartment 1","Compartment 2","Compartment 3","Compartment 4","Compartment 5","Compartment 6",
+                            "Annex Area 1","Annex Area 2","Nursery","HVAC 1","HVAC 2","Exterior"]
+        self.area_labels_2 = ["Nº Passengers", "Heat transfer coefficient standstill (k)", "Coach Length",
+                              "Saloon 1 Length","Saloon 2 Length","Saloon 3 Length","Coach Width","Coach Length"
+                              ,"Windows Area per side","Total Exterior Area","Total Exterior Area (no ends)"
+                              ,"g (Windows)","ϐ (Windows)","kW (Walls)","εW","φ (Walls)","h (Walls)","kD (Roof)","εD","h (Roof)"]
 
     def load_coach_data(self, project_data):
         """Loads coach data from project and updates UI."""
@@ -61,6 +66,22 @@ class CoachPageManager:
     def initialize_coach_ui(self, total_coaches):
         """Creates the UI layout for the coaches once and only updates values on switching."""
         try:
+            label_minimum_width = 120  # Set the minimum width for labels
+            readonly_fields = {  # Fields to be set as read-only
+                "Total Exterior Area",
+                "Total Exterior Area (no ends)",
+                "h (Walls)",
+                "h (Roof)"
+            }
+            
+            # Define units for specific labels in area_labels_2
+            units = {
+                "Total Exterior Area": "m²",
+                "Total Exterior Area (no ends)": "m²",
+                "h (Walls)": "W/k*m²",
+                "h (Roof)": "W/k*m²"
+            }
+
             # Prepare the coach_inputs dictionary for all coaches
             for coach_index in range(total_coaches):
                 if coach_index not in self.coach_inputs:
@@ -76,15 +97,19 @@ class CoachPageManager:
                     row_layout.setSpacing(15)  
 
                     label = QLabel(label_name)
+                    label.setMinimumWidth(label_minimum_width)  # Set minimum width for label
+
                     line_edit = QLineEdit()
-                    line_edit.setObjectName(label_name)  # Set object name for identification
+                    line_edit.setObjectName(label_name)
+                    
+                    if label_name in readonly_fields:
+                        line_edit.setReadOnly(True)
 
                     row_layout.addWidget(label)
                     row_layout.addWidget(line_edit)
                     
                     self.parent.frameAreaLabels.layout().addLayout(row_layout)
 
-                    # Store the QLineEdit as a tuple (object name, current text) for all coaches
                     for coach_index in range(total_coaches):
                         self.coach_inputs[coach_index][label_name] = (line_edit.objectName(), line_edit.text())
 
@@ -96,15 +121,28 @@ class CoachPageManager:
                     row_layout.setSpacing(15)  
 
                     label = QLabel(label_name)
+                    label.setMinimumWidth(260)  # Set minimum width for label
+
                     line_edit = QLineEdit()
-                    line_edit.setObjectName(label_name)  # Set object name for identification
+                    line_edit.setObjectName(label_name)
+                    
+                    if label_name in readonly_fields:
+                        line_edit.setReadOnly(True)
 
                     row_layout.addWidget(label)
                     row_layout.addWidget(line_edit)
+
+                    # Add unit label if it exists, otherwise add a placeholder QLabel for alignment
+                    if label_name in units:
+                        unit_label = QLabel(units[label_name])
+                    else:
+                        unit_label = QLabel("")  # Placeholder QLabel
                     
+                    unit_label.setMinimumWidth(50)  # Ensuring a consistent space even if no unit exists
+                    row_layout.addWidget(unit_label)
+
                     self.parent.frameAreaLabels_2.layout().addLayout(row_layout)
 
-                    # Store the QLineEdit as a tuple (object name, current text) for all coaches
                     for coach_index in range(total_coaches):
                         self.coach_inputs[coach_index][label_name] = (line_edit.objectName(), line_edit.text())
 
@@ -112,7 +150,6 @@ class CoachPageManager:
 
         except Exception as e:
             print(f"An error occurred while initializing the coach UI: {e}")
-
 
     def on_coach_button_click(self, index):
         """Handles clicking on a coach button and updates the UI."""

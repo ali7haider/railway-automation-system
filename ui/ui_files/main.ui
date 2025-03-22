@@ -3780,8 +3780,8 @@ font-weight:bold;</string>
                             <widget class="QWidget" name="scrollAreaWidgetContents">
                              <property name="geometry">
                               <rect>
-                               <x>-495</x>
-                               <y>-421</y>
+                               <x>0</x>
+                               <y>0</y>
                                <width>1513</width>
                                <height>1140</height>
                               </rect>
@@ -5933,6 +5933,39 @@ font-weight:bold;</string>
                                   <property name="frameShadow">
                                    <enum>QFrame::Raised</enum>
                                   </property>
+                                  <layout class="QVBoxLayout" name="verticalLayout_37">
+                                   <property name="leftMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="topMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="rightMargin">
+                                    <number>11</number>
+                                   </property>
+                                   <property name="bottomMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <item alignment="Qt::AlignRight">
+                                    <widget class="QPushButton" name="btnUploadLayout">
+                                     <property name="minimumSize">
+                                      <size>
+                                       <width>300</width>
+                                       <height>30</height>
+                                      </size>
+                                     </property>
+                                     <property name="maximumSize">
+                                      <size>
+                                       <width>300</width>
+                                       <height>16777215</height>
+                                      </size>
+                                     </property>
+                                     <property name="text">
+                                      <string>Upload Layout</string>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
                                  </widget>
                                 </item>
                                </layout>
@@ -5940,6 +5973,17 @@ font-weight:bold;</string>
                              </item>
                              <item>
                               <widget class="QFrame" name="frame_23">
+                               <property name="styleSheet">
+                                <string notr="true">QLineEdit {
+    color: #F97D02;
+background-color:#fff;
+}
+
+QLineEdit[readOnly=&quot;true&quot;] {
+    background-color: lightgrey;
+}
+</string>
+                               </property>
                                <property name="frameShape">
                                 <enum>QFrame::StyledPanel</enum>
                                </property>
@@ -5973,7 +6017,7 @@ font-weight:bold;</string>
                                      <x>0</x>
                                      <y>0</y>
                                      <width>957</width>
-                                     <height>585</height>
+                                     <height>580</height>
                                     </rect>
                                    </property>
                                    <layout class="QHBoxLayout" name="horizontalLayout_17">
