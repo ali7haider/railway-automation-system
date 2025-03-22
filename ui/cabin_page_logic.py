@@ -7,11 +7,13 @@ from PyQt5.QtCore import pyqtSignal
 
 class CabinScreen(QtWidgets.QMainWindow):
     custom_values_updated = pyqtSignal(dict)  # Signal to send custom values
-    def __init__(self, parent,cabin_index,project_data):
+    def __init__(self, parent,cabin_index,project_data,old_values=None):
         super().__init__()
         self.parent = parent
         self.cabin_index=cabin_index
         self.project_data=project_data
+        self.coach_inputs = old_values if old_values else {}  # Load old values if provided
+        # Load existing values to UI if they exist
         try:
             uic.loadUi("ui/ui_files/cabin_setting.ui", self)  # Load custom UI
             self.area_labels_2 = ["Nº Passengers", "Heat transfer coefficient standstill (k)", "Coach Length",
@@ -20,18 +22,52 @@ class CabinScreen(QtWidgets.QMainWindow):
                               ,"g (Windows)","B (Windows)","kW (Walls)","EW","Theta (Walls)","h (Walls)","kD (Roof)","ED","h (Roof)"]
 
             self.coach_widgets = []
-            self.coach_inputs = {}
             self.initialize_coach_ui(2)
+            self.load_existing_values()
 
             self.set_cabin_info()
             self.btnUploadLayout.clicked.connect(lambda: self.upload_layout_image(self.cabin_index))
 
 
+            self.btnSave.clicked.connect(self.save_custom_values)
+
             
             # self.btnSave.clicked.connect(self.save_custom_values)
 
         except Exception as e:
-            QtWidgets.QMessageBox.critical(self, "Error", f"Error loading Custom Interior Conditions UI: {str(e)}")
+            QtWidgets.QMessageBox.critical(self, "Error", f"Error loading Cabin UI: {str(e)}")
+    
+    def load_existing_values(self):
+        """Loads existing values to the UI if available."""
+        print(self.coach_inputs)
+        # if self.coach_inputs:
+        #     for key, value in self.coach_inputs.items():
+        #         input_field = self.findChild(QLineEdit, f"txt{key.replace(' ', '')}")
+        #         if input_field:
+        #             input_field.setText(value)
+        #             print(f"Loaded old value for {key}: {value}")
+    def save_custom_values(self):
+        try:
+            # Save the custom values for the current coach
+            self.save_current_coach_inputs(self.cabin_index)
+            if self.custom_values_updated:
+                self.custom_values_updated.emit(self.coach_inputs)
+            else:
+                print("Signal not found!")
+            self.close()
+        except Exception as e:  
+            print(f"An error occurred while saving custom values: {e}")
+    def save_current_coach_inputs(self, index):
+        """Saves the current inputs for the given coach index."""
+        try:
+            if index in self.coach_inputs:
+                for label_name, line_edit in self.coach_inputs[index].items():
+                    widget = self.findChild(QLineEdit, label_name)
+                    if widget:  # If QLineEdit exists, save as tuple (object name, text)
+                        self.coach_inputs[index][label_name] = (widget.objectName(), widget.text())
+        except Exception as e:
+            print(f"An error occurred while saving inputs for Coach {index + 1}: {e}")
+
     def upload_layout_image(self, cabin_index):
         """Handles uploading and saving the layout image for a specific cabin."""
         try:
@@ -46,9 +82,8 @@ class CabinScreen(QtWidgets.QMainWindow):
             if image_path:
                 # Save the selected image path to self.coach_inputs for the given cabin index
                 if cabin_index not in self.coach_inputs:
-                    self.coach_inputs[cabin_index-1] = {}
-                self.coach_inputs[cabin_index-1]["Layout Image"] = image_path
-                print(self.coach_inputs)
+                    self.coach_inputs[cabin_index] = {}
+                self.coach_inputs[cabin_index]["Layout Image"] = image_path
 
         except Exception as e:
             print(f"An error occurred while uploading the layout image: {e}")
@@ -62,7 +97,7 @@ class CabinScreen(QtWidgets.QMainWindow):
             heat_transfer_cabin = project_info.get('Heat Transfer Cabin', '')
 
             # Retrieve Cabin Name based on index
-            cabin_name_key = f"Cabin {self.cabin_index} Name"
+            cabin_name_key = f"Cabin {self.cabin_index+1} Name"
             cabin_name = project_info.get(cabin_name_key, '')
 
             # Retrieve Standard Cabin
@@ -74,7 +109,7 @@ class CabinScreen(QtWidgets.QMainWindow):
             self.readonly_heat_transfer_values["Heat transfer coefficient standstill (k)"] = heat_transfer_cabin
             for label_name, value in self.readonly_heat_transfer_values.items():
                     # Handle double input fields
-                    readonly_input = self.parent.findChild(QLineEdit, f"readonly_{label_name}")
+                    readonly_input = self.findChild(QLineEdit, f"readonly_{label_name}")
                     if readonly_input:
                         readonly_input.setText(str(value))
             

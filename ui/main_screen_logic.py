@@ -57,7 +57,7 @@ class MasterScreen(QtWidgets.QMainWindow):
 
             # Display user details in the UI
             self.lblNameUser.setText(f"Welcome, {self.name} ({self.username})!")
-                
+
 
             self.toggleButton.clicked.connect(lambda: UIFunctions.toggleMenu(self, True))
             UIFunctions.uiDefinitions(self)
@@ -74,6 +74,7 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.init_pages()
             self.original_default_interior_values={}
             self.original_default_exterior_values={}
+            self.coach_inputs={}
 
             self.menu_buttons = [
             self.btnProjects,  # Replace with your actual button objects
@@ -99,8 +100,8 @@ class MasterScreen(QtWidgets.QMainWindow):
 
             self.coach_page_manager = CoachPageManager(self)
 
-            self.btnCabin1.clicked.connect(lambda: self.open_cabin_form(1))
-            self.btnCabin2.clicked.connect(lambda: self.open_cabin_form(2))
+            self.btnCabin1.clicked.connect(lambda: self.open_cabin_form(0))
+            self.btnCabin2.clicked.connect(lambda: self.open_cabin_form(1))
 
 
 
@@ -213,19 +214,33 @@ class MasterScreen(QtWidgets.QMainWindow):
         """Opens a new form for the specified cabin."""
         try:
             project_data = self.saving_manager.load_project(self.ProjectName)
-                # Pass the loaded data to the CoachPageManager
+            
             if project_data:
-                if cabin_index == 1:
-                    # Load the project data
-                    self.cabin_form = CabinScreen(self, cabin_index,project_data)
+                # Prepare old values if they exist in self.coach_inputs
+                cabin_key = f"{cabin_index}"  # Index 0 -> "Cabin 1", Index 1 -> "Cabin 2"
+                # old_values = self.coach_inputs.get(cabin_key, None)
+                # Create CabinScreen with old values if they exist
+                self.cabin_form = CabinScreen(self, cabin_index, project_data, self.coach_inputs)
+                
+                if cabin_index == 0:
                     self.cabin_form.setWindowTitle("Cabin 1 Configuration")
-                elif cabin_index == 2:
-                    self.cabin_form = CabinScreen(self, cabin_index,project_data)
+                elif cabin_index == 1:
                     self.cabin_form.setWindowTitle("Cabin 2 Configuration")
                 
-            self.cabin_form.show()
+                # Connect the signal to capture updated values
+                if hasattr(self.cabin_form, "custom_values_updated"):
+                    self.cabin_form.custom_values_updated.connect(self.update_cabin_values)
+                else:
+                    print("custom_values_updated signal not found!")
+
+                self.cabin_form.show()
         except Exception as e:
             print(f"An error occurred while opening the cabin form: {e}")
+
+    def update_cabin_values(self, cabin_inputs):
+        """Updates the main file's self.coach_inputs with the saved cabin data."""
+        # self.coach_inputs.update(cabin_inputs)  # Merge new cabin data with existing data
+        self.coach_inputs=cabin_inputs
 
     def on_save_button_clicked(self):
         """Triggered when btnSave is clicked. Collects all project details and passes them for saving."""
