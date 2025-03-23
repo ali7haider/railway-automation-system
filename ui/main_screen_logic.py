@@ -33,7 +33,8 @@ from ui.custom_exterior_saloon_logic import CustomExteriorConditionsSaloonScreen
 from ui.custom_interior_conditions_logic import CustomInteriorConditionsScreen
 import re  # For regex-based extraction
 from modules.saving_project_manager import SavingProjectManager
-from ui.sensor_page_logic import SensorPageManager  # Add this line
+from ui.sensor_page_logic import SensorPageManager
+from ui.test_page_logic import TestPageManager  # Add this line
 
 
 GLOBAL_STATE = False
@@ -93,14 +94,17 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.btnProjects.clicked.connect(self.show_project_page)
             self.btnCriteria.clicked.connect(self.show_criteria_page)
             self.btnCoach.clicked.connect(self.show_coach_page)
+            self.btnSensorList.clicked.connect(self.show_sensor_page)
+            self.btnTestList.clicked.connect(self.show_test_page)
+
             self.btnReport.clicked.connect(self.show_multi_tool_menu)
-            self.btnSensorList.clicked.connect(self.show_pairip_pass_menu)
             self.btnPlanning.clicked.connect(self.show_offset_leech_menu)
 
             self.btnSave.clicked.connect(self.on_save_button_clicked)
 
             self.coach_page_manager = CoachPageManager(self)
             self.sensor_page_manager = SensorPageManager(self)
+            self.test_page_manager = TestPageManager(self)
 
             self.btnCabin1.clicked.connect(lambda: self.open_cabin_form(0))
             self.btnCabin2.clicked.connect(lambda: self.open_cabin_form(1))
@@ -1700,7 +1704,7 @@ class MasterScreen(QtWidgets.QMainWindow):
         if project_data:
             self.coach_page_manager.load_coach_data(project_data)
 
-    def show_pairip_pass_menu(self):
+    def show_sensor_page(self):
         """Show the Pair IP Pass page."""
         self.handleMenuClick(self.btnSensorList, 3)
 
@@ -1709,6 +1713,15 @@ class MasterScreen(QtWidgets.QMainWindow):
         # Pass the loaded data to the CoachPageManager
         if project_data:
             self.sensor_page_manager.load_coach_data(project_data)
+    def show_test_page(self):
+        """Show the Pair IP Pass page."""
+        self.handleMenuClick(self.btnTestList, 4)
+
+        # Load the project data
+        project_data = self.saving_manager.load_project(self.ProjectName)
+        # Pass the loaded data to the CoachPageManager
+        if project_data:
+            self.test_page_manager.load_coach_data(project_data)
 
 
     def show_offset_leech_menu(self):
