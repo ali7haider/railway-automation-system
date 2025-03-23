@@ -242,11 +242,9 @@ QTableWidget::item {
 	padding-right: 5px;
 	gridline-color: #555;
     border-bottom: 1px solid #555;
+color:#F97D02
 }
-QTableWidget::item:selected {
-	background-color: #00ABE8;
-	color: #FFF;
-}
+
 QHeaderView::section {
 	background-color: #345CBF;
 	max-width: 30px;
@@ -2044,36 +2042,7 @@ QLineEdit:focus {
     border: 2px solid gray;
     background-color: #FAFAFC;
 }
-QComboBox{
-	background-color: #1159A8;
-	border-radius: 5px;
-	border: 1px solid gray;
-	padding: 5px;
-	padding-left: 10px;
-color:black;
-}
-QComboBox:hover{
-	border: 1px solid gray;
-}
-QComboBox::drop-down {
-	subcontrol-origin: padding;
-	subcontrol-position: top right;
-	width: 25px; 
-	border-left-width: 3px;
-	border-left-color: rgba(39, 44, 54, 150);
-	border-left-style: solid;
-	border-top-right-radius: 3px;
-	border-bottom-right-radius: 3px;	
-	background-image: url(:/icons/images/icons/icons8-arrow-down-20.png);
-	background-position: center;
-	background-repeat: no-reperat;
- }
-QComboBox QAbstractItemView {
-	color:  red;	
-	background-color:#fff;
-	padding: 10px;
-	selection-background-color: #fff;
-}
+
 
 QPushButton
 {
@@ -2231,7 +2200,7 @@ font-weight:bold;</string>
                                  <rect>
                                   <x>0</x>
                                   <y>0</y>
-                                  <width>985</width>
+                                  <width>714</width>
                                   <height>1973</height>
                                  </rect>
                                 </property>
@@ -2270,11 +2239,12 @@ QLineEdit:focus {
     background-color: #FAFAFC;
 }
 QComboBox{
-background-color:white;
+    background-color:white;
 	border-radius: 5px;
 	border: 1px solid gray;
 	padding: 5px;
 	padding-left: 10px;
+    color:#444;
 }
 QComboBox:hover{
 	border: 1px solid gray;
@@ -6016,8 +5986,8 @@ color:black;
                                     <rect>
                                      <x>0</x>
                                      <y>0</y>
-                                     <width>957</width>
-                                     <height>580</height>
+                                     <width>357</width>
+                                     <height>122</height>
                                     </rect>
                                    </property>
                                    <layout class="QHBoxLayout" name="horizontalLayout_17">
@@ -6495,7 +6465,8 @@ background-color:#8ED973;
                                   <property name="styleSheet">
                                    <string notr="true">QLineEdit {
     color: #F97D02;
-background-color:#fff;
+	border:none;
+	background-color:#fff;
 }
 
 QLineEdit[readOnly=&quot;true&quot;] {
@@ -6516,7 +6487,35 @@ QPushButton:hover
 {
 background-color:#8ED973;
 }
-</string>
+
+QComboBox{
+    background-color:white;
+	border: none;
+    color:#F97D02;
+padding:3px;
+}
+QComboBox:hover{
+	border: none;
+}
+QComboBox::drop-down {
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 20px; 
+	border-left-width: 1px;
+	border-left-color: rgba(39, 44, 54, 150);
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;	
+	background-image: url(:/icons/images/icons/icons8-arrow-down-20.png);
+	background-position: center;
+	background-repeat: no-reperat;
+ }
+QComboBox QAbstractItemView {
+	color: #F97D02;	
+	background-color: #fff;
+	padding: 10px;
+	selection-background-color:#345CBF;
+}</string>
                                   </property>
                                   <property name="frameShape">
                                    <enum>QFrame::StyledPanel</enum>
@@ -6551,7 +6550,7 @@ background-color:#8ED973;
                                         <x>0</x>
                                         <y>0</y>
                                         <width>925</width>
-                                        <height>2352</height>
+                                        <height>2218</height>
                                        </rect>
                                       </property>
                                       <property name="styleSheet">
