@@ -6549,7 +6549,7 @@ background-color:#8ED973;
                                       <property name="geometry">
                                        <rect>
                                         <x>0</x>
-                                        <y>-888</y>
+                                        <y>0</y>
                                         <width>925</width>
                                         <height>2352</height>
                                        </rect>
@@ -6573,8 +6573,8 @@ background-color:#8ED973;
                                           <enum>QFrame::Sunken</enum>
                                          </property>
                                          <layout class="QGridLayout" name="gridLayout_14">
-                                          <item row="1" column="0">
-                                           <widget class="QPushButton" name="pushButton_6">
+                                          <item row="1" column="0" alignment="Qt::AlignTop">
+                                           <widget class="QPushButton" name="btnCO2">
                                             <property name="minimumSize">
                                              <size>
                                               <width>120</width>
@@ -6634,8 +6634,8 @@ font-weight:bold;</string>
                                           <enum>QFrame::Sunken</enum>
                                          </property>
                                          <layout class="QGridLayout" name="gridLayout_15">
-                                          <item row="1" column="0">
-                                           <widget class="QPushButton" name="pushButton_7">
+                                          <item row="1" column="0" alignment="Qt::AlignTop">
+                                           <widget class="QPushButton" name="btnDP">
                                             <property name="minimumSize">
                                              <size>
                                               <width>120</width>
@@ -6689,8 +6689,8 @@ font-weight:bold;</string>
                                           <enum>QFrame::Sunken</enum>
                                          </property>
                                          <layout class="QGridLayout" name="gridLayout_20">
-                                          <item row="1" column="0">
-                                           <widget class="QPushButton" name="pushButton_8">
+                                          <item row="1" column="0" alignment="Qt::AlignTop">
+                                           <widget class="QPushButton" name="btnP">
                                             <property name="minimumSize">
                                              <size>
                                               <width>120</width>
@@ -6766,8 +6766,8 @@ font-weight:bold;</string>
                                             </property>
                                            </widget>
                                           </item>
-                                          <item row="1" column="0">
-                                           <widget class="QPushButton" name="btn">
+                                          <item row="1" column="0" alignment="Qt::AlignTop">
+                                           <widget class="QPushButton" name="btnOTH">
                                             <property name="minimumSize">
                                              <size>
                                               <width>120</width>
@@ -6811,8 +6811,8 @@ font-weight:bold;</string>
                                           <enum>QFrame::Sunken</enum>
                                          </property>
                                          <layout class="QGridLayout" name="gridLayout_17">
-                                          <item row="1" column="0">
-                                           <widget class="QPushButton" name="pushButton_10">
+                                          <item row="1" column="0" alignment="Qt::AlignTop">
+                                           <widget class="QPushButton" name="btnVAR">
                                             <property name="minimumSize">
                                              <size>
                                               <width>120</width>
@@ -6872,8 +6872,8 @@ font-weight:bold;</string>
                                           <enum>QFrame::Sunken</enum>
                                          </property>
                                          <layout class="QGridLayout" name="gridLayout_12">
-                                          <item row="1" column="0">
-                                           <widget class="QPushButton" name="pushButton_4">
+                                          <item row="1" column="0" alignment="Qt::AlignTop">
+                                           <widget class="QPushButton" name="btnAS">
                                             <property name="minimumSize">
                                              <size>
                                               <width>120</width>
@@ -6933,8 +6933,8 @@ font-weight:bold;</string>
                                           <enum>QFrame::Sunken</enum>
                                          </property>
                                          <layout class="QGridLayout" name="gridLayout_13">
-                                          <item row="1" column="0">
-                                           <widget class="QPushButton" name="pushButton_5">
+                                          <item row="1" column="0" alignment="Qt::AlignTop">
+                                           <widget class="QPushButton" name="btnST">
                                             <property name="minimumSize">
                                              <size>
                                               <width>120</width>
@@ -6994,8 +6994,8 @@ font-weight:bold;</string>
                                           <enum>QFrame::Sunken</enum>
                                          </property>
                                          <layout class="QGridLayout" name="gridLayout_7">
-                                          <item row="1" column="0">
-                                           <widget class="QPushButton" name="pushButton_2">
+                                          <item row="1" column="0" alignment="Qt::AlignTop">
+                                           <widget class="QPushButton" name="btnAT">
                                             <property name="minimumSize">
                                              <size>
                                               <width>120</width>
@@ -7077,8 +7077,8 @@ font-weight:bold;</string>
                                             </property>
                                            </widget>
                                           </item>
-                                          <item row="1" column="0">
-                                           <widget class="QPushButton" name="pushButton_13">
+                                          <item row="1" column="0" alignment="Qt::AlignTop">
+                                           <widget class="QPushButton" name="btnRH">
                                             <property name="minimumSize">
                                              <size>
                                               <width>120</width>
