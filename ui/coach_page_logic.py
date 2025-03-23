@@ -8,7 +8,6 @@ class CoachPageManager:
         self.parent = parent
         self.coach_widgets = []
         self.project_data = {}
-        self.coach_inputs = {}
         self.current_coach_index = 0  # Initialize current_coach_index
         self.first_time_click = True  # Track if it's the first click
         self.parent.btnUploadLayout.clicked.connect(lambda: self.upload_layout_image(self.current_coach_index))
@@ -35,11 +34,11 @@ class CoachPageManager:
             )
 
             if image_path:
-                # Save the selected image path to self.coach_inputs for the given cabin index
-                if cabin_index not in self.coach_inputs:
-                    self.coach_inputs[cabin_index] = {}
+                # Save the selected image path to self.parent.coach_inputs for the given cabin index
+                if cabin_index not in self.parent.coach_inputs:
+                    self.parent.coach_inputs[cabin_index] = {}
                 
-                self.coach_inputs[cabin_index]["Layout Image"] = image_path
+                self.parent.coach_inputs[cabin_index]["Layout Image"] = image_path
 
         except Exception as e:
             print(f"An error occurred while uploading the layout image: {e}")
@@ -126,11 +125,11 @@ class CoachPageManager:
 
             # Prepare the coach_inputs dictionary for all coaches
             for coach_index in range(total_coaches):
-                if coach_index not in self.coach_inputs:
-                    self.coach_inputs[coach_index] = {}
+                if coach_index not in self.parent.coach_inputs:
+                    self.parent.coach_inputs[coach_index] = {}
 
             # Create UI elements only once (for the first time)
-            if not self.coach_inputs[0]:  # Check if the UI is not yet created
+            if not self.parent.coach_inputs[0]:  # Check if the UI is not yet created
                 # Adding labels and QLineEdits for frameAreaLabels
                 for label_name in self.area_labels:
                     row_layout = QHBoxLayout()  
@@ -156,7 +155,7 @@ class CoachPageManager:
                     self.parent.frameAreaLabels.layout().addLayout(row_layout)
 
                     for coach_index in range(total_coaches):
-                        self.coach_inputs[coach_index][label_name] = (line_edit.objectName(), line_edit.text())
+                        self.parent.coach_inputs[coach_index][label_name] = (line_edit.objectName(), line_edit.text())
 
                 # Adding labels and QLineEdits for frameAreaLabels_2
                 for label_name in self.area_labels_2:
@@ -190,7 +189,7 @@ class CoachPageManager:
 
                         # Save the widgets for all coaches
                         for coach_index in range(total_coaches):
-                            self.coach_inputs[coach_index][label_name] = (custom_input.objectName(), custom_input.text())
+                            self.parent.coach_inputs[coach_index][label_name] = (custom_input.objectName(), custom_input.text())
 
                     else:
                         # Regular QLineEdit for all other labels
@@ -209,7 +208,7 @@ class CoachPageManager:
                         row_layout.addWidget(unit_label)
 
                         for coach_index in range(total_coaches):
-                            self.coach_inputs[coach_index][label_name] = (line_edit.objectName(), line_edit.text())
+                            self.parent.coach_inputs[coach_index][label_name] = (line_edit.objectName(), line_edit.text())
                     
                     self.parent.frameAreaLabels_2.layout().addLayout(row_layout)
 
@@ -275,19 +274,19 @@ class CoachPageManager:
     def save_current_coach_inputs(self, index):
         """Saves the current inputs for the given coach index."""
         try:
-            if index in self.coach_inputs:
-                for label_name, line_edit in self.coach_inputs[index].items():
+            if index in self.parent.coach_inputs:
+                for label_name, line_edit in self.parent.coach_inputs[index].items():
                     widget = self.parent.findChild(QLineEdit, label_name)
                     if widget:  # If QLineEdit exists, save as tuple (object name, text)
-                        self.coach_inputs[index][label_name] = (widget.objectName(), widget.text())
+                        self.parent.coach_inputs[index][label_name] = (widget.objectName(), widget.text())
         except Exception as e:
             self.print_utf8(f"An error occurred while saving inputs for Coach {index + 1}: {e}")
 
     def load_coach_inputs(self, index):
         """Loads the saved inputs for the given coach index into the UI."""
         try:
-            if index in self.coach_inputs:
-                for label_name, (object_name, saved_text) in self.coach_inputs[index].items():
+            if index in self.parent.coach_inputs:
+                for label_name, (object_name, saved_text) in self.parent.coach_inputs[index].items():
                     widget = self.parent.findChild(QLineEdit, object_name)
                     if widget:  # If QLineEdit exists, set its text
                         widget.setText(saved_text)

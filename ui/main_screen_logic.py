@@ -76,6 +76,7 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.init_pages()
             self.original_default_interior_values={}
             self.original_default_exterior_values={}
+            self.cabin_inputs={}
             self.coach_inputs={}
 
             self.menu_buttons = [
@@ -222,11 +223,11 @@ class MasterScreen(QtWidgets.QMainWindow):
             project_data = self.saving_manager.load_project(self.ProjectName)
             
             if project_data:
-                # Prepare old values if they exist in self.coach_inputs
+                # Prepare old values if they exist in self.cabin_inputs
                 cabin_key = f"{cabin_index}"  # Index 0 -> "Cabin 1", Index 1 -> "Cabin 2"
-                # old_values = self.coach_inputs.get(cabin_key, None)
+                # old_values = self.cabin_inputs.get(cabin_key, None)
                 # Create CabinScreen with old values if they exist
-                self.cabin_form = CabinScreen(self, cabin_index, project_data, self.coach_inputs)
+                self.cabin_form = CabinScreen(self, cabin_index, project_data, self.cabin_inputs)
                 
                 if cabin_index == 0:
                     self.cabin_form.setWindowTitle("Cabin 1 Configuration")
@@ -244,9 +245,9 @@ class MasterScreen(QtWidgets.QMainWindow):
             print(f"An error occurred while opening the cabin form: {e}")
 
     def update_cabin_values(self, cabin_inputs):
-        """Updates the main file's self.coach_inputs with the saved cabin data."""
-        # self.coach_inputs.update(cabin_inputs)  # Merge new cabin data with existing data
-        self.coach_inputs=cabin_inputs
+        """Updates the main file's self.cabin_inputs with the saved cabin data."""
+        # self.cabin_inputs.update(cabin_inputs)  # Merge new cabin data with existing data
+        self.cabin_inputs=cabin_inputs
 
     def on_save_button_clicked(self):
         """Triggered when btnSave is clicked. Collects all project details and passes them for saving."""
@@ -1710,8 +1711,11 @@ class MasterScreen(QtWidgets.QMainWindow):
 
         # Load the project data
         project_data = self.saving_manager.load_project(self.ProjectName)
+        self.coach_page_manager.save_current_coach_inputs(self.coach_page_manager.current_coach_index)
         # Pass the loaded data to the CoachPageManager
         if project_data:
+            print("Self.Coach:",self.coach_inputs)
+            print("Self cabin: ",self.cabin_inputs)
             self.sensor_page_manager.load_coach_data(project_data)
     def show_test_page(self):
         """Show the Pair IP Pass page."""
@@ -1721,6 +1725,7 @@ class MasterScreen(QtWidgets.QMainWindow):
         project_data = self.saving_manager.load_project(self.ProjectName)
         # Pass the loaded data to the CoachPageManager
         if project_data:
+            
             self.test_page_manager.load_coach_data(project_data)
 
 

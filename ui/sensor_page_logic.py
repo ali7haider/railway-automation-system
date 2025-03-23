@@ -17,8 +17,6 @@ class SensorPageManager:
         self.coach_widgets = []
         self.current_coach_index = 0  # Initialize current_coach_index
         self.project_data = {}  # Initialize project_data  
-        self.coach_table_data = {}  # Initialize coach_table_data  
-    
      # Initialize an array to store all tables
         self.sensor_tables = {
             "tableAT": None,   # Air temperature sensor
@@ -31,6 +29,10 @@ class SensorPageManager:
             "tableOTH": None,  # Other sensor
             "tableVAR": None   # Variables
         }
+        self.coach_table_data = {}  # Initialize coach_table_data  
+    
+
+
         self.load_tables()
         # Connect buttons to add rows
         self.connect_buttons()
@@ -43,6 +45,14 @@ class SensorPageManager:
 
         self.setup_table_context_menu(self.sensor_tables["tableAT"])
         self.setup_table_context_menu(self.sensor_tables["tableRH"])
+        self.setup_table_context_menu(self.sensor_tables["tableAS"])
+        self.setup_table_context_menu(self.sensor_tables["tableST"])
+        self.setup_table_context_menu(self.sensor_tables["tableCO2"])
+        self.setup_table_context_menu(self.sensor_tables["tableDP"])
+        self.setup_table_context_menu(self.sensor_tables["tableP"])
+        self.setup_table_context_menu(self.sensor_tables["tableRH"])
+        self.setup_table_context_menu(self.sensor_tables["tableOTH"])
+        self.setup_table_context_menu(self.sensor_tables["tableVAR"])
 
 
     
@@ -275,7 +285,6 @@ class SensorPageManager:
 
         # Append the sensor data to the table's list
         self.project_data[self.current_coach_index][table_name].append(sensor_data)
-        print(f"Saved data for {sensor_id} in {table_name}: {sensor_data}")
     def load_tables(self):
         # Define the same headers for all tables
         headers = ["Sensor Name", "Zone", "Type", "Valuation 1", 

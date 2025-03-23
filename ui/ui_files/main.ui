@@ -2088,7 +2088,7 @@ background-color:#1159A8;
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>4</number>
+                      <number>3</number>
                      </property>
                      <widget class="QWidget" name="projectPage">
                       <property name="acceptDrops">
@@ -7029,7 +7029,7 @@ font-weight:bold;</string>
                                              <number>0</number>
                                             </property>
                                             <attribute name="horizontalHeaderVisible">
-                                             <bool>false</bool>
+                                             <bool>true</bool>
                                             </attribute>
                                            </widget>
                                           </item>
