@@ -260,7 +260,7 @@ QTableWidget::horizontalHeader {
 }
 QTableWidget QTableCornerButton::section {
     border: none;
-	background-color: #333;
+	background-color: #345CBF;
 	padding: 3px;
     border-top-left-radius: 8px;
 }
@@ -271,11 +271,11 @@ QHeaderView::section:horizontal {
 }
 QHeaderView::section:vertical {
     border: none;
-	background-color: #444;
+	background-color: #ffffff;
+    color: #444444;
 	padding-left: 5px;
     padding-right: 5px;
-    border-bottom: 1px solid #555;
-    margin-bottom: 1px;
+    border-bottom: 2px solid #555;
 }
 QScrollBar:horizontal {
     background: #FFF;
@@ -6609,7 +6609,8 @@ background-color:#8ED973;
 font-weight:bold;</string>
                                             </property>
                                             <property name="text">
-                                             <string>CO2 sensor (CO2)</string>
+                                             <string>CO2 sensor (CO2)
+</string>
                                             </property>
                                             <property name="alignment">
                                              <set>Qt::AlignCenter</set>
@@ -6670,7 +6671,8 @@ font-weight:bold;</string>
 font-weight:bold;</string>
                                             </property>
                                             <property name="text">
-                                             <string>Differential pressure sensor (DP)</string>
+                                             <string>Differential pressure sensor (DP)
+</string>
                                             </property>
                                             <property name="alignment">
                                              <set>Qt::AlignCenter</set>
@@ -6725,7 +6727,8 @@ font-weight:bold;</string>
 font-weight:bold;</string>
                                             </property>
                                             <property name="text">
-                                             <string>Power sensor (P)</string>
+                                             <string>Power sensor (P)
+</string>
                                             </property>
                                             <property name="alignment">
                                              <set>Qt::AlignCenter</set>
@@ -6786,7 +6789,8 @@ font-weight:bold;</string>
 font-weight:bold;</string>
                                             </property>
                                             <property name="text">
-                                             <string>Other sensor (OTH)</string>
+                                             <string>Other sensor (OTH)
+</string>
                                             </property>
                                             <property name="alignment">
                                              <set>Qt::AlignCenter</set>
@@ -6908,7 +6912,8 @@ font-weight:bold;</string>
 font-weight:bold;</string>
                                             </property>
                                             <property name="text">
-                                             <string>Air speed sensor (AS)</string>
+                                             <string>Air speed sensor (AS)
+</string>
                                             </property>
                                             <property name="alignment">
                                              <set>Qt::AlignCenter</set>
@@ -7097,7 +7102,8 @@ font-weight:bold;</string>
 font-weight:bold;</string>
                                             </property>
                                             <property name="text">
-                                             <string>Relative humidity sensor (RH)</string>
+                                             <string>Relative humidity sensor (RH)
+</string>
                                             </property>
                                             <property name="alignment">
                                              <set>Qt::AlignCenter</set>
