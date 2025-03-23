@@ -9,6 +9,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 from datetime import datetime
 import pdfkit
+from PyQt5.QtWidgets import QMenu, QAction
 
 class SensorPageManager:
     def __init__(self, parent):
@@ -39,6 +40,9 @@ class SensorPageManager:
         self.parent.btnCabin2_2.clicked.connect(lambda: self.on_cabin_button_click(1))
 
         self.parent.btnExportPDF.clicked.connect(self.export_pdf)
+
+        self.setup_table_context_menu(self.sensor_tables["tableAT"])
+        self.setup_table_context_menu(self.sensor_tables["tableRH"])
 
 
     
@@ -474,3 +478,38 @@ class SensorPageManager:
             print(f"Switched to Cabin {index + 1} and loaded its data.")
         except Exception as e:
             print(f"An error occurred while handling the coach button click: {e}")
+
+    def setup_table_context_menu(self, table_widget):
+        try:
+            # Enable custom context menu
+            table_widget.setContextMenuPolicy(Qt.CustomContextMenu)
+            table_widget.customContextMenuRequested.connect(lambda pos: self.show_table_context_menu(pos, table_widget))
+        except Exception as e:
+            print(f"Error setting up context menu: {e}")
+        
+    def show_table_context_menu(self, pos, table_widget):
+        try:
+            # Get the position of the clicked row
+            index = table_widget.indexAt(pos)
+
+            if index.isValid():
+                menu = QMenu(table_widget)
+                
+                # Create delete action (Note: Parent is now correctly set as table_widget)
+                delete_action = QAction("Delete Row", table_widget)
+                delete_action.triggered.connect(lambda: self.delete_row_from_table(index.row(), table_widget))
+                
+                # Add action to menu
+                menu.addAction(delete_action)
+                
+                # Show the menu at the cursor position
+                menu.exec_(table_widget.viewport().mapToGlobal(pos))
+        except Exception as e:
+            print(f"Error showing context menu: {e}")
+
+    def delete_row_from_table(self, row, table_widget):
+        try:
+            # Remove the specified row from the table
+            table_widget.removeRow(row)
+        except Exception as e:
+            print(f"Error deleting row: {e}")
