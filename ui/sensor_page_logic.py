@@ -1,8 +1,14 @@
+import os
 from PyQt5.QtWidgets import QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout, QFileDialog, QTableWidget, QHeaderView
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtCore import Qt
 import math
 from PyQt5 import QtWidgets
+from fpdf import FPDF
+from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QFileDialog
+from datetime import datetime
+import pdfkit
 
 class SensorPageManager:
     def __init__(self, parent):
@@ -32,7 +38,129 @@ class SensorPageManager:
         self.parent.btnCabin1_2.clicked.connect(lambda: self.on_cabin_button_click(0))
         self.parent.btnCabin2_2.clicked.connect(lambda: self.on_cabin_button_click(1))
 
+        self.parent.btnExportPDF.clicked.connect(self.export_pdf)
+
+
     
+
+    def export_pdf(self):
+        try:
+            # Read the name from lblCoachName_3
+            coach_name = self.parent.lblCoachName_3.text().strip()
+            
+            # Open file dialog to save the PDF file
+            options = QtWidgets.QFileDialog.Options()
+            file_path, _ = QtWidgets.QFileDialog.getSaveFileName(self.parent, "Save PDF", f"{coach_name}.pdf", "PDF Files (*.pdf)", options=options)
+            
+            if not file_path:
+                return  # User cancelled the save dialog
+            
+            # Generate current date and time
+            current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            
+            # Mapping table keys to proper names
+            table_names = {
+                "tableAT": "Air Temperature Sensor",
+                "tableRH": "Relative Humidity Sensor",
+                "tableAS": "Air Speed Sensor",
+                "tableST": "Surface Temperature Sensor",
+                "tableCO2": "CO2 Sensor",
+                "tableDP": "Differential Pressure Sensor",
+                "tableP": "Power Sensor",
+                "tableOTH": "Other Sensor",
+                "tableVAR": "Variables"
+            }
+
+            # Prepare the HTML content
+            html_content = f"""
+            <html>
+            <head>
+                <style>
+                    body {{ font-family: Arial, sans-serif; }}
+                    .header {{ display: flex; justify-content: space-between; align-items: center; }}
+                    .title {{ text-align: center; margin-top: 20px; }}
+                    .time-info {{ text-align: right; margin-top: 5px; font-size: 12px; }}
+                    table {{ width: 100%; border-collapse: collapse; margin-top: 20px; }}
+                    th, td {{ padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }}
+                    th {{ background-color: #f2f2f2; }}
+                    .logo {{ width: 150px; }}
+                    h2 {{ text-align: center; margin-top: 30px; }}
+                </style>
+            </head>
+            <body>
+                <div class="header">
+                    <div class="title">
+                        <h1>{coach_name}</h1>
+                    </div>
+                </div>
+                <div class="time-info">Generated on: {current_time}</div>
+            """
+
+            # Read all table data
+            for table_key, table_widget in self.sensor_tables.items():
+                if table_widget:
+                    table_name = table_names.get(table_key, table_key)
+                    
+                    html_content += f"<h2>{table_name}</h2>"
+                    html_content += "<table><tr>"
+
+                    # Add table headers
+                    column_count = table_widget.columnCount()
+                    for col in range(column_count):
+                        header_item = table_widget.horizontalHeaderItem(col)
+                        header_text = header_item.text() if header_item else f"Column {col + 1}"
+                        html_content += f"<th>{header_text}</th>"
+                    
+                    html_content += "</tr>"
+
+                    # Add table rows
+                    row_count = table_widget.rowCount()
+                    for row in range(row_count):
+                        html_content += "<tr>"
+                        for col in range(column_count):
+                            item = table_widget.cellWidget(row, col)
+
+                            if isinstance(item, QtWidgets.QComboBox):
+                                cell_text = item.currentText()
+                            elif isinstance(item, QtWidgets.QLineEdit):
+                                cell_text = item.text()
+                            else:
+                                table_item = table_widget.item(row, col)
+                                cell_text = table_item.text() if table_item else ""
+                            
+                            html_content += f"<td>{cell_text}</td>"
+                        html_content += "</tr>"
+                    
+                    html_content += "</table><br>"
+            
+            html_content += "</body></html>"
+
+            #Configure pdfkit (Handling path to wkhtmltopdf.exe)
+            # Get the directory of the main.py file
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+
+            # Move one directory up to the project root
+            project_root = os.path.dirname(current_dir)
+
+            # Set the path to wkhtmltopdf.exe
+            path_to_wkhtmltopdf = os.path.join(project_root, "wkhtmltopdf", "wkhtmltopdf.exe")
+            print("path_to_wkhtmltopdf:", path_to_wkhtmltopdf)
+            if not os.path.exists(path_to_wkhtmltopdf):
+                raise FileNotFoundError("wkhtmltopdf.exe not found in the current directory.")
+
+            config = pdfkit.configuration(wkhtmltopdf=path_to_wkhtmltopdf)
+
+            # Generate the PDF
+            pdfkit.from_string(html_content, file_path, configuration=config)
+                
+            
+            QtWidgets.QMessageBox.information(self.parent, "PDF Exported", f"PDF successfully saved at {file_path}")
+            print(f"PDF successfully saved at {file_path}")
+            
+        except Exception as e:
+            print(f"An error occurred while exporting the PDF: {e}")
+
+        
     def connect_buttons(self):
         """Connect buttons to add rows to their respective tables."""
         button_names = [

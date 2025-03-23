@@ -6429,7 +6429,7 @@ background-color:#8ED973;
                                     </widget>
                                    </item>
                                    <item alignment="Qt::AlignRight">
-                                    <widget class="QPushButton" name="pushButton_12">
+                                    <widget class="QPushButton" name="btnExportPDF">
                                      <property name="minimumSize">
                                       <size>
                                        <width>180</width>
