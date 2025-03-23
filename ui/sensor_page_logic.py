@@ -27,6 +27,11 @@ class SensorPageManager:
         self.load_tables()
         # Connect buttons to add rows
         self.connect_buttons()
+        
+
+        self.parent.btnCabin1_2.clicked.connect(lambda: self.on_cabin_button_click(0))
+        self.parent.btnCabin2_2.clicked.connect(lambda: self.on_cabin_button_click(1))
+
     
     def connect_buttons(self):
         """Connect buttons to add rows to their respective tables."""
@@ -213,75 +218,88 @@ class SensorPageManager:
             print(f"An error occurred while updating coach inputs: {e}")
     def save_current_coach_tables(self):
         """Save the current coach's table data to the dictionary."""
-        coach_data = {}
-        
-        for table_name, table_widget in self.sensor_tables.items():
-            if table_widget:
-                table_data = []
-                row_count = table_widget.rowCount()  # Exclude last 5 rows
+        try:
+            coach_data = {}
 
-                for row in range(row_count):
-                    row_data = []
-                    for col in range(table_widget.columnCount()):
-                        item = table_widget.cellWidget(row, col)
-                        
-                        if isinstance(item, QtWidgets.QComboBox):  # If the item is a ComboBox
-                            row_data.append(item.currentText())
-                        elif isinstance(item, QtWidgets.QLineEdit):  # If the item is a LineEdit (for text entries)
-                            row_data.append(item.text())
-                        else:
-                            table_item = table_widget.item(row, col)
-                            row_data.append(table_item.text() if table_item else "")
+            for table_name, table_widget in self.sensor_tables.items():
+                if table_widget:
+                    table_data = []
+                    row_count = table_widget.rowCount()
+
+                    for row in range(row_count):
+                        row_data = []
+                        for col in range(table_widget.columnCount()):
+                            item = table_widget.cellWidget(row, col)
                             
-                    table_data.append(row_data)
-                
-                coach_data[table_name] = table_data
-        
-        # Save the data for the current coach index
-        self.coach_table_data[self.current_coach_index] = coach_data
-        print(self.coach_table_data)
+                            if isinstance(item, QtWidgets.QComboBox):  # If the item is a ComboBox
+                                row_data.append(item.currentText())
+                            elif isinstance(item, QtWidgets.QLineEdit):  # If the item is a LineEdit (for text entries)
+                                row_data.append(item.text())
+                            else:
+                                table_item = table_widget.item(row, col)
+                                row_data.append(table_item.text() if table_item else "")
+                                
+                        table_data.append(row_data)
+                    
+                    coach_data[table_name] = table_data
+            
+            # Save the data for the current coach index
+            self.coach_table_data[self.current_coach_index] = coach_data
+            print(self.coach_table_data)
+            
+        except Exception as e:
+            print(f"An error occurred while saving table data: {e}")
+
 
 
     def load_coach_tables(self):
         """Load table data for the current coach index, if available."""
-        for table_name, table_widget in self.sensor_tables.items():
-                table_widget.setRowCount(0)
-        if self.current_coach_index in self.coach_table_data:
-            coach_data = self.coach_table_data[self.current_coach_index]
-            
+        try:
+            # Clear all rows for all tables before loading data
             for table_name, table_widget in self.sensor_tables.items():
-                if table_widget and table_name in coach_data:
-                    table_data = coach_data[table_name]
+                table_widget.setRowCount(0)
+            
+            if self.current_coach_index in self.coach_table_data:
+                coach_data = self.coach_table_data[self.current_coach_index]
+                
+                for table_name, table_widget in self.sensor_tables.items():
+                    if table_widget and table_name in coach_data:
+                        table_data = coach_data[table_name]
 
-                    # Clear all rows before loading
-                    table_widget.setRowCount(0)
-                    
-                    for row_data in table_data:
-                        row_index = table_widget.rowCount()
-                        table_widget.insertRow(row_index)
+                        # Clear all rows before loading
+                        table_widget.setRowCount(0)
                         
-                        for col_index, cell_text in enumerate(row_data):
-                            if col_index in [1, 3, 4]:  # ComboBoxes for Zone, Valuation 1, Position
-                                combo_box = QtWidgets.QComboBox()
-                                if col_index == 1:  # Zone ComboBox
-                                    combo_box.addItems(["Zone A", "Zone B", "Zone C"])
-                                elif col_index == 3:  # Valuation 1 ComboBox
-                                    combo_box.addItems(["Value 1", "Value 2", "Value 3"])
-                                elif col_index == 4:  # Position ComboBox
-                                    combo_box.addItems(["Front", "Middle", "Back"])
-                                combo_box.setCurrentText(cell_text)
-                                table_widget.setCellWidget(row_index, col_index, combo_box)
+                        for row_data in table_data:
+                            row_index = table_widget.rowCount()
+                            table_widget.insertRow(row_index)
                             
-                            elif col_index in [5, 6, 7]:  # Text Entries for Seat, Height, Description
-                                line_edit = QtWidgets.QLineEdit()
-                                line_edit.setText(cell_text)
-                                table_widget.setCellWidget(row_index, col_index, line_edit)
-                            
-                            else:
-                                item = QtWidgets.QTableWidgetItem(cell_text)
-                                if col_index == 0:  # Make Sensor Name yellow
-                                    item.setForeground(QtGui.QColor("yellow"))
-                                table_widget.setItem(row_index, col_index, item)
+                            for col_index, cell_text in enumerate(row_data):
+                                if col_index in [1, 3, 4]:  # ComboBoxes for Zone, Valuation 1, Position
+                                    combo_box = QtWidgets.QComboBox()
+                                    if col_index == 1:  # Zone ComboBox
+                                        combo_box.addItems(["Zone A", "Zone B", "Zone C"])
+                                    elif col_index == 3:  # Valuation 1 ComboBox
+                                        combo_box.addItems(["Value 1", "Value 2", "Value 3"])
+                                    elif col_index == 4:  # Position ComboBox
+                                        combo_box.addItems(["Front", "Middle", "Back"])
+                                    combo_box.setCurrentText(cell_text)
+                                    table_widget.setCellWidget(row_index, col_index, combo_box)
+                                
+                                elif col_index in [5, 6, 7]:  # Text Entries for Seat, Height, Description
+                                    line_edit = QtWidgets.QLineEdit()
+                                    line_edit.setText(cell_text)
+                                    table_widget.setCellWidget(row_index, col_index, line_edit)
+                                
+                                else:
+                                    item = QtWidgets.QTableWidgetItem(cell_text)
+                                    if col_index == 0:  # Make Sensor Name yellow
+                                        item.setForeground(QtGui.QColor("yellow"))
+                                    table_widget.setItem(row_index, col_index, item)
+                                    
+            print(f"Successfully loaded data for index {self.current_coach_index}.")
+            
+        except Exception as e:
+            print(f"An error occurred while loading table data: {e}")
 
 
     def on_coach_button_click(self, index):
@@ -302,5 +320,30 @@ class SensorPageManager:
             self.parent.lblCoachName_3.setText(f"Coach {index + 1} - {coach_name}")
             
             print(f"Switched to Coach {index + 1} and loaded its data.")
+        except Exception as e:
+            print(f"An error occurred while handling the coach button click: {e}")
+    def on_cabin_button_click(self, index):
+        """Handles clicking on a coach button and updates the UI."""
+        try:  
+            # Save the current coach's table data before switching
+            self.save_current_coach_tables()
+            num_coaches_t = int(self.project_data.get("Number of Coaches per Train", 0))
+            # Update the current coach index
+            if index==0:
+                num_coaches_t = num_coaches_t+1
+            else:
+                num_coaches_t = num_coaches_t+2
+            self.current_coach_index = num_coaches_t
+
+            # Load the data for the newly selected coach
+            self.load_coach_tables()
+
+            # Update the coach name label
+            # Retrieve Cabin Name based on index
+            cabin_name_key = f"Cabin {index+1} Name"
+            cabin_name = self.project_data.get(cabin_name_key, '')
+            self.parent.lblCoachName_3.setText(f"Cabin {index + 1} - {cabin_name}")
+            
+            print(f"Switched to Cabin {index + 1} and loaded its data.")
         except Exception as e:
             print(f"An error occurred while handling the coach button click: {e}")
