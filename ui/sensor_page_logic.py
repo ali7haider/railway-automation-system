@@ -144,7 +144,6 @@ class SensorPageManager:
 
             # Set the path to wkhtmltopdf.exe
             path_to_wkhtmltopdf = os.path.join(project_root, "wkhtmltopdf", "wkhtmltopdf.exe")
-            print("path_to_wkhtmltopdf:", path_to_wkhtmltopdf)
             if not os.path.exists(path_to_wkhtmltopdf):
                 raise FileNotFoundError("wkhtmltopdf.exe not found in the current directory.")
 
