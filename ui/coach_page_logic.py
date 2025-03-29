@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout,QFileDialog
+from PyQt5.QtWidgets import QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout, QFileDialog, QMessageBox
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtCore import Qt
 import math
@@ -211,13 +211,57 @@ class CoachPageManager:
                             self.parent.coach_inputs[coach_index][label_name] = (line_edit.objectName(), line_edit.text())
                     
                     self.parent.frameAreaLabels_2.layout().addLayout(row_layout)
-
+                # **Connect text change events to update area calculation**
+                self.connect_area_update_signals()
                 print("UI for coaches created successfully.")
                 
         except Exception as e:
             print(f"An error occurred while initializing the coach UI: {e}")
 
 
+    def connect_area_update_signals(self):
+        """Connects Coach Length, Width, and Height input fields to update the area calculation."""
+        try:
+            for field_name in ["Coach Length", "Coach Width", "Coach Height"]:
+                widget = self.parent.findChild(QLineEdit, field_name)
+                if widget:
+                    widget.textChanged.connect(self.update_exterior_area)
+
+        except Exception as e:
+            print("Error", f"Error connecting signals: {str(e)}")
+
+
+    def update_exterior_area(self):
+        """Calculates and updates the Total Exterior Area and Total Exterior Area (no ends)."""
+        try:
+            length_input = self.parent.findChild(QLineEdit, "Coach Length")
+            width_input = self.parent.findChild(QLineEdit, "Coach Width")
+            height_input = self.parent.findChild(QLineEdit, "Coach Height")
+
+            if not length_input or not width_input or not height_input:
+                return
+
+            try:
+                length = float(length_input.text()) if length_input.text() else 0
+                width = float(width_input.text()) if width_input.text() else 0
+                height = float(height_input.text()) if height_input.text() else 0
+
+                area = (length * width + length * height + width * height) * 2
+                area_no_ends = (length * width + length * height) * 2
+
+                area_input = self.parent.findChild(QLineEdit, "Total Exterior Area")
+                area_no_ends_input = self.parent.findChild(QLineEdit, "Total Exterior Area (no ends)")
+
+                if area_input:
+                    area_input.setText(f"{area:.2f}")
+                if area_no_ends_input:
+                    area_no_ends_input.setText(f"{area_no_ends:.2f}")
+
+            except ValueError:
+                pass  # Ignore invalid input
+
+        except Exception as e:
+             print("Error", f"Error updating exterior area: {str(e)}")
     def load_heat_transfer_from_json(self):
         """Loads Heat transfer coefficient standstill (k) from the project data."""
         try:            
