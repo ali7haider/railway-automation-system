@@ -248,7 +248,6 @@ class MasterScreen(QtWidgets.QMainWindow):
         """Updates the main file's self.cabin_inputs with the saved cabin data."""
         # self.cabin_inputs.update(cabin_inputs)  # Merge new cabin data with existing data
         self.cabin_inputs=cabin_inputs
-
     def on_save_button_clicked(self):
         """Triggered when btnSave is clicked. Collects all project details and passes them for saving."""
         try:
@@ -1714,8 +1713,7 @@ class MasterScreen(QtWidgets.QMainWindow):
         self.coach_page_manager.save_current_coach_inputs(self.coach_page_manager.current_coach_index)
         # Pass the loaded data to the CoachPageManager
         if project_data:
-            print("Self.Coach:",self.coach_inputs)
-            print("Self cabin: ",self.cabin_inputs)
+            # Pass the loaded data to the SensorPageManager
             self.sensor_page_manager.load_coach_data(project_data)
     def show_test_page(self):
         """Show the Pair IP Pass page."""

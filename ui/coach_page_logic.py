@@ -17,7 +17,7 @@ class CoachPageManager:
                             ,"Crew","Corridor 1","Corridor 2","Compartment 1","Compartment 2","Compartment 3","Compartment 4","Compartment 5","Compartment 6",
                             "Annex Area 1","Annex Area 2","Nursery","HVAC 1","HVAC 2","Exterior"]
         self.area_labels_2 = ["Nº Passengers", "Heat transfer coefficient standstill (k)", "Coach Length",
-                              "Saloon 1 Length","Saloon 2 Length","Saloon 3 Length","Coach Width","Coach Length"
+                              "Saloon 1 Length","Saloon 2 Length","Saloon 3 Length","Coach Width","Coach Height"
                               ,"Windows Area per side","Total Exterior Area","Total Exterior Area (no ends)"
                               ,"g (Windows)","B (Windows)","kW (Walls)","EW","Theta (Walls)","h (Walls)","kD (Roof)","ED","h (Roof)"]
 
@@ -252,7 +252,6 @@ class CoachPageManager:
             # Only save inputs if a previous coach was selected
             
             self.save_current_coach_inputs(self.current_coach_index)
-
             # Update the current coach index
             self.current_coach_index = index
 
