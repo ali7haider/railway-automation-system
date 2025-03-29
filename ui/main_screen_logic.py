@@ -26,6 +26,7 @@ from modules.criteria_manager import CriteriaManager
 from modules.project_manager import ProjectManager  # Import ProjectManager
 from PyQt5.QtGui import QIntValidator, QMouseEvent
 
+from modules.save_project import ProjectSaver
 from ui.cabin_page_logic import CabinScreen
 from ui.coach_page_logic import CoachPageManager
 from ui.custom_exterior_cabin_logic import CustomExteriorConditionsCabinScreen
@@ -69,6 +70,8 @@ class MasterScreen(QtWidgets.QMainWindow):
 
 
             self.saving_manager = SavingProjectManager()
+            self.project_saver = ProjectSaver(self.saving_manager)  # Use the new class
+
             self.ProjectName="Test"
 
             self.stacked_widget = self.findChild(QStackedWidget, "stackedWidget")  # Match the object name in Qt Designer
@@ -76,6 +79,9 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.init_pages()
             self.original_default_interior_values={}
             self.original_default_exterior_values={}
+            self.custom_values_interior={}
+            self.saloon_custom_values={}
+            self.cabin_custom_values={}
             self.cabin_inputs={}
             self.coach_inputs={}
 
@@ -251,48 +257,8 @@ class MasterScreen(QtWidgets.QMainWindow):
     def on_save_button_clicked(self):
         """Triggered when btnSave is clicked. Collects all project details and passes them for saving."""
         try:
-            # Check if Project Name is provided
-            project_name = self.txtNameProject.text().strip()
-            if not project_name:
-                QMessageBox.warning(self, "Missing Information", "Please enter the Project Name before saving.")
-                return
-
-            # Create the base structure for project information
-            self.ProjectName=project_name
-            project_data = {
-                "Project_info": {
-                    "Project Name": project_name,
-                    "Coach Builder": self.txtCoachBuilderProject.text(),
-                    "Customer/Operator": self.txtCustomerOperatorProject.text(),
-                    "Operation Country": self.cmbxOperationCountryProject.currentText(),
-                    "Type of Train": self.cmbxTypeOfTrainProject.currentText(),
-                    "Number of Coaches per Train": self.txtNCoachesPerTrainProject.text(),
-                    "Type of Compartment": self.cmbxCompartmentProject.currentText(),
-                    "Type of HVAC": self.cmbxTypesOfHVACProject.currentText(),
-                    "Maximum Speed": self.txtMaximumSpeedProject.text(),
-                    "Single/Double Deck": self.cmbxSigleDeckDoubleDeck.currentText(),
-                    "Standard Saloon": self.lblStandardSaloon.text() if self.lblStandardSaloon.isVisible() else self.cmbxStandardSaloon.currentText(),
-                    "Category Saloon": self.lblCategorySaloon.text(),
-                    "Standard Cabin": self.lblStandardCabin.text() if self.lblStandardCabin.isVisible() else self.cmbxStandardCabin.currentText(),
-                    "Category Cabin": self.lblCategoryCabin.text(),
-                    "Heat Transfer Saloon": self.lblHeatTransferSaloon.text(),
-                    "Heat Transfer Cabin": self.lblHeatTransferCabin.text(),
-                    "Cabin 1 Name": self.txtCabin1NameProject.text(),
-                    "Cabin 2 Name": self.txtCabin2NameProject.text(),
-                    "Coaches": {}
-                }
-            }
-
-            # Collect dynamically generated coach names
-            for index, widget in enumerate(self.coach_widgets):
-                coach_name = widget["input"].text().strip()
-                if coach_name:
-                    project_data["Project_info"]["Coaches"][f"Coach {index + 1}"] = coach_name
-
-            # Save using SavingProjectManager
-            self.saving_manager.save_project(project_data)
-            QMessageBox.information(self, "Success", f"Project '{project_name}' saved successfully.")
-
+            """Delegate saving logic to ProjectSaver"""
+            self.project_saver.save_project(self)
         except Exception as e:
             QMessageBox.critical(self, "Error", f"An error occurred while saving the project: {str(e)}")
 
