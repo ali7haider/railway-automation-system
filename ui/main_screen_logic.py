@@ -72,7 +72,7 @@ class MasterScreen(QtWidgets.QMainWindow):
             self.saving_manager = SavingProjectManager()
             self.project_saver = ProjectSaver(self.saving_manager)  # Use the new class
 
-            self.ProjectName="Test"
+            self.ProjectName="TestList"
 
             self.stacked_widget = self.findChild(QStackedWidget, "stackedWidget")  # Match the object name in Qt Designer
         #     # Initialize individual pages
@@ -1689,8 +1689,9 @@ class MasterScreen(QtWidgets.QMainWindow):
         project_data = self.saving_manager.load_project(self.ProjectName)
         # Pass the loaded data to the CoachPageManager
         if project_data:
-            
+
             self.test_page_manager.load_coach_data(project_data)
+            self.test_page_manager.load_test_data()
 
 
     def show_offset_leech_menu(self):

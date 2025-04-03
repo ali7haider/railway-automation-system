@@ -213,7 +213,6 @@ class CoachPageManager:
                     self.parent.frameAreaLabels_2.layout().addLayout(row_layout)
                 # **Connect text change events to update area calculation**
                 self.connect_area_update_signals()
-                print("UI for coaches created successfully.")
                 
         except Exception as e:
             print(f"An error occurred while initializing the coach UI: {e}")
@@ -285,7 +284,6 @@ class CoachPageManager:
                     readonly_input = self.parent.findChild(QLineEdit, f"readonly_{label_name}")
                     if readonly_input:
                         readonly_input.setText(str(value))
-                        print(f"Loaded JSON value for {label_name}: {value}")
             else:
                 print("JSON data not found. Make sure 'self.readonly_heat_transfer_values' exists.")
         except Exception as e:

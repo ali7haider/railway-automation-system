@@ -1,0 +1,2511 @@
+[
+    {
+      "Test ID": null,
+      "Test Norm ID": 1,
+      "Description of the test": "K-value",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": "5 ± 2",
+        "Winter II": "5 ± 2",
+        "Winter III": "5 ± 2"
+      },
+      "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": "N/A",
+      "Setpoint curve [ºC]": "N/A",
+      "Setpoint delta": "N/A",
+      "Setpoint delta value [K]": "N/A",
+      "Criteria To be taken into account for evaluation": "",
+      "Criteria To be checked": "k",
+      "Remarks": null,
+      "Compartment test": false,
+      "Range": "N/A",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": "",
+      "Test duration": "12:00:00"
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 2,
+      "Description of the test": "K-value",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": "5 ± 2",
+        "Winter II": "5 ± 2",
+        "Winter III": "5 ± 2"
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Max",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": "N/A",
+      "Setpoint curve [ºC]": "N/A",
+      "Setpoint delta": "N/A",
+      "Setpoint delta value [K]": "N/A",
+      "Criteria To be taken into account for evaluation": "",
+      "Criteria To be checked": "k",
+      "Remarks": null,
+      "Compartment test": false,
+      "Range": "N/A",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": "12:00:00"
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 3,
+      "Description of the test": "Preheating",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": 0,
+        "Winter II": 0,
+        "Winter III": 0
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": null,
+      "Setpoint curve [ºC]": null,
+      "Setpoint delta": null,
+      "Setpoint delta value [K]": null,
+      "Criteria To be taken into account for evaluation": "",
+      "Criteria To be checked": "Tim=18ºC",
+      "Remarks": "8.1 Preheating time recorded",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": "7:00:00"
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 4,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": 0,
+        "Winter II": 0,
+        "Winter III": 0
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": null,
+      "Setpoint curve [ºC]": null,
+      "Setpoint delta": null,
+      "Setpoint delta value [K]": null,
+      "Criteria To be taken into account for evaluation": "",
+      "Criteria To be checked": "Tim=18ºC",
+      "Remarks": "8.1 Preheating time recorded",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": "2:00:00"
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 5,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": 0,
+        "Winter II": 0,
+        "Winter III": 0
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 1,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Max",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": "2:00:00"
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 6,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": 0,
+        "Winter II": 0,
+        "Winter III": 0
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 7,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": 0,
+        "Winter II": 0,
+        "Winter III": 0
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": "all except 3 comp.",
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speed in occupied compartment",
+      "Criteria To be checked": "",
+      "Remarks": "This test only applies to compartments vehicles",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": true,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 8,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": 0,
+        "Winter II": 0,
+        "Winter III": 0
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": "at least 3 comp.",
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speed in occupied compartment",
+      "Criteria To be checked": "",
+      "Remarks": "This test only applies to compartments vehicles",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": true,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 9,
+      "Description of the test": "Stabilization",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": 0,
+        "Winter II": 0,
+        "Winter III": 0
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "",
+      "Remarks": "This test only applies to compartments vehicles",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": true,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 10,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": 0,
+        "Winter II": 0,
+        "Winter III": 0
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": "20% or 30% of devices: Maximun, others minimun",
+      "Criteria To be taken into account for evaluation": "All",
+      "Criteria To be checked": "",
+      "Remarks": "This test only applies to compartments vehicles",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": true,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 11,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": 0,
+        "Winter II": 0,
+        "Winter III": 0
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": "20% or 30% of devices: Maximun, others minimun",
+      "Criteria To be taken into account for evaluation": "All",
+      "Criteria To be checked": "",
+      "Remarks": "This test only applies to compartments vehicles",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": true,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 12,
+      "Description of the test": "Functional - Standby operation",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": -10,
+        "Winter II": -10,
+        "Winter III": -10
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "Tim",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 13,
+      "Description of the test": "Preheating from standby operation",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": -10,
+        "Winter II": -10,
+        "Winter III": -10
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "Tim",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 14,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": -10,
+        "Winter II": -10,
+        "Winter III": -10
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 15,
+      "Description of the test": "Door opening test",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": -10,
+        "Winter II": -10,
+        "Winter III": -10
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min/Max",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "Tim",
+      "Remarks": "min. three doors sequences",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 16,
+      "Description of the test": "Stabilization",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": -10,
+        "Winter II": -10,
+        "Winter III": -10
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 17,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": -10,
+        "Winter II": -10,
+        "Winter III": -10
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 24,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Maximun",
+      "Setpoint delta value [K]": 2,
+      "Criteria To be taken into account for evaluation": "All",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 18,
+      "Description of the test": "Functional - Degraded mode",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": -10,
+        "Winter II": -10,
+        "Winter III": -10
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "",
+      "Remarks": "if applicable as defined in the technical specification according to the system layout. Sumulates e.g. defect to one air conditioning if two installed per vehicle or blocked filter",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 19,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": "N/A",
+        "Winter II": -20,
+        "Winter III": -40
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": "Auto (0)",
+      "Setpoint curve [ºC]": "Auto",
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "N/A",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 20,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": -10,
+        "Winter II": -20,
+        "Winter III": -40
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Max",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except vertical ranges and air speed",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 21,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": -10,
+        "Winter II": -20,
+        "Winter III": -40
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Max",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 22,
+      "Description of the test": "Performance",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": -10,
+        "Winter II": -20,
+        "Winter III": -40
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": "100% or 0%",
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Max",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 24,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Maximun",
+      "Setpoint delta value [K]": 2,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "Tim",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 23,
+      "Description of the test": "Functional - Extreme",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": -15,
+        "Winter II": -25,
+        "Winter III": -45
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "Tim",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Extended",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 24,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": 5,
+        "Winter II": 5,
+        "Winter III": 5
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 25,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": 5,
+        "Winter II": 5,
+        "Winter III": 5
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 26,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": 5,
+        "Winter II": 5,
+        "Winter III": 5
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 500,
+        "Summer II": 500,
+        "Summer III": 500
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 27,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": 5,
+        "Winter II": 5,
+        "Winter III": 5
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 500,
+        "Summer II": 500,
+        "Summer III": 500
+      },
+      "Wind speed": "Max",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 28,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": 10,
+        "Winter II": 10,
+        "Winter III": 10
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 50,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 29,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": 10,
+        "Winter II": 10,
+        "Winter III": 10
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 50,
+      "Sun radiation [W/m2]": {
+        "Summer I": 500,
+        "Summer II": 500,
+        "Summer III": 500
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 30,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Winter I": 10,
+        "Winter II": 10,
+        "Winter III": 10
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Winter I": "-",
+        "Winter II": "-",
+        "Winter III": "-"
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 500,
+        "Summer II": 500,
+        "Summer III": 500
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 31,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 15,
+        "Summer II": 15,
+        "Summer III": 15
+      },
+      "Relative humidity in climatic chamber [%]": {
+        "Summer I": 90,
+        "Summer II": 90,
+        "Summer III": 90
+      },
+      "Passenger load [%]": 50,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 32,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 15,
+        "Summer II": 15,
+        "Summer III": 15
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 90,
+        "Summer II": 90,
+        "Summer III": 90
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 33,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 15,
+        "Summer II": 15,
+        "Summer III": 15
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 90,
+        "Summer II": 90,
+        "Summer III": 90
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 500,
+        "Summer II": 500,
+        "Summer III": 500
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 34,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 15,
+        "Summer II": 15,
+        "Summer III": 15
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 90,
+        "Summer II": 90,
+        "Summer III": 90
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 500,
+        "Summer II": 500,
+        "Summer III": 500
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 20,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Minimun",
+      "Setpoint delta value [K]": -2,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 35,
+      "Description of the test": "Stabilization",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 15,
+        "Summer II": 15,
+        "Summer III": 15
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 90,
+        "Summer II": 90,
+        "Summer III": 90
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 500,
+        "Summer II": 500,
+        "Summer III": 500
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 36,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 15,
+        "Summer II": 15,
+        "Summer III": 15
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 80,
+        "Summer II": 80,
+        "Summer III": 80
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22,
+      "Setpoint curve [ºC]": 22,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 37,
+      "Description of the test": "Intermediate",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": "15->5",
+        "Summer II": "15->5",
+        "Summer III": "15->5"
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 80,
+        "Summer II": 80,
+        "Summer III": 80
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": "Auto (0)",
+      "Setpoint curve [ºC]": "Auto",
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except quality of regulation",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 38,
+      "Description of the test": "Intermediate",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": "5->22",
+        "Summer II": "5->22",
+        "Summer III": "5->22"
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 80,
+        "Summer II": 80,
+        "Summer III": 80
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": "Auto (0)",
+      "Setpoint curve [ºC]": "Auto",
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except quality of regulation",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 39,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 22,
+        "Summer II": 22,
+        "Summer III": 22
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 80,
+        "Summer II": 80,
+        "Summer III": 80
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": null,
+      "Setpoint curve [ºC]": null,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 40,
+      "Description of the test": "Stabilization",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 22,
+        "Summer II": 22,
+        "Summer III": 22
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 80,
+        "Summer II": 80,
+        "Summer III": 80
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 23.17647059,
+      "Setpoint curve [ºC]": 23.17647059,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 41,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 22,
+        "Summer II": 22,
+        "Summer III": 22
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 80,
+        "Summer II": 80,
+        "Summer III": 80
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 23.17647059,
+      "Setpoint curve [ºC]": 23.17647059,
+      "Setpoint delta": "20% or 30%",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 42,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 22,
+        "Summer II": 22,
+        "Summer III": 22
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 80,
+        "Summer II": 80,
+        "Summer III": 80
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 23.17647059,
+      "Setpoint curve [ºC]": 23.17647059,
+      "Setpoint delta": "20% or 30%",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 43,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 22,
+        "Summer II": 22,
+        "Summer III": 22
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 80,
+        "Summer II": 80,
+        "Summer III": 80
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 23.17647059,
+      "Setpoint curve [ºC]": 23.17647059,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 44,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 22,
+        "Summer II": 22,
+        "Summer III": 22
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 80,
+        "Summer II": 80,
+        "Summer III": 80
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 500,
+        "Summer II": 500,
+        "Summer III": 500
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 23.17647059,
+      "Setpoint curve [ºC]": 23.17647059,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 45,
+      "Description of the test": "Intermediate",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": "22 -> 5",
+        "Summer II": "22 -> 5",
+        "Summer III": "22 -> 5"
+      },
+      "Relative humidity in climatic chamber [%]": "80 ->",
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": "Auto (0)",
+      "Setpoint curve [ºC]": "Auto",
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except quality of regulation and air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 46,
+      "Description of the test": "Intermediate",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": "5 -> 28",
+        "Summer II": "5 -> 28",
+        "Summer III": "5 -> 28"
+      },
+      "Relative humidity in climatic chamber [%]": "-> 70",
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 500,
+        "Summer II": 500,
+        "Summer III": 500
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": "Auto (0)",
+      "Setpoint curve [ºC]": "Auto",
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except quality of regulation and air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 47,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 28,
+        "Summer II": 28,
+        "Summer III": 28
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 70,
+        "Summer II": 70,
+        "Summer III": 45
+      },
+      "Passenger load [%]": 50,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 24.94117647,
+      "Setpoint curve [ºC]": 24.94117647,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 48,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 28,
+        "Summer II": 28,
+        "Summer III": 28
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 70,
+        "Summer II": 70,
+        "Summer III": 45
+      },
+      "Passenger load [%]": 50,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 22.94117647,
+      "Setpoint curve [ºC]": 24.94117647,
+      "Setpoint delta": "Minimun",
+      "Setpoint delta value [K]": -2,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 49,
+      "Description of the test": "Stabilization",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 28,
+        "Summer II": 28,
+        "Summer III": 28
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 70,
+        "Summer II": 70,
+        "Summer III": 45
+      },
+      "Passenger load [%]": 50,
+      "Sun radiation [W/m2]": {
+        "Summer I": 600,
+        "Summer II": 600,
+        "Summer III": 600
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 24.94117647,
+      "Setpoint curve [ºC]": 24.94117647,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 50,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 28,
+        "Summer II": 28,
+        "Summer III": 28
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 70,
+        "Summer II": 70,
+        "Summer III": 45
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 600,
+        "Summer II": 600,
+        "Summer III": 600
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 24.94117647,
+      "Setpoint curve [ºC]": 24.94117647,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 51,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 28,
+        "Summer II": 28,
+        "Summer III": 28
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 70,
+        "Summer II": 70,
+        "Summer III": 45
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 600,
+        "Summer II": 600,
+        "Summer III": 600
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 24.94117647,
+      "Setpoint curve [ºC]": 24.94117647,
+      "Setpoint delta": "20% or 30%",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 52,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 28,
+        "Summer II": 28,
+        "Summer III": 28
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 70,
+        "Summer II": 70,
+        "Summer III": 45
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 600,
+        "Summer II": 600,
+        "Summer III": 600
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 24.94117647,
+      "Setpoint curve [ºC]": 24.94117647,
+      "Setpoint delta": "20% or 30%",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 53,
+      "Description of the test": "Stabilization",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 28,
+        "Summer II": 28,
+        "Summer III": 28
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 70,
+        "Summer II": 70,
+        "Summer III": 45
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 600,
+        "Summer II": 600,
+        "Summer III": 600
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 24.94117647,
+      "Setpoint curve [ºC]": 24.94117647,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 54,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 28,
+        "Summer II": 28,
+        "Summer III": 28
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 70,
+        "Summer II": 70,
+        "Summer III": 45
+      },
+      "Passenger load [%]": "at least 3 comp.",
+      "Sun radiation [W/m2]": {
+        "Summer I": 600,
+        "Summer II": 600,
+        "Summer III": 600
+      },
+      "Wind speed": "Max",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 24.94117647,
+      "Setpoint curve [ºC]": 24.94117647,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speed in occupied compartment",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 55,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 28,
+        "Summer II": 28,
+        "Summer III": 28
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 70,
+        "Summer II": 70,
+        "Summer III": 45
+      },
+      "Passenger load [%]": "all except 3 comp.",
+      "Sun radiation [W/m2]": {
+        "Summer I": 600,
+        "Summer II": 600,
+        "Summer III": 600
+      },
+      "Wind speed": "Max",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 24.94117647,
+      "Setpoint curve [ºC]": 24.94117647,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speed in occupied compartment",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 56,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 40,
+        "Summer II": 40,
+        "Summer III": 40
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 40,
+        "Summer II": 50,
+        "Summer III": "N/A"
+      },
+      "Passenger load [%]": 50,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 27,
+      "Setpoint curve [ºC]": 27,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "All except air speeds",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 57,
+      "Description of the test": "Door opening test",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 40,
+        "Summer II": 40,
+        "Summer III": 40
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 40,
+        "Summer II": 50,
+        "Summer III": 45
+      },
+      "Passenger load [%]": 50,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Min/Max",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 27,
+      "Setpoint curve [ºC]": 27,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "Tim",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 58,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 40,
+        "Summer II": 40,
+        "Summer III": 40
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 40,
+        "Summer II": 50,
+        "Summer III": "N/A"
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 0,
+        "Summer II": 0,
+        "Summer III": 0
+      },
+      "Wind speed": "Max",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 27,
+      "Setpoint curve [ºC]": 27,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 59,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 40,
+        "Summer II": 40,
+        "Summer III": 40
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 40,
+        "Summer II": 50,
+        "Summer III": "N/A"
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 800,
+        "Summer II": 700,
+        "Summer III": "N/A"
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 27,
+      "Setpoint curve [ºC]": 27,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 60,
+      "Description of the test": "Performance",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 40,
+        "Summer II": 40,
+        "Summer III": 40
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 40,
+        "Summer II": 50,
+        "Summer III": 45
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 800,
+        "Summer II": 700,
+        "Summer III": 600
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 25,
+      "Setpoint curve [ºC]": 27,
+      "Setpoint delta": "Minimun",
+      "Setpoint delta value [K]": -2,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "Tim",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 61,
+      "Description of the test": "Functional - Degraded mode",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 40,
+        "Summer II": 40,
+        "Summer III": 40
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 40,
+        "Summer II": 50,
+        "Summer III": 70
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 800,
+        "Summer II": 700,
+        "Summer III": 600
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 27,
+      "Setpoint curve [ºC]": 27,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "Tim",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 62,
+      "Description of the test": "Functional - Standby operation",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 40,
+        "Summer II": 40,
+        "Summer III": 40
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 40,
+        "Summer II": 50,
+        "Summer III": 70
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 800,
+        "Summer II": 700,
+        "Summer III": 600
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 27,
+      "Setpoint curve [ºC]": 27,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "Tim",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 63,
+      "Description of the test": "Precooling from standby operation",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 40,
+        "Summer II": 40,
+        "Summer III": 40
+      },
+       "Relative humidity in climatic chamber [%]":{
+        "Summer I": 40,
+        "Summer II": 50,
+        "Summer III": 70
+      },
+      "Passenger load [%]": 0,
+      "Sun radiation [W/m2]": {
+        "Summer I": 800,
+        "Summer II": 700,
+        "Summer III": 600
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 27,
+      "Setpoint curve [ºC]": 27,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "Tim",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Normal",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 64,
+      "Description of the test": "Steady-state",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 45,
+        "Summer II": 45,
+        "Summer III": 45
+      },
+      "Relative humidity in climatic chamber [%]": {
+        "Summer I": 35,
+        "Summer II": 40,
+        "Summer III": 30
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 800,
+        "Summer II": 700,
+        "Summer III": 600
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 27,
+      "Setpoint curve [ºC]": 27,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "Tim",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Extended",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 65,
+      "Description of the test": "Functional",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": 50,
+        "Summer II": 50,
+        "Summer III": 50
+      },
+      "Relative humidity in climatic chamber [%]": {
+        "Summer I": 25,
+        "Summer II": 30,
+        "Summer III": 25
+      },
+      "Passenger load [%]": 100,
+      "Sun radiation [W/m2]": {
+        "Summer I": 800,
+        "Summer II": 700,
+        "Summer III": 600
+      },
+      "Wind speed": "Min",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": 27,
+      "Setpoint curve [ºC]": 27,
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "None",
+      "Criteria To be checked": "Tim",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "Extended",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 66,
+      "Description of the test": "Typical daily profile (Summer)",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": "-5 -> +3",
+        "Summer II": "-5 -> +3",
+        "Summer III": "-5 -> +3"
+      },
+      "Relative humidity in climatic chamber [%]": {
+        "Summer I": "45-75",
+        "Summer II": "45-75",
+        "Summer III": "45-75"
+      }, 
+      "Passenger load [%]": "0%-100%",
+      "Sun radiation [W/m2]": {
+        "Summer I": "0-400",
+        "Summer II": "0-400",
+        "Summer III": "0-400"
+      }, 
+      "Wind speed": "Min-Max",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": "Auto (0)",
+      "Setpoint curve [ºC]": "Auto",
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "Tim",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "N/A",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 67,
+      "Description of the test": "Typical daily profile (Spring or Autumn)",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": "5 -> 25",
+        "Summer II": "5 -> 25",
+        "Summer III": "5 -> 25"
+      },
+      "Relative humidity in climatic chamber [%]": {
+        "Summer I": "30-70",
+        "Summer II": "30-70",
+        "Summer III": "30-70"
+      },  
+      "Passenger load [%]": "0%-100%",
+      "Sun radiation [W/m2]": {
+        "Summer I": "0-700",
+        "Summer II": "0-700",
+        "Summer III": "0-700"
+      }, 
+      "Wind speed": "Min-Max",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": "Auto (0)",
+      "Setpoint curve [ºC]": "Auto",
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "Tim",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "N/A",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    },
+    {
+      "Test ID": null,
+      "Test Norm ID": 68,
+      "Description of the test": "Typical daily profile (Summer)",
+      "Mean temperature in climatic chamber [ºC]": {
+        "Summer I": "20 -> 36",
+        "Summer II": "20 -> 36",
+        "Summer III": "20 -> 36"
+      },
+      "Relative humidity in climatic chamber [%]": {
+        "Summer I": "20-36",
+        "Summer II": "20-36",
+        "Summer III": "20-36"
+      },   
+      "Passenger load [%]": "0%-100%",
+      "Sun radiation [W/m2]": {
+        "Summer I": "200-700",
+        "Summer II": "200-700",
+        "Summer III": "200-700"
+      }, 
+      "Wind speed": "Min-Max",
+      "Wind speed [km/h]": null,
+      "Setpoint [ºC]": "Auto (0)",
+      "Setpoint curve [ºC]": "Auto",
+      "Setpoint delta": "Normal",
+      "Setpoint delta value [K]": 0,
+      "Criteria To be taken into account for evaluation": "Tim",
+      "Criteria To be checked": "",
+      "Remarks": "",
+      "Compartment test": false,
+      "Range": "N/A",
+      "Sensible heat passengers [W]": null,
+      "Latent heat passengers [W]": null,
+      "Solar Power [W]": null,
+      "Client requirement": null,
+      "Test duration": null
+    }
+]
+

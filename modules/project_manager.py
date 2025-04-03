@@ -1,4 +1,5 @@
 import json
+import os
 from PyQt5.QtWidgets import QComboBox, QMessageBox
 
 class ProjectManager:
@@ -359,6 +360,31 @@ class ProjectManager:
             print(f"Error reading curve.json: {e}")
             return None
 
+    @staticmethod
+    def get_test_data(filename):
+        """
+        Dynamically build the file path based on the filename and load the corresponding JSON data.
+
+        :param filename: The name of the file to load (e.g., 'Zone_ranges.json')
+        :return: Loaded data from the file, or None if there is an error.
+        """
+        try:
+            # Build the file path dynamically
+            file_path = os.path.join("data", filename)
+
+            # Check if the file exists
+            if os.path.exists(file_path):
+                # Load the JSON file
+                with open(file_path, "r", encoding="utf-8") as file:
+                    data = json.load(file)
+                return data
+            else:
+                print(f"File {file_path} does not exist.")
+                return None  # Return None if file does not exist
+
+        except Exception as e:
+            print(f"Error reading {filename}: {e}")
+            return None  # Return None in case of any error
     @staticmethod
     def show_message_box(title: str, message: str):
         """Displays a QMessageBox for errors."""
