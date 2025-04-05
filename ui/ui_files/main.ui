@@ -6549,7 +6549,7 @@ QComboBox QAbstractItemView {
                                        <rect>
                                         <x>0</x>
                                         <y>0</y>
-                                        <width>925</width>
+                                        <width>319</width>
                                         <height>2218</height>
                                        </rect>
                                       </property>
@@ -7447,8 +7447,8 @@ QComboBox QAbstractItemView {
                                           <rect>
                                            <x>0</x>
                                            <y>0</y>
-                                           <width>975</width>
-                                           <height>567</height>
+                                           <width>144</width>
+                                           <height>212</height>
                                           </rect>
                                          </property>
                                          <property name="styleSheet">
@@ -7804,7 +7804,7 @@ font-weight:bold;</string>
                                        <number>0</number>
                                       </property>
                                       <item alignment="Qt::AlignLeft">
-                                       <widget class="QPushButton" name="pushButton_3">
+                                       <widget class="QPushButton" name="btnAddPlanning">
                                         <property name="minimumSize">
                                          <size>
                                           <width>180</width>
@@ -7832,32 +7832,33 @@ background-color:#4CAF50;
                                         </property>
                                        </widget>
                                       </item>
-                                      <item alignment="Qt::AlignRight">
-                                       <widget class="QPushButton" name="btnExportPDF_3">
-                                        <property name="minimumSize">
+                                      <item>
+                                       <spacer name="horizontalSpacer_5">
+                                        <property name="orientation">
+                                         <enum>Qt::Horizontal</enum>
+                                        </property>
+                                        <property name="sizeHint" stdset="0">
                                          <size>
-                                          <width>180</width>
-                                          <height>35</height>
+                                          <width>40</width>
+                                          <height>20</height>
                                          </size>
                                         </property>
-                                        <property name="styleSheet">
-                                         <string notr="true">QPushButton
-{
-background-color:#4CAF50;
-color:white;
-border-radius:3px;
-font: 12pt &quot;Calibri&quot;;
-font-weight:bold;
-
-}
-QPushButton:hover
-{
-background-color:#4CAF50;
-}
-</string>
-                                        </property>
+                                       </spacer>
+                                      </item>
+                                      <item>
+                                       <widget class="QLabel" name="label">
                                         <property name="text">
-                                         <string>Export PDF</string>
+                                         <string>Insert starting date and time:</string>
+                                        </property>
+                                       </widget>
+                                      </item>
+                                      <item>
+                                       <widget class="QLineEdit" name="txtPlanningDateTime">
+                                        <property name="minimumSize">
+                                         <size>
+                                          <width>0</width>
+                                          <height>30</height>
+                                         </size>
                                         </property>
                                        </widget>
                                       </item>
@@ -7977,7 +7978,7 @@ QComboBox QAbstractItemView {
                                             </property>
                                             <layout class="QVBoxLayout" name="verticalLayout_56">
                                              <item>
-                                              <widget class="QTableWidget" name="tableTestList1_2">
+                                              <widget class="QTableWidget" name="planningTable">
                                                <property name="styleSheet">
                                                 <string notr="true">QTableWidget::item {
 
