@@ -28,9 +28,131 @@ class TestPageManager:
         }
         self.parent.btnCabin1_3.clicked.connect(lambda: self.on_cabin_button_click(0))
         self.parent.btnCabin2_3.clicked.connect(lambda: self.on_cabin_button_click(1))
+        self.parent.btnAddTest.clicked.connect(self.add_test_row)
+
         self.load_tables()
         # Load the test data based on the standard saloon
     
+    def add_test_row(self):
+        table_widget = self.test_tables.get("tableTestList2")
+
+        if table_widget:
+            current_row_count = table_widget.rowCount()
+            table_widget.insertRow(current_row_count)  # Add a new row at the end
+
+            column_count = table_widget.columnCount()
+            for col in range(column_count):
+                if col == 7:  # Assuming "Wind speed" is at column index 7 (adjust as needed)
+                    combo_box = QtWidgets.QComboBox()
+                    combo_box.addItems(["Min", "Max"])  # Add the desired values to the combo box
+
+                    # Connect the change event of the combo box to a handler function
+                    combo_box.currentTextChanged.connect(lambda text, row=current_row_count, col=col: self.on_wind_speed_changed(text, row, col))
+
+                    # Set the combo box in the current cell
+                    table_widget.setCellWidget(current_row_count, col, combo_box)
+                elif col == 8:  # Assuming "Wind speed [km/h]" is at column index 8
+                    item = QtWidgets.QTableWidgetItem("0-15")  # Default value for Setpoint [ºC] 
+                    table_widget.setItem(current_row_count, col, item)
+                elif col == 9:  
+                    item = QtWidgets.QTableWidgetItem(str(self.Setpoint))  # Default value for Setpoint [ºC] 
+                    table_widget.setItem(current_row_count, col, item)
+                elif col == 10:  
+                    item = QtWidgets.QTableWidgetItem(str(self.SetpointCurve))  # Default value for Setpoint [ºC] 
+                    table_widget.setItem(current_row_count, col, item)
+                elif col == 11:  # Assuming "Setpoint delta" is at column index 11
+                    combo_box = QtWidgets.QComboBox()
+                    combo_box.addItems(["Normal", "Min", "Max"])  # Add the desired values to the combo box
+
+                    # Connect the change event of the combo box to a handler function
+                    combo_box.currentTextChanged.connect(lambda text, row=current_row_count, col=col: self.on_setpoint_delta_changed(text, row, col))
+
+                    # Set the combo box in the current cell
+                    table_widget.setCellWidget(current_row_count, col, combo_box)
+                elif col == 12:  
+                    item = QtWidgets.QTableWidgetItem("0")  # Default value for Setpoint [ºC] 
+                    table_widget.setItem(current_row_count, col, item)
+                elif col == 16:
+                    combo_box = QtWidgets.QComboBox()
+                    combo_box.addItems(["Yes", "No"])  # Add the desired values to the combo box
+
+                    # Connect the change event of the combo box to a handler function
+                    combo_box.currentTextChanged.connect(lambda text, row=current_row_count, col=col: self.on_range_changed(text, row, col))
+
+                    # Set the combo box in the current cell
+                    table_widget.setCellWidget(current_row_count, col, combo_box)
+                elif col == 17:
+                    combo_box = QtWidgets.QComboBox()
+                    combo_box.addItems(["Normal", "Extended", "NA"])  # Add the desired values to the combo box
+
+                    # Connect the change event of the combo box to a handler function
+                    combo_box.currentTextChanged.connect(lambda text, row=current_row_count, col=col: self.on_range_changed(text, row, col))
+
+                    # Set the combo box in the current cell
+                    table_widget.setCellWidget(current_row_count, col, combo_box)
+                elif col == 18:  
+                    item = QtWidgets.QTableWidgetItem(str(self.sensible_heat_result))  # Default value for Setpoint [ºC] 
+                    table_widget.setItem(current_row_count, col, item)
+                elif col == 19:  
+                    item = QtWidgets.QTableWidgetItem(str(self.latent_heat_result))  # Default value for Setpoint [ºC] 
+                    table_widget.setItem(current_row_count, col, item)
+                elif col == 20:  
+                    item = QtWidgets.QTableWidgetItem(str(self.total_solar_load))  # Default value for Setpoint [ºC] 
+                    table_widget.setItem(current_row_count, col, item)
+                else:
+                    item = QtWidgets.QTableWidgetItem("")  # Empty cell for other columns
+                    table_widget.setItem(current_row_count, col, item)
+
+            table_widget.scrollToBottom()  # Optional: Scroll to the new row
+            table_widget.resizeColumnsToContents()
+            table_widget.resizeRowsToContents()
+
+    def on_range_changed(self, text, row, col):
+        """Handle changes or compartment in the Setpoint delta combo box."""
+        print(f"Ranged changed in row {row}, column {col} to: {text}")
+    def on_setpoint_delta_changed(self, text, row, col):
+        """Handle changes in the Setpoint delta combo box."""
+        print(f"Setpoint delta changed in row {row}, column {col} to: {text}")
+        
+        # Example: If you want to update another column (e.g., "Setpoint [ºC]" based on the Setpoint delta)
+        if col == 11:  # If it's the Setpoint delta column
+            table_widget = self.test_tables.get("tableTestList2")
+            if table_widget:
+                # Assume the next column is for the "Setpoint [ºC]" (e.g., column 10)
+                setpoint_item = table_widget.item(row, 12)
+                interior_data = self.project_data.get('Interior_Condition_Data', {})
+
+                if setpoint_item:
+                    # Perform some logic based on the Setpoint delta
+                    if text == "Normal":
+                        setpoint_item.setText("0")  # Example value for "Normal"
+                    elif text == "Min":
+                        delta_val = self.get_custom_or_default(interior_data.get('TicMinSaloon'))
+                        setpoint_item.setText(str(delta_val))  # Example value for "Min"
+                    else:
+                        delta_val = self.get_custom_or_default(interior_data.get('TicMaxSaloon'))
+                        setpoint_item.setText(str(delta_val))  # Example value for "Max"
+
+
+    def on_wind_speed_changed(self, text, row, col):
+        """Handle changes in the wind speed combo box and update column 8 accordingly."""
+        
+        # Get the table widget where the change occurred
+        table_widget = self.test_tables.get("tableTestList2")
+        
+        # Retrieve the maximum speed from the project data
+        max_speed = self.project_data.get('Project_info', {}).get('Maximum Speed', 0)
+        
+        # Update column 8 based on the selected wind speed
+        if text == "Max":
+            # If the wind speed is "Max", set column 8 to the max speed
+            table_widget.setItem(row, 8, QtWidgets.QTableWidgetItem(str(max_speed)))
+        else:
+            # Otherwise, set column 8 to the default "0-15"
+            table_widget.setItem(row, 8, QtWidgets.QTableWidgetItem("0-15"))
+
+
+
     def load_test_data(self):
         """
         Load and filter the test data by dynamically generating the filename from the project standard saloon.
@@ -308,6 +430,13 @@ class TestPageManager:
 
         return q_s
 
+    def get_custom_or_default(self,field_dict):
+            if isinstance(field_dict, dict):
+                custom = field_dict.get('custom', None)
+                if custom is not None and custom != 'None':
+                    return custom
+                return field_dict.get('default', 'N/A')
+            return field_dict
     def filter_test_data(self, data):
         """
         Filter the test data based on project-specific parameters like WinterZone, SummerZone,
@@ -316,26 +445,20 @@ class TestPageManager:
         :param data: The test data to be filtered
         :return: The filtered test data
         """
-        def get_custom_or_default(field_dict):
-            if isinstance(field_dict, dict):
-                custom = field_dict.get('custom', None)
-                if custom is not None and custom != 'None':
-                    return custom
-                return field_dict.get('default', 'N/A')
-            return field_dict
+        
 
         try:
             # Zones
             exterior = self.project_data.get('Exterior_Condition_Saloon', {})
-            winter_zone = get_custom_or_default(exterior.get('WinterZone', {}))
-            summer_zone = get_custom_or_default(exterior.get('SummerZone', {}))
+            winter_zone = self.get_custom_or_default(exterior.get('WinterZone', {}))
+            summer_zone = self.get_custom_or_default(exterior.get('SummerZone', {}))
 
             # Interior data
             interior_data = self.project_data.get('Interior_Condition_Data', {})
             max_speed = self.project_data.get('Project_info', {}).get('Maximum Speed', 0)
 
             # Max mean temp saloon
-            raw_max_mean_temp = get_custom_or_default(interior_data.get('MaxMeanTempSaloon'))
+            raw_max_mean_temp = self.get_custom_or_default(interior_data.get('MaxMeanTempSaloon'))
             try:
                 max_mean_temp_saloon = float(str(raw_max_mean_temp).replace('°C', '').strip())
             except ValueError:
@@ -379,9 +502,9 @@ class TestPageManager:
                 if delta_type == 'normal':
                     delta_val = 0
                 elif delta_type == 'max':
-                    delta_val = get_custom_or_default(interior_data.get('TicMaxSaloon'))
+                    delta_val = self.get_custom_or_default(interior_data.get('TicMaxSaloon'))
                 elif delta_type == 'min':
-                    delta_val = get_custom_or_default(interior_data.get('TicMinSaloon'))
+                    delta_val = self.get_custom_or_default(interior_data.get('TicMinSaloon'))
                 else:
                     delta_val = 0
                 test_entry['Setpoint delta value [K]'] = delta_val
@@ -391,6 +514,7 @@ class TestPageManager:
                     delta_val = float(str(delta_val).replace('°C', '').strip())
                 except:
                     delta_val = 0.0
+
 
 
                 # Setpoint curve + final Setpoint [ºC]
@@ -413,7 +537,6 @@ class TestPageManager:
                             test_entry['Setpoint curve [ºC]'] = 'N/A'
                             test_entry['Setpoint [ºC]'] = 'N/A'
                             # Debug: Indicate that the base curve value was None
-                            print("Base curve value is None, setting Setpoint values to 'N/A'")
                     except Exception as e:
                         test_entry['Setpoint curve [ºC]'] = 'N/A'
                         test_entry['Setpoint [ºC]'] = 'N/A'
@@ -424,10 +547,13 @@ class TestPageManager:
                     test_entry['Setpoint [ºC]'] = 'N/A'
                     # Debug: If max_mean_temp_saloon is invalid, output a message
                     print("Max mean temperature saloon is invalid or missing, setting Setpoint values to 'N/A'")
-                sensible_heat_result = self.sensible_heat(max_mean_temp_saloon)
-                test_entry['Sensible heat passengers [W]'] = sensible_heat_result
-                latent_heat_result = self.latent_heat(max_mean_temp_saloon)
-                test_entry['Latent heat passengers [W]'] = latent_heat_result
+                
+                self.SetpointCurve=test_entry['Setpoint curve [ºC]']
+                self.Setpoint=test_entry['Setpoint [ºC]']
+                self.sensible_heat_result = self.sensible_heat(max_mean_temp_saloon)
+                test_entry['Sensible heat passengers [W]'] = self.sensible_heat_result
+                self.latent_heat_result = self.latent_heat(max_mean_temp_saloon)
+                test_entry['Latent heat passengers [W]'] = self.latent_heat_result
                 # External energy input (example)
                 e_n = 500  # Example value in watts
 
@@ -454,8 +580,8 @@ class TestPageManager:
                     'absorption_d': 0.7,  # absorption coefficient for roof
                     'alpha_d': 0.8  # roof heat transfer coefficient
                 }
-                total_solar_load = self.solar_load_calculation(e_n, window_area, g_value, beta, wall_params, roof_params)
-                test_entry['Solar Power [W]'] = total_solar_load
+                self.total_solar_load = self.solar_load_calculation(e_n, window_area, g_value, beta, wall_params, roof_params)
+                test_entry['Solar Power [W]'] = self.total_solar_load
             return data
 
         except Exception as e:
@@ -635,8 +761,8 @@ class TestPageManager:
 
     def load_tables(self):
         headers = [
-            "Test ID", "Test Norm ID", "Description of the test", "Mean temperature in climatic chamber (Winter/Summer)",
-            "Relative humidity in climatic chamber (Winter/Summer)", "Passenger load [%]", "Sun radiation [W/m2] (Winter/Summer)",
+            "Test ID", "Test Norm ID", "Description of the test", "Mean temperature in climatic chamber [ºC]",
+            "Relative humidity in climatic chamber [%]", "Passenger load [%]", "Sun radiation [W/m2]",
             "Wind speed", "Wind speed [km/h]", "Setpoint [ºC]", "Setpoint curve [ºC]", "Setpoint delta", "Setpoint delta value",
             "Criteria To be taken into account for evaluation", "Criteria To be checked", "Remarks", "Compartment test",
             "Range", "Sensible heat passengers", "Latent heat passengers", "Solar Power", "Client requirement", "Test duration"
@@ -681,7 +807,10 @@ class TestPageManager:
                 # Enable right-click menu for specific cells (e.g., "Test ID" and "Client requirement")
                 
                 table_widget.setContextMenuPolicy(Qt.CustomContextMenu)
-                table_widget.customContextMenuRequested.connect(self.show_context_menu)
+                if table_name == "tableTestList1":
+                    table_widget.customContextMenuRequested.connect(self.show_context_menu)
+                else:
+                    table_widget.customContextMenuRequested.connect(self.show_context_menu_user)
         
     def show_context_menu(self, pos):
         """Handles showing the context menu when right-clicking on certain cells."""
@@ -706,6 +835,7 @@ class TestPageManager:
                 context_menu.addAction(edit_action)
 
         context_menu.exec_(table_widget.mapToGlobal(pos))
+    
 
     def edit_cell(self, row, col):
         """Handles editing the content of a cell via a right-click menu."""
@@ -718,3 +848,125 @@ class TestPageManager:
             
             if ok:
                 item.setText(new_text)
+    def show_context_menu_user(self, pos):
+        """Handles showing the context menu when right-clicking on specific editable cells."""
+        context_menu = QtWidgets.QMenu(self.parent)
+
+        # Get the table widget where the right-click occurred
+        table_widget = self.parent.sender()
+        item = table_widget.itemAt(pos)
+
+        if item:
+            row = item.row()
+            col = item.column()
+
+            editable_labels = {
+                0: "Edit Test ID",
+                1: "Edit Test Norm ID",
+                2: "Edit Description of the test",
+                3: "Edit Mean temperature (°C)",
+                4: "Edit Relative humidity (%)",
+                5: "Edit Passenger load (%)",
+                6: "Edit Sun radiation (W/m2)",
+                13: "Edit Criteria To be taken into account for evaluation",
+                14: "Edit Criteria To be checked",
+                15: "Edit Remarks",
+                21: "Edit Client requirement",
+                22: "Edit Test duration",
+
+            }
+
+            if col in editable_labels:
+                edit_action = QtWidgets.QAction(editable_labels[col], self.parent)
+                edit_action.triggered.connect(lambda: self.edit_cell_user(table_widget, row, col))
+                context_menu.addAction(edit_action)
+
+        context_menu.exec_(table_widget.mapToGlobal(pos))
+
+
+    def edit_cell_user(self, table_widget, row, col):
+        """Edit a specific cell in the table with a text input dialog."""
+        # Define limits for each column
+        if col == 3:  # Mean temperature (°C)
+            self.validate_and_edit(table_widget, row, col, -50, 60, "Mean temperature")
+        elif col == 4:  # Relative humidity (%)
+            self.validate_and_edit(table_widget, row, col, 0, 100, "Relative humidity")
+        elif col == 5:  # Relative humidity (%)
+            self.validate_and_edit(table_widget, row, col, 0, 100, "Passenger load")
+        elif col == 6:  # Sun radiation (W/m2)
+            self.validate_and_edit(table_widget, row, col, 0, 1500, "Sun radiation")
+        elif col == 22:  # Test duration (hh:mm:ss)
+            self.edit_test_duration(table_widget, row, col)
+        else:
+            # For other columns, simply allow editing as text
+            table_widget.item(row, col).setText(
+                QtWidgets.QInputDialog.getText(
+                    self.parent, f"Edit Cell ({row}, {col})", "Enter new value:", text=table_widget.item(row, col).text()
+                )[0]
+            )
+
+
+    def validate_and_edit(self, table_widget, row, col, min_value, max_value, column_name):
+        """Common validation and editing function for columns with specific value ranges."""
+        item = table_widget.item(row, col)
+        
+        if item:
+            current_value = item.text() if item else ""
+
+            # Handle empty values for specific columns
+            if current_value == "":
+                if column_name == "Relative humidity":
+                    current_value = "-"  # Set to "-" for Relative humidity
+                elif column_name == "Passenger load":
+                    current_value = "0"  # Set to "0" for Passenger load [%]
+                elif column_name == "Sun radiation":
+                    current_value = "0"
+
+            # Show input dialog
+            new_value, ok = QtWidgets.QInputDialog.getText(
+                self.parent, f"Edit {column_name}",
+                f"Enter value for {column_name} ({min_value} to {max_value}):", text=current_value
+            )
+
+            if ok:
+                try:
+                    new_value = float(new_value)
+
+                    # Check if the new value is within the allowed range
+                    if min_value <= new_value <= max_value:
+                        item.setText(str(new_value))
+                    else:
+                        QtWidgets.QMessageBox.warning(
+                            self.parent, "Invalid Input",
+                            f"{column_name} must be between {min_value} and {max_value}."
+                        )
+                except ValueError:
+                    QtWidgets.QMessageBox.warning(
+                        self.parent, "Invalid Input", f"Please enter a valid number for {column_name}."
+                    )
+    def edit_test_duration(self, table_widget, row, col):
+        """Handle the editing of Test duration in hh:mm:ss format."""
+        item = table_widget.item(row, col)
+        if item:
+            current_value = item.text() if item else ""
+
+            # Show input dialog for time format
+            new_value, ok = QtWidgets.QInputDialog.getText(
+                self.parent, "Edit Test duration", "Enter time in format hh:mm:ss:", text=current_value
+            )
+
+            if ok:
+                # Validate the time format
+                if self.is_valid_time_format(new_value):
+                    item.setText(new_value)
+                else:
+                    QtWidgets.QMessageBox.warning(
+                        self.parent, "Invalid Input", "Please enter a valid time in hh:mm:ss format."
+                    )
+
+
+    def is_valid_time_format(self, time_str):
+        """Check if the given time string is in hh:mm:ss format."""
+        import re
+        time_pattern = r"^\d{2}:\d{2}:\d{2}$"  # Regular expression for hh:mm:ss
+        return bool(re.match(time_pattern, time_str))
