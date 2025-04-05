@@ -7555,25 +7555,6 @@ QComboBox QAbstractItemView {
                                           <property name="rightMargin">
                                            <number>0</number>
                                           </property>
-                                          <item row="1" column="0">
-                                           <widget class="QFrame" name="frame_47">
-                                            <property name="frameShape">
-                                             <enum>QFrame::StyledPanel</enum>
-                                            </property>
-                                            <property name="frameShadow">
-                                             <enum>QFrame::Raised</enum>
-                                            </property>
-                                            <layout class="QVBoxLayout" name="verticalLayout_49">
-                                             <item>
-                                              <widget class="QTableWidget" name="tableTestList2">
-                                               <property name="alternatingRowColors">
-                                                <bool>true</bool>
-                                               </property>
-                                              </widget>
-                                             </item>
-                                            </layout>
-                                           </widget>
-                                          </item>
                                           <item row="0" column="0">
                                            <widget class="QFrame" name="frame_48">
                                             <property name="frameShape">
@@ -7594,6 +7575,38 @@ color:rgb(40, 44, 52)
                                                <property name="editTriggers">
                                                 <set>QAbstractItemView::NoEditTriggers</set>
                                                </property>
+                                               <property name="alternatingRowColors">
+                                                <bool>true</bool>
+                                               </property>
+                                              </widget>
+                                             </item>
+                                            </layout>
+                                           </widget>
+                                          </item>
+                                          <item row="1" column="0">
+                                           <widget class="QFrame" name="frame_47">
+                                            <property name="frameShape">
+                                             <enum>QFrame::StyledPanel</enum>
+                                            </property>
+                                            <property name="frameShadow">
+                                             <enum>QFrame::Raised</enum>
+                                            </property>
+                                            <layout class="QVBoxLayout" name="verticalLayout_49">
+                                             <item alignment="Qt::AlignLeft">
+                                              <widget class="QPushButton" name="btnAddTest">
+                                               <property name="minimumSize">
+                                                <size>
+                                                 <width>120</width>
+                                                 <height>30</height>
+                                                </size>
+                                               </property>
+                                               <property name="text">
+                                                <string>New Test</string>
+                                               </property>
+                                              </widget>
+                                             </item>
+                                             <item>
+                                              <widget class="QTableWidget" name="tableTestList2">
                                                <property name="alternatingRowColors">
                                                 <bool>true</bool>
                                                </property>

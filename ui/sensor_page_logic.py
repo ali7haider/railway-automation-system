@@ -385,7 +385,6 @@ class SensorPageManager:
             
             # Save the data for the current coach index
             self.coach_table_data[self.current_coach_index] = coach_data
-            print(self.coach_table_data)
             
         except Exception as e:
             print(f"An error occurred while saving table data: {e}")

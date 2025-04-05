@@ -26,6 +26,8 @@ class TestPageManager:
             "tableTestList1": None, 
             "tableTestList2": None
         }
+        self.parent.btnCabin1_3.clicked.connect(lambda: self.on_cabin_button_click(0))
+        self.parent.btnCabin2_3.clicked.connect(lambda: self.on_cabin_button_click(1))
         self.load_tables()
         # Load the test data based on the standard saloon
     
@@ -51,10 +53,7 @@ class TestPageManager:
                 if data:
                     # Pass the data to the filter function
                     filtered_data = self.filter_test_data(data)
-                    
-                    # Print the first 3 entries of filtered data for debugging
-                    print(f"Filtered data for {test_data_filename}: {filtered_data[:3]}")  # Adjust the number here as needed
-                    
+                                        
                     # Store the filtered data in the test_tables dictionary
                     self.test_tables["tableTestList1"] = filtered_data
                     
@@ -99,6 +98,8 @@ class TestPageManager:
                     table.setItem(row_index, col_index, item)
             # After adding all data
             table.setWordWrap(True)
+            table.resizeColumnsToContents()
+            table.resizeRowsToContents()
             
         else:
             print("Error: tableTestList1 is not a valid QTableWidget.")
@@ -527,22 +528,110 @@ class TestPageManager:
         """Handles clicking on a coach button and updates the UI."""
         try:  
             # # Save the current coach's table data before switching
-            # self.save_current_coach_tables()
+            self.save_current_coach_tables()
 
             # # Update the current coach index
-            # self.current_coach_index = index
+            self.current_coach_index = index
 
             # # Load the data for the newly selected coach
-            # self.load_coach_tables()
+            self.load_coach_tables()
 
-            # # Update the coach name label
-            # coaches = self.project_info.get("Coaches", {})
-            # coach_name = coaches.get(f"Coach {index + 1}", f"Coach {index + 1}")
-            # self.parent.lblCoachName_3.setText(f"Coach {index + 1} - {coach_name}")
+            # Update the coach name label
+            coaches = self.project_info.get("Coaches", {})
+            coach_name = coaches.get(f"Coach {index + 1}", f"Coach {index + 1}")
+            self.parent.lblCoachName_4.setText(f"Coach {index + 1} - {coach_name}")
             
             print(f"Switched to Coach {index + 1} and loaded its data.")
         except Exception as e:
             print(f"An error occurred while handling the coach button click: {e}")
+    def load_coach_tables(self):
+        """Load table data for the current coach index, if available."""
+        try:
+            # Clear all rows for all tables before loading data
+            for table_name in self.test_tables.keys():
+                table_widget = self.parent.findChild(QtWidgets.QTableWidget, table_name)
+
+                table_widget.setRowCount(0)
+            
+            if self.current_coach_index in self.coach_table_data:
+                coach_data = self.coach_table_data[self.current_coach_index]
+                for table_name in self.test_tables.keys():
+                    table_widget = self.parent.findChild(QtWidgets.QTableWidget, table_name)
+                    if table_name in coach_data:
+                        table_data = coach_data[table_name]
+                        # Clear all rows before loading
+                        # Set row count
+                        table_widget.setRowCount(len(table_data))
+
+                        for row_index, row_data in enumerate(table_data):
+                            for col_index, cell_value in enumerate(row_data):
+                                item = QtWidgets.QTableWidgetItem(str(cell_value))
+                                table_widget.setItem(row_index, col_index, item)
+
+                        # Optional: Resize rows and columns to content
+                        table_widget.resizeColumnsToContents()
+                        table_widget.resizeRowsToContents()
+                        #populate the table with the data
+            else:
+                self.load_test_data()
+            print(f"Successfully loaded data for index {self.current_coach_index}.")
+            
+        except Exception as e:
+            print(f"An error occurred while loading table data: {e}")
+    def save_current_coach_tables(self):
+        """Save the current coach's table data to the dictionary."""
+        try:
+            coach_data = {}
+
+            for table_name in self.test_tables.keys():
+                table_widget = self.parent.findChild(QtWidgets.QTableWidget, table_name)
+
+                if table_widget:
+                    table_data = []
+                    row_count = table_widget.rowCount()
+
+                    for row in range(row_count):
+                        row_data = []
+                        for col in range(table_widget.columnCount()):
+                            item = table_widget.cellWidget(row, col)
+                            table_item = table_widget.item(row, col)
+                            row_data.append(table_item.text() if table_item else "")
+                                
+                        table_data.append(row_data)
+                    
+                    coach_data[table_name] = table_data
+            
+            # Save the data for the current coach index
+            self.coach_table_data[self.current_coach_index] = coach_data
+            
+        except Exception as e:
+            print(f"An error occurred while saving table data: {e}")
+    def on_cabin_button_click(self, index):
+        """Handles clicking on a coach button and updates the UI."""
+        try:  
+            # Save the current coach's table data before switching
+            self.save_current_coach_tables()
+            num_coaches_t = int(self.project_data.get("Number of Coaches per Train", 0))
+            # Update the current coach index
+            if index==0:
+                num_coaches_t = num_coaches_t+1
+            else:
+                num_coaches_t = num_coaches_t+2
+            self.current_coach_index = num_coaches_t
+
+            # Load the data for the newly selected coach
+            self.load_coach_tables()
+
+            # Update the coach name label
+            # Retrieve Cabin Name based on index
+            cabin_name_key = f"Cabin {index+1} Name"
+            cabin_name = self.project_data.get(cabin_name_key, '')
+            self.parent.lblCoachName_4.setText(f"Cabin {index + 1} - {cabin_name}")
+            
+            print(f"Switched to Cabin {index + 1} and loaded its data.")
+        except Exception as e:
+            print(f"An error occurred while handling the coach button click: {e}")
+
 
     def load_tables(self):
         headers = [
