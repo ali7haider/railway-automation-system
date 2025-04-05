@@ -2088,7 +2088,7 @@ background-color:#1159A8;
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>3</number>
+                      <number>4</number>
                      </property>
                      <widget class="QWidget" name="projectPage">
                       <property name="acceptDrops">
@@ -5986,8 +5986,8 @@ color:black;
                                     <rect>
                                      <x>0</x>
                                      <y>0</y>
-                                     <width>957</width>
-                                     <height>574</height>
+                                     <width>357</width>
+                                     <height>122</height>
                                     </rect>
                                    </property>
                                    <layout class="QHBoxLayout" name="horizontalLayout_17">
@@ -7029,7 +7029,7 @@ font-weight:bold;</string>
                                              <number>0</number>
                                             </property>
                                             <attribute name="horizontalHeaderVisible">
-                                             <bool>true</bool>
+                                             <bool>false</bool>
                                             </attribute>
                                            </widget>
                                           </item>
@@ -7157,6 +7157,12 @@ background-color:#1159A8;
                           <enum>QFrame::Raised</enum>
                          </property>
                          <layout class="QVBoxLayout" name="verticalLayout_45">
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
                           <item>
                            <widget class="QFrame" name="frame_40">
                             <property name="frameShape">
@@ -7166,6 +7172,12 @@ background-color:#1159A8;
                              <enum>QFrame::Raised</enum>
                             </property>
                             <layout class="QVBoxLayout" name="verticalLayout_47">
+                             <property name="leftMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>0</number>
+                             </property>
                              <item>
                               <widget class="QFrame" name="frame_41">
                                <property name="frameShape">
@@ -7340,6 +7352,12 @@ font-weight:bold;</string>
                                    <enum>QFrame::Raised</enum>
                                   </property>
                                   <layout class="QVBoxLayout" name="verticalLayout_43">
+                                   <property name="leftMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="rightMargin">
+                                    <number>0</number>
+                                   </property>
                                    <item>
                                     <widget class="QFrame" name="frame_45">
                                      <property name="minimumSize">
@@ -7523,7 +7541,7 @@ QComboBox QAbstractItemView {
                                           <rect>
                                            <x>0</x>
                                            <y>0</y>
-                                           <width>909</width>
+                                           <width>975</width>
                                            <height>510</height>
                                           </rect>
                                          </property>
@@ -7531,6 +7549,12 @@ QComboBox QAbstractItemView {
                                           <string notr="true"/>
                                          </property>
                                          <layout class="QGridLayout" name="gridLayout_22">
+                                          <property name="leftMargin">
+                                           <number>0</number>
+                                          </property>
+                                          <property name="rightMargin">
+                                           <number>0</number>
+                                          </property>
                                           <item row="1" column="0">
                                            <widget class="QFrame" name="frame_47">
                                             <property name="frameShape">
@@ -7541,7 +7565,11 @@ QComboBox QAbstractItemView {
                                             </property>
                                             <layout class="QVBoxLayout" name="verticalLayout_49">
                                              <item>
-                                              <widget class="QTableWidget" name="tableTestList2"/>
+                                              <widget class="QTableWidget" name="tableTestList2">
+                                               <property name="alternatingRowColors">
+                                                <bool>true</bool>
+                                               </property>
+                                              </widget>
                                              </item>
                                             </layout>
                                            </widget>
@@ -7556,7 +7584,20 @@ QComboBox QAbstractItemView {
                                             </property>
                                             <layout class="QVBoxLayout" name="verticalLayout_48">
                                              <item>
-                                              <widget class="QTableWidget" name="tableTestList1"/>
+                                              <widget class="QTableWidget" name="tableTestList1">
+                                               <property name="styleSheet">
+                                                <string notr="true">QTableWidget::item {
+
+color:rgb(40, 44, 52)
+}</string>
+                                               </property>
+                                               <property name="editTriggers">
+                                                <set>QAbstractItemView::NoEditTriggers</set>
+                                               </property>
+                                               <property name="alternatingRowColors">
+                                                <bool>true</bool>
+                                               </property>
+                                              </widget>
                                              </item>
                                             </layout>
                                            </widget>

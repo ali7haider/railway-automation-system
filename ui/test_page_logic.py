@@ -97,6 +97,9 @@ class TestPageManager:
                 for col_index, (key, value) in enumerate(row_data.items()):
                     item = QTableWidgetItem(str(value))  # Ensure the value is in string format
                     table.setItem(row_index, col_index, item)
+            # After adding all data
+            table.setWordWrap(True)
+            
         else:
             print("Error: tableTestList1 is not a valid QTableWidget.")
 
@@ -568,12 +571,26 @@ class TestPageManager:
                 # Make the headers stretch to fill the width
                 header = table_widget.horizontalHeader()
                 header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
-                header.setMaximumHeight(header_max_height)
+                header.setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)
+
+                table_widget.resizeRowsToContents()
+                # Enable word wrap
+                table_widget.setWordWrap(True)
+
+                # Automatically resize row height based on content
+                table_widget.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Interactive)
+
+
+                # Optional: set minimum row height to avoid squishing short cells
+                table_widget.verticalHeader().setDefaultSectionSize(30)
+                # header.setMaximumHeight(header_max_height)
+
 
                 # Set the uniform row height for all rows
-                table_widget.verticalHeader().setDefaultSectionSize(row_height)
+                # table_widget.verticalHeader().setDefaultSectionSize(row_height)
                 
                 # Enable right-click menu for specific cells (e.g., "Test ID" and "Client requirement")
+                
                 table_widget.setContextMenuPolicy(Qt.CustomContextMenu)
                 table_widget.customContextMenuRequested.connect(self.show_context_menu)
         
