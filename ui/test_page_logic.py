@@ -11,6 +11,7 @@ from datetime import datetime
 from PyQt5.QtWidgets import QMenu, QAction
 from PyQt5.QtWidgets import QTableWidgetItem, QMenu, QAction
 from modules.project_manager import ProjectManager  # Import ProjectManager
+import math
 
 class TestPageManager:
     def __init__(self, parent):
@@ -27,17 +28,18 @@ class TestPageManager:
         }
         self.load_tables()
         # Load the test data based on the standard saloon
+    
     def load_test_data(self):
         """
         Load and filter the test data by dynamically generating the filename from the project standard saloon.
         The method fetches the test data and passes it to another function for filtering based on project-specific parameters (like Winter/Summer conditions).
-
+        
         :return: The filtered test data, or None if an error occurs or data is not found.
         """
         try:
             # Retrieve the standard saloon from the project data
             standard_saloon = self.project_data.get('Project_info', {}).get('Standard Saloon', 'None')
-            
+
             if standard_saloon != 'None':
                 standard_name = standard_saloon.split(":")[0]
                 test_data_filename = f"TestList{standard_name}.json"
@@ -50,7 +52,15 @@ class TestPageManager:
                     # Pass the data to the filter function
                     filtered_data = self.filter_test_data(data)
                     
+                    # Print the first 3 entries of filtered data for debugging
                     print(f"Filtered data for {test_data_filename}: {filtered_data[:3]}")  # Adjust the number here as needed
+                    
+                    # Store the filtered data in the test_tables dictionary
+                    self.test_tables["tableTestList1"] = filtered_data
+                    
+                    # Call a function to populate the table with the filtered data
+                    self.populate_table(self.test_tables["tableTestList1"])
+
                 else:
                     print(f"Error: No test data found for {test_data_filename}")
                     return None
@@ -60,6 +70,36 @@ class TestPageManager:
         except Exception as e:
             print(f"Error loading and processing test data: {e}")
             return None
+
+    def populate_table(self, data):
+        """
+        Populates the table (QTableWidget) with the given data.
+        :param data: Filtered test data.
+        """
+        if not data:
+            print("No data to display in the table.")
+            return
+
+        # Assuming self.test_tables["tableTestList1"] is a QTableWidget
+        table = self.parent.tableTestList1
+        
+        if isinstance(table, QTableWidget):
+            # Set row count to the length of the data
+            table.setRowCount(len(data))
+            
+            # Set column count based on the number of fields in the data (assuming it's a list of dictionaries)
+            if len(data) > 0:
+                table.setColumnCount(len(data[0]))  # Number of columns = number of keys in the first dictionary
+                table.setHorizontalHeaderLabels(data[0].keys())  # Use keys as column headers
+
+            # Populate the table with data
+            for row_index, row_data in enumerate(data):
+                for col_index, (key, value) in enumerate(row_data.items()):
+                    item = QTableWidgetItem(str(value))  # Ensure the value is in string format
+                    table.setItem(row_index, col_index, item)
+        else:
+            print("Error: tableTestList1 is not a valid QTableWidget.")
+
     def prepare_curve_data(self,project_data, curve_type='saloon'):
         # Fetch the regulation curve value dynamically based on the curve type (saloon or cabin)
         regulation_curve = project_data.get('Interior_Condition_Data', {}).get(f'RegulationCurve{curve_type.capitalize()}', {}).get('custom') or \
@@ -106,10 +146,6 @@ class TestPageManager:
         text_vals = [curve_data.get(f'Text Curve Limit_{chr(65+i)}', 0.0) for i in range(5)]  # A to E
         tin_vals = [curve_data.get(f'Tin Curve Limit_{chr(65+i)}', 0.0) for i in range(5)]  # A to E
 
-        # Debug: Print the Text and Tin values being used in the curve calculation
-        print(f"Text values (A-E): {text_vals}")
-        print(f"TIN values (A-E): {tin_vals}")
-
         # Perform interpolation based on the input text value
         for i in range(4):  # We have 5 points, so 4 intervals (A-E)
             if text_vals[i] <= text < text_vals[i+1]:
@@ -125,6 +161,148 @@ class TestPageManager:
 
         # If no match, return None (out of range)
         return None
+
+    def sensible_heat(self,tin):
+        """
+        Calculates the sensible heat based on the input temperature (Tin).
+        :param tin: Input temperature value.
+        :return: Sensible heat value [W].
+        """
+        # Coefficients
+        A = -0.000007021
+        B = 0.00093296
+        C = -0.050287
+        D = 1.3933
+        E = -20.714
+        F = 151.03
+        G = -279.53
+
+        # Tin limits
+        tin_min = 18
+        tin_max = 34
+
+        # Adjust Tin within defined limits
+        tin = max(tin_min, min(tin, tin_max))
+
+        # Compute SensibleHeat result
+        sensible_heat_result = (A * (tin ** 6) + B * (tin ** 5) + C * (tin ** 4) + D * (tin ** 3) + E * (tin ** 2) + F * tin + G)
+
+        return sensible_heat_result
+
+    def latent_heat(self,tin):
+        """
+        Calculates the latent heat based on the input temperature (Tin).
+        :param tin: Input temperature value.
+        :return: Latent heat value.
+        """
+        # Coefficients
+        A = 0
+        B = 0
+        C = -0.00037788
+        D = 0.030997
+        E = -0.73326
+        F = 6.5731
+        G = 1.6525
+
+        # Tin limits
+        tin_min = 18
+        tin_max = 34
+
+        # Adjust Tin within defined limits
+        tin = max(tin_min, min(tin, tin_max))
+
+        # Compute LatentHeat result
+        latent_heat_result = (A * (tin ** 6) + B * (tin ** 5) + C * (tin ** 4) + 
+                            D * (tin ** 3) + E * (tin ** 2) + F * tin + G)
+
+        return latent_heat_result
+
+
+    def solar_load_window(self,e_n, window_area, g_value, beta):
+        """
+        Calculates the solar load on the window.
+        :param e_n: External energy input.
+        :param window_area: Window area.
+        :param g_value: Solar gain factor.
+        :param beta: Angle factor.
+        :return: Solar load on the window.
+        """
+        q_f = e_n * math.cos(math.radians(30 - beta))
+        q_sf = window_area * g_value * q_f
+        return q_sf
+
+    def solar_load_wall(self,e_n, length, height, k_w, absorption_w, phi, alpha_w):
+        """
+        Calculates the solar load on the wall.
+        :param e_n: External energy input.
+        :param length: Length of the wall.
+        :param height: Height of the wall.
+        :param k_w: Wall thermal conductivity factor.
+        :param absorption_w: Absorption coefficient of the wall.
+        :param phi: Angle factor.
+        :param alpha_w: Wall heat transfer coefficient.
+        :return: Solar load on the wall.
+        """
+        a_w = length * height
+        q_w = e_n * math.cos(math.radians(30 - phi))
+        q_sw = (a_w * k_w * absorption_w * q_w) / alpha_w
+        return q_sw
+
+    def solar_load_roof(self,e_n, length, width, k_d, absorption_d, alpha_d):
+        """
+        Calculates the solar load on the roof.
+        :param e_n: External energy input.
+        :param length: Length of the roof.
+        :param width: Width of the roof.
+        :param k_d: Roof thermal conductivity factor.
+        :param absorption_d: Absorption coefficient of the roof.
+        :param alpha_d: Roof heat transfer coefficient.
+        :return: Solar load on the roof.
+        """
+        a_d = length * width
+        q_d = e_n * math.cos(math.radians(30))
+        q_sd = (a_d * k_d * absorption_d * q_d) / alpha_d
+        return q_sd
+
+    def solar_load_calculation(self,e_n, window_area, g_value, beta, wall_params, roof_params):
+        """
+        Calculates the total solar load based on external energy input and surface parameters.
+        :param e_n: External energy input.
+        :param window_area: Window area.
+        :param g_value: Solar gain factor for window.
+        :param beta: Angle factor for window.
+        :param wall_params: Dictionary containing parameters for wall: length, height, k_w, absorption_w, phi, alpha_w.
+        :param roof_params: Dictionary containing parameters for roof: length, width, k_d, absorption_d, alpha_d.
+        :return: Total solar load.
+        """
+        # Calculate solar load for window
+        q_sf = self.solar_load_window(e_n, window_area, g_value, beta)
+        
+        # Extract wall parameters
+        length = wall_params['length']
+        height = wall_params['height']
+        k_w = wall_params['k_w']
+        absorption_w = wall_params['absorption_w']
+        phi = wall_params['phi']
+        alpha_w = wall_params['alpha_w']
+        
+        # Calculate solar load for wall
+        q_sw = self.solar_load_wall(e_n, length, height, k_w, absorption_w, phi, alpha_w)
+        
+        # Extract roof parameters
+        length = roof_params['length']
+        width = roof_params['width']
+        k_d = roof_params['k_d']
+        absorption_d = roof_params['absorption_d']
+        alpha_d = roof_params['alpha_d']
+        
+        # Calculate solar load for roof
+        q_sd = self.solar_load_roof(e_n, length, width, k_d, absorption_d, alpha_d)
+        
+        # Total solar load
+        q_s = q_sf + q_sw + q_sd
+
+        return q_s
 
     def filter_test_data(self, data):
         """
@@ -221,7 +399,6 @@ class TestPageManager:
 
                         base_curve_val = self.calculate_curve(ext_temp_float, curve_data)
                         # Debug: Check the result of the saloon curve function
-                        print(f"Base curve value from saloon_curve function: {base_curve_val}")
 
                         if base_curve_val is not None:
                             test_entry['Setpoint curve [ºC]'] = round(base_curve_val, 2)
@@ -243,7 +420,38 @@ class TestPageManager:
                     test_entry['Setpoint [ºC]'] = 'N/A'
                     # Debug: If max_mean_temp_saloon is invalid, output a message
                     print("Max mean temperature saloon is invalid or missing, setting Setpoint values to 'N/A'")
+                sensible_heat_result = self.sensible_heat(max_mean_temp_saloon)
+                test_entry['Sensible heat passengers [W]'] = sensible_heat_result
+                latent_heat_result = self.latent_heat(max_mean_temp_saloon)
+                test_entry['Latent heat passengers [W]'] = latent_heat_result
+                # External energy input (example)
+                e_n = 500  # Example value in watts
 
+                # Window parameters
+                window_area = 10  # in square meters
+                g_value = 0.5  # solar gain factor for window
+                beta = 15  # angle factor for window
+
+                # Wall parameters (as a dictionary)
+                wall_params = {
+                    'length': 5,  # in meters
+                    'height': 3,  # in meters
+                    'k_w': 0.6,  # thermal conductivity factor for wall
+                    'absorption_w': 0.8,  # absorption coefficient for wall
+                    'phi': 30,  # angle factor for wall
+                    'alpha_w': 0.9  # wall heat transfer coefficient
+                }
+
+                # Roof parameters (as a dictionary)
+                roof_params = {
+                    'length': 5,  # in meters
+                    'width': 6,   # in meters
+                    'k_d': 0.5,   # thermal conductivity factor for roof
+                    'absorption_d': 0.7,  # absorption coefficient for roof
+                    'alpha_d': 0.8  # roof heat transfer coefficient
+                }
+                total_solar_load = self.solar_load_calculation(e_n, window_area, g_value, beta, wall_params, roof_params)
+                test_entry['Solar Power [W]'] = total_solar_load
             return data
 
         except Exception as e:
@@ -374,7 +582,7 @@ class TestPageManager:
         context_menu = QMenu(self.parent)
 
         # Get the table widget where the right-click occurred
-        table_widget = self.sender()
+        table_widget = self.parent.sender()
         item = table_widget.itemAt(pos)
 
         if item:
