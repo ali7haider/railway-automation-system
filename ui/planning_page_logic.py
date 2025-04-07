@@ -77,56 +77,63 @@ class PlanningPageManager:
 
         # If no match found, show warning and DO NOT close the dialog
         QtWidgets.QMessageBox.warning(self.parent, "Not Found", f"Test Norm ID '{test_id}' not found.")
+        # Do not close the dialog here; keep it open
 
 
     def add_planning_row(self, test_id, mode, dialog, row_data=None):
         if mode == "enter":
             if row_data is None:
                 return  # This shouldn't happen because we check before calling
+            # Insert row with provided data
             self.insert_test_row_into_table(row_data)
-            ...
         elif mode in ("stab", "off", "prep"):
-            # Logic to insert special row
-            ...
-        
-        dialog.accept()  # Only close dialog after successful row add
-
-
-    def insert_test_row_into_table(self, row_data):
-        table = self.parent.planningTable  # Your planning QTableWidget
-
-        # Define field labels for the row_data indices
-        field_labels = [
-            "0: File ID",
-            "1: Test Norm ID",
-            "2: Description of the test",
-            "3: Mean temperature in climatic chamber [ºC]",
-            "4: Relative humidity [%]",
-            "5: Passenger load [%]",
-            "6: Sun radiation [W/m2]",
-            "7: Wind speed",
-            "8: Wind speed [km/h]",
-            "9: Setpoint [ºC]",
-            "10: Setpoint curve [ºC]",
-            "11: Setpoint delta",
-            "12: Setpoint delta value",
-            "13: Criteria To be taken into account for evaluation",
-            "14: Criteria To be checked",
-            "15: Remarks",
-            "16: Compartment test",
-            "17: Range",
-            "18: Sensible heat passengers",
-            "19: Latent heat passengers",
-            "20: Solar Power",
-            "21: Client requirement",
-            "22: Test duration"
-        ]
-
-        print("Test Row Data Breakdown:")
-        for index, label in enumerate(field_labels):
-            value = row_data[index] if index < len(row_data) else "N/A"
-            print(f"{label}: {value}")
+            # Logic for special rows: Stabilization, OFF, and Vehicle Preparation
+            if mode == "stab":
+                description = "Stabilization test"
+                duration = "0:00:00"
+            elif mode == "off":
+                description = "OFF test"
+                duration = "0:00:00"
+            elif mode == "prep":
+                description = "Vehicle Preparation"
+                duration = "0:00:00"
             
+            # Create row with special values
+            row_data = [
+                "",                          # File ID (empty)
+                "",                          # Test Norm ID
+                description,                 # Description of the test
+                "",                          # Mean temperature in climatic chamber [ºC]
+                "",                          # Relative humidity [%]
+                "",                          # Passenger load [%]
+                "",                          # Sun radiation [W/m2]
+                "",                          # Wind speed
+                "",                          # Wind speed [km/h]
+                "",                          # Setpoint [ºC]
+                "",                          # Setpoint curve [ºC]
+                "",                          # Setpoint delta
+                "",                          # Setpoint delta value
+                "",                          # Criteria To be taken into account for evaluation
+                "",                          # Criteria To be checked
+                "",                          # Remarks
+                "",                          # Compartment test
+                "",                          # Range
+                "",                          # Sensible heat passengers
+                "",                          # Latent heat passengers
+                "",                          # Solar Power
+                "",                          # Client requirement
+                duration                     # Test duration (0h)
+            ]
+            
+            # Insert the new row into the table with the special row flag
+            self.insert_test_row_into_table(row_data, mode)  # Pass the mode to color the row correctly
+
+        dialog.accept()  # Close the dialog only after the row is added
+
+
+
+    def insert_test_row_into_table(self, row_data, mode="normal"):
+        table = self.parent.planningTable  # Your planning QTableWidget
         row_position = table.rowCount()
         table.insertRow(row_position)
 
@@ -134,7 +141,7 @@ class PlanningPageManager:
         today = QtCore.QDate.currentDate()
         estimated_date_str = today.toString("yyyy-MM-dd")
 
-        # Get start time
+        # Get start time for special rows
         if row_position == 0:
             start_time = QtCore.QTime(8, 0, 0)  # 08:00:00 for the first test
         else:
@@ -145,8 +152,15 @@ class PlanningPageManager:
             else:
                 start_time = QtCore.QTime(8, 0, 0)
 
-        # Duration
-        duration_str = row_data[22]  # e.g., '2:00:00'
+        # Duration (will be 0:00:00 for special rows)
+        if mode == "stab":
+            duration_str = "0:00:00"
+        elif mode == "off":
+            duration_str = "0:00:00"
+        elif mode == "prep":
+            duration_str = "0:00:00"
+        else:
+            duration_str = row_data[22]  # e.g., '2:00:00' for normal rows
         duration = QtCore.QTime.fromString(duration_str, "H:mm:ss")
         duration_secs = duration.hour() * 3600 + duration.minute() * 60 + duration.second()
 
@@ -154,7 +168,7 @@ class PlanningPageManager:
         start_datetime = QtCore.QDateTime(today, start_time)
         end_datetime = start_datetime.addSecs(duration_secs)
 
-        # Column mapping
+        # Column mapping with updated fields
         column_mapping = {
             0: "",  # File ID (editable)
             1: row_data[1],  # Test Norm ID
@@ -164,28 +178,36 @@ class PlanningPageManager:
             5: duration_str,  # Duration (editable)
             6: start_datetime.toString("yyyy-MM-dd HH:mm:ss"),  # Start time
             7: end_datetime.toString("yyyy-MM-dd HH:mm:ss"), # End time
-            8: row_data[3],  # Mean temperature in climatic chamber [ºC],
+            8: row_data[3],  # Mean temperature in climatic chamber [ºC]
             9: row_data[4],  # Relative humidity [%]
-            10: row_data[5],  # Air speed [km/h],
-            11: row_data[6],  # Solar radiation [W/m2],
-            12: row_data[16],  # Lights [ON/OFF],
-            13: row_data[5],  # Passenger loads [%],
-            16: row_data[12],  # Set Points value k,
-            17: row_data[14],  # Tic [ºC] Criteria to be checked,
-            18: row_data[17],  # Range,
-            19: row_data[13],  # Evluation criteria,
+            10: row_data[5],  # Air speed [km/h]
+            11: row_data[6],  # Solar radiation [W/m2]
+            12: row_data[16],  # Lights [ON/OFF]
+            13: row_data[5],  # Passenger loads [%]
+            16: row_data[12],  # Set Points value k
+            17: row_data[14],  # Criteria to be checked
+            18: row_data[17],  # Range
+            19: row_data[13],  # Evaluation criteria
             20: row_data[15],  # Comments (editable)
-
         }
 
         # Set items into table
-        for col_index in range(20):
+        for col_index in range(21):  # Adjusted for the number of columns in your mapping
             value = column_mapping.get(col_index, "")
             item = QtWidgets.QTableWidgetItem(value)
-            if col_index in [0, 5]:  # Editable: File ID, Duration
+            if col_index in [0, 5, 20]:  # Editable: File ID, Duration, Comments
                 item.setFlags(item.flags() | QtCore.Qt.ItemIsEditable)
             else:  # Non-editable
                 item.setFlags(item.flags() & ~QtCore.Qt.ItemIsEditable)
+            
+            # Set the background color based on the mode
+            if mode == "stab":
+                item.setBackground(QtGui.QColor(211, 211, 211))  # Light grey for Stabilization
+            elif mode == "off":
+                item.setBackground(QtGui.QColor(169, 169, 169))  # Dark grey for OFF
+            elif mode == "prep":
+                item.setBackground(QtGui.QColor(255, 255, 224))  # Light yellow for Vehicle Preparation
+            
             table.setItem(row_position, col_index, item)
 
 
