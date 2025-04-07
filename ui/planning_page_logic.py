@@ -22,8 +22,39 @@ class PlanningPageManager:
         self.coach_table_data = {}  # Initialize coach_table_data  
         self.project_data = {}
         self.parent.btnAddPlanning.clicked.connect(self.open_planning_dialog)
+        self.parent.btnCabin1_4.clicked.connect(lambda: self.on_cabin_button_click(0))
+        self.parent.btnCabin2_4.clicked.connect(lambda: self.on_cabin_button_click(1))
+        self.setup_table_context_menu(self.parent.planningTable)
+        self.planning_tables = {
+            "planningTable": None, 
+        }
 
         self.load_table()
+    def on_cabin_button_click(self, index):
+        """Handles clicking on a coach button and updates the UI."""
+        try:  
+            # Save the current coach's table data before switching
+            self.save_current_coach_tables()
+            num_coaches_t = int(self.project_data.get("Number of Coaches per Train", 0))
+            # Update the current coach index
+            if index==0:
+                num_coaches_t = num_coaches_t+1
+            else:
+                num_coaches_t = num_coaches_t+2
+            self.current_coach_index = num_coaches_t
+
+            # Load the data for the newly selected coach
+            self.load_coach_tables()
+
+            # Update the coach name label
+            # Retrieve Cabin Name based on index
+            cabin_name_key = f"Cabin {index+1} Name"
+            cabin_name = self.project_data.get(cabin_name_key, '')
+            self.parent.lblCoachName_5.setText(f"Cabin {index + 1} - {cabin_name}")
+            
+            print(f"Switched to Cabin {index + 1} and loaded its data.")
+        except Exception as e:
+            print(f"An error occurred while handling the coach button click: {e}")
     def open_planning_dialog(self):
 
         dialog = QtWidgets.QDialog(self.parent)
@@ -278,7 +309,6 @@ class PlanningPageManager:
             
             table_widget.setContextMenuPolicy(Qt.CustomContextMenu)
             
-            table_widget.customContextMenuRequested.connect(self.show_context_menu_user)
             # Hide the additional columns (column index 14 and 15)
             table_widget.setColumnHidden(14, True)  # Hide column 14
             table_widget.setColumnHidden(15, True)  # Hide column 15
@@ -330,13 +360,13 @@ class PlanningPageManager:
         """Handles clicking on a coach button and updates the UI."""
         try:  
             # # Save the current coach's table data before switching
-            # self.save_current_coach_tables()
+            self.save_current_coach_tables()
 
             # # Update the current coach index
             self.current_coach_index = index
 
             # # Load the data for the newly selected coach
-            # self.load_coach_tables()
+            self.load_coach_tables()
 
             # Update the coach name label
             coaches = self.project_info.get("Coaches", {})
@@ -346,125 +376,153 @@ class PlanningPageManager:
             print(f"Switched to Coach {index + 1} and loaded its data.")
         except Exception as e:
             print(f"An error occurred while handling the coach button click: {e}")
-    def show_context_menu_user(self, pos):
-        """Handles showing the context menu when right-clicking on specific editable cells."""
-        context_menu = QtWidgets.QMenu(self.parent)
 
-        # Get the table widget where the right-click occurred
-        table_widget = self.parent.sender()
-        item = table_widget.itemAt(pos)
+    def save_current_coach_tables(self):
+        """Save the current coach's table data to the dictionary."""
+        try:
+            coach_data = {}
 
-        if item:
-            row = item.row()
-            col = item.column()
+            for table_name in self.planning_tables.keys():
+                table_widget = self.parent.findChild(QtWidgets.QTableWidget, table_name)
 
-            editable_labels = {
-                0: "Edit Test ID",
-                1: "Edit Test Norm ID",
-                2: "Edit Description of the test",
-                3: "Edit Mean temperature (°C)",
-                4: "Edit Relative humidity (%)",
-                5: "Edit Passenger load (%)",
-                6: "Edit Sun radiation (W/m2)",
-                13: "Edit Criteria To be taken into account for evaluation",
-                14: "Edit Criteria To be checked",
-                15: "Edit Remarks",
-                21: "Edit Client requirement",
-                22: "Edit Test duration",
+                if table_widget:
+                    table_data = []
+                    row_count = table_widget.rowCount()
 
-            }
+                    for row in range(row_count):
+                        row_data = []
+                        for col in range(table_widget.columnCount()):
+                            item = table_widget.cellWidget(row, col)
+                            table_item = table_widget.item(row, col)
+                            row_data.append(table_item.text() if table_item else "")
+                                
+                        table_data.append(row_data)
+                    
+                    coach_data[table_name] = table_data
+            
+            # Save the data for the current coach index
+            self.coach_table_data[self.current_coach_index] = coach_data
+        except Exception as e:
+            print(f"An error occurred while saving table data: {e}")
+    def load_coach_tables(self):
+        """Load table data for the current coach index, if available."""
+        try:
+            # Clear all rows for all tables before loading data
+            for table_name in self.planning_tables.keys():
+                table_widget = self.parent.findChild(QtWidgets.QTableWidget, table_name)
 
-            if col in editable_labels:
-                edit_action = QtWidgets.QAction(editable_labels[col], self.parent)
-                edit_action.triggered.connect(lambda: self.edit_cell_user(table_widget, row, col))
-                context_menu.addAction(edit_action)
+                table_widget.setRowCount(0)
+            
+            if self.current_coach_index in self.coach_table_data:
+                coach_data = self.coach_table_data[self.current_coach_index]
+                for table_name in self.planning_tables.keys():
+                    table_widget = self.parent.findChild(QtWidgets.QTableWidget, table_name)
+                    if table_name in coach_data:
+                        table_data = coach_data[table_name]
+                        # Clear all rows before loading
+                        # Set row count
+                        table_widget.setRowCount(len(table_data))
 
-        context_menu.exec_(table_widget.mapToGlobal(pos))
+                        for row_index, row_data in enumerate(table_data):
+                            for col_index, cell_value in enumerate(row_data):
+                                item = QtWidgets.QTableWidgetItem(str(cell_value))
+                                table_widget.setItem(row_index, col_index, item)
 
+                        # Optional: Resize rows and columns to content
+                        table_widget.resizeColumnsToContents()
+                        table_widget.resizeRowsToContents()
+                        #populate the table with the data
+            
+            print(f"Successfully loaded data for index {self.current_coach_index}.")
+            
+        except Exception as e:
+            print(f"An error occurred while loading table data: {e}")
+    def setup_table_context_menu(self, table_widget):
+        try:
+            # Enable custom context menu
+            table_widget.setContextMenuPolicy(Qt.CustomContextMenu)
+            table_widget.customContextMenuRequested.connect(lambda pos: self.show_table_context_menu(pos, table_widget))
+        except Exception as e:
+            print(f"Error setting up context menu: {e}")
 
-    def edit_cell_user(self, table_widget, row, col):
-        """Edit a specific cell in the table with a text input dialog."""
-        # Define limits for each column
-        if col == 3:  # Mean temperature (°C)
-            self.validate_and_edit(table_widget, row, col, -50, 60, "Mean temperature")
-        elif col == 4:  # Relative humidity (%)
-            self.validate_and_edit(table_widget, row, col, 0, 100, "Relative humidity")
-        elif col == 5:  # Relative humidity (%)
-            self.validate_and_edit(table_widget, row, col, 0, 100, "Passenger load")
-        elif col == 6:  # Sun radiation (W/m2)
-            self.validate_and_edit(table_widget, row, col, 0, 1500, "Sun radiation")
-        elif col == 22:  # Test duration (hh:mm:ss)
-            self.edit_test_duration(table_widget, row, col)
-        else:
-            # For other columns, simply allow editing as text
-            table_widget.item(row, col).setText(
-                QtWidgets.QInputDialog.getText(
-                    self.parent, f"Edit Cell ({row}, {col})", "Enter new value:", text=table_widget.item(row, col).text()
-                )[0]
-            )
+    def show_table_context_menu(self, pos, table_widget):
+        try:
+            # Get the position of the clicked row
+            index = table_widget.indexAt(pos)
 
+            if index.isValid():
+                menu = QMenu(table_widget)
+                
+                # Create 'Edit Row' action
+                edit_action = QAction("Edit Row", table_widget)
+                edit_action.triggered.connect(lambda: self.edit_row_in_table(index.row(), table_widget))
+                
+                # Create 'Delete Row' action
+                delete_action = QAction("Delete Row", table_widget)
+                delete_action.triggered.connect(lambda: self.delete_row_from_table(index.row(), table_widget))
+                
+                # Create 'Move Up Row' action
+                move_up_action = QAction("Move Up", table_widget)
+                move_up_action.triggered.connect(lambda: self.move_row_up(index.row(), table_widget))
+                
+                # Create 'Move Down Row' action
+                move_down_action = QAction("Move Down", table_widget)
+                move_down_action.triggered.connect(lambda: self.move_row_down(index.row(), table_widget))
+                
+                # Add actions to menu
+                menu.addAction(edit_action)
+                menu.addAction(delete_action)
+                menu.addAction(move_up_action)
+                menu.addAction(move_down_action)
+                
+                # Show the menu at the cursor position
+                menu.exec_(table_widget.viewport().mapToGlobal(pos))
+        except Exception as e:
+            print(f"Error showing context menu: {e}")
 
-    def validate_and_edit(self, table_widget, row, col, min_value, max_value, column_name):
-        """Common validation and editing function for columns with specific value ranges."""
-        item = table_widget.item(row, col)
-        
-        if item:
-            current_value = item.text() if item else ""
+    def edit_row_in_table(self, row, table_widget):
+        try:
+            # Logic to edit the selected row, you can implement the edit functionality here
+            print(f"Editing row {row}")
+            # You can open a dialog to edit row or make the items editable, based on your requirements
+        except Exception as e:
+            print(f"Error editing row: {e}")
 
-            # Handle empty values for specific columns
-            if current_value == "":
-                if column_name == "Relative humidity":
-                    current_value = "-"  # Set to "-" for Relative humidity
-                elif column_name == "Passenger load":
-                    current_value = "0"  # Set to "0" for Passenger load [%]
-                elif column_name == "Sun radiation":
-                    current_value = "0"
+    def delete_row_from_table(self, row, table_widget):
+        try:
+            # Remove the specified row from the table
+            table_widget.removeRow(row)
+        except Exception as e:
+            print(f"Error deleting row: {e}")
 
-            # Show input dialog
-            new_value, ok = QtWidgets.QInputDialog.getText(
-                self.parent, f"Edit {column_name}",
-                f"Enter value for {column_name} ({min_value} to {max_value}):", text=current_value
-            )
+    def move_row_up(self, row, table_widget):
+        try:
+            # Check if the row is not the first one
+            if row > 0:
+                # Get the items from the row to move
+                items = [table_widget.takeItem(row, col) for col in range(table_widget.columnCount())]
+                
+                # Insert the items back one row up
+                for col in range(table_widget.columnCount()):
+                    table_widget.setItem(row - 1, col, items[col])
+                
+                # Remove the original row
+                table_widget.removeRow(row)
+        except Exception as e:
+            print(f"Error moving row up: {e}")
 
-            if ok:
-                try:
-                    new_value = float(new_value)
-
-                    # Check if the new value is within the allowed range
-                    if min_value <= new_value <= max_value:
-                        item.setText(str(new_value))
-                    else:
-                        QtWidgets.QMessageBox.warning(
-                            self.parent, "Invalid Input",
-                            f"{column_name} must be between {min_value} and {max_value}."
-                        )
-                except ValueError:
-                    QtWidgets.QMessageBox.warning(
-                        self.parent, "Invalid Input", f"Please enter a valid number for {column_name}."
-                    )
-    def edit_test_duration(self, table_widget, row, col):
-        """Handle the editing of Test duration in hh:mm:ss format."""
-        item = table_widget.item(row, col)
-        if item:
-            current_value = item.text() if item else ""
-
-            # Show input dialog for time format
-            new_value, ok = QtWidgets.QInputDialog.getText(
-                self.parent, "Edit Test duration", "Enter time in format hh:mm:ss:", text=current_value
-            )
-
-            if ok:
-                # Validate the time format
-                if self.is_valid_time_format(new_value):
-                    item.setText(new_value)
-                else:
-                    QtWidgets.QMessageBox.warning(
-                        self.parent, "Invalid Input", "Please enter a valid time in hh:mm:ss format."
-                    )
-
-
-    def is_valid_time_format(self, time_str):
-        """Check if the given time string is in hh:mm:ss format."""
-        import re
-        time_pattern = r"^\d{2}:\d{2}:\d{2}$"  # Regular expression for hh:mm:ss
-        return bool(re.match(time_pattern, time_str))
+    def move_row_down(self, row, table_widget):
+        try:
+            # Check if the row is not the last one
+            if row < table_widget.rowCount() - 1:
+                # Get the items from the row to move
+                items = [table_widget.takeItem(row, col) for col in range(table_widget.columnCount())]
+                
+                # Insert the items back one row down
+                for col in range(table_widget.columnCount()):
+                    table_widget.setItem(row + 1, col, items[col])
+                
+                # Remove the original row
+                table_widget.removeRow(row)
+        except Exception as e:
+            print(f"Error moving row down: {e}")

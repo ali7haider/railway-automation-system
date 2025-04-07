@@ -242,7 +242,7 @@ QTableWidget::item {
 	padding-right: 5px;
 	gridline-color: #555;
     border-bottom: 1px solid #555;
-    color:#F97D02;
+color:#F97D02
 }
 
 QHeaderView::section {
