@@ -1699,6 +1699,7 @@ class MasterScreen(QtWidgets.QMainWindow):
     def show_planning_page(self):
         """Show the Offset Leech page."""
         # self.current_page = self.offset_leech
+        self.test_page_manager.save_current_coach_tables()
         self.handleMenuClick(self.btnPlanning, 5)
         # Load the project data
         project_data = self.saving_manager.load_project(self.ProjectName)

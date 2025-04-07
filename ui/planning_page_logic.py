@@ -21,7 +21,174 @@ class PlanningPageManager:
         self.project_info = {}  # Initialize project_data  
         self.coach_table_data = {}  # Initialize coach_table_data  
         self.project_data = {}
+        self.parent.btnAddPlanning.clicked.connect(self.open_planning_dialog)
+
         self.load_table()
+    def open_planning_dialog(self):
+
+        dialog = QtWidgets.QDialog(self.parent)
+        dialog.setWindowTitle("Add Planning Entry")
+        layout = QtWidgets.QVBoxLayout()
+
+        # Label and input
+        label = QtWidgets.QLabel("Enter Test ID:")
+        test_id_input = QtWidgets.QLineEdit()
+        layout.addWidget(label)
+        layout.addWidget(test_id_input)
+
+        # Buttons for actions
+        btn_stab = QtWidgets.QPushButton("Stabilization")
+        btn_off = QtWidgets.QPushButton("OFF")
+        btn_prep = QtWidgets.QPushButton("Vehicle Preparation")
+
+        button_layout = QtWidgets.QHBoxLayout()
+        button_layout.addWidget(btn_stab)
+        button_layout.addWidget(btn_off)
+        button_layout.addWidget(btn_prep)
+
+        layout.addLayout(button_layout)
+        dialog.setLayout(layout)
+
+        # ENTER key press triggers normal entry
+        test_id_input.returnPressed.connect(lambda: self.handle_test_id_entry(test_id_input.text(), dialog))
+
+        # Buttons trigger other special rows
+        btn_stab.clicked.connect(lambda: self.add_planning_row("", "stab", dialog))
+        btn_off.clicked.connect(lambda: self.add_planning_row("", "off", dialog))
+        btn_prep.clicked.connect(lambda: self.add_planning_row("", "prep", dialog))
+
+        dialog.exec_()
+
+
+    def handle_test_id_entry(self, test_id, dialog):
+        coach_index = self.current_coach_index
+        coach_data = self.parent.test_page_manager.coach_table_data.get(coach_index, {})
+
+        # Aggregate all rows from all tables under current coach
+        all_rows = []
+        for table_name, table_rows in coach_data.items():
+            all_rows.extend(table_rows)
+
+        # Search for matching Test Norm ID (index 1 in each row)
+        for row in all_rows:
+            if row[1] == test_id:
+                self.add_planning_row(test_id, "enter", dialog, row)  # Allow dialog to close inside this
+                return
+
+        # If no match found, show warning and DO NOT close the dialog
+        QtWidgets.QMessageBox.warning(self.parent, "Not Found", f"Test Norm ID '{test_id}' not found.")
+
+
+    def add_planning_row(self, test_id, mode, dialog, row_data=None):
+        if mode == "enter":
+            if row_data is None:
+                return  # This shouldn't happen because we check before calling
+            self.insert_test_row_into_table(row_data)
+            ...
+        elif mode in ("stab", "off", "prep"):
+            # Logic to insert special row
+            ...
+        
+        dialog.accept()  # Only close dialog after successful row add
+
+
+    def insert_test_row_into_table(self, row_data):
+        table = self.parent.planningTable  # Your planning QTableWidget
+
+        # Define field labels for the row_data indices
+        field_labels = [
+            "0: File ID",
+            "1: Test Norm ID",
+            "2: Description of the test",
+            "3: Mean temperature in climatic chamber [ºC]",
+            "4: Relative humidity [%]",
+            "5: Passenger load [%]",
+            "6: Sun radiation [W/m2]",
+            "7: Wind speed",
+            "8: Wind speed [km/h]",
+            "9: Setpoint [ºC]",
+            "10: Setpoint curve [ºC]",
+            "11: Setpoint delta",
+            "12: Setpoint delta value",
+            "13: Criteria To be taken into account for evaluation",
+            "14: Criteria To be checked",
+            "15: Remarks",
+            "16: Compartment test",
+            "17: Range",
+            "18: Sensible heat passengers",
+            "19: Latent heat passengers",
+            "20: Solar Power",
+            "21: Client requirement",
+            "22: Test duration"
+        ]
+
+        print("Test Row Data Breakdown:")
+        for index, label in enumerate(field_labels):
+            value = row_data[index] if index < len(row_data) else "N/A"
+            print(f"{label}: {value}")
+            
+        row_position = table.rowCount()
+        table.insertRow(row_position)
+
+        # Base values
+        today = QtCore.QDate.currentDate()
+        estimated_date_str = today.toString("yyyy-MM-dd")
+
+        # Get start time
+        if row_position == 0:
+            start_time = QtCore.QTime(8, 0, 0)  # 08:00:00 for the first test
+        else:
+            prev_end_time_item = table.item(row_position - 1, 7)  # Column 7 = End Time
+            if prev_end_time_item:
+                prev_end_datetime = QtCore.QDateTime.fromString(prev_end_time_item.text(), "yyyy-MM-dd HH:mm:ss")
+                start_time = prev_end_datetime.time()
+            else:
+                start_time = QtCore.QTime(8, 0, 0)
+
+        # Duration
+        duration_str = row_data[22]  # e.g., '2:00:00'
+        duration = QtCore.QTime.fromString(duration_str, "H:mm:ss")
+        duration_secs = duration.hour() * 3600 + duration.minute() * 60 + duration.second()
+
+        # Combine date and time into QDateTime
+        start_datetime = QtCore.QDateTime(today, start_time)
+        end_datetime = start_datetime.addSecs(duration_secs)
+
+        # Column mapping
+        column_mapping = {
+            0: "",  # File ID (editable)
+            1: row_data[1],  # Test Norm ID
+            2: row_data[21],  # Client requirement
+            3: row_data[2],  # Description of the test
+            4: estimated_date_str,  # Estimated date
+            5: duration_str,  # Duration (editable)
+            6: start_datetime.toString("yyyy-MM-dd HH:mm:ss"),  # Start time
+            7: end_datetime.toString("yyyy-MM-dd HH:mm:ss"), # End time
+            8: row_data[3],  # Mean temperature in climatic chamber [ºC],
+            9: row_data[4],  # Relative humidity [%]
+            10: row_data[5],  # Air speed [km/h],
+            11: row_data[6],  # Solar radiation [W/m2],
+            12: row_data[16],  # Lights [ON/OFF],
+            13: row_data[5],  # Passenger loads [%],
+            16: row_data[12],  # Set Points value k,
+            17: row_data[14],  # Tic [ºC] Criteria to be checked,
+            18: row_data[17],  # Range,
+            19: row_data[13],  # Evluation criteria,
+            20: row_data[15],  # Comments (editable)
+
+        }
+
+        # Set items into table
+        for col_index in range(20):
+            value = column_mapping.get(col_index, "")
+            item = QtWidgets.QTableWidgetItem(value)
+            if col_index in [0, 5]:  # Editable: File ID, Duration
+                item.setFlags(item.flags() | QtCore.Qt.ItemIsEditable)
+            else:  # Non-editable
+                item.setFlags(item.flags() & ~QtCore.Qt.ItemIsEditable)
+            table.setItem(row_position, col_index, item)
+
+
     def load_table(self):
         headers = [
             "File ID",                                 # Editable
