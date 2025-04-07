@@ -199,18 +199,28 @@ class PlanningPageManager:
                 item.setFlags(item.flags() | QtCore.Qt.ItemIsEditable)
             else:  # Non-editable
                 item.setFlags(item.flags() & ~QtCore.Qt.ItemIsEditable)
-            
-            # Set the background color based on the mode
-            if mode == "stab":
-                item.setBackground(QtGui.QColor(211, 211, 211))  # Light grey for Stabilization
-            elif mode == "off":
-                item.setBackground(QtGui.QColor(169, 169, 169))  # Dark grey for OFF
-            elif mode == "prep":
-                item.setBackground(QtGui.QColor(255, 255, 224))  # Light yellow for Vehicle Preparation
-            
+            # Set the item in the table
             table.setItem(row_position, col_index, item)
 
+        # Debug: Check mode and row color
+        if mode == "stab":
+            row_color = "#d3d3d3"  # Light grey for Stabilization
+        elif mode == "off":
+            row_color = "#a9a9a9"  # Dark grey for OFF
+        elif mode == "prep":
+            row_color = "#fffacd"  # Light yellow for Vehicle Preparation
+        else:
+            row_color = "#ffffff"  # Default color for normal rows
+        
+        # print(f"Row color for mode '{mode}': {row_color}")  # Debug: Check the color
 
+        # Apply background color for each item in the row
+        for col_index in range(table.columnCount()):
+            item = table.item(row_position, col_index)
+            if item is not None:
+                item.setBackground(QtGui.QColor(row_color))  # Set the background color for each item
+
+        # print(f"Background color applied for each item in row {row_position}.")  # Debug: Confirm color applied
     def load_table(self):
         headers = [
             "File ID",                                 # Editable
@@ -263,18 +273,16 @@ class PlanningPageManager:
 
 
             # Optional: set minimum row height to avoid squishing short cells
-            table_widget.verticalHeader().setDefaultSectionSize(30)
-            # header.setMaximumHeight(header_max_height)
-
-
-            # Set the uniform row height for all rows
-            # table_widget.verticalHeader().setDefaultSectionSize(row_height)
-            
+            table_widget.verticalHeader().setDefaultSectionSize(30) 
             # Enable right-click menu for specific cells (e.g., "Test ID" and "Client requirement")
             
             table_widget.setContextMenuPolicy(Qt.CustomContextMenu)
             
             table_widget.customContextMenuRequested.connect(self.show_context_menu_user)
+            # Hide the additional columns (column index 14 and 15)
+            table_widget.setColumnHidden(14, True)  # Hide column 14
+            table_widget.setColumnHidden(15, True)  # Hide column 15
+
     def load_coach_data(self, project_data):
         """Loads coach data from project and updates UI."""
         try:
