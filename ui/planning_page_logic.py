@@ -626,39 +626,210 @@ class PlanningPageManager:
 
     def delete_row_from_table(self, row, table_widget):
         try:
-            # Remove the specified row from the table
-            table_widget.removeRow(row)
+            # Check if the row index is valid
+            if row < 0 or row >= table_widget.rowCount():
+                print(f"Error: Invalid row index {row}")
+                return
+
+           # Confirm row removal
+            confirmation = QtWidgets.QMessageBox.question(
+                None,
+                "Delete Row",
+                f"Are you sure you want to delete row {row+1}?",
+                QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No
+            )
+
+            if confirmation == QtWidgets.QMessageBox.Yes:
+                # Remove the specified row from the table
+                table_widget.removeRow(row)
+                print(f"Row {row} deleted successfully.")
+
+                # Recalculate start time, end time, and date for all subsequent rows
+                self.recalculate_subsequent_rows(row, table_widget)
+            else:
+                print(f"Row {row} deletion canceled.")
+
         except Exception as e:
             print(f"Error deleting row: {e}")
 
+
+
+
+
     def move_row_up(self, row, table_widget):
         try:
-            # Check if the row is not the first one
-            if row > 0:
-                # Get the items from the row to move
-                items = [table_widget.takeItem(row, col) for col in range(table_widget.columnCount())]
-                
-                # Insert the items back one row up
-                for col in range(table_widget.columnCount()):
-                    table_widget.setItem(row - 1, col, items[col])
-                
-                # Remove the original row
-                table_widget.removeRow(row)
-        except Exception as e:
-            print(f"Error moving row up: {e}")
+            # Create a dialog to enter the target row position
+            dialog = QDialog(table_widget)
+            dialog.setStyleSheet("""
+            QDialog { background-color: white; }
+            QLineEdit { border: 1px solid rgb(33, 37, 43); }
+        """)
 
+            dialog.setWindowTitle("Move Row Up")
+            
+            layout = QVBoxLayout()
+
+            # Label and input for the target row position
+            label = QLabel("Enter the numbers of rows to move the current row up to:")
+            layout.addWidget(label)
+
+            target_row_input = QLineEdit()
+            layout.addWidget(target_row_input)
+
+            # Save button to apply the move
+            save_button = QPushButton("Move Row")
+            layout.addWidget(save_button)
+
+            dialog.setLayout(layout)
+
+            # Button click event
+            save_button.clicked.connect(lambda: self.apply_move_row_up(target_row_input.text(), row, table_widget, dialog))
+            
+            # Show dialog
+            dialog.exec_()
+        except Exception as e:
+            print(f"Error opening dialog: {e}")
     def move_row_down(self, row, table_widget):
         try:
-            # Check if the row is not the last one
-            if row < table_widget.rowCount() - 1:
-                # Get the items from the row to move
-                items = [table_widget.takeItem(row, col) for col in range(table_widget.columnCount())]
-                
-                # Insert the items back one row down
-                for col in range(table_widget.columnCount()):
-                    table_widget.setItem(row + 1, col, items[col])
-                
-                # Remove the original row
-                table_widget.removeRow(row)
+            # Create a dialog to enter the target row position
+            dialog = QDialog(table_widget)
+            dialog.setStyleSheet("""
+            QDialog { background-color: white; }
+            QLineEdit { border: 1px solid rgb(33, 37, 43); }
+        """)
+
+            dialog.setWindowTitle("Move Row Up")
+            
+            layout = QVBoxLayout()
+
+            # Label and input for the target row position
+            label = QLabel("Enter the number of rows to move the current row down to:")
+            layout.addWidget(label)
+
+            target_row_input = QLineEdit()
+            layout.addWidget(target_row_input)
+
+            # Save button to apply the move
+            save_button = QPushButton("Move Row")
+            layout.addWidget(save_button)
+
+            dialog.setLayout(layout)
+
+            # Button click event
+            save_button.clicked.connect(lambda: self.apply_move_row_down(target_row_input.text(), row, table_widget, dialog))
+            
+            # Show dialog
+            dialog.exec_()
         except Exception as e:
-            print(f"Error moving row down: {e}")
+            print(f"Error opening dialog: {e}")
+
+    def apply_move_row_up(self, move_count_str, current_row, table_widget, dialog):
+        try:
+            move_count = int(move_count_str)
+
+            if move_count <= 0:
+                self.show_message_box(
+                    table_widget,
+                    "Invalid Move",
+                    "Move count must be greater than 0."
+                )
+                dialog.reject()
+                return
+
+            target_row = current_row - move_count
+            if target_row < 0:
+                self.show_message_box(
+                    table_widget,
+                    "Move Out of Bounds",
+                    f"Can't move row {current_row + 1} up by {move_count} positions."
+                )
+                dialog.reject()
+                return
+
+            # Extract items from current row
+            row_data = []
+            for col in range(table_widget.columnCount()):
+                item = table_widget.item(current_row, col)
+                new_item = QtWidgets.QTableWidgetItem(item.text()) if item else QtWidgets.QTableWidgetItem("")
+                row_data.append(new_item)
+
+            # Remove current row
+            table_widget.removeRow(current_row)
+
+            # Insert new row at target position
+            table_widget.insertRow(target_row)
+
+            # Populate new row with data
+            for col in range(table_widget.columnCount()):
+                table_widget.setItem(target_row, col, row_data[col])
+
+            print(f"Moved row {current_row + 1} up by {move_count} positions to row {target_row + 1}.")
+
+            # Recalculate times from the earlier of the two positions
+            self.recalculate_subsequent_rows(min(current_row, target_row), table_widget)
+
+            dialog.accept()
+
+        except ValueError:
+            self.show_message_box(
+                table_widget,
+                "Invalid Input",
+                "Please enter a valid integer."
+            )
+            dialog.reject()
+
+    def apply_move_row_down(self, move_count_str, current_row, table_widget, dialog):
+        try:
+            move_count = int(move_count_str)
+
+            if move_count <= 0:
+                self.show_message_box(table_widget, "Invalid Move", "Move count must be greater than 0.")
+                dialog.reject()
+                return
+
+            target_row = current_row + move_count
+            row_count = table_widget.rowCount()
+
+            if target_row >= row_count:
+                self.show_message_box(
+                    table_widget,
+                    "Move Out of Bounds",
+                    f"Can't move row {current_row + 1} down by {move_count} positions."
+                )
+                dialog.reject()
+                return
+
+            # Extract items from current row
+            row_data = []
+            for col in range(table_widget.columnCount()):
+                item = table_widget.item(current_row, col)
+                new_item = QtWidgets.QTableWidgetItem(item.text()) if item else QtWidgets.QTableWidgetItem("")
+                row_data.append(new_item)
+
+            # Remove the current row first
+            table_widget.removeRow(current_row)
+
+            # Adjust target index after removal
+            if current_row < target_row:
+                target_row -= 1
+
+            # Insert new row at target position
+            table_widget.insertRow(target_row)
+            for col in range(table_widget.columnCount()):
+                table_widget.setItem(target_row, col, row_data[col])
+
+            print(f"Moved row {current_row + 1} down by {move_count} positions to row {target_row + 1}.")
+
+            self.recalculate_subsequent_rows(min(current_row, target_row), table_widget)
+            dialog.accept()
+
+        except ValueError:
+            self.show_message_box(table_widget, "Invalid Input", "Please enter a valid integer.")
+            dialog.reject()
+
+
+    def show_message_box(self, parent, title, message):
+        QtWidgets.QMessageBox.warning(None, title, message)
+
+
+
