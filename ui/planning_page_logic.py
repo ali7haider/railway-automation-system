@@ -1,5 +1,7 @@
 import os
 from PyQt5.QtWidgets import QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout, QFileDialog, QTableWidget, QHeaderView
+from PyQt5.QtWidgets import QDialog, QFormLayout, QLineEdit, QTimeEdit, QDateEdit, QPushButton, QVBoxLayout, QLabel
+from PyQt5.QtCore import Qt, QTime, QDateTime,QDate
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtCore import Qt
 import math
@@ -482,11 +484,145 @@ class PlanningPageManager:
 
     def edit_row_in_table(self, row, table_widget):
         try:
-            # Logic to edit the selected row, you can implement the edit functionality here
-            print(f"Editing row {row}")
-            # You can open a dialog to edit row or make the items editable, based on your requirements
+            # Get the current values of the selected row
+            file_id = table_widget.item(row, 0).text()
+            duration_str = table_widget.item(row, 5).text()
+            comments = table_widget.item(row, 20).text()
+
+            # Create a dialog to edit the row
+            dialog = QtWidgets.QDialog(table_widget)
+            dialog.setWindowTitle("Edit Row")
+
+            dialog.setStyleSheet("""
+            QDialog { background-color: white; }
+            QLineEdit { border: 1px solid rgb(33, 37, 43); }
+            QTimeEdit { color: black; border: 1px solid rgb(33, 37, 43); }
+        """)
+            # Resize the dialog to the desired width and height
+            dialog.resize(400, 300)  # Width: 400px, Height: 300px
+            # Layout for the dialog
+            layout = QtWidgets.QFormLayout()
+
+            # File ID input
+            file_id_input = QLineEdit(file_id)
+            layout.addRow("File ID:", file_id_input)
+
+            # Duration input (QTimeEdit for time format)
+            duration_input = QtWidgets.QTimeEdit(QtCore.QTime.fromString(duration_str, "H:mm:ss"))
+            layout.addRow("Duration:", duration_input)
+
+            # Comments input
+            comments_input = QLineEdit(comments)
+            layout.addRow("Comments:", comments_input)
+
+            # Save Button
+            save_button = QPushButton("Save")
+            layout.addRow(save_button)
+
+            # Set the layout for the dialog
+            dialog.setLayout(layout)
+
+            # Connect Save button to apply changes
+            save_button.clicked.connect(lambda: self.apply_edit_changes(dialog, file_id_input, duration_input, comments_input, row, table_widget))
+
+            # Show dialog
+            dialog.exec_()
+
         except Exception as e:
             print(f"Error editing row: {e}")
+
+    def apply_edit_changes(self, dialog, file_id_input, duration_input, comments_input, row, table_widget):
+        try:
+            # Get the new values from the inputs
+            new_file_id = file_id_input.text()
+            new_duration = duration_input.time().toString("H:mm:ss")
+            new_comments = comments_input.text()
+
+            # Update the row with the new values
+            table_widget.item(row, 0).setText(new_file_id)  # Update File ID
+            table_widget.item(row, 5).setText(new_duration)  # Update Duration
+            table_widget.item(row, 20).setText(new_comments)  # Update Comments
+
+            # Recalculate Date, Start Time, and End Time for the updated row
+            self.recalculate_dates_and_times(row, table_widget)
+
+            # Recalculate Date, Start Time, and End Time for all subsequent rows
+            self.recalculate_subsequent_rows(row + 1, table_widget)
+
+            # Close the dialog
+            dialog.accept()
+
+        except Exception as e:
+            print(f"Error applying edit changes: {e}")
+
+    def recalculate_dates_and_times(self, row, table_widget):
+        try:
+            # Get the new values of the edited row
+            duration_str = table_widget.item(row, 5).text()
+            duration = QtCore.QTime.fromString(duration_str, "H:mm:ss")
+            duration_secs = duration.hour() * 3600 + duration.minute() * 60 + duration.second()
+
+            # Get the current date and time
+            today = QtCore.QDate.currentDate()
+            start_time = QtCore.QTime(8, 0, 0)  # Starting time for the first test, can be customized based on the previous row
+
+            # For rows after the first one, use the previous row's End Time
+            if row > 0:
+                prev_end_time_item = table_widget.item(row - 1, 7)  # End Time is in column 7
+                if prev_end_time_item:
+                    prev_end_datetime = QtCore.QDateTime.fromString(prev_end_time_item.text(), "yyyy-MM-dd HH:mm:ss")
+                    start_time = prev_end_datetime.time()
+
+            # Combine date and start time
+            start_datetime = QtCore.QDateTime(today, start_time)
+
+            # Calculate end time by adding the duration in seconds
+            end_datetime = start_datetime.addSecs(duration_secs)
+
+            # Update Date, Start Time, and End Time in the table
+            table_widget.item(row, 4).setText(today.toString("yyyy-MM-dd"))  # Estimated date
+            table_widget.item(row, 6).setText(start_datetime.toString("yyyy-MM-dd HH:mm:ss"))  # Start time
+            table_widget.item(row, 7).setText(end_datetime.toString("yyyy-MM-dd HH:mm:ss"))  # End time
+
+            print(f"Recalculated Date, Start Time, and End Time for row {row}")
+
+        except Exception as e:
+            print(f"Error recalculating dates and times: {e}")
+
+    def recalculate_subsequent_rows(self, start_row, table_widget):
+        try:
+            # Recalculate the Start Time and End Time for all rows after the updated one
+            for row in range(start_row, table_widget.rowCount()):
+                # Get the previous row's End Time to calculate the Start Time
+                prev_end_time_item = table_widget.item(row - 1, 7) if row > 0 else None
+
+                # Start Time for the current row is based on the previous row's End Time
+                if prev_end_time_item:
+                    prev_end_datetime = QDateTime.fromString(prev_end_time_item.text(), "yyyy-MM-dd HH:mm:ss")
+                    start_time = prev_end_datetime.time()
+                else:
+                    start_time = QTime(8, 0, 0)  # Default start time for the first row (or if no previous row)
+
+                # Get the Duration for the current row
+                duration_str = table_widget.item(row, 5).text()
+                duration = QTime.fromString(duration_str, "H:mm:ss")
+                duration_secs = duration.hour() * 3600 + duration.minute() * 60 + duration.second()
+
+                # Combine the date and start time
+                today = QDate.currentDate()
+                start_datetime = QDateTime(today, start_time)
+
+                # Calculate the End Time for the current row
+                end_datetime = start_datetime.addSecs(duration_secs)
+
+                # Update the Start Time and End Time in the table
+                table_widget.item(row, 6).setText(start_datetime.toString("yyyy-MM-dd HH:mm:ss"))  # Start time
+                table_widget.item(row, 7).setText(end_datetime.toString("yyyy-MM-dd HH:mm:ss"))  # End time
+
+                print(f"Recalculated Start Time and End Time for row {row}")
+
+        except Exception as e:
+            print(f"Error recalculating subsequent rows: {e}")
 
     def delete_row_from_table(self, row, table_widget):
         try:
