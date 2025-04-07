@@ -8320,7 +8320,7 @@ color:rgb(40, 44, 52)
                   <property name="font">
                    <font>
                     <family>Calibri</family>
-                    <pointsize>-1</pointsize>
+                    <pointsize>9</pointsize>
                     <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
