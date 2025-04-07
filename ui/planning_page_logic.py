@@ -97,71 +97,43 @@ class PlanningPageManager:
         coach_index = self.current_coach_index
         coach_data = self.parent.test_page_manager.coach_table_data.get(coach_index, {})
 
-        # Aggregate all rows from all tables under current coach
         all_rows = []
         for table_name, table_rows in coach_data.items():
             all_rows.extend(table_rows)
 
-        # Search for matching Test Norm ID (index 1 in each row)
         for row in all_rows:
             if row[1] == test_id:
-                self.add_planning_row(test_id, "enter", dialog, row)  # Allow dialog to close inside this
+                dialog.test_id_valid = True
+                self.add_planning_row(test_id, "enter", dialog, row)
                 return
 
-        # If no match found, show warning and DO NOT close the dialog
         QtWidgets.QMessageBox.warning(self.parent, "Not Found", f"Test Norm ID '{test_id}' not found.")
-        # Do not close the dialog here; keep it open
+        dialog.accept()
+
 
 
     def add_planning_row(self, test_id, mode, dialog, row_data=None):
+
         if mode == "enter":
             if row_data is None:
-                return  # This shouldn't happen because we check before calling
-            # Insert row with provided data
+                return
             self.insert_test_row_into_table(row_data)
         elif mode in ("stab", "off", "prep"):
-            # Logic for special rows: Stabilization, OFF, and Vehicle Preparation
-            if mode == "stab":
-                description = "Stabilization test"
-                duration = "0:00:00"
-            elif mode == "off":
-                description = "OFF test"
-                duration = "0:00:00"
-            elif mode == "prep":
-                description = "Vehicle Preparation"
-                duration = "0:00:00"
-            
-            # Create row with special values
-            row_data = [
-                "",                          # File ID (empty)
-                "",                          # Test Norm ID
-                description,                 # Description of the test
-                "",                          # Mean temperature in climatic chamber [ºC]
-                "",                          # Relative humidity [%]
-                "",                          # Passenger load [%]
-                "",                          # Sun radiation [W/m2]
-                "",                          # Wind speed
-                "",                          # Wind speed [km/h]
-                "",                          # Setpoint [ºC]
-                "",                          # Setpoint curve [ºC]
-                "",                          # Setpoint delta
-                "",                          # Setpoint delta value
-                "",                          # Criteria To be taken into account for evaluation
-                "",                          # Criteria To be checked
-                "",                          # Remarks
-                "",                          # Compartment test
-                "",                          # Range
-                "",                          # Sensible heat passengers
-                "",                          # Latent heat passengers
-                "",                          # Solar Power
-                "",                          # Client requirement
-                duration                     # Test duration (0h)
-            ]
-            
-            # Insert the new row into the table with the special row flag
-            self.insert_test_row_into_table(row_data, mode)  # Pass the mode to color the row correctly
+            description = {
+                "stab": "Stabilization test",
+                "off": "OFF test",
+                "prep": "Vehicle Preparation"
+            }[mode]
+            duration = "0:00:00"
 
-        dialog.accept()  # Close the dialog only after the row is added
+            row_data = [
+                "", "", description, "", "", "", "", "", "", "", "", "", "", "", "",
+                "", "", "", "", "", "", "", duration
+            ]
+
+            self.insert_test_row_into_table(row_data, mode)
+
+        dialog.accept()
 
 
 
